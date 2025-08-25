@@ -1,5 +1,5 @@
-# Check that there is correct markdown in all files
-name: Check markdown
+# Check that there is correct Markdown in all files
+name: Check Markdown
 
 # This job only concerns changes to a limited set of files.
 # Thanks to https://stackoverflow.com/a/63822945
