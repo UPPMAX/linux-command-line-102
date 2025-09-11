@@ -90,6 +90,7 @@ plugins:
   - markdown-exec
   - open-in-new-tab
   - mermaid2:
+      version: 10.4.0
       javascript: https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs
 
 markdown_extensions:
