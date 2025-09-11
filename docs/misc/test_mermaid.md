@@ -24,7 +24,7 @@ gantt
 ## Flow chart
 
 ```mermaid
-flowchart TD
+graph TD
 
   complete_text[Any text]
   grep
