@@ -89,6 +89,7 @@ plugins:
   - mkdocstrings
   - markdown-exec
   - open-in-new-tab
+  - mermaid2
 
 markdown_extensions:
   - pymdownx.highlight:
