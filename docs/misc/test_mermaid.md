@@ -26,11 +26,11 @@ gantt
 ```mermaid
 flowchart TD
 
-  complete_text["Any text"]
+  complete_text[Any text]
   grep
   filter[Filter]
-  filtered_text["The filtered text"]
+  filtered_text[The filtered text]
 
-  grep --> |"Regular expression"| filter
+  grep --> |Regular expression| filter
   complete_text --> filter --> filtered_text
 ```
