@@ -15,8 +15,10 @@ tags:
 
 | Week | Date                             | Time       | Registration closes |
 | ---- | -------------------------------- | ---------- | ------------------- |
-| 49   | 2025-12-04 and 2025-12-05        | 9:00-12:00 | 2025-12-03                 |
-| ?23  | Around 2026-06-02 and 2026-06-03 | 9:00-12:00 | TBA                 |
+| 23   |  2026-06-0 and 2026-06-02 `[1]`  | 9:00-12:00 | TBA                 |
 | ?49  | Around 2026-12-04 and 2026-12-05 | 9:00-12:00 | TBA                 |
+
+
+- `[1]` BB and RB agreed, it is in the NAISS course overview
 
 <!-- markdownlint-enable MD013 -->
