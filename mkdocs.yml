@@ -44,6 +44,7 @@ nav:
       - Linux pipe: sessions/pipe.md
       - Linux tools (wc, cut): sessions/wc_cut.md
       - Searching using regular expressions and grep: sessions/regular_expressions_and_grep/README.md
+      - Linux tools (sed): sessions/sed.md
       - Using the programming language AWK: sessions/awk/README.md
   - Lessons Day 2 (smarter bash):
       - Scripting: sessions/scripting/README.md
@@ -51,7 +52,6 @@ nav:
       - Environment variables: sessions/env_vars.md
       - Symbolic links: sessions/symlinks.md
       - Archiving/compressing data: sessions/arch.md
-      - Linux tools (sed): sessions/sed.md
       - Quality of life: sessions/qual.md
   - Other teaching materials:
       - Books: books/README.md
