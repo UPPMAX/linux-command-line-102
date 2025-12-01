@@ -11,4 +11,4 @@ This is the page for evaluating the current iteration of the course.
 
     At [the 'Evaluations' page](evaluations/README.md).
 
-- `[Link to evaluation survey](https://forms.office.com/e/46UPFaD7fR)`
+- [Link to evaluation survey](https://forms.office.com/e/46UPFaD7fR)
