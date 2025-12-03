@@ -205,11 +205,105 @@ cat macbeth.txt | sed 's/Weird Sisters/witches/g' | grep witches
 
 ## Exercise x: use `sed` to remove a line from standard input
 
+In this exercise, we use `sed` to remove lines from standard input,
+i.e. from using `cat` on a file.
+
+The Macbeth text contains a copyright notice at the start and end of it.
+
+Find the line where the copyright notice at the start ends.
+
+```
+cat -n macbeth.txt  | head -n 100
+```
+
+This gives:
+
+```text
+    22  
+    23  *** START OF THE PROJECT GUTENBERG EBOOK THE COMPLETE WORKS OF WILLIAM SHAKESPEARE ***
+    24  
+    25  THE TRAGEDY OF MACBETH
+    27  
+```
+
+Remove the lines in such a way that the first line will be
+`THE TRAGEDY OF MACBETH`.
+
+```bash
+cat macbeth.txt | sed '1,24d' 
+```
+
+To check:
+
+```bash
+cat macbeth.txt | sed '1,24d'  | head 
+```
+
 
 ## Exercise x: use `sed` to replace text from a file
 
+In this exercise, we use `sed` directly on a file.
+
+In the Macbeth text, there is a copyright notice at the bottom too,
+starting with `START: FULL LICENSE`
+
+Find out in which line the copyright notice starts.
+
+```bash
+cat -n macbeth.txt | grep "START: FULL LICENSE"
+```
+
+```
+richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ cat -n macbeth.txt | grep "START: FULL LICENSE"
+  4171	START: FULL LICENSE
+```
+
+Find out how many lines the file has.
+
+```
+richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ cat -n macbeth.txt | tail
+  4484	
+  4485	Most people start at our website which has the main PG search
+  4486	facility: www.gutenberg.org.
+  4487	
+  4488	This website includes information about Project Gutenberg™,
+  4489	including how to make donations to the Project Gutenberg Literary
+  4490	Archive Foundation, how to help produce our new eBooks, and how to
+  4491	subscribe to our email newsletter to hear about new eBooks.
+  4492	
+  4493	
+```
+
+```bash
+richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ wc macbeth.txt 
+  4493  21234 129047 macbeth.txt
+```
+
+```bash
+richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ wc macbeth.txt --lines
+4493 macbeth.txt
+```
+
+
+```bash
+sed '1,24d;4171,4493d' macbeth.txt
+```
+
+```bash
+sed '1,24d;4171,4493d' macbeth.txt | head
+```
+
+```bash
+sed '1,24d;4171,4493d' macbeth.txt | tail
+```
+
+(optional) Do this exercise without remembering the lines
+
 ## Exercise x: use `sed` to replace text in a file
 
+Until now, we never have touched the original file.
+Here we use `sed -i [commands] [filename]`
+to directlt work on the original file.
 
 
 
