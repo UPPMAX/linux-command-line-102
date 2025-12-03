@@ -615,7 +615,7 @@ the online `sed` manual|Usage at all levels, easier to read
 
 ---
 
-## Exercise 1.1: view the `sed` manual
+## Exercise 2.1: view the `sed` manual
 
 View the `sed` manual.
 
@@ -652,7 +652,7 @@ Tip: it is at the top.
 
 ---
 
-## (optional) Exercise 1.2: view the `sed` info page
+## (optional) Exercise 2.2: view the `sed` info page
 
 View the `sed` info page.
 
@@ -688,7 +688,7 @@ What does that definition mean?
 
 ---
 
-## (optional) Exercise 1.3: view the online `sed` manual
+## (optional) Exercise 2.3: view the online `sed` manual
 
 According to the online `sed` manual at
 [`https://www.gnu.org/software/sed/`](https://www.gnu.org/software/sed/),
@@ -709,9 +709,10 @@ what is `sed`? What does that definition mean?
 !!! note "Summary"
 
     - `sed` can do what `grep` can do and more
+    - `sed` is a 'stream editor' and also called
+      'a non-interactive command-line text editor'
     - `sed` can use multiple combinations of input and output
     - `sed` can do multiple operations,
       such as filtering, substituting and deleting
     - `sed` can use two regular expression syntaxes
     - `sed` is not a programming language: use AWK instead
-
