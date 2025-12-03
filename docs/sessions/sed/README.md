@@ -301,7 +301,7 @@ Check that your replacement worked.
 
 ## Exercise 1.3: use `sed` to find text from standard input
 
-Read [the 'Replacing' section](#32__replacing).
+Read [the 'Filtering' section](#31__filtering).
 
 In Macbeth, there are many place names ending on `land`.
 
@@ -400,7 +400,7 @@ as you've seen this text in your output:
     25 *** START OF THE PROJECT GUTENBERG EBOOK THE COMPLETE WORKS OF WILLIAM SHAKESPEARE ***
 ```
 
-    <!-- markdownlint-enable MD013 -->
+<!-- markdownlint-enable MD013 -->
 
 Use `sed` to remove the lines in such a way that the first line will be
 `THE TRAGEDY OF MACBETH`, use `head` to check.
@@ -423,7 +423,7 @@ We can now pipe text to `sed` to remove lines.
 
 ---
 
-## Exercise 1.6: use `sed` to replace text from a file
+## Exercise 1.6: use `sed` to delete text
 
 Instead of piping text to `sed` to remove lines,
 we now use `sed` directly on a file.
@@ -519,9 +519,9 @@ replace `Weird Sisters` by `witches`
 
 ???- tip "Answer"
 
-  ```bash
-  sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
-  ```
+    ```bash
+    sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
+    ```
 
 Using `sed` directly on the file `macbeth.txt`,
 replace 'lands' by `Sweden`.
@@ -543,9 +543,9 @@ to remove the copyright.
 
 ???- tip "Answer"
 
-  ```bash
-  sed --in-place '1,26d;4173,4495d' macbeth.txt
-  ```
+    ```bash
+    sed --in-place '1,26d;4173,4495d' macbeth.txt
+    ```
 
 ---
 
