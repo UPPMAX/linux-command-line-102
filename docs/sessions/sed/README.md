@@ -298,9 +298,9 @@ Check that your replacement worked.
 
 Read [the 'Replacing' section](#replacing).
 
-In Macbeth, there are many placenames ending on `land`.
+In Macbeth, there are many place names ending on `land`.
 
-Search for all placenames ending on `land` using `sed`.
+Search for all place names ending on `land` using `sed`.
 To be precise, search for all matches that:
 
 - (1) start with an uppercase character
@@ -334,7 +334,7 @@ upon.
 
 Read [the section 'Type of regular expressions'](#type-of-regular-expressions).
 
-Search for all placenames ending on `land` using `sed`.
+Search for all place names ending on `land` using `sed`.
 To be precise, search for all matches that:
 
 - (1) start with an uppercase character
@@ -486,7 +486,7 @@ Let `sed` remove the copyright at the **beginning and** end
 (i.e. lines 1 to (and including) 26 and lines 4173 to (and including) 4495).
 Check using `head` and `tail`.
 
-???- question "Anser"
+???- question "Answer"
 
     To remove the lines at the start and end:
 
@@ -701,7 +701,7 @@ View the `sed` info page.
     Use the arrow keys to navigate and `q` to quit
 
 In to `sed` info page, go to the introduction.
-Wat is `sed` according to this info page?
+What is `sed` according to this info page?
 What does that definition mean?
 
 ??? tip "Answer"
