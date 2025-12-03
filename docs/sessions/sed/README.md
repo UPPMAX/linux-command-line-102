@@ -173,17 +173,35 @@ View the `sed` info page.
 
 ## Exercises
 
-In this exercise, we will work on the complete works from William Shakespear.
+In this exercise, we will work Macbeth, a tale written by William Shakespeare.
+
+To get it in plain-text:
 
 ```bash
-wget https://www.gutenberg.org/cache/epub/100/pg100.txt
+wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
 ```
 
 ## Exercise x: use `sed` to filter text from standard input
 
 <!-- `sed` can do all `grep` can do -->
 
+Use `sed`
+
+```bash
+cat macbeth.txt | grep -i "weird sisters"
+cat macbeth.txt | sed --quiet '/Weird Sisters/p'
+cat macbeth.txt | sed --quiet '/weird sisters/Ip'
+```
+
 ## Exercise x: use `sed` to replace text from standard input
+
+```bash
+cat macbeth.txt | sed 's/Weird Sisters/witches/g'
+```
+
+```bash
+cat macbeth.txt | sed 's/Weird Sisters/witches/g' | grep witches
+```
 
 ## Exercise x: use `sed` to remove a line from standard input
 
