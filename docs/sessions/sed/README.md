@@ -141,11 +141,13 @@ functionality:
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
+```text
 `sed` command                     |Description
 ----------------------------------|--------------------------------------------------------------------
 `cat my_file.txt | sed '1d'`      |Delete the first line
 `cat my_file.txt | sed '1,3d'`    |Delete lines 1 to and including 3
 `cat my_file.txt | sed '1,3;7,9d'`|Delete lines 1 to (and including) 3 and lines 7 to (and including) 9
+```
 
 <!-- markdownlint-enable MD013 -->
 
@@ -153,6 +155,7 @@ functionality:
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
+```text
 `sed` command                                           |Input and output
 --------------------------------------------------------|---------------------------------------------------
 `cat my_input_file.txt | sed '1d'`                      |Get input from a pipe, write output to terminal
@@ -160,6 +163,7 @@ functionality:
 `sed '1d' my_input_file.txt`                            |Get input from a file, write output to terminal
 `sed '1d' my_input_file.txt > my_output_file.txt`       |Get input from a file, write output to another file
 `sed --in-place '1d' my_file.txt`                       |:warning: Modify the file directly
+```
 
 <!-- markdownlint-enable MD013 -->
 
@@ -276,7 +280,7 @@ Check that your replacement worked.
 
     This gives the output:
 
-    ```
+    ```console
     The witches, hand in hand,
     title, before, these witches saluted me, and referred me to the
     I dreamt last night of the three witches:
