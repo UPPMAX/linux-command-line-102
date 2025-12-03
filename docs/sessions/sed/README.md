@@ -55,8 +55,13 @@ tags:
 which means it is considered a fundamental tool
 and is likely to be available on your operating system.
 
-`sed` can do what `grep` can do` and more:
-it can **replace** text that is found by regular expression matches.
+`sed` (short for 'stream editor')
+can do what `grep` can do` and more:
+it is 'a non-interactive command-line text editor'
+([source](https://www.gnu.org/software/sed/))
+
+In this session, we will be manipulating a file from `sed` (instead of
+doing so by hand).
 
 ## Overview
 
@@ -197,94 +202,7 @@ cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
 
 ## Exercises
 
-## Exercise 1: using the `sed` manuals
-
-In this exercise, we'll use the `sed` manuals:
-
-Manual
-`man` page
-`info` page
-the online `sed` manual at [`https://www.gnu.org/software/sed/`](https://www.gnu.org/software/sed/),
-
-
----
-
-## Exercise 1.1: view the `sed` manual
-
-View the `sed` manual.
-
-??? tip "The command to view a manual"
-
-    `man` is the command to view a manual
-
-??? tip "Answer"
-
-    In the terminal, type:
-
-    ```bash
-    sed grep
-    ```
-
-    Use the arrow keys to navigate and `q` to quit
-
-According to this `sed` manual, **in a one-liner**, what is `sed`?
-
-Tip: it is at the top.
-
-??? tip "Answer"
-
-    `sed` is a 'stream editor for filtering and transforming text'.
-
-    It is in the fourth line:
-
-    ```console
-    SED(1)                                User Commands                                SED(1)
-
-    NAME
-           sed - stream editor for filtering and transforming text
-    ```
-
-
-## Exercise 1.2: what is `sed`?
-
-According to the online `sed` manual at
-[`https://www.gnu.org/software/sed/`](https://www.gnu.org/software/sed/),
-what is `sed`? What does that definition mean?
-
-
-??? tip "Answer"
-
-    At [https://www.gnu.org/software/sed/](https://www.gnu.org/software/sed/)
-    the first line reads:
-
-    > `sed` is 'a non-interactive command-line text editor'
-
-    It means that you can let `sed` work on your file (like you
-    do with e.g. `nano`) without you opening the file.
-
----
-
-## Exercise 1.3: view the `sed` info page
-
-View the `sed` info page.
-
-??? tip "The command to view an info page"
-
-    `info` is the command to view an info page.
-
-??? tip "Answer"
-
-    In the terminal, type:
-
-    ```bash
-    info grep
-    ```
-
-    Use the arrow keys to navigate and `q` to quit
-
----
-
-## Exercises 2
+## Exercise 1
 
 In this exercise, we will work Macbeth, a tale written by William Shakespeare.
 
@@ -299,7 +217,7 @@ In these exercises, we will:
 
 ---
 
-## Exercise 2.1: download Macbeth
+## Exercise 1.1: download Macbeth
 
 Download the file from a terminal as such:
 
@@ -309,7 +227,7 @@ wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/
 
 ---
 
-## Exercise 2.2: use `sed` to replace text from standard input
+## Exercise 1.2: use `sed` to replace text from standard input
 
 Read [the 'Replacing' section](#replacing).
 
@@ -371,7 +289,7 @@ Check that your replacement worked.
 
 ---
 
-## Exercise 2.3: use `sed` to find text from standard input
+## Exercise 1.3: use `sed` to find text from standard input
 
 Read [the 'Replacing' section](#replacing).
 
@@ -395,7 +313,7 @@ then piping it to `sed`.
 
 ---
 
-## Exercise 2.4: use extended regular expressions
+## Exercise 1.4: use extended regular expressions
 
 Reading your answer in the previous exercise,
 your non-Swedish non-Finnish colleague comes to you
@@ -433,7 +351,7 @@ To be precise, search for all matches that:
 
 ---
 
-## Exercise 2.5: use `sed` to remove a line from standard input
+## Exercise 1.5: use `sed` to remove a line from standard input
 
 Read [the 'Deleting' section](#deleting).
 
@@ -491,7 +409,7 @@ We can now pipe text to `sed` to remove lines.
 
 ---
 
-## Exercise 2.6: use `sed` to replace text from a file
+## Exercise 1.6: use `sed` to replace text from a file
 
 Instead of piping text to `sed` to remove lines,
 we now use `sed` directly on a file.
@@ -576,7 +494,7 @@ Check using `head` and `tail`.
 
 ---
 
-## Exercise 2.7: use `sed` to replace text in a file
+## Exercise 1.7: use `sed` to replace text in a file
 
 Until now, we never have touched the original file.
 Here we use `sed --in-place [commands] [filename]`
@@ -617,7 +535,7 @@ to remove the copyright.
 
 ---
 
-## (optional) Exercise 2.8: Do this exercise from a script
+## (optional) Exercise 1.8: Do this exercise from a script
 
 Do this exercise from a script.
 
@@ -654,7 +572,7 @@ Do this exercise from a script.
 
 ---
 
-## (optional) Exercise 2.9: Do this exercise from a smart script
+## (optional) Exercise 1.9: Do this exercise from a smart script
 
 Do this exercise from a script,
 without hardcoding the lines
@@ -682,6 +600,109 @@ without hardcoding the lines
     ```bash
     wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/lesson_plans/20251204/script_2.sh
     ```
+
+---
+
+## (optional) Exercise 2: using the `sed` manuals
+
+In this exercise, we'll use the `sed` manuals:
+
+Manual type            |Description
+-----------------------|-----------------------------------
+`man` page             |High-level usage
+`info` page            |More detailed usage, easier to read
+the online `sed` manual|Usage at all levels, easier to read
+
+---
+
+## Exercise 1.1: view the `sed` manual
+
+View the `sed` manual.
+
+??? tip "The command to view a manual"
+
+    `man` is the command to view a manual
+
+??? tip "Answer"
+
+    In the terminal, type:
+
+    ```bash
+    sed grep
+    ```
+
+    Use the arrow keys to navigate and `q` to quit
+
+According to this `sed` manual, **in a one-liner**, what is `sed`?
+
+Tip: it is at the top.
+
+??? tip "Answer"
+
+    `sed` is a 'stream editor for filtering and transforming text'.
+
+    It is in the fourth line:
+
+    ```console
+    SED(1)                                User Commands                                SED(1)
+
+    NAME
+           sed - stream editor for filtering and transforming text
+    ```
+
+---
+
+## (optional) Exercise 1.2: view the `sed` info page
+
+View the `sed` info page.
+
+??? tip "The command to view an info page"
+
+    `info` is the command to view an info page.
+
+??? tip "Answer"
+
+    In the terminal, type:
+
+    ```bash
+    info grep
+    ```
+
+    Use the arrow keys to navigate and `q` to quit
+
+In to `sed` info page, go to the introduction.
+Wat is `sed` according to this info page?
+What does that definition mean?
+
+??? tip "Answer"
+
+    At the info pages it states:
+
+    ```text
+    ‘sed’ is a stream editor.  A stream editor is used to perform basic text
+    transformations on an input stream (a file or input from a pipeline).
+    ```
+
+    It means that you can let `sed` work on input from a stream of from
+    a file.
+
+---
+
+## (optional) Exercise 1.3: view the online `sed` manual
+
+According to the online `sed` manual at
+[`https://www.gnu.org/software/sed/`](https://www.gnu.org/software/sed/),
+what is `sed`? What does that definition mean?
+
+??? tip "Answer"
+
+    At [https://www.gnu.org/software/sed/](https://www.gnu.org/software/sed/)
+    the first line reads:
+
+    > `sed` is 'a non-interactive command-line text editor'
+
+    It means that you can let `sed` work on your file (like you
+    do with e.g. `nano`) without you opening the file.
 
 ---
 
