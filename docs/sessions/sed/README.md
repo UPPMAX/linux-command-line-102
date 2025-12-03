@@ -79,7 +79,7 @@ The equivalent `sed` command is this:
 man grep | sed --quiet "/^[A-Z]/p"
 ```
 
-???- question "Are there synonyms for this `sed` command?"
+???- tip "Are there synonyms for this `sed` command?"
 
     Yes, these commands are all equivalent:
 
@@ -109,7 +109,7 @@ below substitutes 'morning' for 'afternoon'.
 echo "Good morning" | sed 's/morning/afternoon/'
 ```
 
-???- question "What is the output of that command?"
+???- tip "What is the output of that command?"
 
     ```
     Good afternoon
@@ -121,13 +121,13 @@ If there may be multiple matches in a sentence, add `g` at the end:
 echo "Good morning, good morning" | sed 's/morning/afternoon/g'
 ```
 
-???- question "What is the output of that command (with the `g`)?"
+???- tip "What is the output of that command (with the `g`)?"
 
     ```bash
     Good afternoon, good afternoon
     ```
 
-???- question "What is the output of that command without the `g`?"
+???- tip "What is the output of that command without the `g`?"
 
     ```bash
     Good afternoon, good morning
@@ -240,7 +240,7 @@ In Macbeth, replace `Weird Sisters` (both words start with an upper-case
 character) by `witches`. Do so by using `cat` on the file `macbeth.txt`,
 then piping it to `sed`.
 
-???- question "Answer"
+???- tip "Answer"
 
     Here is how to show the text of Macbeth, with the text replaced:
 
@@ -268,7 +268,7 @@ Check that your replacement worked.
 
     Pipe the output to `grep` to detect matches with `witches`
 
-???- question "Answer"
+???- tip "Answer"
 
     ```bash
     cat macbeth.txt | sed 's/Weird Sisters/witches/g' | grep witches
@@ -284,7 +284,7 @@ Check that your replacement worked.
     Saw you the witches?
     ```
 
-???- question "How to save to a file?"
+???- tip "How to save to a file?"
 
     You can redirect the output to a file using `>`, e.g.:
 
@@ -310,7 +310,7 @@ To be precise, search for all matches that:
 Do so by using `cat` on the file `macbeth.txt`,
 then piping it to `sed`.
 
-???- question "Answer"
+???- tip "Answer"
 
     ```bash
     cat macbeth.txt | sed --quiet '/[A-Z][a-z]*land/p'
@@ -327,7 +327,7 @@ makes no sense: your regular expression matches
 'Aland', 'Bland', 'Cland' (and 'Gland'), which can be improved
 upon.
 
-???- question "Why is the colleague non-Swedish non-Finnish?"
+???- tip "Why is the colleague non-Swedish non-Finnish?"
 
     Because he/she does not know that Sweden has an island called
     Öland and Finland has an island called Åland.
@@ -342,7 +342,7 @@ To be precise, search for all matches that:
   use a `+` in your regular expression
 - (3) end on `land`.
 
-???- question "Answer"
+???- tip "Answer"
 
     ```bash
     cat macbeth.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
@@ -365,7 +365,7 @@ The Macbeth text contains a copyright notice at the start (and end) of it.
 Find the line where the copyright notice at the start ends in any way:
 it contains the text `START OF THE PROJECT GUTENBERG EBOOK`.
 
-???- question "Answer"
+???- tip "Answer"
 
     There are many ways.
 
@@ -400,7 +400,7 @@ as you've seen this text in your output:
 Use `sed` to remove the lines in such a way that the first line will be
 `THE TRAGEDY OF MACBETH`, use `head` to check.
 
-???- question "Answer"
+???- tip "Answer"
 
     Here is to remove the first lines:
 
@@ -428,7 +428,7 @@ starting with `START: FULL LICENSE`
 
 Find out in which line the copyright notice starts in any way.
 
-???- question "Answer"
+???- tip "Answer"
 
     There are many ways.
 
@@ -452,7 +452,7 @@ To be able to delete a range, we need to find out how many lines the file has.
 
 Find out how many lines the file has.
 
-???- question "Answer"
+???- tip "Answer"
 
     There are many ways.
 
@@ -476,7 +476,7 @@ You conclude that the file has 4495 lines.
 Let `sed` remove the copyright at the end
 (i.e. lines 4173 to and including line 4495).
 
-???- question "Answer"
+???- tip "Answer"
 
     ```bash
     sed '4173,4495d' macbeth.txt
@@ -486,7 +486,7 @@ Let `sed` remove the copyright at the **beginning and** end
 (i.e. lines 1 to (and including) 26 and lines 4173 to (and including) 4495).
 Check using `head` and `tail`.
 
-???- question "Answer"
+???- tip "Answer"
 
     To remove the lines at the start and end:
 
@@ -512,7 +512,7 @@ to directly work on the original file.
 Using `sed` directly on the file `macbeth.txt`,
 replace `Weird Sisters` by `witches`
 
-???- question "Answer"
+???- tip "Answer"
 
   ```bash
   sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
@@ -521,7 +521,7 @@ replace `Weird Sisters` by `witches`
 Using `sed` directly on the file `macbeth.txt`,
 replace 'lands' by `Sweden`.
 
-???- question "Answer"
+???- tip "Answer"
 
     These are all valid answers:
 
@@ -536,7 +536,7 @@ Using `sed` directly on the file `macbeth.txt`,
 to remove the copyright.
 
 
-???- question "Answer"
+???- tip "Answer"
 
   ```bash
   sed --in-place '1,26d;4173,4495d' macbeth.txt
@@ -548,7 +548,7 @@ to remove the copyright.
 
 Do this exercise from a script.
 
-???- question "Answer"
+???- tip "Answer"
 
     This is simply putting the answers in one file:
 
@@ -595,7 +595,7 @@ Do this exercise from a script.
 Do this exercise from a script,
 without hardcoding the lines
 
-???- question "Answer"
+???- tip "Answer"
 
     Here we extract the line numbers:
 
