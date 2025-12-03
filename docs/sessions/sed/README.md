@@ -646,7 +646,7 @@ the online `sed` manual|Usage at all levels, easier to read
 
 ---
 
-## Exercise 2.1: view the `sed` manual
+## (optional) Exercise 2.1: view the `sed` manual
 
 View the `sed` manual.
 
