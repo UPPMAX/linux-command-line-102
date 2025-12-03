@@ -54,10 +54,6 @@ it can **replace** text that is found by regular expression matches.
 
 ## Overview
 
-![Mindmap](mindmap.svg)
-
-## As PNG
-
 ![Mindmap](mindmap.png)
 
 ## `sed` can do what `grep` can do`
@@ -158,11 +154,6 @@ echo "Good morning, good morning" | sed 's/morning/afternoon/g'
     Good afternoon, good morning
     ```
 
-## How `sed` works
-
-- [`sed` documentation, section '6.1 How `sed` Works'](https://www.gnu.org/software/sed/manual/sed.html#Execution-Cycle)
-
-
 ## Exercises
 
 ## Exercise 1: use the `sed` manual
@@ -262,10 +253,13 @@ wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/
 
 In these exercises, we will:
 
-- Remove the copyright
-- Replace 'Weird Sisters' by 'witches'
-- Replace all country names by 'Sweden'
-
+- Remove the copyright:
+  it will be more pleasant to read
+- Replace 'Weird Sisters' by 'witches':
+  the text will be more clear
+- Replace all country names by 'Sweden' (or your favorite country):
+  the text may be funnier to read :-)
+  
 ## Exercise x: use `sed` to find text from standard input
 
 Read the session [replacing with `sed`](#replacing__with__sed).
