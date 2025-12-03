@@ -276,15 +276,9 @@ View the `sed` info page.
 
 ---
 
-## Exercises
+## Exercises 2
 
 In this exercise, we will work Macbeth, a tale written by William Shakespeare.
-
-Download the file from a terminal as such:
-
-```bash
-wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
-```
 
 In these exercises, we will:
 
@@ -294,52 +288,18 @@ In these exercises, we will:
   the text will be more clear
 - Replace all country names by 'Sweden' (or your favorite country):
   the text may be funnier to read :-)
-  
-## Exercise x: use `sed` to find text from standard input
 
-Read the session [replacing with `sed`](#replacing__with__sed).
+## Exercise 2.1: download Macbeth
 
-In Macbeth, there are many placenames ending on `land`.
+Download the file from a terminal as such:
 
-Search for all placenames ending on `land` using `sed`.
-To be precise: search for all matches of (1) starting with an uppercase
-character, (2) have zero or more lowercase characters, (3) end on `land`.
+```bash
+wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
+```
 
-Do so by using `cat` on the file `macbeth.txt`,
-then piping it to `sed`.
+## Exercise 2.2: use `sed` to replace text from standard input
 
-???- question "Answer"
-
-    ```bash
-    cat macbeth.txt | sed --quiet '/[A-Z][a-z]*land/p'
-    ```
-
-Your non-Swedish non-Finnish colleague comes to you
-and states that your regular expression
-makes no sense: your regular expression matches
-'Aland', 'Bland', 'Cland' (and 'Gland'), which can be improved
-upon.
-
-???- question "Why is the colleague non-Swedish non-Finnish?"
-
-    Because he/she does not know that Sweden has an island called
-    Öland and Finland has an island called Åland.
-
-Search for all placenames ending on `land` using `sed`.
-To be precise: search for all matches of (1) starting with an uppercase
-character, (2) have **one** or more lowercase characters, (3) end on `land`.
-
-You will need to use the extended regular expressions.
-
-???- question "Answer"
-
-    ```bash
-    cat macbeth.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
-    ```
-
-## Exercise x: use `sed` to replace text from standard input
-
-Read the session [replacing with `sed`](#replacing__with__sed).
+Read [the 'Replacing' section](#replacing).
 
 In Macbeth, replace `Weird Sisters` (both words start with an upper-case
 character) by `witches`. Do so by using `cat` on the file `macbeth.txt`,
@@ -397,296 +357,284 @@ Check that your replacement worked.
     cat macbeth.txt | sed 's/Weird Sisters/witches/g' > macbeth_with_witches.txt
     ```
 
-## Exercise x: use `sed` to remove a line from standard input
+## Exercise 2.3: use `sed` to find text from standard input
 
-In this exercise, we use `sed` to remove lines from standard input,
-i.e. from using `cat` on a file
+Read [the 'Replacing' section](#replacing).
 
-The Macbeth text contains a copyright notice at the start and end of it.
+In Macbeth, there are many placenames ending on `land`.
 
-Find the line where the copyright notice at the start ends.
+Search for all placenames ending on `land` using `sed`.
+To be precise, search for all matches that:
 
-```
-cat -n macbeth.txt  | head -n 100
-```
+- (1) start with an uppercase character
+- (2) have zero or more lowercase characters
+- (3) end on `land`
 
-This gives:
+Do so by using `cat` on the file `macbeth.txt`,
+then piping it to `sed`.
+
+???- question "Answer"
+
+    ```bash
+    cat macbeth.txt | sed --quiet '/[A-Z][a-z]*land/p'
+    ```
+
+## Exercise 2.4: use extended regular expressions
+
+Reading your answer in the previous exercise,
+your non-Swedish non-Finnish colleague comes to you
+and states that your regular expression
+makes no sense: your regular expression matches
+'Aland', 'Bland', 'Cland' (and 'Gland'), which can be improved
+upon.
+
+???- question "Why is the colleague non-Swedish non-Finnish?"
+
+    Because he/she does not know that Sweden has an island called
+    Öland and Finland has an island called Åland.
+
+Read [the section 'Type of regular expressions'](#type-of-regular-expressions).
+
+Search for all placenames ending on `land` using `sed`.
+To be precise, search for all matches that:
+
+- (1) start with an uppercase character
+- (2) have **one** or more lowercase characters:
+  use a `+` in your regular expression
+- (3) end on `land`.
+
+???- question "Answer"
+
+    ```bash
+    cat macbeth.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
+    ```
+
+    This is equivalent to the syntax below.
+
+    ```bash
+    cat macbeth.txt | sed --quiet '/[A-Z][a-z][a-z]*land/p'
+    ```
+
+## Exercise 2.5: use `sed` to remove a line from standard input
+
+Read [the 'Deleting' section](#deleting).
+
+The Macbeth text contains a copyright notice at the start (and end) of it.
+
+Find the line where the copyright notice at the start ends in any way:
+it contains the text `START OF THE PROJECT GUTENBERG EBOOK`.
+
+???- question "Answer"
+
+    There are many ways.
+
+    One way is to use a text editor that has line numbering.
+
+    Another way is to use `cat` with the `--number` flag to let it add
+    line numbers, then use `head` to only view
+    the first 10, 20, 40, etc. lines:
+
+    ```bash
+    cat --number macbeth.txt  | head --lines 40
+    ```
+
+    Another way is to use `cat` with the `--number` flag to let it add
+    line numbers, then use `grep` to find the location:
+
+    ```bash
+    cat --number macbeth.txt  | grep "START OF THE PROJECT GUTENBERG EBOOK"
+    ```
+
+You conclude that line 25 is the last line of the copyright notice,
+as you've seen this text in your output:
 
 ```text
-    22  
-    23  *** START OF THE PROJECT GUTENBERG EBOOK THE COMPLETE WORKS OF WILLIAM SHAKESPEARE ***
-    24  
-    25  THE TRAGEDY OF MACBETH
-    27  
+    25	*** START OF THE PROJECT GUTENBERG EBOOK THE COMPLETE WORKS OF WILLIAM SHAKESPEARE ***
 ```
 
-Remove the lines in such a way that the first line will be
-`THE TRAGEDY OF MACBETH`.
+Use `sed` to remove the lines in such a way that the first line will be
+`THE TRAGEDY OF MACBETH`, use `head` to check.
 
-```bash
-cat macbeth.txt | sed '1,24d' 
-```
+???- question "Answer"
 
-To check:
+    Here is to remove the first lines:
 
-```bash
-cat macbeth.txt | sed '1,24d'  | head 
-```
+    ```bash
+    cat macbeth.txt | sed '1,26d'
+    ```
 
+    To check:
 
-## Exercise x: use `sed` to replace text from a file
+    ```bash
+    cat macbeth.txt | sed '1,26d' | head 
+    ```
 
-In this exercise, we use `sed` directly on a file.
-Below are two syntaxes that are equivalent.
+We can now pipe text to `sed` to remove lines.
 
-```bash
-cat macbeth.txt | sed '1,24d'
-sed '1,24d' macbeth.txt
-```
+## Exercise 2.6: use `sed` to replace text from a file
+
+Instead of piping text to `sed` to remove lines,
+we now use `sed` directly on a file.
 
 In the Macbeth text, there is a copyright notice at the bottom too,
 starting with `START: FULL LICENSE`
 
-Find out in which line the copyright notice starts.
+Find out in which line the copyright notice starts in any way.
 
-```bash
-cat -n macbeth.txt | grep "START: FULL LICENSE"
+???- question "Answer"
+
+    There are many ways.
+
+    One way is to use a text editor that has line numbering.
+
+    Another way is to use `cat` with the `--number` flag to let it add
+    line numbers, then use `grep` to find the text we are looking for.
+
+    ```bash
+    cat --number macbeth.txt | grep "START: FULL LICENSE"
+    ```
+
+You conclude that line 4173 is the last line of the copyright notice,
+as you've seen this text in your output:
+
+```text
+  4173	START: FULL LICENSE
 ```
 
-```
-richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ cat -n macbeth.txt | grep "START: FULL LICENSE"
-  4171	START: FULL LICENSE
-```
+To be able to delete a range, we need to find out how many lines the file has.
 
 Find out how many lines the file has.
 
-```
-richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ cat -n macbeth.txt | tail
-  4484	
-  4485	Most people start at our website which has the main PG search
-  4486	facility: www.gutenberg.org.
-  4487	
-  4488	This website includes information about Project Gutenberg™,
-  4489	including how to make donations to the Project Gutenberg Literary
-  4490	Archive Foundation, how to help produce our new eBooks, and how to
-  4491	subscribe to our email newsletter to hear about new eBooks.
-  4492	
-  4493	
-```
+???- question "Answer"
 
-```bash
-richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ wc macbeth.txt 
-  4493  21234 129047 macbeth.txt
-```
+    There are many ways.
 
-```bash
-richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ wc macbeth.txt --lines
-4493 macbeth.txt
-```
+    One way is to use a text editor that has line numbering.
 
+    Another way is to use `cat` with the `--number` flag to let it add
+    line numbers, then use `tail` to show the last lines:
 
-```bash
-sed '1,24d;4171,4493d' macbeth.txt
-```
+    ```bash
+    cat --number macbeth.txt | tail
+    ```
 
-```bash
-sed '1,24d;4171,4493d' macbeth.txt | head
-```
+    Another way is to let the word count tool `wc` print the number of lines:
 
-```bash
-sed '1,24d;4171,4493d' macbeth.txt | tail
-```
+    ```bash
+    wc --lines macbeth.txt
+    ```
 
-(optional) Do this exercise without remembering the lines
+You conclude that the file has 4495 lines.
 
-## Exercise x: use `sed` to replace text in a file
+Let `sed` remove the copyright at the end
+(i.e. lines 4173 to and including line 4495).
+
+???- question "Answer"
+
+    ```bash
+    sed '4173,4495d' macbeth.txt
+    ```
+
+Let `sed` remove the copyright at the **beginning and** end
+(i.e. lines 1 to (and including) 26 and lines 4173 to (and including) 4495).
+Check using `head` and `tail`.
+
+???- question "Anser"
+
+    To remove the lines at the start and end:
+
+    ```bash
+    sed '1,26d;4173,4495d' macbeth.txt
+    ```
+
+    To check:
+
+    ```bash
+    sed '1,26d;4173,4495d' macbeth.txt | head
+    sed '1,26d;4173,4495d' macbeth.txt | tail
+    ```
+
+## Exercise 2.7: use `sed` to replace text in a file
 
 Until now, we never have touched the original file.
 Here we use `sed --in-place [commands] [filename]`
 to directly work on the original file.
 
-```bash
-sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
-```
+Using `sed` directly on the file `macbeth.txt`,
+replace `Weird Sisters` by `witches`
 
-## Exercise x: use `sed` to remove lines in a file
+???- question "Answer"
 
-Print without copyright:
+  ```bash
+  sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
+  ```
 
-```bash
-sed --quiet '27,4170p' macbeth.txt
-```
+Using `sed` directly on the file `macbeth.txt`,
+replace 'lands' by `Sweden`.
 
-Print without copyright:
+???- question "Answer"
 
-```bash
-sed --in-place --quiet '27,4170p' macbeth.txt
-```
-
-## Replace
-
-```bash
-cat macbeth.txt | egrep "[A-Z][a-z]+land"
-```
-
-```
-cat macbeth.txt | sed --regexp-extended 's/[A-Z][a-z]+land/Holland/g' | grep -i land
-```
-
-
-
-
-
-
-
-
-
-
-# sed
-
-## Syntax
-
-```bash
-sed [options] 'command' [inputfile...]
-```
-
-where
-
-- **options** are optional flags that modify the behavior of the sed command
-- **command** is a command or sequence of commands to execute on the inputfile(s)
-- **inputfile** is one or more inputfiles that is to be processed
-
-## Common ``sed`` options
-
-- **-i** - Edit the file in place without printing to the console (overwrite the file).
-- **-n** - Suppress automatic printing of lines.
-- **-e** - Allows multiple commands to be executed.
-- **-r** - Enables extended regular expressions.
-
-
-## Substitution command
-
-This is probably what ``sed`` is most commonly used for: substitution. It is also the original motivation for creating it.
-
-**Syntax**
-
-```bash
-sed 's/regexp/replacement/g' inputFileName > outputFileName
-```
-
-- **regexp** is a regular expression (pattern) to be searched, including a text.
-- **replacement** is what should be replaced for the matched patterns - literal text or format string the characters ``&`` for "entire match" or the special escape sequences ``\1`` through ``\9`` for the nth saved sub-expression.
-- **inputFileName** is the file(s) to be searched
-- **outputFileName** is the name(s) of the changed files - if not given the changed content is just shown on screen.
-
-**s** stands for substitute, **g** for global (all instances), and **/** is the conventional delimiting symbol used.
-
-### Examples
-
-!!! note "Replace all instances of 'cat' with 'ferret' and send to screen"
-
-    Use the file "file1.txt" in "exercises -> "sed"
+    These are all valid answers:
 
     ```bash
-    sed 's/cat/ferret/g' file1.txt
+    sed --in-place 's/[A-Z][a-z][a-z]*land/Sweden/' macbeth.txt
+    sed --in-place 's/[A-Z][a-z][a-z]*land/Sweden/g' macbeth.txt
+    sed --in-place --regexp-extended 's/[A-Z][a-z]+land/Sweden/' macbeth.txt
+    sed --in-place --regexp-extended 's/[A-Z][a-z]+land/Sweden/g' macbeth.txt
     ```
 
-!!! note "Replace all instances of 'cat' with 'ferret' and write to a file"
+Using `sed` directly on the file `macbeth.txt`,
+to remove the copyright.
 
-    Use the file "file1.txt" in "exercises -> "sed"
+
+???- question "Answer"
+
+  ```bash
+  sed --in-place '1,26d;4173,4495d' macbeth.txt
+  ```
+
+## (optional) Do this exercise from a script
+
+Do this exercise from a script.
+
+???- question "Answer"
+
+    This is simply putting the answers in one file:
 
     ```bash
-    sed 's/cat/ferret/g' file1.txt > output.txt
+    wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
+    sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
+    sed --in-place 's/[A-Z][a-z][a-z]*land/Sweden/' macbeth.txt
+    sed --in-place '1,26d;4173,4495d' macbeth.txt
     ```
 
-!!! note "Replace the nth occurrence of a pattern in a line"
-
-    Let us change the 3rd occurrence in the same line of word to book in file3.txt
+    Optional is to add a shebang as the first line:
 
     ```bash
-    sed 's/word/book/3' file3.txt
+    #!/bin/bash
     ```
 
-!!! note "Replace occurrences from n and the rest of the way"
-
-    Here from 3rd occurrence
+    Optional is to remove `macbeth.txt` if it already exists before
+    downloading, as shown below. The `--force` makes sure that this commands 'works' even
+    if the file is absent.
 
     ```bash
-    sed 's/word/book/3g' file3.txt
+    rm --force macbeth.txt
     ```
 
-!!! note "Replace only the occurrence of a string on a specific line"
+## (optional) Do this exercise from a script
 
-    This for line 3
+Do this exercise from a script,
+without hardcoding the lines
 
-    ```bash
-    sed '3 s/word/book/' file3.txt
-    ```
 
-!!! note "Put a parentheses around the first character of each word"
 
-    ```bash
-    echo "Hello I am learning more Linux" | sed 's/\(\b[A-Z]\)/\(\1\)/g'
-    ```
+!!! note "Summary"
 
-!!! note "Replace all instances of 'cat' or 'dog' with 'cats' or 'dogs' - do not duplicate existing plurals"
-
-    Use all files named starting with "file" in the "exercises" -> "sed" folder (but not subdirs). Here the changed text is just thrown to screen.
-
-    ```bash
-    sed -r "s/(cat|dog)s?/\1s/g" file*
-    ```
-
-    - (cat|dog) is the 1st (and only) saved sub-expression in the regexp, and \1 in the format string substitutes this into the output.
-    - You can see in the output that i.e. "dogs" did not get turned into "dogss"
-    - However, it did not catch things were for instance "cat" is in the middle of a word, like "located" which did get changed to "locatsed"
-    - This could be fixed with ``sed -r "s/(' cat '|dog)s?/\1s/g" file*``
-
-## Other common commands
-
-Besides substitution, ``sed`` can do many other things. There are around 25 ``sed`` commands. Here we will only look at the command to filter out specific lines.
-
-### Using the ``d`` command to filter out specific lines
-
-!!! note "filter lines that only contain spaces, or only contain the end of line character"
-
-    ```bash
-    sed '/^ *$/d' inputFile
-    ```
-
-!!! note "Deleting a specific line from a specific file"
-
-    Delete line 4
-
-    ```bash
-    sed '4d' file1.txt
-    ```
-
-!!! note "Delete a line containing a matching pattern"
-
-    Lines matching the string "cat"
-
-    ```bash
-    sed '/cat/d' file1.txt
-    ```
-
-## In-place editing
-
-Using the ``-i`` option allows "in-place" editing instead of creating a new file with the editions (though in reality a temporary file is created in the background and then the original file is replaced by the temporary file).
-
-**Example - change cat to dog**
-
-```bash
-sed -i 's/cat/dog/' file1.txt
-```
-
-## Summary
-
-!!! note "Keypoints"
-
-    - we have learned about ``sed`` and some of its common commands
-    - we have used ``sed`` to replace strings matching a pattern
-    - we have used ``sed`` to delete specific lines
-    - we have learned about ``sed`` for filtering
-    - we have learned about ``sed`` in-place editing
+    - `sed` can do what `grep` can do and more
+    - `sed` can use multiple combinations of input and output
+    - `sed` can do multiple operations,
+      such as filtering, substituting and deleting
+    - `sed` can use two regular expression syntaxes
+    - `sed` is not a programming language: use AWK instead
 
