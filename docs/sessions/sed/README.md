@@ -42,7 +42,7 @@ tags:
     - `sed` is a stream editor that can filter text. What would that mean?
     - `sed` is a stream editor that can transform text. What would that mean?
 
-## Why use `sed`?
+## 1. Why use `sed`?
 
 `sed` is among
 [the list of 'Portable Operating System Interface' (POSIX) commands](https://en.wikipedia.org/wiki/List_of_POSIX_commands),
@@ -57,13 +57,13 @@ it is 'a non-interactive command-line text editor'
 In this session, we will be manipulating a file from `sed` (instead of
 doing so by hand).
 
-## Overview
+## 2. Overview
 
 ![Mindmap](mindmap.png)
 
-## Types of operations
+## 3. Types of operations
 
-### Filtering
+## 3.1. Filtering
 
 `sed` can do what `grep` can do`.
 For example, in the session about`grep`,
@@ -93,7 +93,7 @@ man grep | sed --quiet "/^[A-Z]/p"
     the most self-explanatory: to me, 'quiet' feels that it may
     not be perfectly 'silent'.
 
-### Replacing
+## 3.2. Replacing
 
 Probably the most used feature of `sed` is its replacement
 functionality:
@@ -134,7 +134,7 @@ echo "Good morning, good morning" | sed 's/morning/afternoon/g'
     ```
 
 
-### Deleting
+## 3.3. Deleting
 
 Another commonly used feature of `sed` is its line deletion
 functionality:
@@ -151,7 +151,7 @@ functionality:
 <!-- markdownlint-enable MD060 -->
 <!-- markdownlint-enable MD013 -->
 
-## Input and output
+## 4. Input and output
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 <!-- markdownlint-disable MD056 --><!-- markdownlint-disable MD060 --><!-- The pipe symbol in a command is not part of a table -->
@@ -167,7 +167,7 @@ functionality:
 <!-- markdownlint-disable MD056 --><!-- markdownlint-enable MD060 -->
 <!-- markdownlint-enable MD013 -->
 
-## Type of regular expressions
+## 5. Type of regular expressions
 
 There are two types of regular expressions
 present in `sed`
