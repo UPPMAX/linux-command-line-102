@@ -42,6 +42,12 @@ tags:
     - `sed` is a stream editor that can filter text. What would that mean?
     - `sed` is a stream editor that can transform text. What would that mean?
 
+!!! info "Macbeth"
+
+    ![Macbeth](macbeth.jpg)
+
+    > [source](https://pixabay.com/illustrations/william-shakespeare-macbeth-poster-67764/)
+
 ## Why use `sed`?
 
 `sed` is among
