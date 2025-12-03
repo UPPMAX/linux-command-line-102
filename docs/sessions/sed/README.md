@@ -78,6 +78,36 @@ man grep | sed --quiet "/^[A-Z]/p"
     man grep | sed -n "/^[A-Z]/p"
     ```
 
+## `sed` and extended regular expressions
+
+There are two types of regular expressions
+present in `sed` [according the `sed` manual](https://www.gnu.org/software/sed/manual/sed.html#Regular-Expressions-Overview):
+basic and extended regular expressions.
+
+Here is a quote from
+[the `sed` manual](https://www.gnu.org/software/sed/manual/sed.html#BRE-vs-ERE)
+regarding their differences:
+
+> In GNU sed, the only difference between basic and extended regular
+> expressions is in the behavior of a few special characters:
+> `?`, `+`, parentheses, braces (`{}`), and `|`.
+
+The difference can be shown using this text:
+
+```text
+Bland
+England
+Gland
+Holland
+```
+
+To select the countries, use:
+
+```
+cat lands.txt | sed --quiet '/[A-Z][a-z][a-z]*land/p'
+cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
+```
+
 ## Replacing with `sed`
 
 Probably the most used feature of `sed` is its replacement
@@ -229,9 +259,51 @@ In these exercises, we will:
 - Replace 'Weird Sisters' by 'witches'
 - Replace all country names by 'Sweden'
 
+## Exercise x: use `sed` to find text from standard input
+
+Read the session [replacing with `sed`](#replacing__with__sed).
+
+In Macbeth, there are many placenames ending on `land`.
+
+Search for all placenames ending on `land` using `sed`.
+To be precise: search for all matches of (1) starting with an uppercase
+character, (2) have zero or more lowercase characters, (3) end on `land`.
+
+Do so by using `cat` on the file `macbeth.txt`,
+then piping it to `sed`.
+
+???- question "Answer"
+
+    ```bash
+    cat macbeth.txt | sed --quiet '/[A-Z][a-z]*land/p'
+    ```
+
+Your non-Swedish non-Finnish colleague comes to you
+and states that your regular expression
+makes no sense: your regular expression matches
+'Aland', 'Bland', 'Cland' (and 'Gland'), which can be improved
+upon.
+
+???- question "Why is the colleague non-Swedish non-Finnish?"
+
+    Because he/she does not know that Sweden has an island called
+    Öland and Finland has an island called Åland.
+
+Search for all placenames ending on `land` using `sed`.
+To be precise: search for all matches of (1) starting with an uppercase
+character, (2) have **one** or more lowercase characters, (3) end on `land`.
+
+You will need to use the extended regular expressions.
+
+???- question "Answer"
+
+    ```bash
+    cat macbeth.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
+    ```
+
 ## Exercise x: use `sed` to replace text from standard input
 
-Read the session HIERO.
+Read the session [replacing with `sed`](#replacing__with__sed).
 
 In Macbeth, replace `Weird Sisters` (both words start with an upper-case
 character) by `witches`. Do so by using `cat` on the file `macbeth.txt`,
@@ -265,7 +337,7 @@ Check that your replacement worked.
 
     Pipe the output to `grep` to detect matches with `witches`
 
-???- tip "Answer"
+???- question "Answer"
 
     ```bash
     cat macbeth.txt | sed 's/Weird Sisters/witches/g' | grep witches
@@ -281,10 +353,18 @@ Check that your replacement worked.
     Saw you the witches?
     ```
 
+???- question "How to save to a file?"
+
+    You can redirect the output to a file using `>`, e.g.:
+
+    ```bash
+    cat macbeth.txt | sed 's/Weird Sisters/witches/g' > macbeth_with_witches.txt
+    ```
+
 ## Exercise x: use `sed` to remove a line from standard input
 
 In this exercise, we use `sed` to remove lines from standard input,
-i.e. from using `cat` on a file.
+i.e. from using `cat` on a file
 
 The Macbeth text contains a copyright notice at the start and end of it.
 
@@ -321,6 +401,12 @@ cat macbeth.txt | sed '1,24d'  | head
 ## Exercise x: use `sed` to replace text from a file
 
 In this exercise, we use `sed` directly on a file.
+Below are two syntaxes that are equivalent.
+
+```bash
+cat macbeth.txt | sed '1,24d'
+sed '1,24d' macbeth.txt
+```
 
 In the Macbeth text, there is a copyright notice at the bottom too,
 starting with `START: FULL LICENSE`
