@@ -21,14 +21,9 @@
     - Learners can send text to `grep` using a pipe
     - (optional) Learners have seen the flexibility of `grep`
 
-??? note "[Using the programming language AWK](sessions/awk/README.md)"
+??? note "[Regular expressions and `sed`](sessions/sed/README.md)"
 
-    - Learners can use `awk`
-    - Learners have practiced using a book on AWK
-    - Learners can use `awk` in pipes
-    - Learners can use `awk` to read a specific column
-    - Learners can use `awk` to transform text
-    - Learners can use regular expressions in `awk`
+    - Learners can use `sed` for pattern matched replacing
 
 ## Day 2: smarter Bash
 
@@ -66,6 +61,3 @@
     - Archiving/Compressing data|Learners can compress and extract data,
       using `(g)zip` and `tar`
 
-??? note "[Regular expressions and `sed`](sessions/sed.md)"
-
-    - Learners can use `sed` for pattern matched replacing
