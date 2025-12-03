@@ -45,8 +45,7 @@ nav:
       - Linux permissions/owner: sessions/chown-chmod.md
       - Linux tools (wc, cut): sessions/wc_cut.md
       - Searching using regular expressions and grep: sessions/regular_expressions_and_grep/README.md
-      - Linux tools (sed): sessions/sed.md
-      - Using the programming language AWK: sessions/awk/README.md
+      - Replacing using regular expressions and sed: sessions/sed.md
   - Lessons Day 2 (smarter bash):
       - Scripting: sessions/scripting/README.md
       - Redirects: sessions/redirects.md
@@ -58,6 +57,7 @@ nav:
       - Books: books/README.md
       - Courses: courses.md
       - Videos: videos.md
+      - Obsolete session 'Using the programming language AWK': sessions/awk/README.md
   - Miscellaneous:
       - Communication: communication/README.md
       - Evaluations: evaluations/README.md
