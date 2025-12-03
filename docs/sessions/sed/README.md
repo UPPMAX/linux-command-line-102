@@ -197,7 +197,7 @@ In this exercise, we'll use the `sed` manual.
 
 ---
 
-### Exercise 1.1: view the `sed` manual
+## Exercise 1.1: view the `sed` manual
 
 View the `sed` manual.
 
@@ -217,7 +217,7 @@ View the `sed` manual.
 
 ---
 
-### Exercise 1.2.1: what is `sed`, definition 1?
+## Exercise 1.2.1: what is `sed`, definition 1?
 
 According to the `sed` manual, **in a one-liner**, what is `sed`?
 
@@ -237,7 +237,7 @@ Tip: it is at the top.
     ```
 
 
-### Exercise 1.2.2: what is `sed`, definition 2?
+## Exercise 1.2.2: what is `sed`, definition 2?
 
 According to the online `sed` manual at
 [https://www.gnu.org/software/sed/](https://www.gnu.org/software/sed/),
@@ -256,7 +256,7 @@ what is `sed`? What does that definition mean?
 
 ---
 
-### Exercise 1.3: view the `sed` info page
+## Exercise 1.3: view the `sed` info page
 
 View the `sed` info page.
 
@@ -289,6 +289,8 @@ In these exercises, we will:
 - Replace all country names by 'Sweden' (or your favorite country):
   the text may be funnier to read :-)
 
+---
+
 ## Exercise 2.1: download Macbeth
 
 Download the file from a terminal as such:
@@ -296,6 +298,8 @@ Download the file from a terminal as such:
 ```bash
 wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
 ```
+
+---
 
 ## Exercise 2.2: use `sed` to replace text from standard input
 
@@ -357,6 +361,8 @@ Check that your replacement worked.
     cat macbeth.txt | sed 's/Weird Sisters/witches/g' > macbeth_with_witches.txt
     ```
 
+---
+
 ## Exercise 2.3: use `sed` to find text from standard input
 
 Read [the 'Replacing' section](#replacing).
@@ -378,6 +384,8 @@ then piping it to `sed`.
     ```bash
     cat macbeth.txt | sed --quiet '/[A-Z][a-z]*land/p'
     ```
+
+---
 
 ## Exercise 2.4: use extended regular expressions
 
@@ -414,6 +422,8 @@ To be precise, search for all matches that:
     ```bash
     cat macbeth.txt | sed --quiet '/[A-Z][a-z][a-z]*land/p'
     ```
+
+---
 
 ## Exercise 2.5: use `sed` to remove a line from standard input
 
@@ -470,6 +480,8 @@ Use `sed` to remove the lines in such a way that the first line will be
     ```
 
 We can now pipe text to `sed` to remove lines.
+
+---
 
 ## Exercise 2.6: use `sed` to replace text from a file
 
@@ -554,6 +566,8 @@ Check using `head` and `tail`.
     sed '1,26d;4173,4495d' macbeth.txt | tail
     ```
 
+---
+
 ## Exercise 2.7: use `sed` to replace text in a file
 
 Until now, we never have touched the original file.
@@ -593,7 +607,9 @@ to remove the copyright.
   sed --in-place '1,26d;4173,4495d' macbeth.txt
   ```
 
-## (optional) Do this exercise from a script
+---
+
+## (optional) Exercise 2.8: Do this exercise from a script
 
 Do this exercise from a script.
 
@@ -622,7 +638,15 @@ Do this exercise from a script.
     rm --force macbeth.txt
     ```
 
-## (optional) Do this exercise from a script
+    You can obtain this script by:
+
+    ```bash
+    wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/lesson_plans/20251204/script_1.sh
+    ```
+
+---
+
+## (optional) Exercise 2.9: Do this exercise from a smart script
 
 Do this exercise from a script,
 without hardcoding the lines
@@ -645,7 +669,13 @@ without hardcoding the lines
     sed --in-place "1,${end_of_first_copyright_line}d;${begin_of_second_copyright_line},${last_line}d" macbeth.txt
     ```
 
+    You can obtain this script by:
 
+    ```bash
+    wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/lesson_plans/20251204/script_2.sh
+    ```
+
+---
 
 !!! note "Summary"
 
