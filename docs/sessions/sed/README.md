@@ -52,6 +52,33 @@ and is likely to be available on your operating system.
 `sed` can do what `grep` can do` and more:
 it can **replace** text that is found by regular expression matches.
 
+## Overview
+
+```mermaid
+mindmap
+  root((sed))
+    Type of regular exprenssions
+      Regular
+      Extended
+        --regexp-extended
+    Input
+      From pipe
+        cat my_file.txt | sed do_something
+      From file
+        sed do_something my_file.txt
+      In-file
+        sed --in-place do_something my_file.txt
+    Operations
+      Filtering
+        sed --quiet "/my_regex/p"
+      Substitution
+        sed "s/my_regex/my_replacement/"
+        sed "s/my_regex/my_replacement/p"
+      Deletion
+        sed "1d"
+        sed "1,24d"
+        sed "1,24d;4171,4493d"
+```
 
 ## `sed` can do what `grep` can do`
 
