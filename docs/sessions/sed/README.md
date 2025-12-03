@@ -197,9 +197,15 @@ cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
 
 ## Exercises
 
-## Exercise 1: use the `sed` manual
+## Exercise 1: using the `sed` manuals
 
-In this exercise, we'll use the `sed` manual.
+In this exercise, we'll use the `sed` manuals:
+
+Manual
+`man` page
+`info` page
+the online `sed` manual at [`https://www.gnu.org/software/sed/`](https://www.gnu.org/software/sed/),
+
 
 ---
 
@@ -221,11 +227,7 @@ View the `sed` manual.
 
     Use the arrow keys to navigate and `q` to quit
 
----
-
-## Exercise 1.2.1: what is `sed`, definition 1?
-
-According to the `sed` manual, **in a one-liner**, what is `sed`?
+According to this `sed` manual, **in a one-liner**, what is `sed`?
 
 Tip: it is at the top.
 
@@ -243,10 +245,10 @@ Tip: it is at the top.
     ```
 
 
-## Exercise 1.2.2: what is `sed`, definition 2?
+## Exercise 1.2: what is `sed`?
 
 According to the online `sed` manual at
-[https://www.gnu.org/software/sed/](https://www.gnu.org/software/sed/),
+[`https://www.gnu.org/software/sed/`](https://www.gnu.org/software/sed/),
 what is `sed`? What does that definition mean?
 
 
@@ -255,7 +257,7 @@ what is `sed`? What does that definition mean?
     At [https://www.gnu.org/software/sed/](https://www.gnu.org/software/sed/)
     the first line reads:
 
-    > `sed` is 'a non-interactive command-line text editor
+    > `sed` is 'a non-interactive command-line text editor'
 
     It means that you can let `sed` work on your file (like you
     do with e.g. `nano`) without you opening the file.
