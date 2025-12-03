@@ -7,7 +7,7 @@ tags:
   - stream editor
 ---
 
-# Replacing using regular expressions and `sed`
+# Using the `sed` stream editor
 
 ???- note "Need a video?"
 
@@ -15,11 +15,12 @@ tags:
 
 !!! info "Learning outcomes"
 
-    - Learners can use `sed`
-    - Learners have practiced using the `sed` manual
-    - Learners can use `sed` to replace text
-    - Learners can send text to `sed` using a pipe
-    - (optional) Learners have seen the flexibility of `sed`
+    - Learners can use `sed` to filter for lines using a regular expression
+    - Learners can use `sed` to replace lines using a regular expression
+    - Learners can use `sed` to delete lines
+    - Learners can use `sed` with different types of input and output
+    - Learners can use `sed` with the two different regular expression types
+    - (optional) Learners have seen three `sed` learning resources
 
 ???- note "For teachers"
 
@@ -35,10 +36,10 @@ tags:
     Prior:
 
     - How to replace text with `grep`?
-    - In Linux, which two types of documentation are
-      available from the command line?
     - What is `sed`?
     - `sed` is a stream editor. What would that mean?
+    - `sed` is also called 'a non-interactive command-line text editor'.
+      What would that mean?
     - `sed` is a stream editor that can filter text. What would that mean?
     - `sed` is a stream editor that can transform text. What would that mean?
 
