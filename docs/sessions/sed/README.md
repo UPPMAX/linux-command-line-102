@@ -239,7 +239,7 @@ wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/
 
 ## Exercise 1.2: use `sed` to replace text from standard input
 
-Read [the 'Replacing' section](#32-replacing).
+Read [the 'Replacing' section](#32__replacing).
 
 In Macbeth, replace `Weird Sisters` (both words start with an upper-case
 character) by `witches`. Do so by using `cat` on the file `macbeth.txt`,
@@ -301,7 +301,7 @@ Check that your replacement worked.
 
 ## Exercise 1.3: use `sed` to find text from standard input
 
-Read [the 'Replacing' section](#32-replacing).
+Read [the 'Replacing' section](#32__replacing).
 
 In Macbeth, there are many place names ending on `land`.
 
