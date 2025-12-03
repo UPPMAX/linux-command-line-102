@@ -337,7 +337,7 @@ upon.
     Because he/she does not know that Sweden has an island called
     Öland and Finland has an island called Åland.
 
-Read [the section 'Type of regular expressions'](#5-type-of-regular-expressions).
+Read [the section 'Type of regular expressions'](#5__type__of__regular__expressions).
 
 Search for all place names ending on `land` using `sed`.
 To be precise, search for all matches that:
@@ -363,7 +363,7 @@ To be precise, search for all matches that:
 
 ## Exercise 1.5: use `sed` to remove a line from standard input
 
-Read [the 'Deleting' section](#33-deleting).
+Read [the 'Deleting' section](#33__deleting).
 
 The Macbeth text contains a copyright notice at the start (and end) of it.
 
