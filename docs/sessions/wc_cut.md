@@ -397,5 +397,5 @@ We are again going to use the directory “exercises” -> “piping-wc-cut” a
     - we have learned about ``wc``
         - and tried the options **-l** (lines), **-m** (characters), and **-w** (words)
     - we have learned about ``cut``
-        - and tried the options for selecting with **bytes**, **characters**, **fields**, and ysed delimiters
+        - and tried the options for selecting with **bytes**, **characters**, **fields**, and used delimiters
 

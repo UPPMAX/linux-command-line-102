@@ -68,4 +68,4 @@ chown [OPTIONS] USER[:GROUP] FILE(s)
 
 !!! warning 
 
-    As default, ``chown does not generate output on success and returns zero``. 
+    As default, ``chown`` does not generate output on success and returns zero``. 
