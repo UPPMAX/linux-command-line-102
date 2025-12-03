@@ -61,7 +61,12 @@ such as a first name, a last name, a phone number, etc.
 
 ## Why use `grep`?
 
-The tool `grep` comes installed with Linux.
+`grep` is among
+[the list of 'Portable Operating System Interface' (POSIX) commands](https://en.wikipedia.org/wiki/List_of_POSIX_commands),
+which means it is considered a fundamental tool
+and is likely to be available on your operating system.
+
+`grep` finds text that matches a regular expression.
 
 ## Exercises
 

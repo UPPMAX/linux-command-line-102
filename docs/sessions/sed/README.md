@@ -11,23 +11,15 @@ tags:
 
 ???- note "Need a video?"
 
-    - [Introduction](https://youtu.be/sh52duacLWY)
-    - [Exercise 1](https://youtu.be/sh52duacLWY?t=155)
-    - [Exercise 2](https://youtu.be/sh52duacLWY?t=349)
-    - [Exercise 3](https://youtu.be/sh52duacLWY?t=455)
-    - [Exercise 4](https://youtu.be/sh52duacLWY?t=875)
-    - [Feedback](https://youtu.be/sh52duacLWY?t=1279)
-    - [Conclusion](https://youtu.be/sh52duacLWY?t=1486)
+    ...
 
 !!! info "Learning outcomes"
 
-    - Learners know there are multiple flavours of regular expressions
-    - Learners can use `.`, `*`, `+`, `?`, `[]`, `[^]`, `{}`, `()` in regular expressions
-    - Learners can use `grep`
-    - Learners have practiced using the `grep` manual
-    - Learners can use `grep` to search for a regular expression
-    - Learners can send text to `grep` using a pipe
-    - (optional) Learners have seen the flexibility of `grep`
+    - Learners can use `sed`
+    - Learners have practiced using the `sed` manual
+    - Learners can use `sed` to replace text
+    - Learners can send text to `sed` using a pipe
+    - (optional) Learners have seen the flexibility of `sed`
 
 ???- note "For teachers"
 
@@ -35,77 +27,164 @@ tags:
 
     Time         |Minutes|Duration|Description
     -------------|-------|--------|---------
-    10:20-10:30  |0-10   |10      |Prior
-    10:30-10:35  |10-15  |5       |Present
-    10:35-10:55  |15-35  |20      |Challenge
-    10:55-11:05  |35-45  |10      |Feedback and conclusion
+    11:20-10:30  |0-10   |10      |Prior
+    11:30-10:35  |10-15  |5       |Present
+    11:35-10:55  |15-35  |20      |Challenge
+    11:55-12:09  |35-45  |10      |Feedback and conclusion
 
     Prior:
 
-    - How would tell an alien how a human name is made up
-      out of English characters?
-    - And a human phone number?
-    - Are there more things that have certain features like that?
-    - What is a regular expression?
-    - What is `grep`?
-    - What is GNU?
-    - In the context of software, what is a parser?
-    - In the context of command-line tools, what is a filter?
+    - How to replace text with `grep`?
+    - In Linux, which two types of documentation are
+      available from the command line?
+    - What is `sed`?
+    - `sed` is a stream editor. What would that mean?
+    - `sed` is a stream editor that can filter text. What would that mean?
+    - `sed` is a stream editor that can transform text. What would that mean?
 
-## Why use regular expressions?
+## Why use `sed`?
 
-Regular expressions are used to filter for text that contains a pattern,
-such as a first name, a last name, a phone number, etc.
+`sed` is among
+[the list of 'Portable Operating System Interface' (POSIX) commands](https://en.wikipedia.org/wiki/List_of_POSIX_commands),
+which means it is considered a fundamental tool
+and is likely to be available on your operating system.
 
-![What regular expressions are used for](why_regular_expressions.png)
+`sed` can do what `grep` can do` and more:
+it can **replace** text that is found by regular expression matches.
 
-## Why use `grep`?
 
-The tool `grep` comes installed with Linux.
+## `sed` can do what `grep` can do`
+
+`sed` can do what `grep` can do`.
+For example, in the session about `grep`, we used the following command:
+
+```bash
+man grep | grep "^[A-Z]"
+```
+
+The equivalent `sed` command is this:
+
+```bash
+man grep | sed --quiet "/^[A-Z]/p"
+```
+
+???- question "Are there synonyms for this `sed` command?"
+
+    Yes, these commands are all equivalent:
+
+    ```bash
+    man grep | sed --quiet "/^[A-Z]/p"
+    man grep | sed --silent "/^[A-Z]/p"
+    man grep | sed -n "/^[A-Z]/p"
+    ```
+
+## How `sed` works
+
+
+- [`sed` documentation, section '6.1 How `sed` Works'](https://www.gnu.org/software/sed/manual/sed.html#Execution-Cycle)
+
 
 ## Exercises
 
-## Exercise 1: use the `grep` manual
+## Exercise 1: use the `sed` manual
 
-In this exercise, we'll use the `grep` manual.
+In this exercise, we'll use the `sed` manual.
 
 ---
 
-### Exercise 1.1: view the `grep` manual
+### Exercise 1.1: view the `sed` manual
 
-View the `grep` manual.
+View the `sed` manual.
 
-Tip: `man` is the command to view a manual.
+??? tip "The command to view a manual"
+
+    `man` is the command to view a manual
 
 ??? tip "Answer"
 
     In the terminal, type:
 
     ```bash
-    man grep
+    sed grep
     ```
 
     Use the arrow keys to navigate and `q` to quit
 
 ---
 
-### Exercise 1.2: what does `grep` do?
+### Exercise 1.2.1: what is `sed`, definition 1?
 
-According to the `grep` manual, **in a one-liner**, what does `grep` do?
+According to the `sed` manual, **in a one-liner**, what is `sed`?
 
 Tip: it is at the top.
 
 ??? tip "Answer"
 
-    `grep` is a tool to 'print lines that match patterns'
+    `sed` is a 'stream editor for filtering and transforming text'.
+
     It is in the fourth line:
 
     ```console
+    SED(1)                                User Commands                                SED(1)
+
     NAME
-           grep, egrep, fgrep, rgrep - print lines that match patterns
+           sed - stream editor for filtering and transforming text
     ```
 
+
+### Exercise 1.2.2: what is `sed`, definition 2?
+
+According to the online `sed` manual at
+[https://www.gnu.org/software/sed/](https://www.gnu.org/software/sed/),
+what is `sed`? What does that definition mean?
+
+
+??? tip "Answer"
+
+    At [https://www.gnu.org/software/sed/](https://www.gnu.org/software/sed/)
+    the first line reads:
+
+    > `sed` is 'a non-interactive command-line text editor
+
+    It means that you can let `sed` work on your file (like you
+    do with e.g. `nano`) without you opening the file.
+
 ---
+
+### Exercise 1.3: view the `sed` info page
+
+View the `sed` info page.
+
+??? tip "The command to view an info page"
+
+    `info` is the command to view an info page.
+
+??? tip "Answer"
+
+    In the terminal, type:
+
+    ```bash
+    info grep
+    ```
+
+    Use the arrow keys to navigate and `q` to quit
+
+---
+
+## Exercise x: `sed` can do all `grep` can do
+
+
+  
+
+
+## Exercise x: use `sed` to replace text from standard input
+
+## Exercise x: use `sed` to replace text from a file
+
+## Exercise x: use `sed` to replace text in a file
+
+
+
 
 
 
@@ -135,15 +214,6 @@ where
 - **-e** - Allows multiple commands to be executed.
 - **-f** - Reads ``sed`` commands from a file instead of the command line.
 - **-r** - Enables extended regular expressions.
-
-## Commonly used regular expression meta characters
-
-- **caret (^)** matches the beginning of the line.
-- **dollar sign ($)** matches the end of the line.
-- **asterisk (*)** matches zero or more occurrences of the previous character.
-- **plus (+)** matches one or more occurrence(s) of the previous character.
-- **question mark (?)** matches zero or one occurrence of the previous character.
-- **dot (.)** matches exactly one character.
 
 Some examples inspired by:
 
