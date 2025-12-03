@@ -21,7 +21,7 @@ tags:
 | 10:05-10:20 | Break                                                                          | .       |
 | 10:20-11:05 | [Regular expressions, `grep`](sessions/regular_expressions_and_grep/README.md) | R       |
 | 11:05-11:20 | Break                                                                          | .       |
-| 11:20-12:00 | `sed` and mention of AWK                                                       | R       |
+| 11:20-12:00 | [`sed`](sessions/sed/README.md)                                                | R       |
 
 <!-- markdownlint-enable MD013 -->
 
