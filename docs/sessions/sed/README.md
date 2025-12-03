@@ -66,7 +66,7 @@ doing so by hand).
 ### Filtering
 
 `sed` can do what `grep` can do`.
-For example, in the session about `grep`,
+For example, in the session about`grep`,
 we used the following command:
 
 ```bash
@@ -166,7 +166,8 @@ functionality:
 ## Type of regular expressions
 
 There are two types of regular expressions
-present in `sed` [according the `sed` manual](https://www.gnu.org/software/sed/manual/sed.html#Regular-Expressions-Overview):
+present in `sed`
+[according the `sed` manual](https://www.gnu.org/software/sed/manual/sed.html#Regular-Expressions-Overview):
 basic and extended regular expressions.
 
 Here is a quote from
@@ -188,7 +189,7 @@ Holland
 
 To select the countries, use:
 
-```
+```bash
 cat lands.txt | sed --quiet '/[A-Z][a-z][a-z]*land/p'
 cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
 ```
@@ -221,9 +222,13 @@ In these exercises, we will:
 
 Download the file from a terminal as such:
 
+<!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
+
 ```bash
 wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
 ```
+
+<!-- markdownlint-enable MD013 -->
 
 ---
 
@@ -384,9 +389,13 @@ it contains the text `START OF THE PROJECT GUTENBERG EBOOK`.
 You conclude that line 25 is the last line of the copyright notice,
 as you've seen this text in your output:
 
+<!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
+
 ```text
-    25	*** START OF THE PROJECT GUTENBERG EBOOK THE COMPLETE WORKS OF WILLIAM SHAKESPEARE ***
+    25 *** START OF THE PROJECT GUTENBERG EBOOK THE COMPLETE WORKS OF WILLIAM SHAKESPEARE ***
 ```
+
+    <!-- markdownlint-enable MD013 -->
 
 Use `sed` to remove the lines in such a way that the first line will be
 `THE TRAGEDY OF MACBETH`, use `head` to check.
@@ -436,7 +445,7 @@ You conclude that line 4173 is the last line of the copyright notice,
 as you've seen this text in your output:
 
 ```text
-  4173	START: FULL LICENSE
+  4173 START: FULL LICENSE
 ```
 
 To be able to delete a range, we need to find out how many lines the file has.
@@ -543,12 +552,16 @@ Do this exercise from a script.
 
     This is simply putting the answers in one file:
 
+    <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
+
     ```bash
     wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
     sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
     sed --in-place 's/[A-Z][a-z][a-z]*land/Sweden/' macbeth.txt
     sed --in-place '1,26d;4173,4495d' macbeth.txt
     ```
+
+    <!-- markdownlint-enable MD013 -->
 
     Optional is to add a shebang as the first line:
 
@@ -557,7 +570,8 @@ Do this exercise from a script.
     ```
 
     Optional is to remove `macbeth.txt` if it already exists before
-    downloading, as shown below. The `--force` makes sure that this commands 'works' even
+    downloading, as shown below. The `--force` makes sure that this
+    commands 'works' even
     if the file is absent.
 
     ```bash
@@ -566,9 +580,13 @@ Do this exercise from a script.
 
     You can obtain this script by:
 
+    <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
+
     ```bash
     wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/lesson_plans/20251204/script_1.sh
     ```
+
+    <!-- markdownlint-enable MD013 -->
 
 ---
 
@@ -580,6 +598,8 @@ without hardcoding the lines
 ???- question "Answer"
 
     Here we extract the line numbers:
+
+    <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
 
     ```bash
     #!/bin/bash
@@ -595,11 +615,17 @@ without hardcoding the lines
     sed --in-place "1,${end_of_first_copyright_line}d;${begin_of_second_copyright_line},${last_line}d" macbeth.txt
     ```
 
+    <!-- markdownlint-enable MD013 -->
+
     You can obtain this script by:
+
+    <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
 
     ```bash
     wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/lesson_plans/20251204/script_2.sh
     ```
+
+    <!-- markdownlint-enable MD013 -->
 
 ---
 
@@ -643,12 +669,16 @@ Tip: it is at the top.
 
     It is in the fourth line:
 
+    <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
+
     ```console
     SED(1)                                User Commands                                SED(1)
 
     NAME
            sed - stream editor for filtering and transforming text
     ```
+
+    <!-- markdownlint-enable MD013 -->
 
 ---
 
