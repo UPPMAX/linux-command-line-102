@@ -303,7 +303,13 @@ sed '1,24d;4171,4493d' macbeth.txt | tail
 
 Until now, we never have touched the original file.
 Here we use `sed -i [commands] [filename]`
-to directlt work on the original file.
+to directly work on the original file.
+
+Print without copyright:
+
+```bash
+sed --quiet '27,4170p' macbeth.txt
+```
 
 
 
@@ -332,10 +338,6 @@ where
 - **-e** - Allows multiple commands to be executed.
 - **-r** - Enables extended regular expressions.
 
-Some examples inspired by:
-
-- <https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/>
-- <https://en.wikipedia.org/wiki/Sed>
 
 ## Substitution command
 
