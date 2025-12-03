@@ -78,8 +78,50 @@ man grep | sed --quiet "/^[A-Z]/p"
     man grep | sed -n "/^[A-Z]/p"
     ```
 
-## How `sed` works
+## Replacing with `sed`
 
+Probably the most used feature of `sed` is its replacement
+functionality:
+
+```bash
+sed 's/[regular_expression]/[replacement]/'
+```
+
+The `s` is short for 'substitute'. For example, the command
+below substitutes 'morning' for 'afternoon'.
+
+```bash
+echo "Good morning" | sed 's/morning/afternoon/'
+```
+
+???- question "What is the output of that command?"
+
+    ```
+    richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ echo "Good morning" | sed 's/morning/afternoon/'
+    Good afternoon
+    ```
+
+If there may be multiple matches in a sentence, add `g` at the end:
+
+```bash
+echo "Good morning, good morning" | sed 's/morning/afternoon/g'
+```
+
+???- question "What is the output of that command (with the `g`)?"
+
+    ```bash
+    richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ echo "Good morning, good morning" | sed 's/morning/afternoon/g'
+    Good afternoon, good afternoon
+    ```
+
+???- question "What is the output of that command without the `g`?"
+
+    ```bash
+    richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ echo "Good morning, good morning" | sed 's/morning/afternoon/'
+    Good afternoon, good morning
+    ```
+
+## How `sed` works
 
 - [`sed` documentation, section '6.1 How `sed` Works'](https://www.gnu.org/software/sed/manual/sed.html#Execution-Cycle)
 
@@ -175,33 +217,69 @@ View the `sed` info page.
 
 In this exercise, we will work Macbeth, a tale written by William Shakespeare.
 
-To get it in plain-text:
+Download the file from a terminal as such:
 
 ```bash
 wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
 ```
 
-## Exercise x: use `sed` to filter text from standard input
+In these exercises, we will:
 
-<!-- `sed` can do all `grep` can do -->
-
-Use `sed`
-
-```bash
-cat macbeth.txt | grep -i "weird sisters"
-cat macbeth.txt | sed --quiet '/Weird Sisters/p'
-cat macbeth.txt | sed --quiet '/weird sisters/Ip'
-```
+- Remove the copyright
+- Replace 'Weird Sisters' by 'witches'
+- Replace all country names by 'Sweden'
 
 ## Exercise x: use `sed` to replace text from standard input
 
-```bash
-cat macbeth.txt | sed 's/Weird Sisters/witches/g'
-```
+Read the session HIERO.
 
-```bash
-cat macbeth.txt | sed 's/Weird Sisters/witches/g' | grep witches
-```
+In Macbeth, replace `Weird Sisters` (both words start with an upper-case
+character) by `witches`. Do so by using `cat` on the file `macbeth.txt`,
+then piping it to `sed`.
+
+???- question "Answer"
+
+    Here is how to show the text of Macbeth, with the text replaced:
+
+    ```bash
+    cat macbeth.txt | sed 's/Weird Sisters/witches/'
+    ```
+
+    There is no need to end with a `g`, as doing so (see command below) gives
+    identical results:
+
+    ```bash
+    cat macbeth.txt | sed 's/Weird Sisters/witches/g'
+    ```
+
+    You can check in many ways that `Weird Sisters` only occurs once per
+    line. For example, the command below gives no matches:
+
+    ```bash
+    cat macbeth.txt | grep "Weird Sisters.*Weird Sisters"
+    ```
+
+Check that your replacement worked.
+
+???- tip "Tip"
+
+    Pipe the output to `grep` to detect matches with `witches`
+
+???- tip "Answer"
+
+    ```bash
+    cat macbeth.txt | sed 's/Weird Sisters/witches/g' | grep witches
+    ```
+
+    This gives the output:
+
+    ```
+    The witches, hand in hand,
+    title, before, these witches saluted me, and referred me to the
+    I dreamt last night of the three witches:
+    (And betimes I will) to the witches:
+    Saw you the witches?
+    ```
 
 ## Exercise x: use `sed` to remove a line from standard input
 
@@ -302,14 +380,39 @@ sed '1,24d;4171,4493d' macbeth.txt | tail
 ## Exercise x: use `sed` to replace text in a file
 
 Until now, we never have touched the original file.
-Here we use `sed -i [commands] [filename]`
+Here we use `sed --in-place [commands] [filename]`
 to directly work on the original file.
+
+```bash
+sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
+```
+
+## Exercise x: use `sed` to remove lines in a file
 
 Print without copyright:
 
 ```bash
 sed --quiet '27,4170p' macbeth.txt
 ```
+
+Print without copyright:
+
+```bash
+sed --in-place --quiet '27,4170p' macbeth.txt
+```
+
+## Replace
+
+```bash
+cat macbeth.txt | egrep "[A-Z][a-z]+land"
+```
+
+```
+cat macbeth.txt | sed --regexp-extended 's/[A-Z][a-z]+land/Holland/g' | grep -i land
+```
+
+
+
 
 
 
