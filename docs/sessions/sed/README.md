@@ -9,9 +9,9 @@ tags:
 
 # Using the `sed` stream editor
 
-???- note "Need a video?"
+???- note "Prefer a video?"
 
-    ...
+    Watch [the YouTube video of this session](https://youtu.be/HXySh8dQLEA)
 
 !!! info "Learning outcomes"
 
