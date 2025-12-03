@@ -46,22 +46,22 @@ R  |(49+50+65)/3=55%
 The weakest sessions were `awk` and `sed`.
 This matches my ideas and I already suggested to replace `awk` by `sed`.
 
-Question     |Mean confidence
--------------|------------------
-I can use awk|2.45
-I can use sed|3
-I can use regular expressions|3.45
-I can use cut|3.64
-I can write a bash script|3.82
-I can make a symbolic link|3.9
+Question                       |Mean confidence
+-------------------------------|------------------
+I can use awk                  |2.45
+I can use sed                  |3
+I can use regular expressions  |3.45
+I can use cut                  |3.64
+I can write a bash script      |3.82
+I can make a symbolic link     |3.9
 I can use environment variables|3.91
-I can use redirection|4
-I can use tar|4
-I can use grep|4.18
-I can use gzip|4.18
-I can use wc|4.18
-I know what wc is|4.45
-I can use pipe|4.64
+I can use redirection          |4
+I can use tar                  |4
+I can use grep                 |4.18
+I can use gzip                 |4.18
+I can use wc                   |4.18
+I know what wc is              |4.45
+I can use pipe                 |4.64
 
 
 ### Pace

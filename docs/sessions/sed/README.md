@@ -89,7 +89,7 @@ man grep | sed --quiet "/^[A-Z]/p"
     man grep | sed -n "/^[A-Z]/p"
     ```
 
-    In this session, `--quiet` is used, as it is felt to be 
+    In this session, `--quiet` is used, as it is felt to be
     the most self-explanatory: to me, 'quiet' feels that it may
     not be perfectly 'silent'.
 
@@ -111,7 +111,7 @@ echo "Good morning" | sed 's/morning/afternoon/'
 
 ???- tip "What is the output of that command?"
 
-    ```
+    ```console
     Good afternoon
     ```
 
@@ -140,7 +140,7 @@ Another commonly used feature of `sed` is its line deletion
 functionality:
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
-<!-- markdownlint-disable MD060 --><!-- The pipe symbol in a command is not part of a table -->
+<!-- markdownlint-disable MD056 --><!-- markdownlint-disable MD060 --><!-- The pipe symbol in a command is not part of a table -->
 
 `sed` command                     |Description
 ----------------------------------|--------------------------------------------------------------------
@@ -154,7 +154,7 @@ functionality:
 ## Input and output
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
-<!-- markdownlint-disable MD060 --><!-- The pipe symbol in a command is not part of a table -->
+<!-- markdownlint-disable MD056 --><!-- markdownlint-disable MD060 --><!-- The pipe symbol in a command is not part of a table -->
 
 `sed` command                                           |Input and output
 --------------------------------------------------------|---------------------------------------------------
@@ -164,7 +164,7 @@ functionality:
 `sed '1d' my_input_file.txt > my_output_file.txt`       |Get input from a file, write output to another file
 `sed --in-place '1d' my_file.txt`                       |:warning: Modify the file directly
 
-<!-- markdownlint-enable MD060 -->
+<!-- markdownlint-disable MD056 --><!-- markdownlint-enable MD060 -->
 <!-- markdownlint-enable MD013 -->
 
 ## Type of regular expressions
@@ -280,7 +280,7 @@ Check that your replacement worked.
 
     This gives the output:
 
-    ```
+    ```text
     The witches, hand in hand,
     title, before, these witches saluted me, and referred me to the
     I dreamt last night of the three witches:
@@ -415,7 +415,7 @@ Use `sed` to remove the lines in such a way that the first line will be
     To check:
 
     ```bash
-    cat macbeth.txt | sed '1,26d' | head 
+    cat macbeth.txt | sed '1,26d' | head
     ```
 
 We can now pipe text to `sed` to remove lines.
