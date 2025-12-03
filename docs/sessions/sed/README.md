@@ -42,12 +42,6 @@ tags:
     - `sed` is a stream editor that can filter text. What would that mean?
     - `sed` is a stream editor that can transform text. What would that mean?
 
-!!! info "Macbeth"
-
-    ![Macbeth](macbeth.jpg)
-
-    > [source](https://pixabay.com/illustrations/william-shakespeare-macbeth-poster-67764/)
-
 ## Why use `sed`?
 
 `sed` is among
@@ -203,6 +197,12 @@ cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
 ## Exercises
 
 ## Exercise 1
+
+!!! info "Macbeth"
+
+    ![Macbeth](macbeth_small.jpg)
+
+    > [source](https://pixabay.com/illustrations/william-shakespeare-macbeth-poster-67764/)
 
 In this exercise, we will work Macbeth, a tale written by William Shakespeare.
 
