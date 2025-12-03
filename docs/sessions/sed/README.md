@@ -1,3 +1,115 @@
+---
+tags:
+  - session
+  - lesson
+  - sed
+  - regular expressions
+  - stream editor
+---
+
+# Replacing using regular expressions and `sed`
+
+???- note "Need a video?"
+
+    - [Introduction](https://youtu.be/sh52duacLWY)
+    - [Exercise 1](https://youtu.be/sh52duacLWY?t=155)
+    - [Exercise 2](https://youtu.be/sh52duacLWY?t=349)
+    - [Exercise 3](https://youtu.be/sh52duacLWY?t=455)
+    - [Exercise 4](https://youtu.be/sh52duacLWY?t=875)
+    - [Feedback](https://youtu.be/sh52duacLWY?t=1279)
+    - [Conclusion](https://youtu.be/sh52duacLWY?t=1486)
+
+!!! info "Learning outcomes"
+
+    - Learners know there are multiple flavours of regular expressions
+    - Learners can use `.`, `*`, `+`, `?`, `[]`, `[^]`, `{}`, `()` in regular expressions
+    - Learners can use `grep`
+    - Learners have practiced using the `grep` manual
+    - Learners can use `grep` to search for a regular expression
+    - Learners can send text to `grep` using a pipe
+    - (optional) Learners have seen the flexibility of `grep`
+
+???- note "For teachers"
+
+    Lesson plan:
+
+    Time         |Minutes|Duration|Description
+    -------------|-------|--------|---------
+    10:20-10:30  |0-10   |10      |Prior
+    10:30-10:35  |10-15  |5       |Present
+    10:35-10:55  |15-35  |20      |Challenge
+    10:55-11:05  |35-45  |10      |Feedback and conclusion
+
+    Prior:
+
+    - How would tell an alien how a human name is made up
+      out of English characters?
+    - And a human phone number?
+    - Are there more things that have certain features like that?
+    - What is a regular expression?
+    - What is `grep`?
+    - What is GNU?
+    - In the context of software, what is a parser?
+    - In the context of command-line tools, what is a filter?
+
+## Why use regular expressions?
+
+Regular expressions are used to filter for text that contains a pattern,
+such as a first name, a last name, a phone number, etc.
+
+![What regular expressions are used for](why_regular_expressions.png)
+
+## Why use `grep`?
+
+The tool `grep` comes installed with Linux.
+
+## Exercises
+
+## Exercise 1: use the `grep` manual
+
+In this exercise, we'll use the `grep` manual.
+
+---
+
+### Exercise 1.1: view the `grep` manual
+
+View the `grep` manual.
+
+Tip: `man` is the command to view a manual.
+
+??? tip "Answer"
+
+    In the terminal, type:
+
+    ```bash
+    man grep
+    ```
+
+    Use the arrow keys to navigate and `q` to quit
+
+---
+
+### Exercise 1.2: what does `grep` do?
+
+According to the `grep` manual, **in a one-liner**, what does `grep` do?
+
+Tip: it is at the top.
+
+??? tip "Answer"
+
+    `grep` is a tool to 'print lines that match patterns'
+    It is in the fourth line:
+
+    ```console
+    NAME
+           grep, egrep, fgrep, rgrep - print lines that match patterns
+    ```
+
+---
+
+
+
+
 # sed
 
 The command ``sed`` (stream editor) is one of the most powerful commands. It is used for textual processing - parsing and transforming text. It uses a simple, but compact programming language.

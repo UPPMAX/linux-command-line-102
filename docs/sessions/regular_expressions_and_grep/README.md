@@ -7,7 +7,7 @@ tags:
   - gnu
 ---
 
-# Regular expressions and `grep`
+# Searching using regular expressions and `grep`
 
 ???- note "Need a video?"
 

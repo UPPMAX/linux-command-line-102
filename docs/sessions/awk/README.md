@@ -7,7 +7,7 @@ tags:
   - gnu
 ---
 
-# AWK
+# Using the AWK programming language
 
 ???- note "Need a video?"
 

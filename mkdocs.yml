@@ -44,9 +44,9 @@ nav:
       - Linux pipe: sessions/pipe.md
       - Linux permissions/owner: sessions/chown-chmod.md
       - Linux tools (wc, cut): sessions/wc_cut.md
-      - Searching using regular expressions and grep: sessions/regular_expressions_and_grep/README.md
-      - Replacing using regular expressions and sed: sessions/sed/README.md
-      - (optional) Using the programming language AWK: sessions/awk/README.md
+      - sessions/regular_expressions_and_grep/README.md
+      - sessions/sed/README.md
+      - (optional) Using the AWK programming language: sessions/awk/README.md
   - Lessons Day 2 (smarter bash):
       - Scripting: sessions/scripting/README.md
       - Redirects: sessions/redirects.md
