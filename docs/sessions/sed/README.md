@@ -140,6 +140,7 @@ Another commonly used feature of `sed` is its line deletion
 functionality:
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+<!-- markdownlint-disable MD060 --><!-- The pipe symbol in a command is not part of a table -->
 
 `sed` command                     |Description
 ----------------------------------|--------------------------------------------------------------------
@@ -147,11 +148,13 @@ functionality:
 `cat my_file.txt | sed '1,3d'`    |Delete lines 1 to and including 3
 `cat my_file.txt | sed '1,3;7,9d'`|Delete lines 1 to (and including) 3 and lines 7 to (and including) 9
 
+<!-- markdownlint-enable MD060 -->
 <!-- markdownlint-enable MD013 -->
 
 ## Input and output
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+<!-- markdownlint-disable MD060 --><!-- The pipe symbol in a command is not part of a table -->
 
 `sed` command                                           |Input and output
 --------------------------------------------------------|---------------------------------------------------
@@ -161,6 +164,7 @@ functionality:
 `sed '1d' my_input_file.txt > my_output_file.txt`       |Get input from a file, write output to another file
 `sed --in-place '1d' my_file.txt`                       |:warning: Modify the file directly
 
+<!-- markdownlint-enable MD060 -->
 <!-- markdownlint-enable MD013 -->
 
 ## Type of regular expressions
