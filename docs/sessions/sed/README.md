@@ -51,7 +51,7 @@ which means it is considered a fundamental tool
 and is likely to be available on your operating system.
 
 `sed` (short for 'stream editor')
-can do what `grep` can do` and more:
+can do what `grep` can do and more:
 it is 'a non-interactive command-line text editor'
 ([source](https://www.gnu.org/software/sed/))
 
@@ -66,7 +66,7 @@ doing so by hand).
 
 ## 3.1. Filtering
 
-`sed` can do what `grep` can do`.
+`sed` can do what `grep` can do.
 For example, in the session about`grep`,
 we used the following command:
 
