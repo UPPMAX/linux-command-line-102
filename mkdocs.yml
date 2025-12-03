@@ -42,6 +42,7 @@ nav:
   - Lessons Day 1 (smarter command line):
       - Introduction: sessions/intro.md
       - Linux pipe: sessions/pipe.md
+      - Linux permissions/owner: sessions/chown-chmod.md
       - Linux tools (wc, cut): sessions/wc_cut.md
       - Searching using regular expressions and grep: sessions/regular_expressions_and_grep/README.md
       - Linux tools (sed): sessions/sed.md
