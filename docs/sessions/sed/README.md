@@ -171,13 +171,22 @@ View the `sed` info page.
 
 ---
 
-## Exercise x: `sed` can do all `grep` can do
+## Exercises
 
+In this exercise, we will work on the complete works from William Shakespear.
 
-  
+```bash
+wget https://www.gutenberg.org/cache/epub/100/pg100.txt
+```
 
+## Exercise x: use `sed` to filter text from standard input
+
+<!-- `sed` can do all `grep` can do -->
 
 ## Exercise x: use `sed` to replace text from standard input
+
+## Exercise x: use `sed` to remove a line from standard input
+
 
 ## Exercise x: use `sed` to replace text from a file
 
@@ -189,11 +198,8 @@ View the `sed` info page.
 
 
 
+
 # sed
-
-The command ``sed`` (stream editor) is one of the most powerful commands. It is used for textual processing - parsing and transforming text. It uses a simple, but compact programming language.
-
-After the programming language AWK was developed, ``sed`` and ``awk`` are often used together, particularly in scripts. Together they are commonly considered progenitors and inspiration for Perl.
 
 ## Syntax
 
@@ -212,7 +218,6 @@ where
 - **-i** - Edit the file in place without printing to the console (overwrite the file).
 - **-n** - Suppress automatic printing of lines.
 - **-e** - Allows multiple commands to be executed.
-- **-f** - Reads ``sed`` commands from a file instead of the command line.
 - **-r** - Enables extended regular expressions.
 
 Some examples inspired by:
@@ -325,16 +330,6 @@ Besides substitution, ``sed`` can do many other things. There are around 25 ``se
     ```bash
     sed '/cat/d' file1.txt
     ```
-
-## Filtering
-
-It is also common to use ``sed`` as a filter, as part of a "pipeline".
-
-In this example, the program "data-generating-program" is creating some data, but you named something wrong perhaps, and now you need to replace all instances of "right" with "left":
-
-```bash
-data-generating-program | sed 's/right/left/g'
-```
 
 ## In-place editing
 
