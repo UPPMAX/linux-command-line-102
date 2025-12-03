@@ -56,10 +56,13 @@ it can **replace** text that is found by regular expression matches.
 
 ![Mindmap](mindmap.png)
 
-## `sed` can do what `grep` can do`
+## Types of operations
+
+### Filtering
 
 `sed` can do what `grep` can do`.
-For example, in the session about `grep`, we used the following command:
+For example, in the session about `grep`,
+we used the following command:
 
 ```bash
 man grep | grep "^[A-Z]"
@@ -81,7 +84,81 @@ man grep | sed --quiet "/^[A-Z]/p"
     man grep | sed -n "/^[A-Z]/p"
     ```
 
-## `sed` and extended regular expressions
+    In this session, `--quiet` is used, as it is felt to be 
+    the most self-explanatory: to me, 'quiet' feels that it may
+    not be perfectly 'silent'.
+
+### Replacing
+
+Probably the most used feature of `sed` is its replacement
+functionality:
+
+```bash
+sed 's/[regular_expression]/[replacement]/'
+```
+
+The `s` is short for 'substitute'. For example, the command
+below substitutes 'morning' for 'afternoon'.
+
+```bash
+echo "Good morning" | sed 's/morning/afternoon/'
+```
+
+???- question "What is the output of that command?"
+
+    ```
+    Good afternoon
+    ```
+
+If there may be multiple matches in a sentence, add `g` at the end:
+
+```bash
+echo "Good morning, good morning" | sed 's/morning/afternoon/g'
+```
+
+???- question "What is the output of that command (with the `g`)?"
+
+    ```bash
+    Good afternoon, good afternoon
+    ```
+
+???- question "What is the output of that command without the `g`?"
+
+    ```bash
+    Good afternoon, good morning
+    ```
+
+
+### Deleting
+
+Another commonly used feature of `sed` is its line deletion
+functionality:
+
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
+`sed` command                     |Description
+----------------------------------|--------------------------------------------------------------------
+`cat my_file.txt | sed '1d'`      |Delete the first line
+`cat my_file.txt | sed '1,3d'`    |Delete lines 1 to and including 3
+`cat my_file.txt | sed '1,3;7,9d'`|Delete lines 1 to (and including) 3 and lines 7 to (and including) 9
+
+<!-- markdownlint-enable MD013 -->
+
+## Input and output
+
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
+`sed` command                                           |Input and output
+--------------------------------------------------------|---------------------------------------------------
+`cat my_input_file.txt | sed '1d'`                      |Get input from a pipe, write output to terminal
+`cat my_input_file.txt | sed '1d' > my_output_file.txt` |Get input from a pipe, write output to another file
+`sed '1d' my_input_file.txt`                            |Get input from a file, write output to terminal
+`sed '1d' my_input_file.txt > my_output_file.txt`       |Get input from a file, write output to another file
+`sed --in-place '1d' my_file.txt`                       |:warning: Modify the file directly
+
+<!-- markdownlint-enable MD013 -->
+
+## Type of regular expressions
 
 There are two types of regular expressions
 present in `sed` [according the `sed` manual](https://www.gnu.org/software/sed/manual/sed.html#Regular-Expressions-Overview):
@@ -111,48 +188,6 @@ cat lands.txt | sed --quiet '/[A-Z][a-z][a-z]*land/p'
 cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
 ```
 
-## Replacing with `sed`
-
-Probably the most used feature of `sed` is its replacement
-functionality:
-
-```bash
-sed 's/[regular_expression]/[replacement]/'
-```
-
-The `s` is short for 'substitute'. For example, the command
-below substitutes 'morning' for 'afternoon'.
-
-```bash
-echo "Good morning" | sed 's/morning/afternoon/'
-```
-
-???- question "What is the output of that command?"
-
-    ```
-    richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ echo "Good morning" | sed 's/morning/afternoon/'
-    Good afternoon
-    ```
-
-If there may be multiple matches in a sentence, add `g` at the end:
-
-```bash
-echo "Good morning, good morning" | sed 's/morning/afternoon/g'
-```
-
-???- question "What is the output of that command (with the `g`)?"
-
-    ```bash
-    richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ echo "Good morning, good morning" | sed 's/morning/afternoon/g'
-    Good afternoon, good afternoon
-    ```
-
-???- question "What is the output of that command without the `g`?"
-
-    ```bash
-    richel@richel-latitude-7430:~/GitHubs/linux-command-line-201/docs/sessions/sed$ echo "Good morning, good morning" | sed 's/morning/afternoon/'
-    Good afternoon, good morning
-    ```
 
 ## Exercises
 
