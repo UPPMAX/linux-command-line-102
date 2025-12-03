@@ -238,7 +238,7 @@ wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/
 
 ## Exercise 1.2: use `sed` to replace text from standard input
 
-Read [the 'Replacing' section](#replacing).
+Read [the 'Replacing' section](#32-replacing).
 
 In Macbeth, replace `Weird Sisters` (both words start with an upper-case
 character) by `witches`. Do so by using `cat` on the file `macbeth.txt`,
@@ -300,7 +300,7 @@ Check that your replacement worked.
 
 ## Exercise 1.3: use `sed` to find text from standard input
 
-Read [the 'Replacing' section](#replacing).
+Read [the 'Replacing' section](#32-replacing).
 
 In Macbeth, there are many place names ending on `land`.
 
@@ -336,7 +336,7 @@ upon.
     Because he/she does not know that Sweden has an island called
     Öland and Finland has an island called Åland.
 
-Read [the section 'Type of regular expressions'](#type-of-regular-expressions).
+Read [the section 'Type of regular expressions'](#5-type-of-regular-expressions).
 
 Search for all place names ending on `land` using `sed`.
 To be precise, search for all matches that:
@@ -362,7 +362,7 @@ To be precise, search for all matches that:
 
 ## Exercise 1.5: use `sed` to remove a line from standard input
 
-Read [the 'Deleting' section](#deleting).
+Read [the 'Deleting' section](#33-deleting).
 
 The Macbeth text contains a copyright notice at the start (and end) of it.
 
