@@ -504,4 +504,5 @@ Pick those topics you are interested in.
 
 !!! info "Next session"
 
-    - `grep` is not a programming language: use `awk` instead.
+    `grep` cannot replace: use `sed` to do replacement using regular
+    expressions
