@@ -767,3 +767,20 @@ what is `sed`? What does that definition mean?
       such as filtering, substituting and deleting
     - `sed` can use two regular expression syntaxes
     - `sed` is not a programming language: use AWK instead
+
+
+???- tip "Overview of POSIX tools"
+
+    ```mermaid
+    mindmap
+      root((POSIX tools))
+        Filtering
+          grep
+          sed
+          AWK
+        Transforming
+          sed
+          AWK
+        Programming
+          AWK
+    ```
