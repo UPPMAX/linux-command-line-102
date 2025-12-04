@@ -239,7 +239,11 @@ wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/
 
 ## Exercise 1.2: use `sed` to replace text from standard input
 
+<!-- markdownlint-disable MD051 --><!-- due to 'readthedocs' theme -->
+
 Read [the 'Replacing' section](#32__replacing).
+
+<!-- markdownlint-enable MD051 -->
 
 In Macbeth, replace `Weird Sisters` (both words start with an upper-case
 character) by `witches`. Do so by using `cat` on the file `macbeth.txt`,
@@ -301,7 +305,11 @@ Check that your replacement worked.
 
 ## Exercise 1.3: use `sed` to find text from standard input
 
+<!-- markdownlint-disable MD051 --><!-- due to 'readthedocs' theme -->
+
 Read [the 'Filtering' section](#31__filtering).
+
+<!-- markdownlint-enable MD051 -->
 
 In Macbeth, there are many place names ending on `land`.
 
@@ -337,7 +345,11 @@ upon.
     Because he/she does not know that Sweden has an island called
     Öland and Finland has an island called Åland.
 
+<!-- markdownlint-disable MD051 --><!-- due to 'readthedocs' theme -->
+
 Read [the section 'Type of regular expressions'](#5__type__of__regular__expressions).
+
+<!-- markdownlint-enable MD051 -->
 
 Search for all place names ending on `land` using `sed`.
 To be precise, search for all matches that:
@@ -363,7 +375,11 @@ To be precise, search for all matches that:
 
 ## Exercise 1.5: use `sed` to remove a line from standard input
 
+<!-- markdownlint-disable MD051 --><!-- due to 'readthedocs' theme -->
+
 Read [the 'Deleting' section](#33__deleting).
+
+<!-- markdownlint-enable MD051 -->
 
 The Macbeth text contains a copyright notice at the start (and end) of it.
 
