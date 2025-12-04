@@ -32,7 +32,7 @@ No |`n_reg`|`n_learn`| `n_eval`
 
 - `n_reg`: number of registrations
 - `n_learn`: number of learners that are present most of the time.
-  Between round brackets is the percentage of registrated learners that
+  Between round brackets is the percentage of registered learners that
   are present most of the time
 - `n_eval`: number of filled-in evaluations.
   Between round brackets is the percentage of learners that
