@@ -769,18 +769,8 @@ what is `sed`? What does that definition mean?
     - `sed` is not a programming language: use AWK instead
 
 
-???- tip "Overview of POSIX tools"
+???- tip "Overview of some POSIX tools"
 
-    ```mermaid
-    mindmap
-      root((POSIX tools))
-        Filtering
-          grep
-          sed
-          AWK
-        Transforming
-          sed
-          AWK
-        Programming
-          AWK
-    ```
+    ![Overview of some POSIX tools](posix_tools.png)
+
+    > Overview of some POSIX tools
