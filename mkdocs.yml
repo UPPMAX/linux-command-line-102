@@ -90,9 +90,17 @@ plugins:
   - mkdocstrings
   - markdown-exec
   - open-in-new-tab
-  - mermaid2:
-      version: 10.4.0
-      javascript: https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs
+  - mermaid2: # Settings from https://mkdocs-mermaid2.readthedocs.io/en/master/#other-themes
+      version: '9.4.3' # only works with version < 10
+      arguments:
+        theme: 'dark'
+        themeVariables:
+          primaryColor: '#BB2528'
+          primaryTextColor: '#fff'
+          primaryBorderColor: '#7C0000'
+          lineColor: '#F8B229'
+          secondaryColor: '#006100'
+          tertiaryColor: '#fff'
 
 markdown_extensions:
   - pymdownx.highlight:
