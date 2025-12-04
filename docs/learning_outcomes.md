@@ -23,7 +23,12 @@
 
 ??? note "[Regular expressions and `sed`](sessions/sed/README.md)"
 
-    - Learners can use `sed` for pattern matched replacing
+    - Learners can use `sed` to filter for lines using a regular expression
+    - Learners can use `sed` to replace lines using a regular expression
+    - Learners can use `sed` to delete lines
+    - Learners can use `sed` with different types of input and output
+    - Learners can use `sed` with the two different regular expression types
+    - (optional) Learners have seen three `sed` learning resources
 
 ## Day 2: smarter Bash
 

@@ -91,7 +91,7 @@ I expected the break to be 5 minutes earlier,
 because I mistook my time schedule for this session
 with the next one in my (paper) logbook.
 
-- [ ] Use 1 session per page
+- [x] Use 1 session per page
 
 ### Discussion from shared document, during the second hour
 
@@ -134,7 +134,7 @@ Next time, do something else: either use the `awk` manual
 or use material from my AWK course. Or (my favorite) drop `awk`
 altogether.
 
-- [ ] Use `man awk` or use custom course materials or remove `awk`
+- [x] Use `man awk` or use custom course materials or remove `awk`
 
 | Time scheduled | Actual time | Activity                |
 | -------------- | ----------- | ----------------------- |

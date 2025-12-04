@@ -184,7 +184,7 @@ although I've not read the feedback of the learners yet.
 
 Here are my current ideas:
 
-- [ ] Suggest to replace `awk` by `sed`:
+- [x] Suggest to replace `awk` by `sed`:
 
     - B will have more time for the quality of life session
     - R thinks `sed` is a better follow-up after `grep`
