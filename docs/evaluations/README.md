@@ -28,7 +28,7 @@ No |Dates                    |Evaluations                     |Success score
 No |`n_reg`|`n_learn`| `n_eval`
 ---|-------|---------|-----------
 1  |40     |11 (28%) | 11 (100%)
-2  |74     |?21 (28%)| ?21 (100%)
+2  |74     |26 (35%) | ?26 (100%)
 
 - `n_reg`: number of registrations
 - `n_learn`: number of learners that are present most of the time.
