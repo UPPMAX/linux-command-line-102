@@ -206,7 +206,7 @@ cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
 
 !!! info "Macbeth"
 
-    ![Macbeth](macbeth_small.jpg)
+    ![Macbeth](macbeth_smaller.jpg)
 
     > [source](https://pixabay.com/illustrations/william-shakespeare-macbeth-poster-67764/)
 
