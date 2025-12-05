@@ -199,6 +199,29 @@ cat lands.txt | sed --quiet '/[A-Z][a-z][a-z]*land/p'
 cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
 ```
 
+???- tip "This line gives me the error `unrecognized option '--quiet'`"
+
+    Some operating systems do not support the longer options.
+    In that case, use the syntax below instead:
+
+    ```bash
+    cat lands.txt | sed -n --regexp-extended '/[A-Z][a-z]+land/p'
+    ```
+
+    This teaching material used the longer writing,
+    as this is easier to read.
+
+???- tip "This line gives me the error `unrecognized option '--regexp-extended'`"
+
+    Some operating systems do not support the longer options.
+    In that case, use the syntax below instead:
+
+    ```bash
+    cat lands.txt | sed --quiet -E '/[A-Z][a-z]+land/p'
+    ```
+
+    This teaching material used the longer writing,
+    as this is easier to read.
 
 ## Exercises
 
@@ -400,12 +423,37 @@ it contains the text `START OF THE PROJECT GUTENBERG EBOOK`.
     cat --number macbeth.txt  | head --lines 40
     ```
 
+    ???- tip "This line gives me the error `unrecognized option '--number'`"
+
+        Some operating systems do not support the longer options.
+        In that case, use `cat -n macbeth.txt` instead.
+
+        This teaching material used the longer writing,
+        as this is easier to read.
+
+    ???- tip "This line gives me the error `unrecognized option '--lines'`"
+
+        Some operating systems do not support the longer options.
+        In that case, use `head -n 40` instead.
+
+        This teaching material used the longer writing,
+        as this is easier to read.
+
     Another way is to use `cat` with the `--number` flag to let it add
     line numbers, then use `grep` to find the location:
 
     ```bash
     cat --number macbeth.txt  | grep "START OF THE PROJECT GUTENBERG EBOOK"
     ```
+
+    ???- tip "This line gives me the error `unrecognized option '--number'`"
+
+        Some operating systems do not support the longer options.
+        In that case, use `cat -n macbeth.txt` instead.
+
+        This teaching material used the longer writing,
+        as this is easier to read.
+
 
 You conclude that line 25 is the last line of the copyright notice,
 as you've seen this text in your output:
@@ -462,6 +510,15 @@ Find out in which line the copyright notice starts in any way.
     cat --number macbeth.txt | grep "START: FULL LICENSE"
     ```
 
+    ???- tip "This line gives me the error `unrecognized option '--number'`"
+
+        Some operating systems do not support the longer options.
+        In that case, use `cat -n macbeth.txt` instead.
+
+        This teaching material used the longer writing,
+        as this is easier to read.
+
+
 You conclude that line 4173 is the last line of the copyright notice,
 as you've seen this text in your output:
 
@@ -491,6 +548,15 @@ Find out how many lines the file has.
     ```bash
     wc --lines macbeth.txt
     ```
+
+    ???- tip "This line gives me the error `unrecognized option '--lines'`"
+
+        Some operating systems do not support the longer options.
+        In that case, use `wc -l macbeth.txt` instead.
+
+        This teaching material used the longer writing,
+        as this is easier to read.
+
 
 You conclude that the file has 4495 lines.
 

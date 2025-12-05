@@ -191,6 +191,13 @@ Write a script that counts and shows the number of files in our current folder:
   n_files=$(ls | wc --lines)
   ```
 
+???- tip "This line gives me the error `unrecognized option '--lines'`"
+
+    Some operating systems do not support the longer options.
+    In that case, use `wc -l` instead.
+
+    This teaching material used the longer writing, as this is easier to read.
+
 - Running the script should show: 'You have [n_files] files', where
   `[n_files]` is the number of files
 
