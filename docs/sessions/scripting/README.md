@@ -207,6 +207,9 @@ Write a script that counts and shows the number of files in our current folder:
     echo "You have ${n_files} files"
     ```
 
+    If you have not wrapped your variable name in curly brackets
+    and the code works as intended, then that is correct too.
+
     You can now run it with:
 
     ```bash
@@ -238,6 +241,9 @@ Write a script that counts and shows the number of files in our current folder:
 
     echo "${greeting} ${name}!"
     ```
+
+    If you have not wrapped your variable name in curly brackets
+    and the code works as intended, then that is correct too.
 
     You can (still) run it with:
 
@@ -292,6 +298,9 @@ Write a script that counts and shows the number of files in our current folder:
     fi
     ```
 
+    If you have not wrapped your variable name in curly brackets
+    and the code works as intended, then that is correct too.
+
     You can (still) run it with:
 
     ```bash
@@ -329,6 +338,9 @@ Write a script that counts and shows the number of files in our current folder:
     done
     ```
 
+    If you have not wrapped your variable name in curly brackets
+    and the code works as intended, then that is correct too.
+
     You can run it with:
 
     ```bash
@@ -365,6 +377,9 @@ such as the output of a Bash command.
         echo "I found a file called {filename}!"
     done
     ```
+
+    If you have not wrapped your variable name in curly brackets
+    and the code works as intended, then that is correct too.
 
     You can run it with:
 
