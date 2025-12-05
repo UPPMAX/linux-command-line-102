@@ -1,5 +1,13 @@
 # Evaluation 2025-12-04 and 2025-12-05
 
+!!! warning "These are early results"
+
+    These are early results, i.e. the ones that were filled in during
+    course time.
+
+    The learners are also asked to fill this in by email.
+    Those results will be added later.
+
 - Date: 2025-12-04 and 2025-12-04
 - Number of registrations: 74
 - Number of learners on Day 1:
