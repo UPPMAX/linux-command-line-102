@@ -21,7 +21,7 @@ ranging from spaces, curly braces, to AWK regular expressions.
 I was happy to have this high amount of person-tailored interaction.
 
 I have seen all learners either reach or finish the last exercise
-of Bash (about for loops). 
+of Bash (about for loops).
 
 In the end of my session, I did not summarize the content, as I felt
 it was more useful to let the learners continue with whatever they
