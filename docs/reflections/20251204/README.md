@@ -31,7 +31,7 @@ Also, the `sed` exercise was too big:
 I expect some complaints about it in the
 evaluations. 
 
-- [ ] Remove 'Deleting' from the `sed` part. Regarding the copyright:
+- [x] Remove 'Deleting' from the `sed` part. Regarding the copyright:
   either give the solution with `sed` or using `head` and `tail`.
 
 I am unsure about using Macbeth. Instead, I could use another familiar
