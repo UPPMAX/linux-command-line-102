@@ -16,7 +16,7 @@ Here are the evaluation results of this course:
 No |Dates                    |Evaluations                     |Success score
 ---|-------------------------|--------------------------------|-------------
 1  |2025-06-02 and 2025-06-03|[Evaluation](20250602/README.md)|77%
-2  |2025-12-04 and 2025-12-05|[Evaluation](20251204/README.md)|.
+2  |2025-12-04 and 2025-12-05|[Evaluation](20251204/README.md)|82%
 
 <!-- markdownlint-enable MD013 -->
 
@@ -28,7 +28,7 @@ No |Dates                    |Evaluations                     |Success score
 No |`n_reg`|`n_learn`| `n_eval`
 ---|-------|---------|-----------
 1  |40     |11 (28%) | 11 (100%)
-2  |74     |26 (35%) | ?26 (100%)
+2  |74     |26 (35%) | ?9+ (...%)
 
 - `n_reg`: number of registrations
 - `n_learn`: number of learners that are present most of the time.
