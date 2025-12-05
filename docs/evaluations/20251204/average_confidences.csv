@@ -1,0 +1,14 @@
+question,mean
+I can make a symbolic link,3.11
+I can use sed,3.67
+I can use environment variables,3.89
+I can use regular expressions,3.89
+I can use cut,4
+I can use grep,4.11
+I can use gzip,4.11
+I can use redirection,4.11
+I can use tar,4.11
+I can write a bash script,4.22
+I can use pipe,4.56
+I know what wc is,4.67
+I can use wc,4.78
