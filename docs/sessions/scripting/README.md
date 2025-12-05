@@ -160,6 +160,16 @@ and allows you to continue studying after this course
     echo "$greeting $name!"
     ```
 
+    Even better would be to wrap the variable name in curly backets:
+
+    ```bash
+    #!/bin/bash
+    greeting="Hello"
+    name="World"
+
+    echo "${greeting} ${name}!"
+    ```
+
     You can now (still) run it with:
 
     ```bash
@@ -226,7 +236,7 @@ Write a script that counts and shows the number of files in our current folder:
 
     greeting="Hello"
 
-    echo "$greeting $name!"
+    echo "${greeting} ${name}!"
     ```
 
     You can (still) run it with:
@@ -278,7 +288,7 @@ Write a script that counts and shows the number of files in our current folder:
     if [[ "${name}" == "Bond" ]] ; then
       echo "It is Bond. James Bond!"
     else
-      echo "$greeting $name!"
+      echo "${greeting} ${name}!"
     fi
     ```
 
@@ -383,7 +393,7 @@ such as the output of a Bash command.
     if [[ "${name}" == "Bond" ]] ; then
         echo "It is Bond. James Bond!"
     else
-        echo "$greeting $name!"
+        echo "${greeting} ${name}!"
     fi
     ```
 
