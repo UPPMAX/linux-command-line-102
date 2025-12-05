@@ -49,6 +49,12 @@ tags:
 which means it is considered a fundamental tool
 and is likely to be available on your operating system.
 
+`sed` finds text that matches a regular expression and can replace it:
+
+```text
+cat macbeth.txt | sed 's/[A-Z][a-z][a-z]*land/Sweden/g'
+```
+
 `sed` (short for 'stream editor')
 can do what `grep` can do and more:
 it is 'a non-interactive command-line text editor'

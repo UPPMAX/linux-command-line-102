@@ -66,7 +66,20 @@ such as a first name, a last name, a phone number, etc.
 which means it is considered a fundamental tool
 and is likely to be available on your operating system.
 
-`grep` finds text that matches a regular expression.
+`grep` finds text that matches a regular expression:
+
+```text
+$ cat macbeth.txt | grep "[A-Z][a-z]*land"
+Scene III. England. Before the King's Palace.
+DUNCAN, King of Scotland.
+MACDUFF, Nobleman of Scotland.
+LENNOX, Nobleman of Scotland.
+ROSS, Nobleman of Scotland.
+MENTEITH, Nobleman of Scotland.
+ANGUS, Nobleman of Scotland.
+CAITHNESS, Nobleman of Scotland.
+SIWARD, Earl of Northumberland, General of the English Forces.
+```
 
 ## Exercises
 
