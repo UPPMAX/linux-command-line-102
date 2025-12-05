@@ -13,7 +13,7 @@
 The weakest sessions were `sed` and regular expressions.
 I've already simplified `sed`.
 
-```
+```text
 question,mean
 I can make a symbolic link,3.11
 I can use sed,3.67
@@ -48,7 +48,7 @@ I can use wc,4.78
   I feel happy doing them at my own speed later.
 - Good! Maybe 5% too fast at some points
 
-Hmmm, no idea what to do with this. Seems good, no? 
+Hmmm, no idea what to do with this. Seems good, no?
 
 ### Future topics
 
@@ -57,7 +57,7 @@ Hmmm, no idea what to do with this. Seems good, no?
 - More specifically using Linux at an HPC cluster,
   for example starting jobs from scripts and good heuristics related to that.
 
-Hmmm, no idea what to do with this. Seems good, no? 
+Hmmm, no idea what to do with this. Seems good, no?
 
 ### [Other comments](comments.txt)
 
