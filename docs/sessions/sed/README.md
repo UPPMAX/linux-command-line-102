@@ -59,7 +59,7 @@ doing so by hand).
 
 ## 2. Overview
 
-![Mindmap](mindmap.png)
+![Mindmap](mindmap_no_deletion.png)
 
 ## 3. Types of operations
 
