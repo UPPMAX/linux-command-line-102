@@ -374,7 +374,7 @@ such as the output of a Bash command.
 
     for filename in ${filenames}
     do
-        echo "I found a file called {filename}!"
+        echo "I found a file called ${filename}!"
     done
     ```
 
