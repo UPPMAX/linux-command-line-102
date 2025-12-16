@@ -33,7 +33,6 @@
 - Mostly good. Some exercises maybe didn't get enough time, but since they're easy to follow and available online I feel happy doing them at my own speed later.
 - Good! Maybe 5% too fast at some points
 - Good.
-- NA
 - Good
 - It was adequate
 - good pace of teaching, easy to follow, enough time for the excercises

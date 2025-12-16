@@ -44,16 +44,16 @@ tags:
 
 ## 1. Why use `sed`?
 
-`sed` is among
-[the list of 'Portable Operating System Interface' (POSIX) commands](https://en.wikipedia.org/wiki/List_of_POSIX_commands),
-which means it is considered a fundamental tool
-and is likely to be available on your operating system.
-
 `sed` finds text that matches a regular expression and can replace it:
 
 ```text
 cat macbeth.txt | sed 's/[A-Z][a-z][a-z]*land/Sweden/g'
 ```
+
+`sed` is among
+[the list of 'Portable Operating System Interface' (POSIX) commands](https://en.wikipedia.org/wiki/List_of_POSIX_commands),
+which means it is considered a fundamental tool
+and is likely to be available on your operating system.
 
 `sed` (short for 'stream editor')
 can do what `grep` can do and more:

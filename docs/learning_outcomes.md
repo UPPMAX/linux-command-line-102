@@ -41,6 +41,11 @@
     - Learners can use `if` statements in Bash scripts
     - Learners can use `for` statements  in Bash scripts
 
+    !!! warning "Not in Bash scripting"
+
+        - Bash variable expansion
+        - The multiple syntaxes of an `if` statement
+
 ??? note "[Environment variables](sessions/env_vars.md)"
 
     - Learners can create, read and write to environment variables

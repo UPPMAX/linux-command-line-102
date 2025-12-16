@@ -15,19 +15,19 @@ I've already simplified `sed`.
 
 ```text
 question,mean
-I can make a symbolic link,3.11
-I can use sed,3.67
-I can use environment variables,3.89
-I can use regular expressions,3.89
-I can use cut,4
-I can use grep,4.11
-I can use gzip,4.11
-I can use redirection,4.11
-I can use tar,4.11
-I can write a bash script,4.22
-I can use pipe,4.56
-I know what wc is,4.67
-I can use wc,4.78
+I can make a symbolic link,3.6
+I can use sed,3.6
+I can use cut,3.93
+I can use environment variables,4
+I can use redirection,4.07
+I can use regular expressions,4.13
+I can use gzip,4.27
+I can use tar,4.27
+I can use grep,4.33
+I can write a bash script,4.4
+I can use pipe,4.53
+I can use wc,4.53
+I know what wc is,4.53
 ```
 
 - [ ] Consider adding a regular expression quiz. Or suggest to remove `sed`
@@ -47,6 +47,11 @@ I can use wc,4.78
   but since they're easy to follow and available online
   I feel happy doing them at my own speed later.
 - Good! Maybe 5% too fast at some points
+- Good.
+- Good
+- It was adequate
+- good pace of teaching, easy to follow, enough time for the excercises
+- Overall very good
 
 Hmmm, no idea what to do with this. Seems good, no?
 
@@ -56,6 +61,7 @@ Hmmm, no idea what to do with this. Seems good, no?
 - AWK
 - More specifically using Linux at an HPC cluster,
   for example starting jobs from scripts and good heuristics related to that.
+- Parallel computation in python
 
 Hmmm, no idea what to do with this. Seems good, no?
 
@@ -122,3 +128,41 @@ Yay! I agree:
   Otherwise, thank you for the great course!
 
 I never showed a terminal, so I am fine here :-)
+
+- This course didn’t do it for me. Most things were too easy,
+  I misinterpreted the level when signing up.
+  The exercises were fine I guess, but I didn’t like the Bash scripting e-book,
+  it doesn’t explain anything.
+  The [official documentation](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents)
+  is much better.
+  For example, the page in the book about conditionals has this
+  example `if [[ "${username}" == "${admin}" ]] ` which isn't understandable
+  without explaining how Bash variable expansion works, and neither
+  the curly braces nor the quotes are actually needed in this case.
+  But again, I recognize that I'm not who this course is for.
+
+It is too bad that this has happened. I have checked the learning outcomes:
+they do state **can use** instead of 'deeply understand'. To help prevent
+this, I've added non-goals to the learning outcomes.
+
+I like the materials the learner suggested and immediately learned
+something new upon reading it. 
+
+I hope I took good care of this person. In my reflection of that day, I read:
+'Because some already know Bash well,
+I encouraged those to read the material about AWK', hinting that I may have
+done so.
+
+- is a really good course
+- I liked the structure of the self-learning exercises.
+  It is also good to provide the solution to the exercises hidden,
+  so one can go back an check.
+
+Yay!
+
+- A bit more practical exercises and maybe some real world use cases if that
+  is possible. I always use history | grep command since that is amazing.
+  I really liked Richels style of teaching
+  that was very nice and more practical.
+
+Great!
