@@ -1,7 +1,7 @@
 #!/bin/env Rscript
 
 read_data <- function() {
-  readr::read_csv("early_responses.csv", show_col_types = FALSE)
+  readr::read_csv("responses.csv", show_col_types = FALSE)
 }
 
 t <- read_data()

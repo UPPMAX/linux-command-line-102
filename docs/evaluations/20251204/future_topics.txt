@@ -1,3 +1,5 @@
 conda & environments/git
 AWK
 More specifically using Linux at an HPC cluster, for example starting jobs from scripts and good heuristics related to that.
+job resources, partitions, practical examples of how to use the resources
+Parallel computation in python
