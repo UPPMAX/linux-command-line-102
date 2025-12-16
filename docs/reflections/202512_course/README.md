@@ -34,7 +34,7 @@ I know what wc is,4.53
 
 ### Pace
 
-- ok
+- OK
 - Fast. But a lot to cover
 - Bit fast
 - Very appropriate, good timing
@@ -162,7 +162,7 @@ Yay!
 
 - A bit more practical exercises and maybe some real world use cases if that
   is possible. I always use history | grep command since that is amazing.
-  I really liked Richels style of teaching
+  I really liked Richel's style of teaching
   that was very nice and more practical.
 
 Great!

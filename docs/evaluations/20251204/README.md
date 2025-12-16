@@ -25,7 +25,7 @@
 
 ### [Pace](pace.txt)
 
-- ok
+- OK
 - Fast. But a lot to cover
 - Bit fast
 - Very appropriate, good timing
@@ -70,7 +70,7 @@
   and of course all knowledge is good knowledge.
   But it might be good to have another look at what takes
   the most time and if it has to take so much time.
-  I appreciated Richels exercises a lot as the latter/more advanced ones
+  I appreciated Richel's exercises a lot as the latter/more advanced ones
   were clearly labelled optional,
   and there were good instructions for what to do
   when finished or uninterested.
