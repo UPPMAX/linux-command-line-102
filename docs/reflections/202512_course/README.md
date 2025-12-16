@@ -65,7 +65,7 @@ Hmmm, no idea what to do with this. Seems good, no?
 
 Hmmm, no idea what to do with this. Seems good, no?
 
-### [Other comments](comments.txt)
+### Other comments
 
 - I liked both: "type along" and "break out rooms" with a teacher jumping in
   to check if all is going well

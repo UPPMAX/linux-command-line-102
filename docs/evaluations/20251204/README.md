@@ -10,8 +10,8 @@
 
 ## Analysis
 
-- [Evaluation results (csv)](results.csv)
-- [Evaluation results (xlsx)](results.xlsx)
+- [Evaluation results (csv)](responses.csv)
+- [Evaluation results (xlsx)](responses.xlsx)
 - [Analysis script](analyse.R)
 - [Average confidence per question (.csv)](average_confidences.csv)
 - [Success score](success_score.txt): 82% (on the same day),
