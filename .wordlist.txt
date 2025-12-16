@@ -184,3 +184,7 @@ ead
 ecute
 SCoRe
 SciLifeLab
+conda
+Hmmm
+labelled
+Yay

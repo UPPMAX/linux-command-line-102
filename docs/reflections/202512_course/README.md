@@ -50,7 +50,7 @@ I know what wc is,4.53
 - Good.
 - Good
 - It was adequate
-- good pace of teaching, easy to follow, enough time for the excercises
+- good pace of teaching, easy to follow, enough time for the exercises
 - Overall very good
 
 Hmmm, no idea what to do with this. Seems good, no?
@@ -92,7 +92,7 @@ this was new to this course.
   and of course all knowledge is good knowledge.
   But it might be good to have another look at what takes
   the most time and if it has to take so much time.
-  I appreciated Richels exercises a lot as the latter/more advanced ones
+  I appreciated Richel's exercises a lot as the latter/more advanced ones
   were clearly labelled optional,
   and there were good instructions for what to do
   when finished or uninterested.
@@ -119,7 +119,7 @@ Yay! I agree:
 
 - [x] Add a simple example of what each tool does
 
-- A great course of a very good size (contentwise) and teaching tempo.
+- A great course of a very good size (content-wise) and teaching tempo.
   All things I have encontered and was not confident with have been covered
   incl. grep, Bash, awk!
   The only desire is to keep the terminal window wide
