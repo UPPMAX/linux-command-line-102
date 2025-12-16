@@ -136,7 +136,7 @@ I never showed a terminal, so I am fine here :-)
   The [official documentation](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents)
   is much better.
   For example, the page in the book about conditionals has this
-  example `if [[ "${username}" == "${admin}" ]] ` which isn't understandable
+  example `if [[ "${username}" == "${admin}" ]]` which isn't understandable
   without explaining how Bash variable expansion works, and neither
   the curly braces nor the quotes are actually needed in this case.
   But again, I recognize that I'm not who this course is for.
@@ -146,7 +146,7 @@ they do state **can use** instead of 'deeply understand'. To help prevent
 this, I've added non-goals to the learning outcomes.
 
 I like the materials the learner suggested and immediately learned
-something new upon reading it. 
+something new upon reading it.
 
 I hope I took good care of this person. In my reflection of that day, I read:
 'Because some already know Bash well,

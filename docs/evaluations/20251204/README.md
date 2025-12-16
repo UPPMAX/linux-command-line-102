@@ -5,7 +5,8 @@
 - Number of learners on Day 1:
     - Showing up: 26 (35% showing up)
     - Being present most of the time: 21 (81% actively participating)
-- Number of filled-in evaluations: 9 (on the same day, 43%) and 15 (within 2 weeks, 71%)
+- Number of filled-in evaluations:
+  9 (on the same day, 43%) and 15 (within 2 weeks, 71%)
 - [Reflection by Richel](../../reflections/202512_course/README.md)
 
 ## Analysis
@@ -30,8 +31,12 @@
 - Very appropriate, good timing
 - The pace of the redirection session was too fast for me.
 - It's good
-- I thought the overall pace of the course was very good, especially comparing it to the Linux101 course. I liked the type-alongs especially from the first day.
-- Mostly good. Some exercises maybe didn't get enough time, but since they're easy to follow and available online I feel happy doing them at my own speed later.
+- I thought the overall pace of the course was very good,
+  especially comparing it to the Linux101 course.
+  I liked the type-alongs especially from the first day.
+- Mostly good. Some exercises maybe didn't get enough time,
+  but since they're easy to follow and available online
+  I feel happy doing them at my own speed later.
 - Good! Maybe 5% too fast at some points
 - Good.
 - Good
@@ -43,7 +48,8 @@
 
 - conda & environments/git
 - AWK
-- More specifically using Linux at an HPC cluster, for example starting jobs from scripts and good heuristics related to that.
+- More specifically using Linux at an HPC cluster,
+  for example starting jobs from scripts and good heuristics related to that
 - job resources, partitions, practical examples of how to use the resources
 - Parallel computation in python
 
@@ -94,9 +100,9 @@
   The exercises were fine I guess, but I didn’t like the Bash scripting e-book,
   it doesn’t explain anything.
   The official documentation is much better
-  (https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents).
+  (<https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents>).
   For example, the page in the book about conditionals has this
-  example `if [[ "${username}" == "${admin}" ]] ` which isn't understandable
+  example `if [[ "${username}" == "${admin}" ]]` which isn't understandable
   without explaining how Bash variable expansion works, and neither
   the curly braces nor the quotes are actually needed in this case.
   But again, I recognize that I'm not who this course is for.
