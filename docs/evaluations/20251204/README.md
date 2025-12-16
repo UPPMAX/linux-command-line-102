@@ -3,9 +3,10 @@
 - Date: 2025-12-04 and 2025-12-04
 - Number of registrations: 74
 - Number of learners on Day 1:
-    - Showing up: 26 (...% showing up)
-    - Being present most of the time: 21 (...% actively participating)
-- Number of filled-in evaluations: 9 (...)
+    - Showing up: 26 (35% showing up)
+    - Being present most of the time: 21 (81% actively participating)
+- Number of filled-in evaluations: 9 (on the same day, 43%) and 15 (within 2 weeks, 71%)
+- [Reflection by Richel](../../reflections/202512_course/README.md)
 
 ## Analysis
 
@@ -13,7 +14,8 @@
 - [Evaluation results (xlsx)](results.xlsx)
 - [Analysis script](analyse.R)
 - [Average confidence per question (.csv)](average_confidences.csv)
-- [Success score](success_score.txt): 83%
+- [Success score](success_score.txt): 82% (on the same day),
+  83% (within 2 weeks)
 
 ![Course ratings](course_rating.png)
 ![All confidences](all_confidences.png)
