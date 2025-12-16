@@ -102,7 +102,7 @@ this was new to this course.
   and different options in text,
   and i found myself a bit confused about what the actual difference was
   and what things i could type along with and
-  what i didnt have the tools for executing
+  what I didn't have the tools for executing
 
 Great! Nice to read about the variable-size breakout rooms being appreciated:
 this was new to this course.
@@ -120,7 +120,7 @@ Yay! I agree:
 - [x] Add a simple example of what each tool does
 
 - A great course of a very good size (content-wise) and teaching tempo.
-  All things I have encontered and was not confident with have been covered
+  All things I have encountered and was not confident with have been covered
   incl. grep, Bash, awk!
   The only desire is to keep the terminal window wide
   or something when sharing so that command lines are not wrapped

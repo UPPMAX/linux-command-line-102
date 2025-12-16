@@ -36,7 +36,7 @@
 - Good.
 - Good
 - It was adequate
-- good pace of teaching, easy to follow, enough time for the excercises
+- good pace of teaching, easy to follow, enough time for the exercises
 - Overall very good
 
 ### [Future topics](future_topics.txt)
@@ -74,7 +74,7 @@
   and different options in text,
   and i found myself a bit confused about what the actual difference was
   and what things i could type along with and
-  what i didnt have the tools for executing
+  what I didn't have the tools for executing
 - Exercises and materials are very good overall,
   they're very useful for future reference as well.
   I think the instruction was sometimes unclear or too fast.
@@ -82,8 +82,8 @@
   quite abstractly and very technically.
   Its much easier to grasp its use case and what it does with the examples,
   so before that any explanation is hard to grasp.
-- A great course of a very good size (contentwise) and teaching tempo.
-  All things I have encontered and was not confident with have been covered
+- A great course of a very good size (content-wise) and teaching tempo.
+  All things I have encountered and was not confident with have been covered
   incl. grep, Bash, awk!
   The only desire is to keep the terminal window wide
   or something when sharing so that command lines are not wrapped
@@ -106,5 +106,5 @@
   so one can go back an check.
 - A bit more practical exercises and maybe some real world use cases if that
   is possible. I always use history | grep command since that is amazing.
-  I really liked Richels style of teaching
+  I really liked Richel's style of teaching
   that was very nice and more practical.
