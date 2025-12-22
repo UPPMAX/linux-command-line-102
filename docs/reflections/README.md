@@ -10,6 +10,7 @@ Here are the reflections of this course:
 | 2.1 | 2025-12-04, Day 1 | [Reflection](20251204/README.md)      |
 | 2.2 | 2025-12-05, Day 2 | [Reflection](20251205/README.md)      |
 | 2   | 2025-12-04, course| [Reflection](202512_course/README.md) |
-| 3.1 | 2026-06-01, Day 1 | [Reflection](20260601/README.md)      |
-| 3.2 | 2026-06-02, Day 2 | [Reflection](20260602/README.md)      |
-| 3   | 2026-06-02, course| [Reflection](202606_course/README.md) |
+| 3   | 2026-02-04, course| [Reflection](202602_course/README.md) |
+| 4.1 | 2026-06-01, Day 1 | [Reflection](20260601/README.md)      |
+| 4.2 | 2026-06-02, Day 2 | [Reflection](20260602/README.md)      |
+| 4   | 2026-06-02, course| [Reflection](202606_course/README.md) |
