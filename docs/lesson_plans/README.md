@@ -13,4 +13,4 @@ Here are the lesson plans of this course:
 | 4.2 | 2026-06-02, Day 2 | [Lesson plan](20260602/README.md) |
 
 - `No`: `x` means 'the full course iteration `x`, `x.y` denotes
-  'the `y`th part of course iteration `x`
+  'the `y'th` part of course iteration `x`
