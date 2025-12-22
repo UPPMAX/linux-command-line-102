@@ -1,4 +1,4 @@
-# Reflection 2025-06 course
+# Reflection 2025-12 course
 
 - [Lesson plan day 1](../../lesson_plans/20251204/README.md)
 - [Lesson plan day 2](../../lesson_plans/20251205/README.md)
