@@ -39,7 +39,7 @@ nav:
       - Schedule: schedule.md
       - Prerequisites: prerequisites.md
       - Evaluation: evaluation.md
-  - Lessons Day 1 (smarter command line):
+  - Lessons Morning (smarter command line):
       - Introduction: sessions/intro.md
       - Linux pipe: sessions/pipe.md
       - Linux permissions/owner: sessions/chown-chmod.md
@@ -47,7 +47,7 @@ nav:
       - sessions/regular_expressions_and_grep/README.md
       - sessions/sed/README.md
       - (optional) Using the AWK programming language: sessions/awk/README.md
-  - Lessons Day 2 (smarter bash):
+  - Lessons Afternoon (smarter bash):
       - Scripting: sessions/scripting/README.md
       - Redirects: sessions/redirects.md
       - Environment variables: sessions/env_vars.md

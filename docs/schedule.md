@@ -10,7 +10,7 @@ tags:
 
     See [the course dates](course_dates.md).
 
-## Morning 1: smarter command-line
+## Morning: smarter command-line
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 
@@ -27,15 +27,15 @@ tags:
 
 - Teachers: `B`: Birgitte Brydsö, `R`: Richèl Bilderbeek
 
-## Morning 2: smarter bash
+## Afternoon: smarter bash
 
 | Time        | Topic                                           | Teacher |
 | ----------- | ----------------------------------------------- | ------- |
-| 9:00-10:00  | [Bash scripting](sessions/scripting/README.md)  | R       |
-| 10:00-10:15 | Break                                           | .       |
-| 10:15-11:00 | Advanced redirect, environment variables, links | B       |
-| 11:00-11:15 | Break                                           | .       |
-| 11:15-11:53 | Quality of life, compressing,                   | B       |
-| 11:53-12:00 | [Evaluation](evaluation.md)                     | R       |
+| 13:00-14:00  | [Bash scripting](sessions/scripting/README.md)  | R       |
+| 14:00-14:15 | Break                                           | .       |
+| 14:15-15:00 | Advanced redirect, environment variables, links | B       |
+| 15:00-15:15 | Break                                           | .       |
+| 15:15-15:53 | Quality of life, compressing,                   | B       |
+| 15:53-16:00 | [Evaluation](evaluation.md)                     | R       |
 
 - Teachers: `B`: Birgitte Brydsö, `R`: Richèl Bilderbeek
