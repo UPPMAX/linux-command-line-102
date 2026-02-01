@@ -17,6 +17,8 @@ As default, **standard output** and **standard error** are sent to the screen an
 
 **Example**: You run a command, for instance ``ls``; it throws the output to the screen. However, if you want to save it to a file instead you could use **output redirection**.
 
+![overview](../images/redirect-overview.png)
+
 Redirects are particularly useful if we are working with large outputs/inputs, multiple outputs/inputs, or wish to save the output for later.
 
 It may also be that we want to use the output from one command as input for another command - this can be solved with **pipes** as we saw yesterday, but saving the intermittent result to file is also an option.
