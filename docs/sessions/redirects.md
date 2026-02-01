@@ -177,7 +177,7 @@ So, sometimes you want to write more than one output stream to the same file. Co
 
 This is the same as that but longer, but maybe more descriptive:
 
-    - ``command 1> file 2>&1``
+- ``command 1> file 2>&1``
 
 ![Redirect stdout and stderr](../images/redirect-stderr-stdout.png)
 
