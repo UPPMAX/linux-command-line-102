@@ -102,7 +102,7 @@ You can create your own variables to use, for instance in **scripts**.
     export OMP_NUM_THREADS=8
     ```
 
-!! note "More useful example of creating your own variable"
+!!! note "More useful example of creating your own variable"
 
     Assume you have a script you run in a different directory than where you have the datafiles. You could then use an environment variable to give the path to the data directory instead of each time writing the full path:
 
