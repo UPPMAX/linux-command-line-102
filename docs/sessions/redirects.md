@@ -15,9 +15,9 @@ When running a command which can take input, give output, or do both, redirectio
 
 As default, **standard output** and **standard error** are sent to the screen and **standard input** comes from the keyboard/mouse.
 
-**Example**: You run a command, for instance ``ls``; it throws the output to the screen. However, if you want to save it to a file instead you could use **output redirection**.
-
 ![overview](../images/redirect-overview.png)
+
+**Example**: You run a command, for instance ``ls``; it throws the output to the screen. However, if you want to save it to a file instead you could use **output redirection**.
 
 Redirects are particularly useful if we are working with large outputs/inputs, multiple outputs/inputs, or wish to save the output for later.
 
@@ -50,6 +50,16 @@ Let us assume you want to save the output of a command to a file and that you do
 
     - ``command > file`` could be written ``command 1> file``
     - ``command < file`` could be written ``command 0< file``
+
+    **Redirecting stdout to file**
+
+    ![redirect stdout](../images/redirect-stdout.png)
+
+    The stderr still goes to screen. 
+
+    **Redirecting stderr to file**
+
+    ![Redirect stdout](../images/redirect-stderr.png)
 
 ### Examples
 
@@ -168,6 +178,8 @@ So, sometimes you want to write more than one output stream to the same file. Co
 This is the same as that but longer, but maybe more descriptive:
 
     - ``command 1> file 2>&1``
+
+![Redirect stdout and stderr](../images/redirect-stderr-stdout.png)
 
 ### Examples
 
