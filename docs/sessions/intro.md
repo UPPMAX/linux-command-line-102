@@ -19,6 +19,7 @@ For many commands it does not matter which shell you are using, but there are se
 ## Important stuff
 
 - We have a page with important information: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQBunrsmVEdHQK83ZwRbe8pKAV8qX_yz6iBeJNIgjy607_U" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQBunrsmVEdHQK83ZwRbe8pKAV8qX_yz6iBeJNIgjy607_U</a>
+- We have a [page with important information](https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQBunrsmVEdHQK83ZwRbe8pKAV8qX_yz6iBeJNIgjy607_U).
 - The Question and Answer page for questions to the instructors during the course: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQDuz8YWkZKbQYbSMu4G4tieATvCSmWoqCO7M3l1-hoJbS4" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQDuz8YWkZKbQYbSMu4G4tieATvCSmWoqCO7M3l1-hoJbS4</a>
 
 ## Exercises
