@@ -30,6 +30,12 @@ theme:
     - content.action.view
   tabs: true
   language: en
+  # Keyboard shortcuts for navigation, from https://www.mkdocs.org/user-guide/choosing-your-theme/
+  shortcuts:
+    help: 191    # ?
+    next: 78     # n
+    previous: 80 # p
+    search: 83   # s
 
 nav:
   - Common:

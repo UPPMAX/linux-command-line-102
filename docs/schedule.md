@@ -31,7 +31,7 @@ tags:
 
 | Time        | Topic                                           | Teacher |
 | ----------- | ----------------------------------------------- | ------- |
-| 13:00-14:00  | [Bash scripting](sessions/scripting/README.md)  | R       |
+| 13:00-14:00 | [Bash scripting](sessions/scripting/README.md)  | R       |
 | 14:00-14:15 | Break                                           | .       |
 | 14:15-15:00 | Advanced redirect, environment variables, links | B       |
 | 15:00-15:15 | Break                                           | .       |
