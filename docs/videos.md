@@ -54,6 +54,6 @@ Here is an overview of the videos in this course.
     - [Feedback](https://youtu.be/1TWkDTePzxE?t=1403)
     - [Conclusion](https://youtu.be/1TWkDTePzxE?t=1503)
 
-## Or a playlist for the course
+## Full playlist of the course 
 
-- [https://www.youtube.com/watch?v=oT9VlB1-FeU&list=PL6jMHLEmPVLzPdi1CsGWFQETAHykdbf7B](https://www.youtube.com/watch?v=oT9VlB1-FeU&list=PL6jMHLEmPVLzPdi1CsGWFQETAHykdbf7B)
+- [The full playlist for the course](https://www.youtube.com/watch?v=oT9VlB1-FeU&list=PL6jMHLEmPVLzPdi1CsGWFQETAHykdbf7B)
