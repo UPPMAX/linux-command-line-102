@@ -77,16 +77,21 @@ not_in_nav: |
   evaluations/20250602/README.md
   evaluations/20251204/README.md
   evaluations/20260601/README.md
+  evaluations/20260204/README.md
   lesson_plans/20250602/README.md
   lesson_plans/20250603/README.md
   lesson_plans/20251204/README.md
   lesson_plans/20251205/README.md
   lesson_plans/20260601/README.md
   lesson_plans/20260602/README.md
+  lesson_plans/20151204/README.md
+  lesson_plans/20241205/README.md
+  lesson_plans/20260204/README.md
   meeting_notes/20250403.md
   meeting_notes/20250409.md
   misc/test_admonitions.md
   misc/test_mermaid.md
+  reflections/20241205/README.md
   reflections/20250602/README.md
   reflections/20250603/README.md
   reflections/202506_course/README.md
@@ -96,6 +101,8 @@ not_in_nav: |
   reflections/20260601/README.md
   reflections/20260602/README.md
   reflections/202606_course/README.md
+  reflections/20260204/README.md
+  reflections/202602_course/README.md
 
 plugins:
   - search
