@@ -25,8 +25,8 @@ UPPMAX is chosen for practical reasons unrelated to its importance.
 | Filename                                     | Description                                                                                                                                 |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`mlc_config.json`](mlc_config.json)         | Configuration of the link checker, use `markdown-link-check --config mlc_config.json --quiet docs/**/*.md` to do link checking locally      |
-| [.checkov.yaml](.checkov.yaml)               | Configuration of [checkov](https://www.checkov.io/), run [scripts/run_checkov.sh](scripts/run_checkov.sh)                                   |
-| [.shellcheckrc](.shellcheckrc)               | Configuration of the Bash style checker, run [scripts/run_bash_check.sh](scripts/run_bash_check.sh)                                         |
+| [`.checkov.yaml`](.checkov.yaml)             | Configuration of [checkov](https://www.checkov.io/), run [scripts/run_checkov.sh](scripts/run_checkov.sh)                                   |
+| [`.shellcheckrc`](.shellcheckrc)             | Configuration of the Bash style checker, run [scripts/run_bash_check.sh](scripts/run_bash_check.sh)                                         |
 | [`.spellcheck.yml`](.spellcheck.yml)         | Configuration of the spell checker, use `pyspelling -c .spellcheck.yml` to do a spell check locally                                         |
 | [`.wordlist.txt`](.wordlist.txt)             | Whitelisted words for the spell checker, use `pyspelling -c .spellcheck.yml` to do a spell check locally                                    |
 | [`.markdownlint.jsonc`](.markdownlint.jsonc) | Configuration of the Markdown linter, use `markdownlint "**/*.md"` to do Markdown linting locally. The name of this file is a default name. |
