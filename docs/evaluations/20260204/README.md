@@ -25,7 +25,7 @@
 
 - Nice, good to follow
 - fine
-- I think it was a good pacing. 
+- I think it was a good pacing.
   Sometimes a little more time might have been needed for the excercises.
 - great! I managed to follow along
 - Most of lectures were rather fast, and not much time for exercises
