@@ -311,19 +311,27 @@ As Macbeth uses this term, it can confuse the modern day reader.
 
     There are many patterns that will work:
 
+    <!-- markdownlint-disable MD056 --><!-- Pipes confuse markdownlint -->
+
     Pattern             |Example full solution
     --------------------|---------------------------------------------
     `[Ww]eird [Ss]ister`|`cat macbeth.txt | grep "[Ww]eird [Ss]ister"`
     `[wW]eird [sS]ister`|`cat macbeth.txt | grep "[wW]eird [sS]ister"`
     `eird .ister`       |`cat macbeth.txt | grep "eird .ister"`
 
+    <!-- markdownlint-enable MD056 -->
+
     Alternatively, one can use the `--ignore-case` (or `-i`)
     flag and use the pattern `weird sister`:
+
+    <!-- markdownlint-disable MD056 --><!-- Pipes confuse markdownlint -->
 
     Pattern             |Example full solution
     --------------------|---------------------------------------------
     `weird sister`      |`cat macbeth.txt | grep --ignore-case "weird sister"`
     `weird sister`      |`cat macbeth.txt | grep -i "weird sister"`
+
+    <!-- markdownlint-enable MD056 -->
 
     Alternatively, one can `grep` directly on the file:
 
@@ -369,6 +377,7 @@ To be precise, search for all matches that:
     You can use this pattern in multiple ways:
 
     <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+    <!-- markdownlint-disable MD056 --><!-- Pipes confuse markdownlint -->
 
     Example solution                          |Description
     ------------------------------------------|--------------------------------------
@@ -376,6 +385,7 @@ To be precise, search for all matches that:
     `cat macbeth.txt | grep "[A-Z][a-z]*land"`|Work on the output of `cat` via a pipe
 
     <!-- markdownlint-enable MD013 -->
+    <!-- markdownlint-enable MD056 -->
 
     In either case, the (shortened) output will look like this:
     
