@@ -301,7 +301,7 @@ and download it manually and put it in your favorite folder.
 
 In Macbeth, there are some mentions of witches.
 The word 'witches' is still being used.
-The term 'weird sisters', however, is a less-known synonymn for witches.
+The term 'weird sisters', however, is a less-known synonym for witches.
 As Macbeth uses this term, it can confuse the modern day reader.
 
 - In Macbeth, how often is the term 'weird sisters' being used?
