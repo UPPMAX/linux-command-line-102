@@ -127,9 +127,10 @@ Tip: it is at the top.
 
 ### Exercise 1.3: what are the other `grep`s?
 
-In the fourth line of the `grep` manual, the
-`grep`-like tools `egrep`, `fgrep` and `rgrep` are mentioned.
-What are these?
+In the fourth line of the `grep` manual, other
+`grep`-like tools `egrep`, `fgrep` and `rgrep`
+(which tools exactly may differ)
+are mentioned. What are these?
 
 Tips:
 
@@ -140,6 +141,11 @@ Tips:
   in the `OPTIONS | Pattern syntax` section
 
 ??? tip "Answer"
+
+    Again, you may have an other list of `grep`-like tools.
+    Here the manual of `grep` on Ubuntu (a Linux distribution)
+    is used as an example. Even though your `grep` manual may differ,
+    the procedure is the same.
 
     The first part of the answer is in the description:
 
@@ -208,7 +214,7 @@ What did that regular expression do?
 
 ??? tip "Answer"
 
-    This is what is shown on screen:
+    Your output will be similar to this:
 
     <!-- markdownlint-disable MD013 --><!-- Answer will be shown as-is, hence will break 80 characters per line -->
 
@@ -262,12 +268,135 @@ and do lessons 1 to (and including) 11.
 
 ---
 
-## (optional) Exercise 4: can `grep` do ...?
+## Exercise 4
+
+!!! info "Macbeth"
+
+    ![Macbeth](macbeth_smaller.jpg)
+
+    > [source](https://pixabay.com/illustrations/william-shakespeare-macbeth-poster-67764/)
+
+In this exercise, we will work Macbeth, a tale written by William Shakespeare.
+
+---
+
+## Exercise 4.1: download Macbeth
+
+Download the file from a terminal as such:
+
+<!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
+
+```bash
+wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
+```
+
+<!-- markdownlint-enable MD013 -->
+
+If that does not work, go to [the URL](https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt)
+and download it manually and put it in your favorite folder.
+
+---
+
+## Exercise 4.2: find how often witches are mentioned
+
+In Macbeth, there are some mentions of witches.
+The word 'witches' is still being used.
+The term 'weird sisters', however, is a less-known synonymn for witches.
+As Macbeth uses this term, it can confuse the modern day reader.
+
+- In Macbeth, how often is the term 'weird sisters' being used?
+  It is used!
+
+???- question "Answer"
+
+    There are many patterns that will work:
+
+    Pattern             |Example full solution
+    --------------------|---------------------------------------------
+    `[Ww]eird [Ss]ister`|`cat macbeth.txt | grep "[Ww]eird [Ss]ister"`
+    `[wW]eird [sS]ister`|`cat macbeth.txt | grep "[wW]eird [sS]ister"`
+    `eird .ister`       |`cat macbeth.txt | grep "eird .ister"`
+
+    Alternatively, one can use the `--ignore-case` (or `-i`)
+    flag and use the pattern `weird sister`:
+
+    Pattern             |Example full solution
+    --------------------|---------------------------------------------
+    `weird sister`      |`cat macbeth.txt | grep --ignore-case "weird sister"`
+    `weird sister`      |`cat macbeth.txt | grep -i "weird sister"`
+
+    Alternatively, one can `grep` directly on the file:
+
+    ```bash
+    grep --ignore-case "weird sister" macbeth.txt
+    ```
+
+    In all cases, the output is:
+
+    ```text
+    The Weird Sisters, hand in hand,
+    title, before, these Weird Sisters saluted me, and referred me to the
+    I dreamt last night of the three Weird Sisters:
+    (And betimes I will) to the Weird Sisters:
+    Saw you the Weird Sisters?
+    ```
+
+    We can count that there are **five** mentions of the 'weird sisters'.
+
+    You can go one step further and use `wc` for a direct answer:
+
+    ```bash
+    grep --ignore-case "weird sister" macbeth.txt | wc --lines
+    ```
+
+    This prints the number 5 on screen.
+
+## Exercise 4.3: find how often countries are mentioned
+
+In Macbeth, there are many place names ending on `land`.
+
+Search for all place names ending on `land` using `grep`.
+To be precise, search for all matches that:
+
+- (1) start with an uppercase character
+- (2) have zero or more lowercase characters
+- (3) end on `land`
+
+???- question "Answer"
+
+    Here, the pattern is `[A-Z][a-z]*land"`.
+
+    You can use this pattern in multiple ways:
+
+    <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
+    Example solution                          |Description
+    ------------------------------------------|--------------------------------------
+    `grep "[A-Z][a-z]*land" macbeth.txt`      |Work directly on the file
+    `cat macbeth.txt | grep "[A-Z][a-z]*land"`|Work on the output of `cat` via a pipe
+
+    <!-- markdownlint-enable MD013 -->
+
+    In either case, the (shortened) output will look like this:
+    
+    ```text
+    Scene III. England. Before the King's Palace.
+    DUNCAN, King of Scotland.
+    MACDUFF, Nobleman of Scotland.
+    ...
+    Hail, King of Scotland!
+    Hail, King of Scotland!
+    Henceforth be earls, the first that ever Scotland
+    ```
+
+---
+
+## (optional) Exercise 5: can `grep` do ...?
 
 Here we'll experience the flexibility of `grep`.
 Pick those topics you are interested in.
 
-??? seealso "(optional) Exercise 4.1: Can `grep` do a case-insensitive match?"
+??? seealso "(optional) Exercise 5.1: Can `grep` do a case-insensitive match?"
 
     Can `grep` do a case-insensitive match?
 
@@ -305,7 +434,7 @@ Pick those topics you are interested in.
 
         <!-- markdownlint-enable MD013 -->
 
-??? seealso "(optional) Exercise 4.2: Can `grep` show the lines that do not match?"
+??? seealso "(optional) Exercise 5.2: Can `grep` show the lines that do not match?"
 
     Can `grep` show the lines that **do not** match?
 
@@ -327,7 +456,7 @@ Pick those topics you are interested in.
         man grep | grep --invert-match " "
         ```
 
-??? seealso "(optional) Exercise 4.3: Can `grep` detect lines in multiple files?"
+??? seealso "(optional) Exercise 5.3: Can `grep` detect lines in multiple files?"
 
     Can `grep` detect lines in multiple files?
 
@@ -350,7 +479,7 @@ Pick those topics you are interested in.
         grep --recursive "ubuntu"
         ```
 
-??? seealso "(optional) Exercise 4.4: Can `grep` detect which files contain a match?"
+??? seealso "(optional) Exercise 5.4: Can `grep` detect which files contain a match?"
 
     Can `grep` detect which files contain a match?
 
@@ -376,7 +505,7 @@ Pick those topics you are interested in.
 
 <!-- markdownlint-disable MD013 --><!-- Indeed a long title, hence will break 80 characters per line -->
 
-??? seealso "(optional) Exercise 4.5: Can `grep` detect which files-with-a-certain-extension contain a match?"
+??? seealso "(optional) Exercise 5.5: Can `grep` detect which files-with-a-certain-extension contain a match?"
 
     <!-- markdownlint-enable MD013 -->
 
