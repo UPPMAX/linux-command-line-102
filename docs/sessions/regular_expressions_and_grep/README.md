@@ -377,7 +377,9 @@ To be precise, search for all matches that:
     You can use this pattern in multiple ways:
 
     <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+    <!-- markdownlint-disable MD052 --><!-- markdownlint thinks to see an image-->
     <!-- markdownlint-disable MD056 --><!-- Pipes confuse markdownlint -->
+    <!-- markdownlint-disable MD060 --><!-- Pipes confuse markdownlint -->
 
     Example solution                          |Description
     ------------------------------------------|--------------------------------------
@@ -385,7 +387,9 @@ To be precise, search for all matches that:
     `cat macbeth.txt | grep "[A-Z][a-z]*land"`|Work on the output of `cat` via a pipe
 
     <!-- markdownlint-enable MD013 -->
+    <!-- markdownlint-enable MD052 -->
     <!-- markdownlint-enable MD056 -->
+    <!-- markdownlint-enable MD060 -->
 
     In either case, the (shortened) output will look like this:
     
