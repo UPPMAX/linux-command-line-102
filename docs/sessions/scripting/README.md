@@ -56,7 +56,7 @@ tags:
 
 ## Why use scripts?
 
-Scripts allow you to run you (bash) commands in an easy and
+Scripts allow you to run you (Bash) commands in an easy and
 reproducible manner.
 
 !!! note "The different spellings"
