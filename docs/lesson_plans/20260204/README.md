@@ -15,12 +15,14 @@ Let's see how I can make the most of this...
 
 These are things from my previous reflections:
 
-- [ ] Let the `grep` exercises work on Macbeth (or something else) too
-- [ ] Consider using a shorter text, or keeping it that long on purpose
+- [x] Let the `grep` exercises work on Macbeth (or something else) too
+- [x] Consider using a shorter text, or keeping it that long on purpose
+
+    - I think it is fine.
 
 Taking a look at the GitHub issues, there is nothing for me.
 
 The schedule is updated, thanks my colleague, which is great!
 
-Let's go through the website...
+Let's go through the website... all looks great...
 

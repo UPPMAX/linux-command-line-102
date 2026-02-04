@@ -28,11 +28,15 @@ The exercises are mostly on the pages, but you need some files to work with for 
 
 You get it with:
 
-- wget <https://github.com/UPPMAX/linux-command-line-201/raw/refs/heads/main/exercises.tar.gz>
+```bash
+wget https://github.com/UPPMAX/linux-command-line-201/raw/refs/heads/main/exercises.tar.gz
+```
 
 Then you unpack it with:
 
-- `tar -zxvf exercises.tar.gz`
+```bash
+tar -zxvf exercises.tar.gz
+```
 
 ## Evaluation
 
