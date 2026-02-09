@@ -1,4 +1,5 @@
 config
+ADHD
 json
 jsonc
 linter
@@ -8,14 +9,14 @@ mlc
 txt
 wordlist
 yml
-
 autocomplete
 Shotts
 pdf
 autocompletes
 scrollable
-
-
+Alvis
+WRF
+ok
 github
 HPC
 hpc

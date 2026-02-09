@@ -42,7 +42,7 @@
 
 ### [Future topics](future_topics.txt)
 
-- Use more data-minded command line tools like nco or ncks
+- Use more data-minded command line tools like `nco` or `ncks`
 - handling climate data, using python from the HPC,
   using some climate model like WRF
 - How to use grep/cut with real ML applications in a real Alvis simulation:

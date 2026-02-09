@@ -82,7 +82,7 @@ Great!
 Fine :-)
 
 - I think it was a good pacing.
-  Sometimes a little more time might have been needed for the excercises.
+  Sometimes a little more time might have been needed for the exercises.
 
 I think this does not apply to my session.
 
@@ -100,7 +100,7 @@ I agree.
 
 I agree. Usually it is two days.
 
-- It was good. I did't finish all the excercises on on the time given
+- It was good. I didn't finish all the exercises on on the time given
   but I didn't feel lost because of it
   and I know I can do them another time
 
@@ -153,7 +153,7 @@ Thanks for the understanding and compliment!
 
 I hope that this does not apply to me.
 
-- I really like Richell energy and personal attention.
+- I really like Richel's energy and personal attention.
   It is very easy to follow and understand.
   Thank you both for the course.
 
