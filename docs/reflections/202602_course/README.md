@@ -120,7 +120,7 @@ Fine :-)
 I regret this: I think we should slow down. I hope this does not apply to
 my session.
 
-### [Other comments](comments.txt)
+### Other comments
 
 - I think all exercises should have solutions and the solutions
   should be more detailed.

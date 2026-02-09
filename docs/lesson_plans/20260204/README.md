@@ -2,7 +2,7 @@
 
 - [Lesson plan](../../lesson_plans/20260204/README.md)
 - [Evaluation](../../evaluations/20260204/README.md)
-- [Reflection](../../reflections/20260204/README.md)
+- [Reflection](../../reflections/202602_course/README.md)
 - Date: 2026-02-04
 - Author: Richel
 - Full course, part of the NAISS Intro Week

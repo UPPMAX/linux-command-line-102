@@ -10,7 +10,7 @@
 
 ## Analysis
 
-- [Evaluation results (csv)](responses.csv)
+- [Evaluation results (csv)](survey.csv)
 - [Analysis script](analyse.R)
 - [Average confidence per question (.csv)](average_confidences.csv)
 - [Success score](success_score.txt): 78% (so far)
