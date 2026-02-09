@@ -26,13 +26,13 @@
 - Nice, good to follow
 - fine
 - I think it was a good pacing.
-  Sometimes a little more time might have been needed for the excercises.
+  Sometimes a little more time might have been needed for the exercises.
 - great! I managed to follow along
 - Most of lectures were rather fast, and not much time for exercises
 - The exercises are good to be hands on,
   I think this helps set the pace in a more authentic manner.
 - Good pace, but maybe too intense for one day
-- It was good. I did't finish all the excercises on on the time given
+- It was good. I didn't finish all the exercises on on the time given
   but I didn't feel lost because of it
   and I know I can do them another time
 - Generally good pace, sometimes a bit too fast
@@ -68,7 +68,7 @@
 - I'm happy with the content of the course, adequate to beginners.
   I'm also satisfy with the performance of the teachers.
   I would suggest more time for doing exercises.
-- I really like Richell energy and personal attention.
+- I really like Richel's energy and personal attention.
   It is very easy to follow and understand.
   Thank you both for the course.
 - Super great material including good practices,

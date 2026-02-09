@@ -48,7 +48,7 @@ I ask how I could help (reply: something like 'not much').
 I wished her luck with her ADHD (reply: something like 'thanks').
 I let her do whatever she thought was best.
 
-## Evalation results
+## Evaluation results
 
 ![Course ratings](../../evaluations/20260204/course_rating.png)
 
