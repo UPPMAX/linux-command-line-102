@@ -4,8 +4,8 @@
 - [Evaluation](../../evaluations/20260204/README.md)
 - [Reflection by Richel](../../reflections/202602_course/README.md)
 - Date: 2026-02-04
-- Number of registrations: ?
-- Number of learners: 19
+- Number of registrations: 64
+- Number of learners: 19 (30% show-up rate)
 - Number of filled-in evaluations: 13 (so far) (68% fill-on rate (so far))
 
 ## Analysis
