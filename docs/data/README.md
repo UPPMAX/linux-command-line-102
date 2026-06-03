@@ -25,6 +25,6 @@ No |`n_reg`|`n_learn` | `n_eval`
 ## Counts
 
 No |Counts
----|----------------------------
-4  |[Counts](20260603_counts.md)
+---|-----------------------------
+4  |[Counts](20260603_counts.csv)
 
