@@ -187,7 +187,7 @@ What did that regular expression do?
 Go to [https://www.regexone.com/](https://www.regexone.com/)
 and do lessons 1 to (and including) 11.
 
-???- info "Overview of these lessons"
+???- tip "Overview of these lessons"
 
     Here is an overview of the regular expression patterns in each lesson:
 
@@ -247,7 +247,7 @@ As Macbeth uses this term, it can confuse the modern day reader.
 - In Macbeth, how often is the term 'weird sisters' being used?
   It is used!
 
-???- question "Answer"
+???- tip "Answer"
 
     There are many patterns that will work:
 
@@ -310,7 +310,7 @@ To be precise, search for all matches that:
 - (2) have zero or more lowercase characters
 - (3) end on `land`
 
-???- question "Answer"
+???- tip "Answer"
 
     Here, the pattern is `[A-Z][a-z]*land"`.
 
