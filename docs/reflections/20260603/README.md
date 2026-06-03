@@ -20,5 +20,7 @@ What I noticed is that 9 out of 10 learners
 stated that, during the 'Bash scripts' session,
 that this is their first time creating a Bash
 script. This means they did not even remember
-when it was taught twice before!
+when it was taught twice before! The other 1 learner
+was already experienced in Bash, so I did not ask
+her if she remembered the sessions on Bash. 
 
