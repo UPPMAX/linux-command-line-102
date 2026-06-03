@@ -24,3 +24,7 @@ when it was taught twice before! The other 1 learner
 was already experienced in Bash, so I did not ask
 her if she remembered the sessions on Bash. 
 
+I enjoyed working together with the other teacher:
+when we requested host/co-host Zoom right, we just did
+that, gave a thumbs up and gave a thumbs up back. It was smooth!
+
