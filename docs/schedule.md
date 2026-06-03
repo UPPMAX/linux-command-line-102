@@ -27,6 +27,8 @@ tags:
 
 ## Afternoon: smarter bash
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
 | Time        | Topic                                           | Teacher           |
 | ----------- | ----------------------------------------------- | ----------------- |
 | 13:00-14:00 | [Bash scripting](sessions/scripting/README.md)  | Richèl Bilderbeek |
@@ -35,3 +37,5 @@ tags:
 | 15:00-15:15 | Break                                           | .                 |
 | 15:15-15:53 | Quality of life, compressing,                   | Birgitte Brydsö   |
 | 15:53-16:00 | [Evaluation](evaluation.md)                     | Richèl Bilderbeek |
+
+<!-- markdownlint-enable MD013 -->

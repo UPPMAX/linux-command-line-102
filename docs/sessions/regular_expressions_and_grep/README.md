@@ -72,7 +72,7 @@ SIWARD, Earl of Northumberland, General of the English Forces.
 ## Why use regular expressions?
 
 Regular expressions are used to filter for text that contains a pattern,
-such as a first name, a last name, a phone number, etc. 
+such as a first name, a last name, a phone number, etc.
 
 ![What regular expressions are used for](why_regular_expressions.png)
 

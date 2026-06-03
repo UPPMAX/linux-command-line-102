@@ -14,6 +14,5 @@ From previous reflections:
   too
 - [ ] Consider using a shorter text, or keeping it that long on purpose
 
-And check 
-
+And check
 
