@@ -66,6 +66,7 @@ nav:
       - Videos: videos.md
   - Miscellaneous:
       - Communication: communication/README.md
+      - Data: data/README.md
       - Evaluations: evaluations/README.md
       - Lesson plans: lesson_plans/README.md
       - Meeting notes: meeting_notes/README.md
