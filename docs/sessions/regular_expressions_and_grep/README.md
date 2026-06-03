@@ -52,16 +52,9 @@ tags:
     - In the context of software, what is a parser?
     - In the context of command-line tools, what is a filter?
 
-## Why use regular expressions?
+## What is `grep`?
 
-Regular expressions are used to filter for text that contains a pattern,
-such as a first name, a last name, a phone number, etc.
-
-![What regular expressions are used for](why_regular_expressions.png)
-
-## Why use `grep`?
-
-`grep` finds text that matches a regular expression:
+`grep` is a program to find text that matches a regular expression:
 
 ```text
 $ cat macbeth.txt | grep "[A-Z][a-z]*land"
@@ -75,6 +68,15 @@ ANGUS, Nobleman of Scotland.
 CAITHNESS, Nobleman of Scotland.
 SIWARD, Earl of Northumberland, General of the English Forces.
 ```
+
+## Why use regular expressions?
+
+Regular expressions are used to filter for text that contains a pattern,
+such as a first name, a last name, a phone number, etc. 
+
+![What regular expressions are used for](why_regular_expressions.png)
+
+## Why use `grep`?
 
 `grep` is among
 [the list of 'Portable Operating System Interface' (POSIX) commands](https://en.wikipedia.org/wiki/List_of_POSIX_commands),
