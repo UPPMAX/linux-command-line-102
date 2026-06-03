@@ -16,3 +16,9 @@ is a misnomer: I feel it should be called
 'Command Line 102', as it is quite basic what
 we are teaching.
 
+What I noticed is that 9 out of 10 learners
+stated that, during the 'Bash scripts' session,
+that this is their first time creating a Bash
+script. This means they did not even remember
+when it was taught twice before!
+
