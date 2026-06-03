@@ -487,19 +487,6 @@ Pick those topics you are interested in.
 
 ??? note "For teachers"
 
-    How many regular expression dialects exist?
-
-    ??? tip "Answer"
-
-        At least 3:
-
-        - `grep` (basic)
-        - `egrep` (extended)
-        - `pgrep` (Perl-like)
-
-
-    ---
-
     We have sent the `grep` manual to `grep` using a pipe.
     Can we use any text?
 
@@ -549,11 +536,11 @@ Pick those topics you are interested in.
 
     ---
 
-    Why does `man grep | grep .*` not work, where `man grep | grep ".*"` does?
+    Why does `man grep | grep .*` not work, where `man grep | grep '.*'` does?
 
     ??? tip "Answer"
 
-        The double-quotes assure that the regular expression patter `.*` is
+        The single-quotes assure that the regular expression pattern `.*` is
         read as such.
 
         The 'naked' `.*` is a `bash` expression of 'all hidden files',
@@ -592,7 +579,6 @@ Pick those topics you are interested in.
     - `grep` has a useful manual
     - `grep` is a filter
     - `grep` works well with pipes
-    - There are multiple regular expression dialects
     - The pattern `.`, `[]` and `[^]` are used
       to (not) match a (set of) characters
     - The pattern `*`, `+`, `?` and `{}` are used to indicate an amount
