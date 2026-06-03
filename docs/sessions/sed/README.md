@@ -436,7 +436,6 @@ Do this exercise from a script.
     wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
     sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
     sed --in-place 's/[A-Z][a-z][a-z]*land/Sweden/' macbeth.txt
-    sed --in-place '1,26d;4173,4495d' macbeth.txt
     ```
 
     <!-- markdownlint-enable MD013 -->
@@ -462,45 +461,6 @@ Do this exercise from a script.
 
     ```bash
     wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/lesson_plans/20251204/script_1.sh
-    ```
-
-    <!-- markdownlint-enable MD013 -->
-
----
-
-## (optional) Exercise 1.7: Do this exercise from a smart script
-
-Do this exercise from a script,
-without hardcoding the lines
-
-???- tip "Answer"
-
-    Here we extract the line numbers:
-
-    <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
-
-    ```bash
-    #!/bin/bash
-    rm -f macbeth.txt
-    wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
-    sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
-    sed --in-place 's/[A-Z][a-z][a-z]*land/Sweden/' macbeth.txt
-
-    end_of_first_copyright_line=$(cat --number macbeth.txt | grep "START OF THE PROJECT GUTENBERG EBOOK" | cut --field 1)
-    begin_of_second_copyright_line=$(cat --number macbeth.txt | grep "START: FULL LICENSE" | cut --field 1)
-    last_line=$(wc --lines macbeth.txt | cut --field 1 --delimiter " ")
-
-    sed --in-place "1,${end_of_first_copyright_line}d;${begin_of_second_copyright_line},${last_line}d" macbeth.txt
-    ```
-
-    <!-- markdownlint-enable MD013 -->
-
-    You can obtain this script by:
-
-    <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
-
-    ```bash
-    wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/lesson_plans/20251204/script_2.sh
     ```
 
     <!-- markdownlint-enable MD013 -->
