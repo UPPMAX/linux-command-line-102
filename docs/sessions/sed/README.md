@@ -186,8 +186,9 @@ cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
 
 ???- tip "This line gives me the error `unrecognized option '--quiet'`"
 
-    Some operating systems do not support the longer options.
-    In that case, use the syntax below instead:
+    Some operating systems do not support the longer flag name
+    for less output (i.e. `--quiet`).
+    In that case, use the syntax below instead, which uses `-n` instead:
 
     ```bash
     cat lands.txt | sed -n --regexp-extended '/[A-Z][a-z]+land/p'
@@ -198,8 +199,9 @@ cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
 
 ???- tip "This line gives me the error `unrecognized option '--regexp-extended'`"
 
-    Some operating systems do not support the longer options.
-    In that case, use the syntax below instead:
+    Some operating systems do not support the longer flag name
+    for using extended regular expressions (i.e. `--regexp-extended`) .
+    In that case, use the syntax below instead, which uses `-E` instead:
 
     ```bash
     cat lands.txt | sed --quiet -E '/[A-Z][a-z]+land/p'
