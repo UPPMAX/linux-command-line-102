@@ -21,3 +21,10 @@ No |`n_reg`|`n_learn` | `n_eval`
 - `n_eval`: number of filled-in evaluations.
   Between round brackets is the percentage of learners that
   are present most of the time that filled in an evaluation
+
+## Counts
+
+No |Counts
+---|----------------------------
+4  |[Counts](20260603_counts.md)
+
