@@ -79,6 +79,7 @@ not_in_nav: |
   evaluations/20251204/README.md
   evaluations/20260601/README.md
   evaluations/20260204/README.md
+  evaluations/20260603/README.md
   lesson_plans/20250602/README.md
   lesson_plans/20250603/README.md
   lesson_plans/20251204/README.md
@@ -88,6 +89,7 @@ not_in_nav: |
   lesson_plans/20151204/README.md
   lesson_plans/20241205/README.md
   lesson_plans/20260204/README.md
+  lesson_plans/20260603/README.md
   meeting_notes/20250403.md
   meeting_notes/20250409.md
   misc/test_admonitions.md
@@ -99,11 +101,9 @@ not_in_nav: |
   reflections/20251204/README.md
   reflections/20251205/README.md
   reflections/202512_course/README.md
-  reflections/20260601/README.md
-  reflections/20260602/README.md
-  reflections/202606_course/README.md
   reflections/20260204/README.md
   reflections/202602_course/README.md
+  reflections/20260603/README.md
 
 plugins:
   - search
