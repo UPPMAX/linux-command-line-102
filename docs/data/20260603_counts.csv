@@ -1,4 +1,4 @@
-t,n_on,n_off
+time,n_cam_on,n_cam_off
 8:30,0,0
 8:40,0,1
 8:47,0,2
