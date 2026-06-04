@@ -28,3 +28,8 @@ I enjoyed working together with the other teacher:
 when we requested host/co-host Zoom right, we just did
 that, gave a thumbs up and gave a thumbs up back. It was smooth!
 
+I predict at least 1 learner will write on the evaluation
+that the course went too slow. I agree that when being gifted
+like here, where we follow the pace of most of the learners,
+one is better off elsewhere or by self-study.
+
