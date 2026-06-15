@@ -18,7 +18,7 @@ No |Dates                    |Evaluations                     |Success score
 1  |2025-06-02 and 2025-06-03|[Evaluation](20250602/README.md)|77%
 2  |2025-12-04 and 2025-12-05|[Evaluation](20251204/README.md)|83%
 3  |2026-02-04               |[Evaluation](20260204/README.md)|78%
-4  |2026-06-03               |[Evaluation](20260603/README.md)|.
+4  |2026-06-03               |[Evaluation](20260603/README.md)|79%
 
 <!-- markdownlint-enable MD013 -->
 
