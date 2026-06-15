@@ -36,7 +36,10 @@
 
 ### [Future topics](future_topics.txt)
 
-- I would like future training on Bash scripting for HPC workflows, job submission scripts, environment modules, data processing with grep/sed/awk, and practical examples for scientific computing.
+- I would like future training on Bash scripting for HPC workflows,
+  job submission scripts, environment modules,
+  data processing with grep/sed/awk,
+  and practical examples for scientific computing.
 - More bash scripting
 - AI, Data Analytics, ML, Docker etc.
 
