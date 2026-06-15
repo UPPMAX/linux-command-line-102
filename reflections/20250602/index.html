@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Reflection 2025-06-02 - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Reflection 2025-06-02";
+        var mkdocs_page_input_path = "reflections/20250602/README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Reflection 2025-06-02</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/reflections/20250602/README.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="reflection__2025-06-02">Reflection 2025-06-02<a class="headerlink" href="#reflection__2025-06-02" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="../../lesson_plans/20250602/">Lesson plan</a></li>
+<li><a href="../../evaluations/20250602/">Evaluation</a></li>
+<li><a href="./">Reflection</a></li>
+</ul>
+<h2 id="first__hour">First hour<a class="headerlink" href="#first__hour" title="Permanent link">&para;</a></h2>
+<p>The first hour I was a teacher in the back, helping out
+with the Zoom chat and the shared document.</p>
+<p>I was able to make an activity diagram:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Lecture: Introduction</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Lecture: Pipe</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Start code-along</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Start exercise, 1x interruption</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Lecture: <code>wc</code></td>
+</tr>
+<tr>
+<td>42</td>
+<td>Start exercise, 0x interruption</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Answer question</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Lecture: <code>cut</code></td>
+</tr>
+<tr>
+<td>60</td>
+<td>Start exercise, 3x interruption</td>
+</tr>
+<tr>
+<td>65</td>
+<td>End</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Time spent on exercises: 18%</li>
+</ul>
+<h3 id="discussion__from__shared__document__during__the__first__hour">Discussion from shared document, during the first hour<a class="headerlink" href="#discussion__from__shared__document__during__the__first__hour" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Q: The <code>sort</code> command doesn’t behave quite the same for me as in the example,
+  could this be because I’m using a Mac? (see answer below :-) )<ul>
+<li>A: [Richel] Yes: different unix-like systems have slightly different
+tools, with slightly different behavior. We’ll all have to live with
+that :-). In the end, running ‘man sort’ to find how your <code>sort</code> works
+exactly is the only way to go.</li>
+</ul>
+</li>
+<li>Q: What is the difference between “| tee” and &gt; ? I’ve been using &gt; and it
+  seems to do the same thing<ul>
+<li>A: [Richel] Well spotted! Besides echoing, <code>tee</code>also produces a file as
+a by-product. <code>tee</code> is named after a T junction (imagine a river!),
+where &lsquo;water’ (in this case: text) is going via two ways
+now. <code>[Thanks!][Richel: You are welcome :-)]</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="second__hour">Second hour<a class="headerlink" href="#second__hour" title="Permanent link">&para;</a></h2>
+<p>This session worked fine. The learners had 22 minutes for exercises.
+I put the learners in breakout rooms with 2-3 learners each.
+There were around 5 questions in total and around 10 other
+interactions.</p>
+<p>Before putting the learners in breakout rooms, my colleague
+reminded them about the shared Q&amp;A document.
+I did not want to use the shared Q&amp;A document:
+although there are some advantages (anybody can post anonymously, questions
+by others may inspire others), I feel
+the disadvantages (divide attention or need an extra volunteer for answering,
+No direct feedback, no interaction) outweigh these.
+Us teachers discussed about what the literature states.
+(note that in the third hour, the Q&amp;A document effects my teaching
+because of the feedback feedback! I will always be up for a place to
+post anonymous feedback)</p>
+<p>After teaching, I&rsquo;ve searched the literature and the books in my
+possession for some wisdom.
+I found the following:</p>
+<ul>
+<li>&lsquo;Online teaching at its best&rsquo;, page 169, bottom, recommends a &lsquo;Question
+  and answer space&rsquo;, as it fosters student interactions. We do not use
+  this document for learners to interact with each other.</li>
+<li>&lsquo;Online teaching at its best&rsquo;, page 170, middle, does recommend to
+  collect questions and their answers, without specifying how.
+  I do see how the Q&amp;A document would shape my course.
+  However, I also see how the same effect is achieved
+  by talking to learners in a breakout room.</li>
+<li>All my other books do not even mention a shared or Q&amp;A document</li>
+</ul>
+<p>I conclude using a shared document for Q&amp;A is not a thing,
+where having small group discussions is.</p>
+<table>
+<thead>
+<tr>
+<th>Time scheduled</th>
+<th>Actual time</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>Prior</td>
+</tr>
+<tr>
+<td>10</td>
+<td>?</td>
+<td>Present</td>
+</tr>
+<tr>
+<td>15</td>
+<td>13</td>
+<td>Challenge</td>
+</tr>
+<tr>
+<td>35</td>
+<td>35</td>
+<td>Feedback and conclusion</td>
+</tr>
+<tr>
+<td>45</td>
+<td>43</td>
+<td>Break</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Time spent on exercises: 22 / 45 = 49%</li>
+</ul>
+<p>I expected the break to be 5 minutes earlier,
+because I mistook my time schedule for this session
+with the next one in my (paper) logbook.</p>
+<ul>
+<li>[x] Use 1 session per page</li>
+</ul>
+<h3 id="discussion__from__shared__document__during__the__second__hour">Discussion from shared document, during the second hour<a class="headerlink" href="#discussion__from__shared__document__during__the__second__hour" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Q: Is there any advantage to using egrep instead of grep –E etc.?
+  Why have both/teach us both?<ul>
+<li>A: [Birgitte] they are equivalent, it is just personal preference.
+Some people would find it easier to remember/use egrep than grep –E</li>
+<li>A: [Richel] if you start using tools that check for style,
+you will find out that <code>egrep</code> will be warned against.</li>
+</ul>
+</li>
+<li>Q: Why do some of the options have more versions? Like, long recursive and
+  short r? Also some are really not very easily named,
+  like - - text is –a<ul>
+<li>A: [Birgitte] I guess again personal preference.
+The long version is usually a better mnemonic in the way it is named,
+while the short version may (as you say) not be,
+but it is quicker to write.</li>
+</ul>
+</li>
+</ul>
+<h2 id="third__hour">Third hour<a class="headerlink" href="#third__hour" title="Permanent link">&para;</a></h2>
+<p>During the break before this hour, I noticed my computer getting slower,
+with camera images of myself being shown around once per second.
+I&rsquo;ve seen this before and it causes Zoom to freeze.
+I decided to (1) use ethernet (I forgot!) and (2) restart Zoom.
+The Zoom was showing my camera well again.</p>
+<p>Due to this, I lost my co-host status. I forgot to ask my colleague on
+time to make me co-host again. When I asked, she was not there (which
+is fine: I encouraged her to do work!). This meant that I could not
+use breakout rooms.</p>
+<p>There is something joy in having 11 people work in silent in a Zoom room.
+However, there was no way I could see what they were doing. I was
+teaching in the blind and I missed seeing what they were doing exactly.</p>
+<p>In the shared document, there is just one discussion (see its below)
+in which two learners felt intimidated by the book.
+One can see in the lesson plan that I think (and I still do!)
+it is the best fitting book. But I am not too enthusiastic about it either.
+Next time, do something else: either use the <code>awk</code> manual
+or use material from my AWK course. Or (my favorite) drop <code>awk</code>
+altogether.</p>
+<ul>
+<li>[x] Use <code>man awk</code> or use custom course materials or remove <code>awk</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Time scheduled</th>
+<th>Actual time</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>Prior</td>
+</tr>
+<tr>
+<td>5</td>
+<td>?</td>
+<td>Present</td>
+</tr>
+<tr>
+<td>10</td>
+<td>?</td>
+<td>Challenge</td>
+</tr>
+<tr>
+<td>30</td>
+<td>30</td>
+<td>Feedback and conclusion</td>
+</tr>
+<tr>
+<td>40</td>
+<td>40</td>
+<td>Break</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Time spent on exercises: 20 / 40 = 50%</li>
+</ul>
+<h3 id="discussion__from__shared__document__during__the__third__hour">Discussion from shared document, during the third hour<a class="headerlink" href="#discussion__from__shared__document__during__the__third__hour" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Q: Can you recommend a short online intro to awk (not a whole book)
+  just like a couple pages with the most important?<ul>
+<li>A [Richel]: I think this book is closest to that:
+it is not an AWK book at all. I have seen only one course that uses
+the one-liner approach (which happens to be mine :-))
+at <a href="https://uppmax.github.io/awk_course/">https://uppmax.github.io/awk_course/</a> .
+Does that answer your question?<ul>
+<li>Thanks. I will read it! I meant something like what for the other
+  section with pipe and wc/cut.<ul>
+<li>[Richel] I don’t make those cheat sheets on <strong>purpose</strong>:
+it takes away your learning. You are encouraged to make one:
+it is great for learning :-)<ul>
+<li>Not sure that works for me. I’ll check your other course,
+  and do some googling. Thanks!<ul>
+<li>[Richel] Great! Asking AIs is all the hype nowadays
+too &hellip;<ul>
+<li>Tried it. Got like 8 wrong of 10 so wasn’t cool :-(<ul>
+<li>[Richel] Too bad it does not work!
+The book used, however, only shows 4 lines of
+AWK of which 3 are used.
+Maybe that is little enough&hellip;</li>
+<li>There is a cheat sheet here:
+<a href="https://quickref.me/awk.html">AWK cheat sheet</a><ul>
+<li>[Richel] Well done!</li>
+<li>Thanks for finding this! I also get intimidated
+  having to look in a book for a short course
+  like this, so prefer a short text like that.
+  Would have preferred one styled to the course
+  so I know what we are expected to know</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>In the second hour, I followed the teaching cycle well.
+Too bad I messed up the last minutes. Self-grade: 7</p>
+<p>In the third hour, I feel bad about teaching in the dark,
+even though I agree with my choices in the moment.
+Self-grade: 6</p>
+<ul>
+<li><a href="../202506_course/">The full course reflection</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

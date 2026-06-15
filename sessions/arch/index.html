@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Archiving/compressing data - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Archiving/compressing data";
+        var mkdocs_page_input_path = "sessions/arch.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Archiving/compressing data</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#compressing__and__decompressing__-__gzip">Compressing and decompressing - (g)zip</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#gzip">gzip</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bzip__optional">bzip (optional)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_1">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#zip__optional">zip (optional)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples_2">Examples</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#archiving__-__tar">Archiving - tar</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#syntax">Syntax</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#basic__options">Basic options</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#examples_3">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Lessons Afternoon (smarter bash)</li>
+      <li class="breadcrumb-item active">Archiving/compressing data</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/sessions/arch.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="archiving">Archiving<a class="headerlink" href="#archiving" title="Permanent link">&para;</a></h1>
+<p>This section will cover compressing/decompressing files and directories. We will focus on (g)zip and tar.</p>
+<div class="admonition note">
+<p class="admonition-title">Objectives</p>
+<p><strong>Questions</strong></p>
+<ul>
+<li>How do I compress and decompress files and directories under Linux?</li>
+<li>How do I create an archive (tarball)?</li>
+</ul>
+<p><strong>Learning objectives</strong></p>
+<ul>
+<li>Learn about compressing and decompressing files and directories with gzip</li>
+<li>Learn about archiving (creating a tarball) with tar</li>
+</ul>
+</div>
+<h2 id="compressing__and__decompressing__-__gzip">Compressing and decompressing - (g)zip<a class="headerlink" href="#compressing__and__decompressing__-__gzip" title="Permanent link">&para;</a></h2>
+<p>Compressing files on Linux are generally done with utilities like <a href="http://www.gnu.org/software/gzip/gzip.html" target="_blank">gzip</a>, <a href="http://www.bzip.org/" target="_blank">bzip2</a>, or <a href="http://en.wikipedia.org/wiki/ZIP_%28file_format%29" target="_blank">zip</a>.</p>
+<h3 id="gzip">gzip<a class="headerlink" href="#gzip" title="Permanent link">&para;</a></h3>
+<p>Compression utility designed as a replacement for compress, with much better compression and no patented algorithms. The standard compression system for all GNU software.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>gzip</code> is the <strong>recommended</strong> compression system!</p>
+</div>
+<p><strong>Common options</strong>:</p>
+<ul>
+<li><strong>-d</strong>: Decompress the file(s) instead of compressing them. Shortcut is <code>gunzip</code></li>
+<li><strong>-r</strong>: Recursively compress/decompress directories and their contents.</li>
+<li><strong>-k</strong>: Keep the original file(s) after compression.</li>
+<li><strong>-v</strong>: Display verbose output, showing the compression ratio and other details.</li>
+</ul>
+<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Code along!</p>
+<p>Use the files and folders in the directory &ldquo;exercises&rdquo; -&gt; &ldquo;arch&rdquo;</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Compress a file (also removes the uncompressed file)</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>gzip<span class="w"> </span>afile.txt
+</span></code></pre></div>
+<p>How it looks for me:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>afile.txt
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">229</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:22<span class="w"> </span>afile.txt
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>gzip<span class="w"> </span>afile.txt
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>afile.txt.gz
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">180</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:22<span class="w"> </span>afile.txt.gz
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>afile.txt
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>ls:<span class="w"> </span>cannot<span class="w"> </span>access<span class="w"> </span><span class="s1">&#39;afile.txt&#39;</span>:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>bbrydsoe@enterprise:~/exercises/arch$
+</span></code></pre></div></p>
+<p>The file &ldquo;afile.txt&rdquo; was compressed and the uncompressed file is removed.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Uncompress a file (also removes the compressed file)</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>gunzip<span class="w"> </span>afile.txt.gz
+</span></code></pre></div>
+<p>or</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>gzip<span class="w"> </span>-d<span class="w"> </span>afile.txt.gz
+</span></code></pre></div>
+<p>For me it looks like this (using gunzip):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>afile.txt.gz
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">180</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:22<span class="w"> </span>afile.txt.gz
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>gunzip<span class="w"> </span>afile.txt.gz
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>afile.txt
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">229</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:22<span class="w"> </span>afile.txt
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>afile.txt.gz
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>ls:<span class="w"> </span>cannot<span class="w"> </span>access<span class="w"> </span><span class="s1">&#39;afile.txt.gz&#39;</span>:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>bbrydsoe@enterprise:~/exercises/arch$
+</span></code></pre></div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Compress a file (and keep the uncompressed file)</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>gzip<span class="w"> </span>-k<span class="w"> </span>afile.txt
+</span></code></pre></div>
+<p>How it looks for me:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>afile.txt
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">229</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:22<span class="w"> </span>afile.txt
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>gzip<span class="w"> </span>-k<span class="w"> </span>afile.txt
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>afile.txt
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">229</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:22<span class="w"> </span>afile.txt
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>afile.txt.gz
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">180</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:22<span class="w"> </span>afile.txt.gz
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>bbrydsoe@enterprise:~/exercises/arch$
+</span></code></pre></div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Compress all files in a directory</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>dir2
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dir4<span class="w">  </span>myfile-new.txt<span class="w">  </span>testfile3.txt<span class="w">  </span>testfile4.txt
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>gzip<span class="w"> </span>-r<span class="w"> </span>dir2
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>dir2
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>dir4<span class="w">  </span>myfile-new.txt.gz<span class="w">  </span>testfile3.txt.gz<span class="w">  </span>testfile4.txt.gz
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>dir2/dir4/
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>bfile.txt.gz<span class="w">  </span>cfile.txt.gz
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>bbrydsoe@enterprise:~/exercises/arch$
+</span></code></pre></div>
+<p><code>gunzip -r dir2</code> would then un-gzip all the files again.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>gzip</code> does not archive the files into one file, just compress them!</p>
+<p>For archiving files, <code>tar</code> is your friend - often in combination with <code>gzip</code>. More about that soon!</p>
+</div>
+<h3 id="bzip__optional">bzip (optional)<a class="headerlink" href="#bzip__optional" title="Permanent link">&para;</a></h3>
+<p><strong>bzip</strong> offers strong, lossless data compressor based on the Burrows-Wheeler transform. Also available as a library.</p>
+<p>May compress better than gzip, but is slower.</p>
+<h4 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h4>
+<p>We are not going to cover <code>bzip</code> more than to briefly give the most common usage.</p>
+<div class="admonition note">
+<p class="admonition-title">Compress a file (also removes the uncompressed file)</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>bzip2<span class="w"> </span>afile.txt
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Uncompress a file (also removes the compressed file)</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>bunzip2<span class="w"> </span>afile.txt.bz2
+</span></code></pre></div>
+</div>
+<h3 id="zip__optional">zip (optional)<a class="headerlink" href="#zip__optional" title="Permanent link">&para;</a></h3>
+<p><strong>zip</strong> is a simple compression and file packaging utility.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The maximum size limit of a zip file is 4GB and if this size limit is exceeded, the file becomes prone to corruption. This further leads to failure of the extraction process and inaccessibility of your data.</p>
+</div>
+<h4 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h4>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Code along!</p>
+<p>Again, use the files in &ldquo;exercises&rdquo; -&gt; &ldquo;arch&rdquo;</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Compressing afile.txt</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>zip<span class="w"> </span>afile.zip<span class="w"> </span>afile.txt
+</span></code></pre></div>
+<p>Output:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>zip<span class="w"> </span>afile.zip<span class="w"> </span>afile.txt
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span>adding:<span class="w"> </span>afile.txt<span class="w"> </span><span class="o">(</span>deflated<span class="w"> </span><span class="m">34</span>%<span class="o">)</span>
+</span></code></pre></div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Uncompressing afile.zip</p>
+<p>If the file already exists, zip will ask if you want to replace or rename</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>unzip<span class="w"> </span>afile.zip
+</span></code></pre></div>
+<p>Output:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>unzip<span class="w"> </span>afile.zip
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Archive:<span class="w">  </span>afile.zip
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>replace<span class="w"> </span>afile.txt?<span class="w"> </span><span class="o">[</span>y<span class="o">]</span>es,<span class="w"> </span><span class="o">[</span>n<span class="o">]</span>o,<span class="w"> </span><span class="o">[</span>A<span class="o">]</span>ll,<span class="w"> </span><span class="o">[</span>N<span class="o">]</span>one,<span class="w"> </span><span class="o">[</span>r<span class="o">]</span>ename:<span class="w"> </span>r
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>new<span class="w"> </span>name:<span class="w"> </span>afile-copy.txt
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span>inflating:<span class="w"> </span>afile-copy.txt
+</span></code></pre></div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Compress all files in one directory to a single archive file</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>zip<span class="w"> </span>-r<span class="w"> </span>dir1.zip<span class="w"> </span>dir1/
+</span></code></pre></div>
+<p>Output:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>zip<span class="w"> </span>-r<span class="w"> </span>dir1.zip<span class="w"> </span>dir1
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span>adding:<span class="w"> </span>dir1/<span class="w"> </span><span class="o">(</span>stored<span class="w"> </span><span class="m">0</span>%<span class="o">)</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span>adding:<span class="w"> </span>dir1/testfile<span class="w"> </span><span class="o">(</span>stored<span class="w"> </span><span class="m">0</span>%<span class="o">)</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span>adding:<span class="w"> </span>dir1/testfile.txt<span class="w"> </span><span class="o">(</span>stored<span class="w"> </span><span class="m">0</span>%<span class="o">)</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span>adding:<span class="w"> </span>dir1/testfile2.txt<span class="w"> </span><span class="o">(</span>deflated<span class="w"> </span><span class="m">2</span>%<span class="o">)</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>ls<span class="w"> </span>dir1.zip
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>dir1.zip
+</span></code></pre></div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Compress all files of a certain type in the current directory (and in directories under this) to a single archive file</p>
+<p>In this example case for all .c files</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>zip<span class="w"> </span>-r<span class="w"> </span>my_c_files.zip<span class="w"> </span>.<span class="w"> </span>-i<span class="w"> </span><span class="se">\*</span>.c
+</span></code></pre></div>
+<p>Output:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span>zip<span class="w"> </span>-r<span class="w"> </span>my_c_files.zip<span class="w"> </span>.<span class="w"> </span>-i<span class="w"> </span><span class="se">\*</span>.c
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span>adding:<span class="w"> </span>morefile.c<span class="w"> </span><span class="o">(</span>stored<span class="w"> </span><span class="m">0</span>%<span class="o">)</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span>adding:<span class="w"> </span>C/Adding2.c<span class="w"> </span><span class="o">(</span>deflated<span class="w"> </span><span class="m">31</span>%<span class="o">)</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">  </span>adding:<span class="w"> </span>C/Greeting.c<span class="w"> </span><span class="o">(</span>stored<span class="w"> </span><span class="m">0</span>%<span class="o">)</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">  </span>adding:<span class="w"> </span>C/hello.c<span class="w"> </span><span class="o">(</span>stored<span class="w"> </span><span class="m">0</span>%<span class="o">)</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">  </span>adding:<span class="w"> </span>C/mpi_greeting.c<span class="w"> </span><span class="o">(</span>deflated<span class="w"> </span><span class="m">35</span>%<span class="o">)</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">  </span>adding:<span class="w"> </span>C/mpi_hello.c<span class="w"> </span><span class="o">(</span>deflated<span class="w"> </span><span class="m">35</span>%<span class="o">)</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">  </span>adding:<span class="w"> </span>C/mpi_hi.c<span class="w"> </span><span class="o">(</span>deflated<span class="w"> </span><span class="m">36</span>%<span class="o">)</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">  </span>adding:<span class="w"> </span>C/Mult2.c<span class="w"> </span><span class="o">(</span>deflated<span class="w"> </span><span class="m">33</span>%<span class="o">)</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">  </span>adding:<span class="w"> </span>C/omp_hello.c<span class="w"> </span><span class="o">(</span>deflated<span class="w"> </span><span class="m">58</span>%<span class="o">)</span>
+</span></code></pre></div></p>
+</div>
+<h2 id="archiving__-__tar">Archiving - tar<a class="headerlink" href="#archiving__-__tar" title="Permanent link">&para;</a></h2>
+<p>Archiving is generally done with <code>tar</code>.</p>
+<p>This program saves many files together into a single archive file (concatenates them), and it also restores individual files from the archive. Automatic archive compression/decompression options exists (with various different compression utilities), as well as special features that allow <code>tar</code> to be used for incremental and full backups.</p>
+<p>The command <code>tar --help</code> will give the format (defaults to gnu). This is generally only important for files larger than 8 GB.</p>
+<p><code>tar</code> was originally developed for magnetic tape storage – reading and writing data for a sequential I/O device with no file system, and the name is short for the format description &ldquo;tape archive&rdquo;.</p>
+<p><img alt="IBM 2401 magnetic tape storage" src="../../images/IBM2401-magnetic-tape-unit_small.jpg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A <strong>tarball</strong> is a commonly used name to refer to an archive file in the <code>tar</code> (Tape Archive) format.</p>
+<p>A tarball can be compressed with something like <code>gzip</code> or <code>bzip2</code>. There are options/flags to do this automatically with <code>tar</code>.</p>
+</div>
+<h3 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>tar<span class="w"> </span><span class="o">[</span>-options<span class="o">]</span><span class="w"> </span>&lt;name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>tar<span class="w"> </span>archive&gt;<span class="w"> </span><span class="o">[</span>files<span class="w"> </span>or<span class="w"> </span>directories<span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>into<span class="w"> </span>archive<span class="o">]</span>
+</span></code></pre></div>
+<h3 id="basic__options">Basic options<a class="headerlink" href="#basic__options" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>-c, &ndash;create</strong> - create a new archive</li>
+<li><strong>-a, &ndash;auto-compress</strong> - additionally compress the archive with a compressor which will be automatically determined by the file name extension of the archive. If the archive&rsquo;s name ends with <em>.tar.gz then use gzip, if</em>.tar.xz then use xz, *.tar.zst for Zstandard etc.</li>
+<li><strong>-r, &ndash;append</strong> - append files to the end of an archive</li>
+<li><strong>-x, &ndash;extract, &ndash;get</strong> - extract files from an archive</li>
+<li><strong>-f, &ndash;file</strong> - specify the archive&rsquo;s name</li>
+<li><strong>-t, &ndash;list</strong> - show a list of files and folders in the archive</li>
+<li><strong>-v, &ndash;verbose</strong> - show a list of processed files</li>
+</ul>
+<h3 id="examples_3">Examples<a class="headerlink" href="#examples_3" title="Permanent link">&para;</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Code along!</p>
+<p>Again use the files and folders under &ldquo;exercises&rdquo; -&gt; &ldquo;arch&rdquo;</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Generate a tarball</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>tar<span class="w"> </span>-cvf<span class="w"> </span>arch.tar<span class="w"> </span>arch/
+</span></code></pre></div>
+<p>Output:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>bbrydsoe@enterprise:~/exercises/arch$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>bbrydsoe@enterprise:~/exercises$<span class="w"> </span>tar<span class="w"> </span>-cvf<span class="w"> </span>arch.tar<span class="w"> </span>arch/
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>arch/
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>arch/myfile.txt
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>arch/thisfile.txt
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>arch/morefile.c
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>arch/dir1/
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>arch/dir1/testfile
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>arch/dir1/testfile.txt
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>arch/dir1/testfile2.txt
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>arch/dir2/
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>arch/dir2/dir4/
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>arch/dir2/dir4/bfile.txt
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>arch/dir2/dir4/cfile.txt
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>arch/dir2/testfile3.txt
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>arch/dir2/myfile-new.txt
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>arch/dir2/testfile4.txt
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>arch/dir3/
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>arch/dir3/dfile.txt
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>arch/dir3/efile.txt
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>arch/dir3/ffile.txt
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>arch/afile.txt
+</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>arch/afile.zip
+</span><span id="__span-20-24"><a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>arch/afile-copy.txt
+</span><span id="__span-20-25"><a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>arch/dir1.zip
+</span><span id="__span-20-26"><a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a>arch/C/
+</span><span id="__span-20-27"><a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a>arch/C/Adding2.c
+</span><span id="__span-20-28"><a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a>arch/C/Greeting.c
+</span><span id="__span-20-29"><a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a>arch/C/hello.c
+</span><span id="__span-20-30"><a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a>arch/C/mpi_greeting.c
+</span><span id="__span-20-31"><a id="__codelineno-20-31" name="__codelineno-20-31" href="#__codelineno-20-31"></a>arch/C/mpi_hello.c
+</span><span id="__span-20-32"><a id="__codelineno-20-32" name="__codelineno-20-32" href="#__codelineno-20-32"></a>arch/C/mpi_hi.c
+</span><span id="__span-20-33"><a id="__codelineno-20-33" name="__codelineno-20-33" href="#__codelineno-20-33"></a>arch/C/Mult2.c
+</span><span id="__span-20-34"><a id="__codelineno-20-34" name="__codelineno-20-34" href="#__codelineno-20-34"></a>arch/C/omp_hello.c
+</span><span id="__span-20-35"><a id="__codelineno-20-35" name="__codelineno-20-35" href="#__codelineno-20-35"></a>arch/my_c_files.zip
+</span><span id="__span-20-36"><a id="__codelineno-20-36" name="__codelineno-20-36" href="#__codelineno-20-36"></a>bbrydsoe@enterprise:~/exercises$<span class="w"> </span>ls<span class="w"> </span>-al<span class="w"> </span>arch.tar
+</span><span id="__span-20-37"><a id="__codelineno-20-37" name="__codelineno-20-37" href="#__codelineno-20-37"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">40960</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">14</span>:27<span class="w"> </span>arch.tar
+</span></code></pre></div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Extracting the files from a tarball</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>tar<span class="w"> </span>-xvf<span class="w"> </span>arch.tar
+</span></code></pre></div>
+<p>Warning! If there is already a directory with the same name in the directory you do this, it will overwrite without asking!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Generate a tarball and compress it with gzip</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>tar<span class="w"> </span>-zcvf<span class="w"> </span>arch.tar.gz<span class="w"> </span>arch/
+</span></code></pre></div>
+<p>Output:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>bbrydsoe@enterprise:~/exercises$<span class="w"> </span>tar<span class="w"> </span>-zcvf<span class="w"> </span>arch.tar.gz<span class="w"> </span>arch/
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>arch/
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>arch/dir1/
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>arch/dir1/testfile
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>arch/dir1/testfile.txt
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>arch/dir1/testfile2.txt
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>arch/dir2/
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>arch/dir2/dir4/
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>arch/dir2/dir4/bfile.txt
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>arch/dir2/dir4/cfile.txt
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>arch/dir2/testfile3.txt
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>arch/dir2/myfile-new.txt
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>arch/dir2/testfile4.txt
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>arch/dir3/
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>arch/dir3/dfile.txt
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>arch/dir3/efile.txt
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>arch/dir3/ffile.txt
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>arch/C/
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>arch/C/Adding2.c
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>arch/C/Greeting.c
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>arch/C/hello.c
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>arch/C/mpi_greeting.c
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>arch/C/mpi_hello.c
+</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>arch/C/mpi_hi.c
+</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>arch/C/Mult2.c
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>arch/C/omp_hello.c
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>arch/myfile.txt
+</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>arch/thisfile.txt
+</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>arch/morefile.c
+</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>arch/afile.txt
+</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>arch/afile.zip
+</span><span id="__span-23-32"><a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>arch/afile-copy.txt
+</span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>arch/dir1.zip
+</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>arch/my_c_files.zip
+</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>bbrydsoe@enterprise:~/exercises$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>arch.tar.gz
+</span><span id="__span-23-36"><a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">4500</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">14</span>:44<span class="w"> </span>arch.tar.gz
+</span></code></pre></div></p>
+<p>Compared to the size of the uncompressed tarball:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>bbrydsoe@enterprise:~/exercises$<span class="w"> </span>ls<span class="w"> </span>-al<span class="w"> </span>arch.tar
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">40960</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">14</span>:27<span class="w"> </span>arch.tar
+</span></code></pre></div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Uncompressing and extracting files from a tarball</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>tar<span class="w"> </span>-zxvf<span class="w"> </span>arch.tar.gz
+</span></code></pre></div>
+<p>Warning! If there is already a directory with the same name in the directory you do this, it will overwrite without asking!</p>
+</div>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>we learned about gzip, bzip2, and zip</li>
+<li>we learned about tarballs and compressed tarballs</li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../symlinks/" class="btn btn-neutral float-left" title="Symbolic links"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../qual/" class="btn btn-neutral float-right" title="Quality of life">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../symlinks/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../qual/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

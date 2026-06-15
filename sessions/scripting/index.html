@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Scripting - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Scripting";
+        var mkdocs_page_input_path = "sessions/scripting/README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Scripting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#why__use__scripts">Why use scripts?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__1__bash__structure">Exercise 1: Bash structure</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__2__hello__world">Exercise 2: Hello world</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__3__bash__variables">Exercise 3: Bash variables</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__4__counting__files">Exercise 4: counting files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__5__user__input">Exercise 5: user input</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__6__conditional__expressions">Exercise 6: conditional expressions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__7__conditionals">Exercise 7: conditionals</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__8__for__loops">Exercise 8: For loops</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__9__for__loops__with__bash__commands">Exercise 9: For loops with Bash commands</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusions">Conclusions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next__session">Next session</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Lessons Afternoon (smarter bash)</li>
+      <li class="breadcrumb-item active">Scripting</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/sessions/scripting/README.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="scripting">Scripting<a class="headerlink" href="#scripting" title="Permanent link">&para;</a></h1>
+<details class="- note">
+<summary>Need a video?</summary>
+<ul>
+<li><a href="https://youtu.be/1TWkDTePzxE">Introduction</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=58">Exercise 1</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=204">Exercise 2</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=300">Exercise 3</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=472">Exercise 4</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=591">Exercise 5</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=693">Exercise 6</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=827">Exercise 7</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=1125">Exercise 8</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=1308">Exercise 9</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=1403">Feedback</a></li>
+<li><a href="https://youtu.be/1TWkDTePzxE?t=1503">Conclusion</a></li>
+</ul>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Learning outcomes</p>
+<ul>
+<li>Learners can write Bash scripts</li>
+<li>Learners have practiced using a book on Bash scripting</li>
+<li>Learners can write Bash scripts that require user input</li>
+<li>Learners can use variables in Bash scripts</li>
+<li>Learners can use <code>if</code> statements in Bash scripts</li>
+<li>Learners can use <code>for</code> statements  in Bash scripts</li>
+</ul>
+</div>
+<details class="- note">
+<summary>For teachers</summary>
+<p>Lesson plan:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Duration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-10</td>
+<td>10</td>
+<td>Prior</td>
+</tr>
+<tr>
+<td>10-15</td>
+<td>5</td>
+<td>Present</td>
+</tr>
+<tr>
+<td>15-50</td>
+<td>35</td>
+<td>Challenge</td>
+</tr>
+<tr>
+<td>50-60</td>
+<td>10</td>
+<td>Feedback</td>
+</tr>
+</tbody>
+</table>
+<p>Prior:</p>
+<ul>
+<li>What is script?</li>
+<li>What is bash?</li>
+<li>What is meant with &lsquo;user input&rsquo;?</li>
+<li>What is a variable?</li>
+<li>What is a condition?</li>
+<li>What is a conditional?</li>
+<li>What is a for-loop?</li>
+</ul>
+</details>
+<h2 id="why__use__scripts">Why use scripts?<a class="headerlink" href="#why__use__scripts" title="Permanent link">&para;</a></h2>
+<p>Scripts allow you to run you (Bash) commands in an easy and
+reproducible manner.</p>
+<div class="admonition note">
+<p class="admonition-title">The different spellings</p>
+<table>
+<thead>
+<tr>
+<th>Spelling</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bash</td>
+<td>The programming language</td>
+</tr>
+<tr>
+<td><code>bash</code></td>
+<td>The program</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<p>In these exercises, we&rsquo;ll be using the
+book &lsquo;Introduction to Bash scripting for developers&rsquo;,
+as this book fits this course well, is free and open source
+and allows you to continue studying after this course</p>
+<p><img alt="The book" src="book_cover_282_x_450.png" /></p>
+<h3 id="exercise__1__bash__structure">Exercise 1: Bash structure<a class="headerlink" href="#exercise__1__bash__structure" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Read the text at
+  <a href="https://github.com/bobbyiliev/introduction-to-bash-scripting/blob/main/ebook/en/content/002-bash-structure.md">chapter 2: &lsquo;Bash structure&rsquo;</a></li>
+<li>Create a file called <code>greeter.sh</code> with a shebang
+  following that chapter</li>
+</ul>
+<details class="tip">
+<summary>Answer</summary>
+<p>In a terminal, type:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>touch<span class="w"> </span>greeter.sh
+</span></code></pre></div>
+<p>Add the following line to the file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
+</span></code></pre></div>
+<p>Remember that if this does not work on your computer, use the more
+flexible shebang:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/usr/bin/env bash</span>
+</span></code></pre></div>
+</details>
+<hr />
+<h3 id="exercise__2__hello__world">Exercise 2: Hello world<a class="headerlink" href="#exercise__2__hello__world" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Read the text at
+  <a href="https://github.com/bobbyiliev/introduction-to-bash-scripting/blob/main/ebook/en/content/003-bash-hello-world.md">chapter 3: &lsquo;Hello world&rsquo;</a></li>
+<li>Modify your Bash script called <code>greeter.sh</code> in such a way that
+  you can run (&lsquo;execute&rsquo;) it. When it runs, it should show &lsquo;Hello World!&rsquo;
+  on the screen. Run the script to verify</li>
+</ul>
+<details class="tip">
+<summary>Answer</summary>
+<p>Edit <code>greeter.sh</code> to:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello World!&quot;</span>
+</span></code></pre></div>
+<p>For the terminal, make <code>greeter.sh</code> executable with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>greeter.sh
+</span></code></pre></div>
+<p>You can now run it with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>./greeter.sh
+</span></code></pre></div>
+</details>
+<hr />
+<h3 id="exercise__3__bash__variables">Exercise 3: Bash variables<a class="headerlink" href="#exercise__3__bash__variables" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Read the text at
+  <a href="https://github.com/bobbyiliev/introduction-to-bash-scripting/blob/main/ebook/en/content/004-bash-variables.md">chapter 4: &lsquo;Bash Variables&rsquo;</a></li>
+<li>Modify your Bash script called <code>greeter.sh</code> in such a way that
+  it uses two variables:<ul>
+<li><code>greeting</code>, which should have value <code>Hello</code></li>
+<li><code>name</code>, which should have value <code>World</code>
+When it runs, it should (still) show &lsquo;Hello World!&rsquo;
+on the screen. Run the script to verify</li>
+</ul>
+</li>
+</ul>
+<details class="tip">
+<summary>Answer</summary>
+<p>Edit <code>greeter.sh</code> to:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">greeting</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;World&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$greeting</span><span class="s2"> </span><span class="nv">$name</span><span class="s2">!&quot;</span>
+</span></code></pre></div>
+<p>Even better would be to wrap the variable name in curly backets:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">greeting</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;World&quot;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">greeting</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span></code></pre></div>
+<p>You can now (still) run it with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>./greeter.sh
+</span></code></pre></div>
+</details>
+<hr />
+<h3 id="exercise__4__counting__files">Exercise 4: counting files<a class="headerlink" href="#exercise__4__counting__files" title="Permanent link">&para;</a></h3>
+<p>Bash can store the output of other tools in variables.</p>
+<p>Write a script that counts and shows the number of files in our current folder:</p>
+<ul>
+<li>Create an executable script called <code>count_files.sh</code>.</li>
+<li>In the script, create a variable called <code>n_files</code> and initialize it like this:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">n_files</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>--lines<span class="k">)</span>
+</span></code></pre></div>
+<details class="- tip">
+<summary>This line gives me the error <code>unrecognized option '--lines'</code></summary>
+<p>Some operating systems do not support the longer options.
+In that case, use <code>wc -l</code> instead.</p>
+<p>This teaching material used the longer writing, as this is easier to read.</p>
+</details>
+<ul>
+<li>
+<p>Running the script should show: &lsquo;You have [n_files] files&rsquo;, where
+  <code>[n_files]</code> is the number of files</p>
+</li>
+<li>
+<p>Run the script to verify</p>
+</li>
+</ul>
+<details class="tip">
+<summary>Answer</summary>
+<p>Edit <code>greeter.sh</code> to:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">n_files</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>--lines<span class="k">)</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;You have </span><span class="si">${</span><span class="nv">n_files</span><span class="si">}</span><span class="s2"> files&quot;</span>
+</span></code></pre></div>
+<p>If you have not wrapped your variable name in curly brackets
+and the code works as intended, then that is correct too.</p>
+<p>You can now run it with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>./count_files.sh
+</span></code></pre></div>
+</details>
+<hr />
+<h3 id="exercise__5__user__input">Exercise 5: user input<a class="headerlink" href="#exercise__5__user__input" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Read the text at
+  <a href="https://github.com/bobbyiliev/introduction-to-bash-scripting/blob/main/ebook/en/content/005-bash-user-input.md">chapter 5: &lsquo;User input&rsquo;</a></li>
+<li>Modify your Bash script called <code>greeter.sh</code> in such a way that
+  the script asks for a name using the text &lsquo;Who to greet?&rsquo;.
+  If the name <code>World</code> is typed it, it should (again) show &lsquo;Hello World!&rsquo;
+  on the screen. Run the script to verify</li>
+</ul>
+<details class="tip">
+<summary>Answer</summary>
+<p>Edit <code>greeter.sh</code> to:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Who to greet?&quot;</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nb">read</span><span class="w"> </span>name
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nv">greeting</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">greeting</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span></code></pre></div>
+<p>If you have not wrapped your variable name in curly brackets
+and the code works as intended, then that is correct too.</p>
+<p>You can (still) run it with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>./greeter.sh
+</span></code></pre></div>
+</details>
+<hr />
+<h3 id="exercise__6__conditional__expressions">Exercise 6: conditional expressions<a class="headerlink" href="#exercise__6__conditional__expressions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Read the text at
+  <a href="https://github.com/bobbyiliev/introduction-to-bash-scripting/blob/main/ebook/en/content/009-bash-conditional-expressions.md">chapter 9: &lsquo;Conditional expressions&rsquo;</a></li>
+<li>We will modify your Bash script called <code>greeter.sh</code> in such a way that
+  when the name &lsquo;Bond&rsquo; it chosen, the program shows <code>It is Bond. James Bond!</code>,
+  else it shows the regular greeting. Which conditional will you need?</li>
+</ul>
+<details class="tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">string1</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="si">${</span><span class="nv">string2</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span>
+</span></code></pre></div>
+</details>
+<hr />
+<h3 id="exercise__7__conditionals">Exercise 7: conditionals<a class="headerlink" href="#exercise__7__conditionals" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Read the chapters &lsquo;If statement&rsquo; and &lsquo;If Else statement&rsquo; of
+  <a href="https://github.com/bobbyiliev/introduction-to-bash-scripting/blob/main/ebook/en/content/010-bash-conditionals.md">chapter 10: &lsquo;Conditionals&rsquo;</a>,
+  do <strong>not read</strong> &lsquo;Switch case statements&rsquo;</li>
+<li>Modify your Bash script called <code>greeter.sh</code> in such a way that
+  when the name &lsquo;Bond&rsquo; it chosen, the program shows <code>It is Bond. James Bond!</code>,
+  else it shows the regular greeting. Run the script to verify</li>
+</ul>
+<details class="tip">
+<summary>Answer</summary>
+<p>Edit <code>greeter.sh</code> to the example below.
+There are multiple solutions.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Who to greet?&quot;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nb">read</span><span class="w"> </span>name
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="nv">greeting</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Bond&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;It is Bond. James Bond!&quot;</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="k">else</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">greeting</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="k">fi</span>
+</span></code></pre></div>
+<p>If you have not wrapped your variable name in curly brackets
+and the code works as intended, then that is correct too.</p>
+<p>You can (still) run it with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>./greeter.sh
+</span></code></pre></div>
+</details>
+<hr />
+<h3 id="exercise__8__for__loops">Exercise 8: For loops<a class="headerlink" href="#exercise__8__for__loops" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Read only the &lsquo;For loops&rsquo; section of
+  <a href="https://github.com/bobbyiliev/introduction-to-bash-scripting/blob/main/ebook/en/content/011-bash-loops.md">chapter 11: &lsquo;Bash loops&rsquo;</a></li>
+<li>Create a new Bash script called <code>greet_names.sh</code>.
+  The script should:<ul>
+<li>Ask who to greet, with the text <code>Who shall I greet?</code>.
+The expected input are names separated by spaces, e.g. <code>Anna Berndt Cindy</code></li>
+<li>Greet all of these people in the form <code>Hello [name]!</code>,
+using a for loop to go through the names</li>
+<li>Run the script to verify</li>
+</ul>
+</li>
+</ul>
+<details class="tip">
+<summary>Answer</summary>
+<p>Edit <code>greet_names</code> to the example below.
+There are multiple solutions.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Who shall I greet?&quot;</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nb">read</span><span class="w"> </span>names
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="k">for</span><span class="w"> </span>name<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">names</span><span class="si">}</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="k">do</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="k">done</span>
+</span></code></pre></div>
+<p>If you have not wrapped your variable name in curly brackets
+and the code works as intended, then that is correct too.</p>
+<p>You can run it with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>./greet_names.sh
+</span></code></pre></div>
+</details>
+<hr />
+<h3 id="exercise__9__for__loops__with__bash__commands">Exercise 9: For loops with Bash commands<a class="headerlink" href="#exercise__9__for__loops__with__bash__commands" title="Permanent link">&para;</a></h3>
+<p>Instead of iterating over names,
+we can iterate over something useful instead,
+such as the output of a Bash command.</p>
+<ul>
+<li>Create a new Bash script called <code>show_files.sh</code>.
+  The script should:<ul>
+<li>Store the output of <code>ls</code> in a variable called <code>filenames</code></li>
+<li>Per filename, show <code>I found a file called [filename]!</code>,
+where <code>[filename]</code> is the name of the file</li>
+<li>Run the script to verify</li>
+</ul>
+</li>
+</ul>
+<details class="tip">
+<summary>Answer</summary>
+<p>Edit <code>greeter.sh</code> to the example below.
+There are multiple solutions.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nv">filenames</span><span class="o">=</span><span class="k">$(</span>ls<span class="k">)</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="k">for</span><span class="w"> </span>filename<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">filenames</span><span class="si">}</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="k">do</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;I found a file called </span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="k">done</span>
+</span></code></pre></div>
+<p>If you have not wrapped your variable name in curly brackets
+and the code works as intended, then that is correct too.</p>
+<p>You can run it with:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>./show_files.sh
+</span></code></pre></div>
+</details>
+<hr />
+<h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Conclusions</p>
+<ul>
+<li>Bash can do most things one expects from a programming language</li>
+<li>A Bash script starts with a shebang: <code>#!/bin/bash</code></li>
+<li>A Bash script can be made executable: <code>chmod +x greeter.sh</code></li>
+<li>A Bash script can be run by writing <code>./</code> in front of the filename:
+  <code>./greeter.sh</code></li>
+<li>A Bash script can use variables: <code>greeting="Hello"</code></li>
+<li>A Bash script can run Bash commands and store the result in a variable:
+  <code>n_files=$(ls | wc --lines)</code></li>
+<li>A Bash script can ask the user for input: <code>read name</code></li>
+<li>A Bash script can do conditionals:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Bond&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;It is Bond. James Bond!&quot;</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">else</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">greeting</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="k">fi</span>
+</span></code></pre></div>
+<ul>
+<li>A Bash script can use for-loops:</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">for</span><span class="w"> </span>name<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">names</span><span class="si">}</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="k">do</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="k">done</span>
+</span></code></pre></div>
+</div>
+<hr />
+<details class="note">
+<summary>For teachers</summary>
+<p>What is the difference between AWK and Bash?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>They are different programming languages.</p>
+</details>
+<p>What can Bash not do?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Bash, like any Turning complete language,
+can solve any computational problem,
+but cannot do this:</p>
+<ul>
+<li>run computations at any speed (i.e. a problem
+  may take billions of year to complete)</li>
+<li>use any amount of memory (i.e. a problem
+  may require billions of gigabytes to solve)</li>
+</ul>
+</details>
+<p>When not to use Bash?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Bash shines at problems of low and intermediate complexity,
+as it can connect all Bash commands.</p>
+<p>For harder problems, use a modern programming language
+instead.</p>
+</details>
+</details>
+<hr />
+<h2 id="next__session">Next session<a class="headerlink" href="#next__session" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Next session</p>
+<ul>
+<li>Bash can do much more</li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../awk/" class="btn btn-neutral float-left" title="(optional) Using the AWK programming language"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../redirects/" class="btn btn-neutral float-right" title="Redirects">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../awk/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../redirects/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

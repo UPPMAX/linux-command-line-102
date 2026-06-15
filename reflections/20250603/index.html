@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Reflection 2025-06-03 - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Reflection 2025-06-03";
+        var mkdocs_page_input_path = "reflections/20250603/README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Reflection 2025-06-03</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/reflections/20250603/README.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="reflection__2025-06-03">Reflection 2025-06-03<a class="headerlink" href="#reflection__2025-06-03" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="../../lesson_plans/20250603/">Lesson plan</a></li>
+<li><a href="../../evaluations/20250602/">Evaluation</a></li>
+<li><a href="./">Reflection</a></li>
+</ul>
+<h2 id="first__hour">First hour<a class="headerlink" href="#first__hour" title="Permanent link">&para;</a></h2>
+<p>The first hour went smoothly and followed the schedule
+smoothly:</p>
+<table>
+<thead>
+<tr>
+<th>Scheduled time</th>
+<th>Actual time</th>
+<th>Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9:00</td>
+<td>9:00</td>
+<td>Prior</td>
+</tr>
+<tr>
+<td>9:10</td>
+<td>9:08 (-2)</td>
+<td>Present</td>
+</tr>
+<tr>
+<td>9:15</td>
+<td>9:11 (-4)</td>
+<td>Challenge</td>
+</tr>
+<tr>
+<td>9:50</td>
+<td>9:50</td>
+<td>Feedback</td>
+</tr>
+<tr>
+<td>10:00</td>
+<td>10:00</td>
+<td>Done</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>65% of the time spent on exercises</li>
+</ul>
+<p>I had 4 breakout rooms, with exactly 2 learners each.
+3 out of 4 rooms were duos that were sharing
+their screen and had fun discussions, with the
+occasional question. 1 room has 1 learner that could not
+actually work: she uses Dardel and Dardel does not have <code>nano</code> installed &hellip;?
+I recommended <code>emacs</code>, which she enjoyed much better than <code>vi</code>.</p>
+<p>I will ask PDC to add <code>nano</code> on Dardel.</p>
+<ul>
+<li>[ ] Ask PDC to install <code>nano</code> on Dardel</li>
+</ul>
+<p>I was unhappy with my Feedback yesterday,
+so I did it differently: I went through
+the answers of the questions. This felt way
+better! Instead of going through all answers,
+however, I got only to answer 4 of 9.
+I did sidetrack by choice, yet, I feel that next time,
+I should go through all the answers first, and only then ask
+the harder questions.</p>
+<ul>
+<li>Grade: 8.0</li>
+</ul>
+<h2 id="second__hour">Second hour<a class="headerlink" href="#second__hour" title="Permanent link">&para;</a></h2>
+<p>Directly after the break, 6 out of 11
+learners turned on their camera.
+When the recording started, this turned into 1
+learner that kept his camera on.</p>
+<p>I made an activity diagram:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10:15</td>
+<td>Lecturing</td>
+</tr>
+<tr>
+<td>10:32</td>
+<td>Exercise</td>
+</tr>
+<tr>
+<td>10:36</td>
+<td>Lecture</td>
+</tr>
+<tr>
+<td>10:47</td>
+<td>Exercise</td>
+</tr>
+<tr>
+<td>10:50</td>
+<td>Lecture</td>
+</tr>
+<tr>
+<td>10:57</td>
+<td>Code along</td>
+</tr>
+<tr>
+<td>11:00</td>
+<td>Break</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>16% of the time spent on exercises</li>
+</ul>
+<h3 id="shared__document__of__second__hour">Shared document, of second hour<a class="headerlink" href="#shared__document__of__second__hour" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Q: If the variables we create are not persistent,
+  how do they work in the context of a script? Will they be persistent if we
+  write the variable in the script? I guess so&hellip;<ul>
+<li>A [Richel]: you are right :-): the variables in a script exist as long
+as the script runs.</li>
+</ul>
+</li>
+<li>
+<p>Is a hard link the same as copying?</p>
+<ul>
+<li>A [Richel]: No: it means that the same file is at two locations at the
+same time. For example, if you delete the file from any of the two
+locations, it will be gone at both locations.</li>
+<li>A. [Birgitte] Yes, and same if you edit one of them,
+then the other is also edited</li>
+</ul>
+</li>
+<li>
+<p>Can you explain the concept of “standard error”? I am confused with the
+  stats concept&hellip;</p>
+<ul>
+<li>A [Richel]: any program can create different types of output.
+Regular output goes to <code>the standard output</code> (also called stdout).
+In a similar fashion, programs can write their error messages
+to a different <code>thing</code> (called a <code>stream</code>), called <code>standard error</code>
+or <code>stderr</code>. When this stream is displayed on screen, it sometimes is
+colored red, to indicate the text was sent to the standard error stream.
+Does that help? Yes thanks</li>
+</ul>
+</li>
+<li>
+<p>In uppmax we got a file with the error, to know if the script worked or not,
+  do we have the same at dardel PDC, or we have to do the “search” of the
+  stderr as you guys just taught us?</p>
+<ul>
+<li>A [Richel]: as far as I know, this works exactly the same, where one
+uses <code>$?</code> To get the exit code of a previous command, e.g.</li>
+</ul>
+</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>./run_something.sh
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span>“ERROR<span class="w"> </span>happened!”
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">fi</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>  Does that help you? If not, or there is another problem,
+  you can always contact me at `[Richel&#39;s work email address]` :-)
+</code></pre></div>
+<h2 id="third__hour">Third hour<a class="headerlink" href="#third__hour" title="Permanent link">&para;</a></h2>
+<p>I made an activity diagram:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11:15</td>
+<td>Lecturing</td>
+</tr>
+<tr>
+<td>11:57</td>
+<td>Evaluation</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>0% of the time spent on exercises</li>
+</ul>
+<p>I did the evaluation here.</p>
+<h3 id="shared__document__of__third__hour">Shared document, of third hour<a class="headerlink" href="#shared__document__of__third__hour" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Why would you use tar to archive your files when you can just compress them
+  with gzip?</p>
+<ul>
+<li>A [Richel]: both tools achieve similar results, so you can use either.
+It can be, however, that you want to uncompress a file on –for
+example- an old version of windows that does not support tar
+out-of-the-box. In that case, you may prefer to use gzip.</li>
+</ul>
+</li>
+<li>
+<p>Similar to (11): why do we first use tar and then compress rather than
+  compress a directory directly? Tar makes it into one file?</p>
+<ul>
+<li>
+<p>A [Richel]: Yes, tar can compress multiple files into one.
+And you are right: it can also compress a folder with files.
+There is little difference: if you compress a folder (with files),
+then tar will re-create that folder (with files).
+Did that answer your question?</p>
+<ul>
+<li>
+<p>Sort of. I just was wondering what is the functional difference.
+      The procedure is different (first tar to make several files into
+      one <code>tarball</code>, then compress, second using zip directly just
+      directly compresses all the files in the folder). Does it is mean
+      that zip directly applies compression on every file individually
+      and tar + gzip would apply compression on the tarball (so only 1
+      file). Is there a performance difference there?
+      [Answer is on next page :-) ]</p>
+<ul>
+<li>
+<p>A [Richel]: I don`t know the exact technical details here.
+        Sure, I can google :-). Maybe creating a script and measuring
+        directly is easier. I would bet on timings being identical.</p>
+<ul>
+<li>
+<p>I will look into it, maybe experiment a bit, thanks!</p>
+<ul>
+<li>A [Richel]: Fun!</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>What is <code>nohup</code> doing along with <code>&amp;</code>?</p>
+<ul>
+<li>A [Richel]: <code>nohup</code> allows one to run something that continues after
+ending a terminal (<code>to hang up</code> was how terminals one day were ended).
+<code>&amp;</code> allows one to run something in the background, which means a
+terminal can be used for running commands wile a process is running.
+Together, they allow for commands that run in the background while you
+remain logged in to the computer.</li>
+</ul>
+</li>
+<li>
+<p>Could you &ldquo;overwrite” existing commands (e.g. <code>ls</code>) with an alias? If you
+  prefer list format e.g. <code>ls -l</code>, might be nice to only have
+  <code>alias ls=/usr/bin/ls -l</code>.
+  Will the bash alias be prioritized over system&rsquo;s <code>ls</code>?</p>
+<ul>
+<li>A [Richel]: yes. I just tried it and it works!</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">ls</span><span class="o">=</span><span class="s2">&quot;/usr/bin/ls -l&quot;</span>
+</span></code></pre></div>
+</li>
+</ul>
+<h2 id="course__reflection">Course reflection<a class="headerlink" href="#course__reflection" title="Permanent link">&para;</a></h2>
+<p>I think the course went well,
+although I&rsquo;ve not read the feedback of the learners yet.</p>
+<p>Here are my current ideas:</p>
+<ul>
+<li>
+<p>[x] Suggest to replace <code>awk</code> by <code>sed</code>:</p>
+<ul>
+<li>B will have more time for the quality of life session</li>
+<li>R thinks <code>sed</code> is a better follow-up after <code>grep</code></li>
+<li>R thinks <code>awk</code> is useless</li>
+</ul>
+</li>
+<li>
+<p><a href="../202506_course/">The full course reflection</a></p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

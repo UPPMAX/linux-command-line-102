@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Redirects - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Redirects";
+        var mkdocs_page_input_path = "sessions/redirects.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Redirects</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overwrite__redirection">Overwrite redirection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#append__redirection">Append redirection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#examples_1">Examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#what__about__standard__input">What about standard input, &lt;&lt; ?</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#merge__redirection">Merge redirection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#examples_2">Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise">Exercise</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Lessons Afternoon (smarter bash)</li>
+      <li class="breadcrumb-item active">Redirects</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/sessions/redirects.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!-- markdownlint-disable MD013 -->
+<!-- markdownlint-disable MD009 -->
+<h1 id="redirects">Redirects<a class="headerlink" href="#redirects" title="Permanent link">&para;</a></h1>
+<p>I/O redirection: Usually, standard input comes from the keyboard etc. and the standard output goes to the screen. There is also standard error. All of these can be redirected with Linux commands.</p>
+<div class="admonition note">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Learn about redirection<ul>
+<li>standard input</li>
+<li>standard output</li>
+<li>standard error</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>When running a command which can take input, give output, or do both, redirection lets us <em>redirect</em> the input and output to any files or folders we want to. It is also possible to redirect any errors specifically, instead of together with regular output, so you get errors and other output to different files.</p>
+<p>As default, <strong>standard output</strong> and <strong>standard error</strong> are sent to the screen and <strong>standard input</strong> comes from the keyboard/mouse.</p>
+<p><img alt="overview" src="../../images/redirect-overview.png" /></p>
+<p><strong>Example</strong>: You run a command, for instance <code>ls</code>; it throws the output to the screen. However, if you want to save it to a file instead you could use <strong>output redirection</strong>.</p>
+<p>Redirects are particularly useful if we are working with large outputs/inputs, multiple outputs/inputs, or wish to save the output for later.</p>
+<p>It may also be that we want to use the output from one command as input for another command - this can be solved with <strong>pipes</strong> as we saw yesterday, but saving the intermittent result to file is also an option.</p>
+<p>There are different types of redirection:</p>
+<ul>
+<li>overwrite redirection</li>
+<li>append redirection</li>
+<li>merge redirection</li>
+</ul>
+<p>Let us look at them one at a time and see some examples.</p>
+<h2 id="overwrite__redirection">Overwrite redirection<a class="headerlink" href="#overwrite__redirection" title="Permanent link">&para;</a></h2>
+<p>Let us assume you want to save the output of a command to a file and that you do not mind that the existing content of that file is overwritten (or you create a new file). In this situation, <strong>overwrite redirection</strong> is useful.</p>
+<ul>
+<li><strong>&gt;</strong> - standard output</li>
+<li><strong>&lt;</strong> - standard input</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Whenever a new program is run, the <strong>kernel</strong> creates a table of file descriptors for the program.</p>
+<p>File descriptors are pointers to files.</p>
+<p>By convention, the first 3 entries in the table (descriptors 0, 1, and 2) are used as standard input (stdin), standard output (stdout), and standard error (stderr).</p>
+<p>The full syntax of the redirection operator includes an optional file descriptor:</p>
+<ul>
+<li><code>command &gt; file</code> could be written <code>command 1&gt; file</code></li>
+<li><code>command &lt; file</code> could be written <code>command 0&lt; file</code></li>
+</ul>
+<p><strong>Redirecting stdout to file</strong></p>
+<p><img alt="redirect stdout" src="../../images/redirect-stdout.png" /></p>
+<p>The stderr still goes to screen. </p>
+<p><strong>Redirecting stderr to file</strong></p>
+<p><img alt="Redirect stdout" src="../../images/redirect-stderr.png" /></p>
+</div>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Code along!</p>
+<p>The files used in the examples are either created during the examples or can be found in the directory &ldquo;exercises&rdquo; -&gt; &ldquo;redirects-env-link&rdquo;.</p>
+</div>
+<p><strong>Output of ls to file mylsoutput.txt</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ls<span class="w"> </span>&gt;<span class="w"> </span>mylsoutput.txt
+</span></code></pre></div>
+<p><strong>Anything written after &ldquo;&gt;&rdquo; is written to myfile.txt - end with CTRL-D</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bbrydsoe@enterprise:~$<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>myfile.txt
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>This<span class="w"> </span>text<span class="w"> </span>will<span class="w"> </span>go<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>myfile.txt
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>bbrydsoe@enterprise:~$
+</span></code></pre></div>
+<p><strong>This gives the input of &ldquo;myfile.txt&rdquo; to cat, which prints the content to screen</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cat<span class="w"> </span>&lt;<span class="w"> </span>myfile.txt
+</span></code></pre></div>
+<p><strong>Splitting standard error and standard output - send standard error to file &ldquo;error-log&rdquo;</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>./myprogram<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>error.log
+</span></code></pre></div>
+<p>It will tell you (in error.log) that there is no such file or directory. Try instead running it with the program <code>imagefind.sh</code>. It will put a different message in the <code>error.log</code> file.</p>
+<h2 id="append__redirection">Append redirection<a class="headerlink" href="#append__redirection" title="Permanent link">&para;</a></h2>
+<p>It is also possible to append to a file with redirection, instead of overwriting. This is done with:</p>
+<ul>
+<li><strong>&gt;&gt;</strong> - standard output</li>
+<li><strong>&lt;&lt;</strong> - standard input</li>
+</ul>
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Code along!</p>
+<p>The files used in the examples are either created during the examples or can be found in the directory &ldquo;exercises&rdquo; -&gt; &ldquo;redirects-env-link&rdquo;.</p>
+</div>
+<p><strong>Add more text to an existing file</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;text to append_add_here&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>myfile.txt
+</span></code></pre></div>
+<p><strong>Another way to add more text to an existing file</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;text to append\n&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>myfile.txt
+</span></code></pre></div>
+<p><strong>Append one existing file to another</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cat<span class="w"> </span>file1.txt<span class="w"> </span>&gt;&gt;<span class="w"> </span>file2.txt
+</span></code></pre></div>
+<p>Take a look inside <code>file2.txt</code> and see that the content of <code>file1.txt</code> has been added.</p>
+<p><strong>Append one existing file to another and also throw the content of the file being added to screen</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cat<span class="w"> </span>file1.txt<span class="w"> </span><span class="m">0</span>&gt;&gt;<span class="w"> </span>file2.txt
+</span></code></pre></div>
+<h3 id="what__about__standard__input">What about standard input, &lt;&lt; ?<a class="headerlink" href="#what__about__standard__input" title="Permanent link">&para;</a></h3>
+<p>A common way to use <code>&lt;&lt;</code> is to let a program know what the ending text is (use it as a delimiter).</p>
+<p>For instance, the program reads everything you gives to the program as input until it sees the delimiter. Then it performs its tasks on it.</p>
+<p><strong>Example - count lines/words/characters on several lines of input</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>wc<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">&gt; Here are some words</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s">&gt; More words</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s">&gt; Yet more words</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s">&gt; It is just one more line</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s">&gt; EOF</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">      </span><span class="m">4</span><span class="w">      </span><span class="m">15</span><span class="w">      </span><span class="m">71</span>
+</span></code></pre></div>
+<h2 id="merge__redirection">Merge redirection<a class="headerlink" href="#merge__redirection" title="Permanent link">&para;</a></h2>
+<p>With merge redirection you can redirect the output of a command or a program to a file descriptor instead of to standard output.</p>
+<p><strong>Syntax</strong></p>
+<ul>
+<li><code>stream1 &gt;&amp; stream2</code> - merge output from stream1 with stream2</li>
+<li><code>stream1 &lt;&amp; stream2</code> - merge input from stream1 with stream2</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Remember</p>
+<ul>
+<li>file descriptor 0: standard input</li>
+<li>file descriptor 1: standard output</li>
+<li>file descriptor 2: standard error</li>
+</ul>
+</div>
+<p>So, sometimes you want to write more than one output stream to the same file. Commonly, standard output and standard error. This could be done like this:</p>
+<ul>
+<li><code>command &gt; file 2&gt;&amp;1</code></li>
+</ul>
+<p>This is the same as that but longer, but maybe more descriptive:</p>
+<ul>
+<li><code>command 1&gt; file 2&gt;&amp;1</code></li>
+</ul>
+<p><img alt="Redirect stdout and stderr" src="../../images/redirect-stderr-stdout.png" /></p>
+<h3 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h3>
+<p><strong>Example: Send both standard output and standard error to file &ldquo;mylog.log&rdquo;</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>./myprogram.sh<span class="w"> </span>&gt;<span class="w"> </span>mylog.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span></code></pre></div>
+<p>It should throw some errors and also some output to a file <code>mylog.log</code>.</p>
+<p>2&gt;&amp;1 means that &ldquo;standard error&rdquo; (STDERR) are redirected to whatever the target is of &ldquo;standard output&rdquo; (STDOUT).</p>
+<p>What happens more precisely is that the error message that is generated by &ldquo;standard error&rdquo;/&rdquo;2&rdquo; gets merged with the &ldquo;standard output&rdquo;/&rdquo;1&rdquo;.</p>
+<h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Use &ldquo;overwrite redirection&rdquo; to send standard output of <code>ls -lart</code> of the directory &ldquo;exercises&rdquo; -&gt; &ldquo;redirects-env-link&rdquo; to a file named &ldquo;myfiles-list.txt&rdquo;</li>
+<li>Use &ldquo;append redirection&rdquo; and <code>echo</code> to add a line of text to one of the files in the directory &ldquo;exercises&rdquo; -&gt; &ldquo;redirects-env-link&rdquo;.</li>
+<li>Use &ldquo;merge redirection&rdquo; and &ldquo;pipe&rdquo; as well as any commands you want to generate some output and errors and throw them to the same file.</li>
+</ol>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">keypoints</p>
+<ul>
+<li>We learned about redirection<ul>
+<li>overwrite</li>
+<li>append</li>
+<li>merge</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- Let's break the 80 characters per line --><!-- Let's stop checking for trailing spaces -->
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../scripting/" class="btn btn-neutral float-left" title="Scripting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../env_vars/" class="btn btn-neutral float-right" title="Environment variables">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../scripting/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../env_vars/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

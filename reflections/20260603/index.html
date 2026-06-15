@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Reflection 2026-06-03 - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Reflection 2026-06-03";
+        var mkdocs_page_input_path = "reflections/20260603/README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Reflection 2026-06-03</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/reflections/20260603/README.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="reflection__2026-06-03">Reflection 2026-06-03<a class="headerlink" href="#reflection__2026-06-03" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="../../lesson_plans/20260603/">Lesson plan</a></li>
+<li><a href="../../evaluations/20260603/">Evaluation</a></li>
+<li><a href="./">Reflection</a></li>
+</ul>
+<h2 id="during__teaching">During teaching<a class="headerlink" href="#during__teaching" title="Permanent link">&para;</a></h2>
+<p>I enjoyed the contact with the learners.
+I have spoken to all of them 1-on-1.
+There were some for which the content
+was too easy, whom I sent on an early break/lunch.</p>
+<p>I do think the course name &lsquo;Command Line 201&rsquo;
+is a misnomer: I feel it should be called
+&lsquo;Command Line 102&rsquo;, as it is quite basic what
+we are teaching.</p>
+<ul>
+<li>[x] Suggest to BB</li>
+</ul>
+<p>What I noticed is that 9 out of 10 learners
+stated that, during the &lsquo;Bash scripts&rsquo; session,
+that this is their first time creating a Bash
+script. This means they did not even remember
+when it was taught twice before! The other 1 learner
+was already experienced in Bash, so I did not ask
+her if she remembered the sessions on Bash. </p>
+<ul>
+<li>[x] Share with BB</li>
+</ul>
+<p>I enjoyed working together with the other teacher:
+when we requested host/co-host Zoom right, we just did
+that, gave a thumbs up and gave a thumbs up back. It was smooth!</p>
+<p>I predict at least 1 learner will write on the evaluation
+that the course went too slow. I agree that when being gifted
+like here, where we follow the pace of most of the learners,
+one is better off elsewhere or by self-study.</p>
+<h2 id="evaluation__results">Evaluation results<a class="headerlink" href="#evaluation__results" title="Permanent link">&para;</a></h2>
+<p>Here I go through the evaluation results.
+I do fix typos.</p>
+<h3 id="pace"><a href="../../evaluations/20260603/pace.txt">Pace</a><a class="headerlink" href="#pace" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Good</li>
+<li>Great</li>
+</ul>
+<p>Yay :-) .</p>
+<ul>
+<li>Richel is a very nice teacher</li>
+</ul>
+<p>Great</p>
+<ul>
+<li>It was a bit fast.
+  I think it would benefit from going thorugh the exercises together briefly
+  after we have done them each, to discuss any questions/issues in the group.</li>
+</ul>
+<p>Yes, I agree I should practice my Feedback more.</p>
+<ul>
+<li>
+<p>[ ] Schedule Feedback</p>
+</li>
+<li>
+<p>First it was i a bit fast but then it was better</p>
+</li>
+</ul>
+<p>I wish I knew which sessions &lsquo;first&rsquo; included.</p>
+<ul>
+<li>Overall good but as a first timer I need to go away and consolidate</li>
+</ul>
+<p>I agree practice after the course will be helpful.</p>
+<ul>
+<li>overall was good but in my opinion Birgitte goes a bit fast on the topics,
+  especially on definitions</li>
+</ul>
+<p>Not my session.</p>
+<h3 id="future__topics"><a href="../../evaluations/20260603/future_topics.txt">Future topics</a><a class="headerlink" href="#future__topics" title="Permanent link">&para;</a></h3>
+<ul>
+<li>I would like future training on Bash scripting for HPC workflows,
+  job submission scripts, environment modules,
+  data processing with grep/sed/awk,
+  and practical examples for scientific computing.</li>
+</ul>
+<p>Here I go through these suggestions:</p>
+<ul>
+<li>Bash scripting for HPC workflows:
+  this is an interesting idea,
+  now we do this in a lot of courses (e.g. HPC Python, or Intro to Bianca),
+  but not as a standalone course</li>
+<li>job submission scripts: 
+  we do this in all courses, but not as a standalone course</li>
+<li>environment modules: no idea</li>
+<li>data processing with grep/sed/awk:
+  I think this would be a bad idea, when there are high-level
+  programming languages at your disposal.
+  The AWK course, however, does teach this</li>
+<li>
+<p>practical examples for scientific computing:
+  we do this in some NBIS courses</p>
+</li>
+<li>
+<p>[ ] Consider &lsquo;Programming Formalisms for HPC&rsquo; </p>
+</li>
+</ul>
+<p>Back the suggestions by the learners!</p>
+<ul>
+<li>More bash scripting</li>
+</ul>
+<p>This is <a href="https://github.com/UPPMAX/linux-command-line-102/issues/19">already considered</a>.</p>
+<ul>
+<li>AI, Data Analytics, ML, Docker etc.</li>
+</ul>
+<p>We teach some of these already.</p>
+<ul>
+<li>[ ] Consider &lsquo;Docker for HPC&rsquo; </li>
+</ul>
+<h3 id="other__comments"><a href="../../evaluations/20260603/comments.txt">Other comments</a><a class="headerlink" href="#other__comments" title="Permanent link">&para;</a></h3>
+<ul>
+<li>I really appreciated the hands-on structure of the course.
+  The exercises were useful and helped me understand Linux commands
+  by practicing them directly in the terminal.
+  The explanations were clear, and the pace was generally good.
+  As a suggestion, it would be helpful to include a short summary table
+  of the most important commands at the end of each session,
+  with examples and common mistakes.
+  This would be especially useful for beginners or participants
+  who are new to HPC environments.
+  Overall, I found the course very helpful and well organised.
+  Thank you for the training.</li>
+</ul>
+<p>I see I already do a mediocre job at this:</p>
+<p><img alt="Bash scripting conclusions" src="bash_script_conclusions.png" />
+<img alt="grep conclusions" src="grep_conclusions.png" />
+<img alt="sed conclusions" src="sed_conclusions.png" /></p>
+<p>The <code>sed</code> session is the worst in this case: it does not show actual
+usage of <code>sed</code>.</p>
+<p>I think I can expand a bit on this. Adding common mistakes is something
+I consider: I have exercises exactly for encountering common mistakes.</p>
+<ul>
+<li>
+<p>[ ] Consider expanding summary at the end of a session</p>
+</li>
+<li>
+<p>All was just fine thank you</p>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>I should continue working on my Feedback.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

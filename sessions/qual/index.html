@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Quality of life - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Quality of life";
+        var mkdocs_page_input_path = "sessions/qual.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Quality of life</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#whats__in__here">What&rsquo;s in here</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#background__processes">Background processes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#start__a__background__jobprocess">Start a background job/process</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#suspend__a__foreground__job">Suspend a foreground job</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#move__a__foreground__job__to__the__background">Move a foreground job to the background</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#move__a__background__job__to__the__foreground">Move a background job to the foreground</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#restart__a__suspended__job">Restart a suspended job</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#terminating__a__job">Terminating a job</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#useful__terminal__shortcuts__and__their__usage">Useful terminal shortcuts and their usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how__to__edit__a__bashrc__file">How to edit a &ldquo;.bashrc&rdquo; file</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#useful__suggestions">Useful suggestions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#aliases">Aliases</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#non-persistent__aliases">Non-persistent aliases</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#persistent__aliases">Persistent aliases</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Lessons Afternoon (smarter bash)</li>
+      <li class="breadcrumb-item active">Quality of life</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/sessions/qual.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="quality__of__life">Quality of Life<a class="headerlink" href="#quality__of__life" title="Permanent link">&para;</a></h1>
+<p>This chapter is a little different to the others. It is not about a tool or an operator, but about some things that can help you make it nicer to use Linux/Bash on the command line.</p>
+<h2 id="whats__in__here">What&rsquo;s in here<a class="headerlink" href="#whats__in__here" title="Permanent link">&para;</a></h2>
+<ul>
+<li>We will talk about background processes, learning how to start them with <code>&amp;</code> and terminate them</li>
+<li>We will look at some useful terminal shortcuts and their usage</li>
+<li>We will learn how to edit a &ldquo;.bashrc&rdquo; file</li>
+<li>We will learn about using aliases</li>
+</ul>
+<h2 id="background__processes">Background processes<a class="headerlink" href="#background__processes" title="Permanent link">&para;</a></h2>
+<p>Usually, if you start some program (perhaps with an input), it will start processing it and then give the output, perhaps to screen. In many cases the terminal will then be unable to accept new commands while the processes is running. On the other hand, Linux can do multi-tasking, so how do you get to a situation where you can start another application from your terminal?</p>
+<p>The answer to this is foreground and background processes.</p>
+<p>Normally, the process you start in a terminal runs in the <em>foreground</em> and you cannot do anything else in the terminal until it completes.</p>
+<p>With the bash feature of <em>job control</em> you can move processes to the background and also back to the foreground. It is also possible to start a job directly in the background.</p>
+<h3 id="start__a__background__jobprocess">Start a background job/process<a class="headerlink" href="#start__a__background__jobprocess" title="Permanent link">&para;</a></h3>
+<p>This is done by adding an <code>&amp;</code> at the end of the command, like this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;command&gt;<span class="w"> </span>&lt;options&gt;<span class="w"> </span>&lt;input&gt;<span class="w"> </span>...<span class="w"> </span><span class="p">&amp;</span>
+</span></code></pre></div>
+<p><strong>Example</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>tar<span class="w"> </span>-zcvf<span class="w"> </span>mydir.tar.gz<span class="w"> </span>LOTS-FILE-DIR/<span class="w"> </span><span class="p">&amp;</span>
+</span></code></pre></div>
+<p>The job keeps running in the background.</p>
+<h3 id="suspend__a__foreground__job">Suspend a foreground job<a class="headerlink" href="#suspend__a__foreground__job" title="Permanent link">&para;</a></h3>
+<p>You can normally suspend a foreground job with the command <code>CTRL-Z</code>. When you do that the shell tells you the job is suspended and it also gives the job a job ID.</p>
+<p>No processing happens on the job while it is suspended.</p>
+<h3 id="move__a__foreground__job__to__the__background">Move a foreground job to the background<a class="headerlink" href="#move__a__foreground__job__to__the__background" title="Permanent link">&para;</a></h3>
+<p>Assume you have started a program/job, like normal, in the foreground and you want to move it to the background. The steps to do that are:</p>
+<ul>
+<li>Suspend the job with <code>CTRL-Z</code> to release the terminal</li>
+<li>Give the command <code>bg</code> to put the suspended job to the background</li>
+<li>It will then start running again, but now in the background</li>
+<li>You can check that it is running with the command <code>jobs</code></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bbrydsoe@enterprise:~$<span class="w"> </span>tar<span class="w"> </span>-zcvf<span class="w"> </span>Downloads.tar.gz<span class="w"> </span>Downloads/
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Downloads/
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Downloads/IMG_20250509_211952.jpg
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Downloads/add2<span class="o">(</span><span class="m">1</span><span class="o">)</span>.m
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>Downloads/lstopo_lspci<span class="o">(</span><span class="m">1</span><span class="o">)</span>.txt
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Downloads/teamviewer_15.44.5_amd64.deb
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>^Z
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span>+<span class="w">  </span>Stopped<span class="w">                 </span>tar<span class="w"> </span>-zcvf<span class="w"> </span>Downloads.tar.gz<span class="w"> </span>Downloads/
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>bbrydsoe@enterprise:~$<span class="w"> </span><span class="nb">bg</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span>+<span class="w"> </span>tar<span class="w"> </span>-zcvf<span class="w"> </span>Downloads.tar.gz<span class="w"> </span>Downloads/<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>bbrydsoe@enterprise:~$<span class="w"> </span><span class="nb">jobs</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span>+<span class="w">  </span>Running<span class="w">                 </span>tar<span class="w"> </span>-zcvf<span class="w"> </span>Downloads.tar.gz<span class="w"> </span>Downloads/<span class="w"> </span><span class="p">&amp;</span>
+</span></code></pre></div>
+<h3 id="move__a__background__job__to__the__foreground">Move a background job to the foreground<a class="headerlink" href="#move__a__background__job__to__the__foreground" title="Permanent link">&para;</a></h3>
+<p>To get the job running in the background back to the foreground you can give the command <code>fg %JOBID</code></p>
+<p><strong>Example for above job</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">fg</span><span class="w"> </span>%1
+</span></code></pre></div>
+<p>If you do not give a JOBID, then <code>fg</code> will assume the current suspended job.</p>
+<h3 id="restart__a__suspended__job">Restart a suspended job<a class="headerlink" href="#restart__a__suspended__job" title="Permanent link">&para;</a></h3>
+<p>You can restart a suspended job in either:</p>
+<p>the background:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">bg</span><span class="w"> </span>%JOBID
+</span></code></pre></div>
+<p>or foreground:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">fg</span><span class="w"> </span>%JOBID
+</span></code></pre></div>
+<p>Remember, you can get the JOBID with the command <code>jobs</code>.</p>
+<h3 id="terminating__a__job">Terminating a job<a class="headerlink" href="#terminating__a__job" title="Permanent link">&para;</a></h3>
+<p>You can terminate a foreground job with <code>CTRL-C</code> or a background job by sending it to the foreground and then do <code>CTRL-C</code>.</p>
+<p>There are other ways of killing a job, with the command <code>kill</code> and the process ID (PID), but we will not cover that here other than saying that you can get process IDs from <code>ps -efH | grep &lt;suitable string&gt;</code> and then <code>kill PID</code> or <code>kill -9 PID</code> if nothing else works.</p>
+<h2 id="useful__terminal__shortcuts__and__their__usage">Useful terminal shortcuts and their usage<a class="headerlink" href="#useful__terminal__shortcuts__and__their__usage" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>TAB</strong>: autocomplete a file/directory or command</li>
+<li><strong>CTRL-C</strong>: kill the current foreground process</li>
+<li><strong>CTRL-Z</strong>: suspend the current foreground process</li>
+<li><strong>CTRL-A</strong>: move the cursor to the beginning of the line</li>
+<li><strong>CTRL-E</strong>: move the cursor to the end of the line</li>
+<li><strong>CTRL-L</strong>: clear the screen (same as typing <code>clear</code>)</li>
+<li><strong>CTRL-K</strong>: delete the line after the cursor</li>
+<li><strong>CTRL-Y</strong>: paste the most recent thing cut or copied</li>
+<li><strong>CTRL-D</strong>: delete a character at the cursor&rsquo;s position</li>
+<li><strong>CTRL-U</strong>: delete the whole line</li>
+<li><strong>CTRL-W</strong>: delete the word before the cursor</li>
+<li><strong>CTRL-P</strong>: go to the previous command in your command history (same as &ldquo;arrow up&rdquo;, you can see the saved history with <code>history</code>)</li>
+<li><strong>CTRL-N</strong>: go to the next command in your command history (same as &ldquo;arrow down&rdquo;)</li>
+<li><strong>CTRL-R</strong>: search for a command in your command history</li>
+</ul>
+<h2 id="how__to__edit__a__bashrc__file">How to edit a &ldquo;.bashrc&rdquo; file<a class="headerlink" href="#how__to__edit__a__bashrc__file" title="Permanent link">&para;</a></h2>
+<p>The file &ldquo;.bashrc&rdquo; is in your home directory ($HOME) and is a script file that is executed on login. It contains some configurations for the terminal session and can be used to modify how i.e. shell history, aliases, paths, and other things are configured.</p>
+<p>First and foremost; &ldquo;.bashrc&rdquo; is a &ldquo;hidden&rdquo; file. To see those, add the flag/option <code>-a</code> to ls.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ls<span class="w"> </span>-a
+</span></code></pre></div>
+<p>If you just want to see what is in it, you can use cat:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cat<span class="w"> </span><span class="nv">$HOME</span>/.bashrc
+</span></code></pre></div>
+<p>To edit it, use your favourite (command-line) editor. Here <code>vi</code>/<code>vim</code> or <code>nano</code> are common.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>nano<span class="w"> </span><span class="nv">$HOME</span>/.bashrc
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>If you are editing your &ldquo;.bashrc&rdquo; file at one of the HPC centres in Sweden, it is usually a bad idea to add any <code>module load &lt;software</code> to the &ldquo;.bashrc&rdquo;. A few months on you may have forgotten about it and now you want to use another module which does not load correctly or the program does not run as expected because you have already loaded another version in your &ldquo;.bashrc&rdquo;.</li>
+<li>In general, it is a good idea to make a backup of your &ldquo;.bashrc&rdquo; file if you are doing something that might break things. Do <code>cp $HOME/.bashrc $HOME/.bashrc.bak</code> or similar first. Otherwise, there are usually &ldquo;skeleton versions&rdquo; of these files in <code>/etc/skel/</code>.</li>
+</ul>
+</div>
+<h3 id="useful__suggestions">Useful suggestions<a class="headerlink" href="#useful__suggestions" title="Permanent link">&para;</a></h3>
+<p>So what should you put in the &ldquo;.bashrc&rdquo;? It depends on your work style of course, and what you are working with, but these are some suggestions:</p>
+<ul>
+<li>Aliases (see next part, very soon)</li>
+<li>Environment variables, Python environments</li>
+<li>PATHs and library paths to own-installed software</li>
+<li>Customization of the terminal</li>
+<li>Anything you need persistent between sessions</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Important</p>
+<p>Any changes you make to &ldquo;.bashrc&rdquo; will not be active until you have done one of:</p>
+<ul>
+<li>logged out and in again</li>
+<li><code>source .bashrc</code></li>
+<li><code>. .bashrc</code></li>
+</ul>
+</div>
+<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Setting the path in .bashrc</p>
+<p>Assuming you have installed some software and now need to set the path to libraries and binaries.</p>
+<p>In this example the new software is installed in /opt/SOFTWARE/ and we add the new path to the old, which included OTHERSOFTWARE installed in your homedirectory (for user username):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/username/OTHERSOFTWARE/bin:opt/SOFTWARE/bin
+</span></code></pre></div>
+<p>We sometimes also need to set the path to the softwares libraries:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/home/username/OTHERSOFTWARE/lib:/opt/SOFTWARE/lib
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Customizing the terminal</p>
+<p>These includes a comment before that says what they do. Always good to put!</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Change number of commands stored in memory during running to 1000 (those you can access with arrow-up or CTRL-P)</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">1000</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Change number of commands stored on disk to 2000 (you can see them with &quot;history&quot;)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nv">HISTFILESIZE</span><span class="o">=</span><span class="m">2000</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Append to the history file, don&#39;t overwrite it**</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nb">shopt</span><span class="w"> </span>-s<span class="w"> </span>histappend
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c1"># make less more friendly for non-text input files**</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="o">[</span><span class="w"> </span>-x<span class="w"> </span>/usr/bin/lesspipe<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nv">SHELL</span><span class="o">=</span>/bin/sh<span class="w"> </span>lesspipe<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="c1"># set variable identifying the chroot you work in (used in the prompt below)**</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">debian_chroot</span><span class="k">:-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-r<span class="w"> </span>/etc/debian_chroot<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="nv">debian_chroot</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/etc/debian_chroot<span class="k">)</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="k">fi</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="c1"># set a fancy prompt (non-color, unless we know we &quot;want&quot; color)</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TERM</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">    </span>xterm-color<span class="p">|</span>*-256color<span class="o">)</span><span class="w"> </span><span class="nv">color_prompt</span><span class="o">=</span>yes<span class="p">;;</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="k">esac</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="c1"># If this is an xterm set the title to user@host:dir</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TERM</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>xterm*<span class="p">|</span>rxvt*<span class="o">)</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">    </span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;\[\e]0;</span><span class="si">${</span><span class="nv">debian_chroot</span><span class="p">:+(</span><span class="nv">$debian_chroot</span><span class="p">)</span><span class="si">}</span><span class="s2">\u@\h: \w\a\]</span><span class="nv">$PS1</span><span class="s2">&quot;</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">    </span><span class="p">;;</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>*<span class="o">)</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">    </span><span class="p">;;</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="k">esac</span>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="c1"># enable color support of ls</span>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-x<span class="w"> </span>/usr/bin/dircolors<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="w">    </span><span class="nb">test</span><span class="w"> </span>-r<span class="w"> </span>~/.dircolors<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>dircolors<span class="w"> </span>-b<span class="w"> </span>~/.dircolors<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>dircolors<span class="w"> </span>-b<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">ls</span><span class="o">=</span><span class="s1">&#39;ls --color=auto&#39;</span>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="w">    </span><span class="c1">#alias dir=&#39;dir --color=auto&#39;</span>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="w">    </span><span class="c1">#alias vdir=&#39;vdir --color=auto&#39;</span>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a><span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">grep</span><span class="o">=</span><span class="s1">&#39;grep --color=auto&#39;</span>
+</span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">fgrep</span><span class="o">=</span><span class="s1">&#39;fgrep --color=auto&#39;</span>
+</span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a><span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">egrep</span><span class="o">=</span><span class="s1">&#39;egrep --color=auto&#39;</span>
+</span><span id="__span-11-42"><a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="k">fi</span>
+</span><span id="__span-11-43"><a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a>
+</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a><span class="c1"># colored GCC warnings and errors - uncomment to use</span>
+</span><span id="__span-11-45"><a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a><span class="c1">#export GCC_COLORS=&#39;error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01&#39;</span>
+</span></code></pre></div>
+</div>
+<h2 id="aliases">Aliases<a class="headerlink" href="#aliases" title="Permanent link">&para;</a></h2>
+<p>An alias for a command means that there are two commands for the same action. The reason to make an alias is usually to get something that is shorter and/or easier to remember.</p>
+<p>Aliases can be persistent or non-persistent.</p>
+<h3 id="non-persistent__aliases">Non-persistent aliases<a class="headerlink" href="#non-persistent__aliases" title="Permanent link">&para;</a></h3>
+<p>These are aliases you just need for a short time, during that specific session. They will go away next time you logout and login, and they will not be available in another shell.</p>
+<p>They are easy to create:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">ALIASNAME</span><span class="o">=</span><span class="s2">&quot;command&quot;</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Example</p>
+<p><strong>Making it easier to list all files with info, including hidden files</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">lah</span><span class="o">=</span><span class="s2">&quot;ls -lah&quot;</span>
+</span></code></pre></div></p>
+<p>It looks like this:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>bbrydsoe@enterprise:~/exercises/awk-qol$<span class="w"> </span>lah
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>Command<span class="w"> </span><span class="s1">&#39;lah&#39;</span><span class="w"> </span>not<span class="w"> </span>found,<span class="w"> </span>did<span class="w"> </span>you<span class="w"> </span>mean:
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nb">command</span><span class="w"> </span><span class="s1">&#39;lha&#39;</span><span class="w"> </span>from<span class="w"> </span>deb<span class="w"> </span>jlha-utils<span class="w"> </span><span class="o">(</span><span class="m">0</span>.1.6-4.1<span class="o">)</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span><span class="nb">command</span><span class="w"> </span><span class="s1">&#39;lha&#39;</span><span class="w"> </span>from<span class="w"> </span>deb<span class="w"> </span>lhasa<span class="w"> </span><span class="o">(</span><span class="m">0</span>.3.1-4<span class="o">)</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">  </span><span class="nb">command</span><span class="w"> </span><span class="s1">&#39;lsh&#39;</span><span class="w"> </span>from<span class="w"> </span>deb<span class="w"> </span>lsh-client<span class="w"> </span><span class="o">(</span><span class="m">2</span>.1-13<span class="o">)</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>Try:<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>&lt;deb<span class="w"> </span>name&gt;
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>bbrydsoe@enterprise:~/exercises/awk-qol$<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nv">lah</span><span class="o">=</span><span class="s2">&quot;ls -lah&quot;</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>bbrydsoe@enterprise:~/exercises/awk-qol$<span class="w"> </span>lah
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>total<span class="w"> </span>16K
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>drwxrwxr-x<span class="w"> </span><span class="m">2</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w"> </span><span class="m">4</span>,0K<span class="w"> </span>maj<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:15<span class="w"> </span>.
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>drwxr-xr-x<span class="w"> </span><span class="m">8</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w"> </span><span class="m">4</span>,0K<span class="w"> </span>maj<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:41<span class="w"> </span>..
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>-rw-rw-r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">  </span><span class="m">182</span><span class="w"> </span>maj<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:43<span class="w"> </span>file.dat
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>-rw-rw-r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">  </span><span class="m">224</span><span class="w"> </span>maj<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:45<span class="w"> </span>myfile.txt
+</span></code></pre></div></p>
+</div>
+<h3 id="persistent__aliases">Persistent aliases<a class="headerlink" href="#persistent__aliases" title="Permanent link">&para;</a></h3>
+<p>So what do you do if you want to keep the aliases more permanently, and can use them from session to session?</p>
+<ul>
+<li>Add them to &ldquo;.bashrc&rdquo;</li>
+<li>
+<p>Possibly add them to a file you create, &ldquo;.bash_aliases&rdquo; and then let &ldquo;.bashrc&rdquo; load &ldquo;.bash_aliases&rdquo;</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>~/.bash_aliases<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">       </span>.<span class="w"> </span>~/.bash_aliases
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">   </span><span class="k">fi</span>
+</span></code></pre></div>
+</li>
+</ul>
+<p>Here we are just going to add them to &ldquo;.bashrc&rdquo;.</p>
+<div class="admonition note">
+<p class="admonition-title">Examples</p>
+<ol>
+<li>Open &ldquo;$HOME/.bashrc&rdquo; with <code>nano</code> or <code>vi</code>/<code>vim</code> or similar.</li>
+<li>If you already have some aliases there, just add new ones after, otherwise scroll to the bottom and make a comment <code># Aliases</code> then add your aliases after.</li>
+<li>Common aliases are:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">alias</span><span class="w"> </span>..<span class="o">=</span><span class="s1">&#39;cd ..&#39;</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">alias</span><span class="w"> </span>...<span class="o">=</span><span class="s1">&#39;cd ../..&#39;</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nb">alias</span><span class="w"> </span>....<span class="o">=</span><span class="s1">&#39;cd ../../..&#39;</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nb">alias</span><span class="w"> </span>.4<span class="o">=</span><span class="s1">&#39;cd ../../../../&#39;</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nb">alias</span><span class="w"> </span>.5<span class="o">=</span><span class="s1">&#39;cd ../../../../..&#39;</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">la</span><span class="o">=</span><span class="s1">&#39;ls -a&#39;</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">sl</span><span class="o">=</span><span class="s2">&quot;ls&quot;</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">l</span><span class="o">=</span><span class="s2">&quot;ls&quot;</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">s</span><span class="o">=</span><span class="s2">&quot;ls&quot;</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">rm</span><span class="o">=</span><span class="s1">&#39;rm -i&#39;</span><span class="w"> </span><span class="c1">#-i prompts user before deletion</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">cp</span><span class="o">=</span><span class="s1">&#39;cp -i&#39;</span><span class="w"> </span><span class="c1">#-i prompts user before overwriting</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="c1"># If you have some environments you often use</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">env1</span><span class="o">=</span><span class="s2">&quot;source ~/project1/env/bin/activate&quot;</span>
+</span></code></pre></div></li>
+</ol>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Start a job in the background with <code>&amp;</code></li>
+<li>Start a job that takes some time to run. Suspend it. Send it to the background. Look that it runs. Return it to the foreground.<ul>
+<li>Suggestion: Make a tarball of a directory with many files in.</li>
+<li>If you do not have a suitable directory, you can instead run the script <code>slowcommand.sh</code> in &ldquo;exercises&rdquo; -&gt; &ldquo;awk-qol&rdquo; (make sure it is executable, <code>chmod +x slowcommand.sh</code>)</li>
+</ul>
+</li>
+<li>Try out several of the terminal shortcuts</li>
+<li>Create a couple aliases (non-persistent) and try them out</li>
+<li>Add some nice aliases to your &ldquo;.bashrc&rdquo;, <code>source</code> the &ldquo;.bashrc&rdquo; and try the aliases!</li>
+</ol>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>we learned about foreground and background processes</li>
+<li>we tried some terminal short-cuts</li>
+<li>we learned about <code>alias</code></li>
+<li>we learned about &ldquo;.bashrc&rdquo;</li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../arch/" class="btn btn-neutral float-left" title="Archiving/compressing data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../books/" class="btn btn-neutral float-right" title="Books">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../arch/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../books/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

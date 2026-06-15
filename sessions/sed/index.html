@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Using the sed stream editor - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Using the sed stream editor";
+        var mkdocs_page_input_path = "sessions/sed/README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Using the sed stream editor</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1__why__use__sed">1. Why use sed?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2__overview">2. Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3__types__of__operations">3. Types of operations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#31__filtering">3.1. Filtering</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#32__replacing">3.2. Replacing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4__input__and__output">4. Input and output</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5__type__of__regular__expressions">5. Type of regular expressions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise__1">Exercise 1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise__11__download__macbeth">Exercise 1.1: download Macbeth</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise__12__use__sed__to__replace__text__from__standard__input">Exercise 1.2: use sed to replace text from standard input</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise__13__use__sed__to__find__text__from__standard__input">Exercise 1.3: use sed to find text from standard input</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise__14__use__extended__regular__expressions">Exercise 1.4: use extended regular expressions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise__15__use__sed__to__replace__text__in__a__file">Exercise 1.5: use sed to replace text in a file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#optional__exercise__16__do__this__exercise__from__a__script">(optional) Exercise 1.6: Do this exercise from a script</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Lessons Morning (smarter command line)</li>
+      <li class="breadcrumb-item active">Using the sed stream editor</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/sessions/sed/README.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="using__the__sed__stream__editor">Using the <code>sed</code> stream editor<a class="headerlink" href="#using__the__sed__stream__editor" title="Permanent link">&para;</a></h1>
+<details class="- note">
+<summary>Prefer a video?</summary>
+<p>Watch <a href="https://youtu.be/HXySh8dQLEA">the YouTube video of this session</a></p>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Learning outcomes</p>
+<ul>
+<li>Learners can use <code>sed</code> to filter for lines using a regular expression</li>
+<li>Learners can use <code>sed</code> to replace lines using a regular expression</li>
+<li>Learners can use <code>sed</code> with different types of input and output</li>
+<li>Learners can use <code>sed</code> with the two different regular expression types</li>
+<li>(optional) Learners have seen three <code>sed</code> learning resources</li>
+</ul>
+</div>
+<details class="- note">
+<summary>For teachers</summary>
+<p>Lesson plan:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Minutes</th>
+<th>Duration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11:20-10:30</td>
+<td>0-10</td>
+<td>10</td>
+<td>Prior</td>
+</tr>
+<tr>
+<td>11:30-10:35</td>
+<td>10-15</td>
+<td>5</td>
+<td>Present</td>
+</tr>
+<tr>
+<td>11:35-10:55</td>
+<td>15-35</td>
+<td>20</td>
+<td>Challenge</td>
+</tr>
+<tr>
+<td>11:55-12:09</td>
+<td>35-45</td>
+<td>10</td>
+<td>Feedback and conclusion</td>
+</tr>
+</tbody>
+</table>
+<p>Prior:</p>
+<ul>
+<li>How to replace text with <code>grep</code>?</li>
+<li>What is <code>sed</code>?</li>
+<li><code>sed</code> is a stream editor. What would that mean?</li>
+<li><code>sed</code> is also called &lsquo;a non-interactive command-line text editor&rsquo;.
+  What would that mean?</li>
+<li><code>sed</code> is a stream editor that can filter text. What would that mean?</li>
+<li><code>sed</code> is a stream editor that can transform text. What would that mean?</li>
+</ul>
+</details>
+<h2 id="1__why__use__sed">1. Why use <code>sed</code>?<a class="headerlink" href="#1__why__use__sed" title="Permanent link">&para;</a></h2>
+<p><code>sed</code> finds text that matches a regular expression and can replace it:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cat macbeth.txt | sed &#39;s/[A-Z][a-z][a-z]*land/Sweden/g&#39;
+</span></code></pre></div>
+<p><code>sed</code> is among
+<a href="https://en.wikipedia.org/wiki/List_of_POSIX_commands">the list of &lsquo;Portable Operating System Interface&rsquo; (POSIX) commands</a>,
+which means it is considered a fundamental tool
+and is likely to be available on your operating system.</p>
+<p><code>sed</code> (short for &lsquo;stream editor&rsquo;)
+can do what <code>grep</code> can do and more:
+it is &lsquo;a non-interactive command-line text editor&rsquo;
+(<a href="https://www.gnu.org/software/sed/">source</a>)</p>
+<p>In this session, we will be manipulating a file from <code>sed</code> (instead of
+doing so by hand).</p>
+<h2 id="2__overview">2. Overview<a class="headerlink" href="#2__overview" title="Permanent link">&para;</a></h2>
+<p><img alt="Mindmap" src="mindmap_no_deletion.png" /></p>
+<h2 id="3__types__of__operations">3. Types of operations<a class="headerlink" href="#3__types__of__operations" title="Permanent link">&para;</a></h2>
+<h2 id="31__filtering">3.1. Filtering<a class="headerlink" href="#31__filtering" title="Permanent link">&para;</a></h2>
+<p><code>sed</code> can do what <code>grep</code> can do.
+For example, in the session about<code>grep</code>,
+we used the following command:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>man<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;^[A-Z]&quot;</span>
+</span></code></pre></div>
+<p>The equivalent <code>sed</code> command is this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>man<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>--quiet<span class="w"> </span><span class="s2">&quot;/^[A-Z]/p&quot;</span>
+</span></code></pre></div>
+<details class="- tip">
+<summary>Are there synonyms for this <code>sed</code> command?</summary>
+<p>Yes, these commands are all equivalent:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>man<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>--quiet<span class="w"> </span><span class="s2">&quot;/^[A-Z]/p&quot;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>man<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>--silent<span class="w"> </span><span class="s2">&quot;/^[A-Z]/p&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>man<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;/^[A-Z]/p&quot;</span>
+</span></code></pre></div>
+<p>In this session, <code>--quiet</code> is used, as it is felt to be
+the most self-explanatory: to me, &lsquo;quiet&rsquo; feels that it may
+not be perfectly &lsquo;silent&rsquo;.</p>
+</details>
+<h2 id="32__replacing">3.2. Replacing<a class="headerlink" href="#32__replacing" title="Permanent link">&para;</a></h2>
+<p>Probably the most used feature of <code>sed</code> is its replacement
+functionality:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sed<span class="w"> </span><span class="s1">&#39;s/[regular_expression]/[replacement]/&#39;</span>
+</span></code></pre></div>
+<p>The <code>s</code> is short for &lsquo;substitute&rsquo;. For example, the command
+below substitutes &lsquo;morning&rsquo; for &lsquo;afternoon&rsquo;.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Good morning&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/morning/afternoon/&#39;</span>
+</span></code></pre></div>
+<details class="- tip">
+<summary>What is the output of that command?</summary>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">Good afternoon</span>
+</span></code></pre></div>
+</details>
+<p>If there may be multiple matches in a sentence, add <code>g</code> at the end:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Good morning, good morning&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/morning/afternoon/g&#39;</span>
+</span></code></pre></div>
+<details class="- tip">
+<summary>What is the output of that command (with the <code>g</code>)?</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Good<span class="w"> </span>afternoon,<span class="w"> </span>good<span class="w"> </span>afternoon
+</span></code></pre></div>
+</details>
+<details class="- tip">
+<summary>What is the output of that command without the <code>g</code>?</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Good<span class="w"> </span>afternoon,<span class="w"> </span>good<span class="w"> </span>morning
+</span></code></pre></div>
+</details>
+<h2 id="4__input__and__output">4. Input and output<a class="headerlink" href="#4__input__and__output" title="Permanent link">&para;</a></h2>
+<!-- markdownlint-disable MD013 -->
+<!-- markdownlint-disable MD056 -->
+<table>
+<thead>
+<tr>
+<th><code>sed</code> command</th>
+<th>Input and output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cat my_input_file.txt | sed '...'</code></td>
+<td>Get input from a pipe, write output to terminal</td>
+</tr>
+<tr>
+<td><code>sed '...' my_input_file.txt</code></td>
+<td>Get input from a file, write output to terminal</td>
+</tr>
+<tr>
+<td><code>sed --in-place '...' my_file.txt</code></td>
+<td>:warning: Modify the file directly</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-disable MD056 -->
+<!-- markdownlint-enable MD013 -->
+
+<h2 id="5__type__of__regular__expressions">5. Type of regular expressions<a class="headerlink" href="#5__type__of__regular__expressions" title="Permanent link">&para;</a></h2>
+<p>There are two types of regular expressions
+present in <code>sed</code>
+<a href="https://www.gnu.org/software/sed/manual/sed.html#Regular-Expressions-Overview">according the <code>sed</code> manual</a>:
+basic and extended regular expressions.</p>
+<p>Here is a quote from
+<a href="https://www.gnu.org/software/sed/manual/sed.html#BRE-vs-ERE">the <code>sed</code> manual</a>
+regarding their differences:</p>
+<blockquote>
+<p>In GNU sed, the only difference between basic and extended regular
+expressions is in the behavior of a few special characters:
+<code>?</code>, <code>+</code>, parentheses, braces (<code>{}</code>), and <code>|</code>.</p>
+</blockquote>
+<p>The difference can be shown using this text:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Bland
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>England
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Gland
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Holland
+</span></code></pre></div>
+<p>To select the countries, use:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>cat<span class="w"> </span>lands.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>--quiet<span class="w"> </span><span class="s1">&#39;/[A-Z][a-z][a-z]*land/p&#39;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>cat<span class="w"> </span>lands.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>--quiet<span class="w"> </span>--regexp-extended<span class="w"> </span><span class="s1">&#39;/[A-Z][a-z]+land/p&#39;</span>
+</span></code></pre></div>
+<details class="- tip">
+<summary>This line gives me the error <code>unrecognized option '--quiet'</code></summary>
+<p>Some operating systems do not support the longer flag name
+for less output (i.e. <code>--quiet</code>).
+In that case, use the syntax below instead, which uses <code>-n</code> instead:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>cat<span class="w"> </span>lands.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span>--regexp-extended<span class="w"> </span><span class="s1">&#39;/[A-Z][a-z]+land/p&#39;</span>
+</span></code></pre></div>
+<p>This teaching material used the longer writing,
+as this is easier to read.</p>
+</details>
+<details class="- tip">
+<summary>This line gives me the error <code>unrecognized option '--regexp-extended'</code></summary>
+<p>Some operating systems do not support the longer flag name
+for using extended regular expressions (i.e. <code>--regexp-extended</code>) .
+In that case, use the syntax below instead, which uses <code>-E</code> instead:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cat<span class="w"> </span>lands.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>--quiet<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;/[A-Z][a-z]+land/p&#39;</span>
+</span></code></pre></div>
+<p>This teaching material used the longer writing,
+as this is easier to read.</p>
+</details>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<h2 id="exercise__1">Exercise 1<a class="headerlink" href="#exercise__1" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Macbeth</p>
+<p><img alt="Macbeth" src="macbeth_smaller.jpg" /></p>
+<blockquote>
+<p><a href="https://pixabay.com/illustrations/william-shakespeare-macbeth-poster-67764/">source</a></p>
+</blockquote>
+</div>
+<p>In this exercise, we will work Macbeth, a tale written by William Shakespeare.</p>
+<p>In these exercises, we will:</p>
+<ul>
+<li>Replace &lsquo;Weird Sisters&rsquo; by &lsquo;witches&rsquo;:
+  the text will be more clear</li>
+<li>Replace all country names by &lsquo;Sweden&rsquo; (or your favorite country):
+  the text may be funnier to read :-)</li>
+</ul>
+<hr />
+<h2 id="exercise__11__download__macbeth">Exercise 1.1: download Macbeth<a class="headerlink" href="#exercise__11__download__macbeth" title="Permanent link">&para;</a></h2>
+<p>Download the file from a terminal as such:</p>
+<!-- markdownlint-disable MD013 -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/UPPMAX/linux-command-line-102/refs/heads/main/docs/sessions/sed/macbeth.txt
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+
+<hr />
+<h2 id="exercise__12__use__sed__to__replace__text__from__standard__input">Exercise 1.2: use <code>sed</code> to replace text from standard input<a class="headerlink" href="#exercise__12__use__sed__to__replace__text__from__standard__input" title="Permanent link">&para;</a></h2>
+<!-- markdownlint-disable MD051 -->
+<p>Read <a href="#32__replacing">the &lsquo;Replacing&rsquo; section</a>.</p>
+<!-- markdownlint-enable MD051 -->
+
+<p>In Macbeth, replace <code>Weird Sisters</code> (both words start with an upper-case
+character) by <code>witches</code>. Do so by using <code>cat</code> on the file <code>macbeth.txt</code>,
+then piping it to <code>sed</code>.</p>
+<details class="- tip">
+<summary>Answer</summary>
+<p>Here is how to show the text of Macbeth, with the text replaced:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>cat<span class="w"> </span>macbeth.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/Weird Sisters/witches/&#39;</span>
+</span></code></pre></div>
+<p>There is no need to end with a <code>g</code>, as doing so (see command below) gives
+identical results:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cat<span class="w"> </span>macbeth.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/Weird Sisters/witches/g&#39;</span>
+</span></code></pre></div>
+<p>You can check in many ways that <code>Weird Sisters</code> only occurs once per
+line. For example, the command below gives no matches:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>cat<span class="w"> </span>macbeth.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Weird Sisters.*Weird Sisters&quot;</span>
+</span></code></pre></div>
+</details>
+<p>Check that your replacement worked.</p>
+<details class="- tip">
+<summary>Tip</summary>
+<p>Pipe the output to <code>grep</code> to detect matches with <code>witches</code></p>
+</details>
+<details class="- tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>cat<span class="w"> </span>macbeth.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/Weird Sisters/witches/g&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>witches
+</span></code></pre></div>
+<p>This gives the output:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>The witches, hand in hand,
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>title, before, these witches saluted me, and referred me to the
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>I dreamt last night of the three witches:
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>(And betimes I will) to the witches:
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Saw you the witches?
+</span></code></pre></div>
+</details>
+<details class="- tip">
+<summary>How to save to a file?</summary>
+<p>You can redirect the output to a file using <code>&gt;</code>, e.g.:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>cat<span class="w"> </span>macbeth.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/Weird Sisters/witches/g&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>macbeth_with_witches.txt
+</span></code></pre></div>
+</details>
+<hr />
+<h2 id="exercise__13__use__sed__to__find__text__from__standard__input">Exercise 1.3: use <code>sed</code> to find text from standard input<a class="headerlink" href="#exercise__13__use__sed__to__find__text__from__standard__input" title="Permanent link">&para;</a></h2>
+<!-- markdownlint-disable MD051 -->
+<p>Read <a href="#31__filtering">the &lsquo;Filtering&rsquo; section</a>.</p>
+<!-- markdownlint-enable MD051 -->
+
+<p>In Macbeth, there are many place names ending on <code>land</code>.</p>
+<p>Search for all place names ending on <code>land</code> using <code>sed</code>.
+To be precise, search for all matches that:</p>
+<ul>
+<li>(1) start with an uppercase character</li>
+<li>(2) have zero or more lowercase characters</li>
+<li>(3) end on <code>land</code></li>
+</ul>
+<p>Do so by using <code>cat</code> on the file <code>macbeth.txt</code>,
+then piping it to <code>sed</code>.</p>
+<details class="- tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>cat<span class="w"> </span>macbeth.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>--quiet<span class="w"> </span><span class="s1">&#39;/[A-Z][a-z]*land/p&#39;</span>
+</span></code></pre></div>
+</details>
+<hr />
+<h2 id="exercise__14__use__extended__regular__expressions">Exercise 1.4: use extended regular expressions<a class="headerlink" href="#exercise__14__use__extended__regular__expressions" title="Permanent link">&para;</a></h2>
+<p>Reading your answer in the previous exercise,
+your non-Swedish non-Finnish colleague comes to you
+and states that your regular expression
+makes no sense: your regular expression matches
+&lsquo;Aland&rsquo;, &lsquo;Bland&rsquo;, &lsquo;Cland&rsquo; (and &lsquo;Gland&rsquo;), which can be improved
+upon.</p>
+<details class="- tip">
+<summary>Why is the colleague non-Swedish non-Finnish?</summary>
+<p>Because he/she does not know that Sweden has an island called
+Öland and Finland has an island called Åland.</p>
+</details>
+<!-- markdownlint-disable MD051 -->
+<p>Read <a href="#5__type__of__regular__expressions">the section &lsquo;Type of regular expressions&rsquo;</a>.</p>
+<!-- markdownlint-enable MD051 -->
+
+<p>Search for all place names ending on <code>land</code> using <code>sed</code>.
+To be precise, search for all matches that:</p>
+<ul>
+<li>(1) start with an uppercase character</li>
+<li>(2) have <strong>one</strong> or more lowercase characters:
+  use a <code>+</code> in your regular expression</li>
+<li>(3) end on <code>land</code>.</li>
+</ul>
+<details class="- tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>cat<span class="w"> </span>macbeth.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>--quiet<span class="w"> </span>--regexp-extended<span class="w"> </span><span class="s1">&#39;/[A-Z][a-z]+land/p&#39;</span>
+</span></code></pre></div>
+<p>This is equivalent to the syntax below.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>cat<span class="w"> </span>macbeth.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>--quiet<span class="w"> </span><span class="s1">&#39;/[A-Z][a-z][a-z]*land/p&#39;</span>
+</span></code></pre></div>
+</details>
+<hr />
+<h2 id="exercise__15__use__sed__to__replace__text__in__a__file">Exercise 1.5: use <code>sed</code> to replace text in a file<a class="headerlink" href="#exercise__15__use__sed__to__replace__text__in__a__file" title="Permanent link">&para;</a></h2>
+<p>Until now, we never have touched the original file.
+Here we use <code>sed --in-place [commands] [filename]</code>
+to directly work on the original file.</p>
+<p>Using <code>sed</code> directly on the file <code>macbeth.txt</code>,
+replace <code>Weird Sisters</code> by <code>witches</code></p>
+<details class="- tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sed<span class="w"> </span>--in-place<span class="w"> </span><span class="s1">&#39;s/Weird Sisters/witches/g&#39;</span><span class="w"> </span>macbeth.txt
+</span></code></pre></div>
+</details>
+<p>Using <code>sed</code> directly on the file <code>macbeth.txt</code>,
+replace &lsquo;lands&rsquo; by <code>Sweden</code>.</p>
+<details class="- tip">
+<summary>Answer</summary>
+<p>These are all valid answers:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sed<span class="w"> </span>--in-place<span class="w"> </span><span class="s1">&#39;s/[A-Z][a-z][a-z]*land/Sweden/&#39;</span><span class="w"> </span>macbeth.txt
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>sed<span class="w"> </span>--in-place<span class="w"> </span><span class="s1">&#39;s/[A-Z][a-z][a-z]*land/Sweden/g&#39;</span><span class="w"> </span>macbeth.txt
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>sed<span class="w"> </span>--in-place<span class="w"> </span>--regexp-extended<span class="w"> </span><span class="s1">&#39;s/[A-Z][a-z]+land/Sweden/&#39;</span><span class="w"> </span>macbeth.txt
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>sed<span class="w"> </span>--in-place<span class="w"> </span>--regexp-extended<span class="w"> </span><span class="s1">&#39;s/[A-Z][a-z]+land/Sweden/g&#39;</span><span class="w"> </span>macbeth.txt
+</span></code></pre></div>
+</details>
+<p>Using <code>sed</code> directly on the file <code>macbeth.txt</code>,
+to remove the copyright.</p>
+<details class="- tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sed<span class="w"> </span>--in-place<span class="w"> </span><span class="s1">&#39;1,26d;4173,4495d&#39;</span><span class="w"> </span>macbeth.txt
+</span></code></pre></div>
+</details>
+<hr />
+<h2 id="optional__exercise__16__do__this__exercise__from__a__script">(optional) Exercise 1.6: Do this exercise from a script<a class="headerlink" href="#optional__exercise__16__do__this__exercise__from__a__script" title="Permanent link">&para;</a></h2>
+<p>Do this exercise from a script.</p>
+<details class="- tip">
+<summary>Answer</summary>
+<p>This is simply putting the answers in one file:</p>
+<p><!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line --></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/UPPMAX/linux-command-line-102/refs/heads/main/docs/sessions/sed/macbeth.txt
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>sed<span class="w"> </span>--in-place<span class="w"> </span><span class="s1">&#39;s/Weird Sisters/witches/g&#39;</span><span class="w"> </span>macbeth.txt
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>sed<span class="w"> </span>--in-place<span class="w"> </span><span class="s1">&#39;s/[A-Z][a-z][a-z]*land/Sweden/&#39;</span><span class="w"> </span>macbeth.txt
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+<p>Optional is to add a shebang as the first line:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="ch">#!/bin/bash</span>
+</span></code></pre></div>
+<p>Optional is to remove <code>macbeth.txt</code> if it already exists before
+downloading, as shown below. The <code>--force</code> makes sure that this
+commands &lsquo;works&rsquo; even
+if the file is absent.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>rm<span class="w"> </span>--force<span class="w"> </span>macbeth.txt
+</span></code></pre></div>
+<p>You can obtain this script by:</p>
+<p><!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line --></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/UPPMAX/linux-command-line-102/refs/heads/main/docs/lesson_plans/20251204/script_1.sh
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+</details>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">Summary</p>
+<ul>
+<li><code>sed</code> can do what <code>grep</code> can do and more</li>
+<li><code>sed</code> is a &lsquo;stream editor&rsquo; and also called
+  &lsquo;a non-interactive command-line text editor&rsquo;</li>
+<li><code>sed</code> can use multiple combinations of input and output</li>
+<li><code>sed</code> can do multiple operations,
+  such as filtering and substituting</li>
+<li><code>sed</code> can use two regular expression syntaxes</li>
+<li><code>sed</code> is not a programming language: use AWK instead</li>
+</ul>
+</div>
+<details class="- tip">
+<summary>Overview of some POSIX tools</summary>
+<p><img alt="Overview of some POSIX tools" src="posix_tools.png" /></p>
+<blockquote>
+<p>Overview of some POSIX tools</p>
+</blockquote>
+</details>
+<!-- Tables cannot be split up over lines, hence will break 80 characters per line --><!-- markdownlint-disable MD060 --><!-- The pipe symbol in a command is not part of a table --><!-- markdownlint-enable MD060 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line --><!-- due to 'readthedocs' theme --><!-- due to 'readthedocs' theme --><!-- due to 'readthedocs' theme -->
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../regular_expressions_and_grep/" class="btn btn-neutral float-left" title="Searching using regular expressions and grep"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../awk/" class="btn btn-neutral float-right" title="(optional) Using the AWK programming language">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../regular_expressions_and_grep/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../awk/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

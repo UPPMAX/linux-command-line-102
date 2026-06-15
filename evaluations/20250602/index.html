@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Evaluation 2025-06-02 and 2025-06-03 - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Evaluation 2025-06-02 and 2025-06-03";
+        var mkdocs_page_input_path = "evaluations/20250602/README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Evaluation 2025-06-02 and 2025-06-03</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/evaluations/20250602/README.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="evaluation__2025-06-02__and__2025-06-03">Evaluation 2025-06-02 and 2025-06-03<a class="headerlink" href="#evaluation__2025-06-02__and__2025-06-03" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Date: 2025-06-02 and 2025-06-02</li>
+<li>Number of registrations: 40</li>
+<li>Number of learners on Day 1:<ul>
+<li>Showing up: 15 (38% showing up)</li>
+<li>Being present most of the time: 11 (28% actively participating)</li>
+</ul>
+</li>
+<li>Number of filled-in evaluations: 11 (100%)</li>
+</ul>
+<h2 id="analysis">Analysis<a class="headerlink" href="#analysis" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="results.csv">Evaluation results (csv)</a></li>
+<li><a href="results.xlsx">Evaluation results (xlsx)</a></li>
+<li><a href="analyse.R">Analysis script</a></li>
+<li><a href="average_confidences.csv">Average confidence per question (.csv)</a></li>
+<li><a href="success_score.txt">Success score</a>: 77%</li>
+</ul>
+<p><img alt="Course ratings" src="course_rating.png" />
+<img alt="All confidences" src="all_confidences.png" />
+<img alt="Average confidence per question" src="average_confidences_per_question.png" />
+<img alt="Confidences per question" src="confidences_per_question.png" />
+<img alt="Course recommend" src="recommend.png" /></p>
+<h3 id="pace"><a href="pace.txt">Pace</a><a class="headerlink" href="#pace" title="Permanent link">&para;</a></h3>
+<ul>
+<li>good, perhaps slightly quick</li>
+<li>It is balanced.</li>
+<li>I was good</li>
+<li>I think is good but I did not code along
+  as I saw that then I catch less information</li>
+<li>today intensive and less time to do exercise</li>
+<li>Good! just tight for the exercises</li>
+<li>The pace was good, quite high but for this type of intermediate course
+  I think that is not a problem.
+  I can go back to the things I found the most interesting or difficult later.</li>
+<li>A little quick, some extra time would help particularly for Birgittes section</li>
+<li>The pace was excellent</li>
+<li>Ok on Monday, a bit rushed towards the end on Tuesday</li>
+<li>Maybe it was a bit quick? I mean, it was easy to follow and understand,
+  but then there was very little time to actually practice the exercises
+  properly.
+  I think it&rsquo;s normal given that the course was short!</li>
+</ul>
+<h3 id="future__topics"><a href="future_topics.txt">Future topics</a><a class="headerlink" href="#future__topics" title="Permanent link">&para;</a></h3>
+<ul>
+<li>python? why we have so many languages? what do they add ?</li>
+<li>Different file systems, efficient editing of text files using Vim
+  e.g. multiline find and replace, substitution etc.</li>
+<li>I don´t think anything else can be provided</li>
+<li>same but advance and longer</li>
+<li>automating processes and more into <code>.bashrc</code></li>
+<li>Perhaps showing real examples of these tools are used
+  in research/scripts we may use</li>
+<li>Advanced Bash and Linux of course! :)</li>
+<li>R and machine learning</li>
+<li>Fortran course, Object-oriented-programming in Python course</li>
+</ul>
+<h3 id="other__comments"><a href="comments.txt">Other comments</a><a class="headerlink" href="#other__comments" title="Permanent link">&para;</a></h3>
+<ul>
+<li>organization, hands-on exercises, material for consultation after course,
+  engagement ;)</li>
+<li>I really liked the idea of asking questions to participants
+  and involve them in discussions.</li>
+<li>More takeaway exercises</li>
+<li>Thanks</li>
+<li>The structure, materials, examples and tutors were great!
+  Easy to follow either with the code-along or with the engaging questions.
+  Training organization was also really good.
+  It could be a bit longer to cover more aspects but as an intro to the
+  concepts is adequate.
+  All the teaching aids were well prepared.
+  Hands-on and demos were fun and right amount!
+  I specifically liked the first parts of each day,
+  the second part seemed a bit more rushed, but still good.</li>
+<li>This was a great course! Since I have been working with bash for a few years
+  I had come across most of the tools previously
+  but now I have a much better understanding of what they do
+  and how to use them.
+  The length of the course was good and the content was perfect for my level.
+  I liked the variation of code-along sessions mixed with more independent work
+  in break-out rooms.
+  It was great that we were invited to answer questions
+  while it was respected that not everyone might want to.
+  I appreciated that you kept to the schedule quite strictly,
+  and that there was a clear structure both for the whole course
+  and for each session.</li>
+<li>Enjoyed the break out rooms and having time to work through the examples
+  in Richèls material.
+  Think that some of the general concepts could be better explained
+  from the start but did appreciate being shown
+  how commands work in real time through the teachers command line.
+  I think an extra hour of time for each day could improve the course
+  to have more time to go through the examples in Birgittes material
+  and discuss the answers together as only having a few minutes
+  felt sometimes rushed.
+  I overall found this course very useful and learned a lot of new commands
+  but maybe would appreciate some examples
+  of how I can use these in my own bioinformatics work.</li>
+<li>I think the selected material was good and represents
+  a lot of the useful tools in Linux and the basics of Bash.
+  When it said Intermediate Bash, I expected though that we would do a bit
+  more advanced things, but given the time frame it was maybe not realistic.
+  There was a good amount of hand-on vs demonstration I think.
+  The supplementary material was nice, the quality of them is good
+  and I will happily refer back to them.
+  The main problem I have with the course is awk and sed were a bit rushed
+  (too much content in too little time) compared to bash scripting
+  being a bit superficial. Maybe it&rsquo;s better to raise prerequisites a bit,
+  so that people should know the basics of Bash before starting.
+  Then more time could be spent on awk and sed.
+  I feel like I did not really learn how to use those any better
+  than I knew before or see any really effective uses of them.
+  An alternative could be an extra 3 hour session for those topics
+  if you do not want to drop the introduction to Bash.
+  I think both teachers were excellent and encouraged active participation,
+  whether through breakout rooms or through encouraging exercises.
+  The last session about QoL was also really useful and had some tips
+  I did not know before. Thanks to everyone who organised it!</li>
+<li>The material was uneven - some parts are really good and can be reread when
+  you are going through it yourself and reminding yourself how it was done,
+  and other part was too sparse (lacked any theory).
+  This was mainly a problem for the awk session which would have been easier
+  to understand if there was a short text with some of the common commands
+  and such.
+  Reading a book is good, and might be how you learn well in a longer course,
+  but it did not work for me for learning in a short course like this
+  that should more be a help for us to do our research better.</li>
+<li>I think everything was great considering how short the training event was.
+  I would maybe separate the two days next time:
+  instead of Mon-Tue, you could try Mon-Wed or Tue-Thu so that there
+  is one empty day in between, and you could assign some exercises
+  to do in that empty day.
+  I think this would give students more time to practice
+  what they learn in the course</li>
+</ul>
+<h2 id="feedback__in__chat">Feedback in chat<a class="headerlink" href="#feedback__in__chat" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Hi, I’m sorry but I need to leave!
+Thank you for the course, it was very useful.
+I look forward to the course evaluation. Bye!</p>
+</blockquote>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

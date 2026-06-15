@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>(optional) Using the AWK programming language - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "(optional) Using the AWK programming language";
+        var mkdocs_page_input_path = "sessions/awk/README.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">(optional) Using the AWK programming language</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#why__is__awk__important">Why is AWK important?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise__1__printing__selected__fields">Exercise 1: printing selected fields</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__11__understanding__the__first__part">Exercise 1.1: understanding the first part</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__12__understanding__the__awk__part">Exercise 1.2: understanding the awk part</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__13__how__awk__deals__with__missing__columns">Exercise 1.3: how awk deals with missing columns</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optional__exercise__14__awk__versus__cut">(optional) Exercise 1.4: awk versus cut</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise__2__printing__selected__fields">Exercise 2: printing selected fields</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__21__understanding__the__first__part">Exercise 2.1: understanding the first part</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__22__understanding__the__second__part">Exercise 2.2: understanding the second part</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__23__understanding__the__awk__part">Exercise 2.3: understanding the awk part</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__24__understanding__the__single__quote">Exercise 2.4: understanding the single quote</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optional__exercise__25__using__commas__between__elements__to__print">(Optional) Exercise 2.5: using commas between elements to print</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#exercise__3__regular__expressions">Exercise 3: regular expressions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__31__understanding__the__first__part">Exercise 3.1: understanding the first part</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__32__understanding__the__awk__part">Exercise 3.2: understanding the awk part</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__33__understanding__the__regular__expression">Exercise 3.3: understanding the regular expression</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise__34__understanding__the__t">Exercise 3.4: understanding the \t</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#optional__exercise__4__can__awk__do">(optional) Exercise 4: can awk do &hellip;?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusions">Conclusions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#learning__awk">Learning AWK</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Lessons Morning (smarter command line)</li>
+      <li class="breadcrumb-item active">(optional) Using the AWK programming language</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/sessions/awk/README.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="using__the__awk__programming__language">Using the AWK programming language<a class="headerlink" href="#using__the__awk__programming__language" title="Permanent link">&para;</a></h1>
+<details class="- note">
+<summary>Need a video?</summary>
+<ul>
+<li><a href="https://youtu.be/MtnbqAjmav4">Introduction</a></li>
+<li><a href="https://youtu.be/MtnbqAjmav4?t=101">Exercise 1</a></li>
+<li><a href="https://youtu.be/MtnbqAjmav4?t=525">Exercise 2</a></li>
+<li><a href="https://youtu.be/MtnbqAjmav4?t=1032">Exercise 3</a></li>
+<li><a href="https://youtu.be/MtnbqAjmav4?t=1385">Exercise 4</a></li>
+<li><a href="https://youtu.be/MtnbqAjmav4?t=1634">Feedback</a></li>
+<li><a href="https://youtu.be/MtnbqAjmav4?t=1787">Conclusion</a></li>
+</ul>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Learning outcomes</p>
+<ul>
+<li>Learners can use <code>awk</code></li>
+<li>Learners have practiced using a book on AWK</li>
+<li>Learners can use <code>awk</code> in pipes</li>
+<li>Learners can use <code>awk</code> to read a specific column</li>
+<li>Learners can use <code>awk</code> to transform text</li>
+<li>Learners can use regular expressions in <code>awk</code></li>
+<li>Learners have practiced reading bash commands</li>
+</ul>
+</div>
+<details class="- note">
+<summary>For teachers</summary>
+<p>Lesson plan:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Minutes</th>
+<th>Duration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11:20-11:25</td>
+<td>0-5</td>
+<td>5</td>
+<td>Prior</td>
+</tr>
+<tr>
+<td>11:25-11:30</td>
+<td>5-10</td>
+<td>5</td>
+<td>Present</td>
+</tr>
+<tr>
+<td>11:30-11:50</td>
+<td>10-30</td>
+<td>20</td>
+<td>Challenge</td>
+</tr>
+<tr>
+<td>11:50-12:00</td>
+<td>30-40</td>
+<td>10</td>
+<td>Feedback</td>
+</tr>
+</tbody>
+</table>
+<p>Prior:</p>
+<ul>
+<li>Imagine a file that contains plain-text tabular data.
+  How would you work with it?</li>
+<li>What is a Turing-complete programming language?</li>
+<li>What is AWK (in upper case)?</li>
+<li>What is <code>awk</code> (in lower case)?</li>
+</ul>
+</details>
+<h2 id="why__is__awk__important">Why is AWK important?<a class="headerlink" href="#why__is__awk__important" title="Permanent link">&para;</a></h2>
+<p>AWK is a programming language for text processing
+that is included with Linux.
+As a Turing-complete programming language,
+it can -by definition- solve any computational problem.</p>
+<div class="admonition note">
+<p class="admonition-title">The different spellings</p>
+<table>
+<thead>
+<tr>
+<th>Spelling</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWK</td>
+<td>The programming language</td>
+</tr>
+<tr>
+<td><code>awk</code></td>
+<td>The program</td>
+</tr>
+<tr>
+<td>Awk</td>
+<td>A common misspelling</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<p>In these exercises, we&rsquo;ll be using the
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/">Bash Guide for Beginners</a>,
+because this free online book fits this course well
+and allows you to continue studying after this course.</p>
+<h2 id="exercise__1__printing__selected__fields">Exercise 1: printing selected fields<a class="headerlink" href="#exercise__1__printing__selected__fields" title="Permanent link">&para;</a></h2>
+<p>Read the text at
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_02.html#sect_06_02_01">chapter 6.2.1: &lsquo;Printing selected fields&rsquo;</a>.</p>
+<h3 id="exercise__11__understanding__the__first__part">Exercise 1.1: understanding the first part<a class="headerlink" href="#exercise__11__understanding__the__first__part" title="Permanent link">&para;</a></h3>
+<p>The single line of code in this subsection uses a pipe.
+Run the command until the pipe. What
+do you see? How do you explain in English what this does?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>This is the full command shows in this subsection:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $5 $9 }&#39;</span>
+</span></code></pre></div>
+<p>The command before the pipe is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ls<span class="w"> </span>-l
+</span></code></pre></div>
+<p>When running it, you will see something similar to:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>total<span class="w"> </span><span class="m">4</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>drwxrwxr-x<span class="w">   </span><span class="m">2</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">2024</span><span class="w"> </span>bin
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>drwxr-xr-x<span class="w">   </span><span class="m">2</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Jan<span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">20</span>:05<span class="w"> </span>Desktop
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>drwxr-xr-x<span class="w">  </span><span class="m">10</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">09</span>:44<span class="w"> </span>Documents
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>drwxr-xr-x<span class="w">   </span><span class="m">3</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4096</span><span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">08</span>:51<span class="w"> </span>Downloads
+</span></code></pre></div>
+<p>Searching the manual of <code>ls</code>, using <code>man ls</code>, gives us the
+following description of the <code>-l</code> flag:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>-l<span class="w">     </span>use<span class="w"> </span>a<span class="w"> </span>long<span class="w"> </span>listing<span class="w"> </span>format
+</span></code></pre></div>
+<p>Hence, <code>ls -l</code> lists files in the current folder
+using a long listing format.</p>
+</details>
+<hr />
+<h3 id="exercise__12__understanding__the__awk__part">Exercise 1.2: understanding the <code>awk</code> part<a class="headerlink" href="#exercise__12__understanding__the__awk__part" title="Permanent link">&para;</a></h3>
+<p>The single line of code in this subsection
+forwards its output (from <code>ls</code>) to <code>awk</code>.
+Run it. What do you see?
+How do you explain in English what this does?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The command to run is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $5 $9 }&#39;</span>
+</span></code></pre></div>
+<p>When running it, you will see something similar to:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $5 $9 }&#39;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>4096bin
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>4096Desktop
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>4096Documents
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>4096Downloads
+</span></code></pre></div>
+<p>In English: from a list of files (in long format),
+show the fifth and ninth columns.</p>
+</details>
+<hr />
+<h3 id="exercise__13__how__awk__deals__with__missing__columns">Exercise 1.3: how <code>awk</code> deals with missing columns<a class="headerlink" href="#exercise__13__how__awk__deals__with__missing__columns" title="Permanent link">&para;</a></h3>
+<p>The command shows the fifth and ninth columns of a list of files (in long format).
+How does <code>awk</code> deal with lines that do not have a fifth and/or ninth column?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>When running the command, we have already seen the empty first line
+of output:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $5 $9 }&#39;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>4096bin
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>4096Desktop
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>4096Documents
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>4096Downloads
+</span></code></pre></div>
+<p>Hence, if there is no fifth and/or ninth column to display,
+<code>awk</code> shows an empty line</p>
+</details>
+<hr />
+<h3 id="optional__exercise__14__awk__versus__cut">(optional) Exercise 1.4: <code>awk</code> versus <code>cut</code><a class="headerlink" href="#optional__exercise__14__awk__versus__cut" title="Permanent link">&para;</a></h3>
+<p>Try to use <code>cut</code> (and only <code>cut</code>!)
+to achieve the same, by selecting the
+same columns. This will not work! Observe and explain what you see.</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>To get the most similar output, we need to use columns 6 and 10:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>--delimiter<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>--fields<span class="w"> </span><span class="m">6</span>,10
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sven
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>sven<span class="w"> </span><span class="m">8</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="m">4096</span><span class="w"> </span>Documents
+</span></code></pre></div>
+<p>This is not because we actually wanted to use columns 6 and 10:
+Due to the multiple and varying amount of spaces in each line,
+the counting is off.</p>
+<p>If you know the <code>tr</code> command, you can remove duplicate spaces:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>--squeeze-repeats<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>--delimiter<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>--fields<span class="w"> </span><span class="m">5</span>,9
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="m">4096</span><span class="w"> </span>bin
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="m">4096</span><span class="w"> </span>Desktop
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="m">4096</span><span class="w"> </span>Documents
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="m">4096</span><span class="w"> </span>Downloads
+</span></code></pre></div>
+<p>The output does put a space between the columns, we can remove that too:</p>
+<p><!-- markdownlint-disable MD013 --><!-- A one-line of code cannot be split up over lines, hence will break 80 characters per line --></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>--squeeze-repeats<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>--delimiter<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>--fields<span class="w"> </span><span class="m">5</span>,9<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>--delete<span class="w"> </span><span class="s2">&quot; &quot;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>4096bin
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>4096Desktop
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>4096Documents
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>4096Downloads
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+</details>
+<hr />
+<h2 id="exercise__2__printing__selected__fields">Exercise 2: printing selected fields<a class="headerlink" href="#exercise__2__printing__selected__fields" title="Permanent link">&para;</a></h2>
+<p>Read the text at
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_02.html#sect_06_02_02">chapter 6.2.2: &lsquo;Formatting fields&rsquo;</a></p>
+<h3 id="exercise__21__understanding__the__first__part">Exercise 2.1: understanding the first part<a class="headerlink" href="#exercise__21__understanding__the__first__part" title="Permanent link">&para;</a></h3>
+<p>The first code example in this subsection uses multiple pipes.
+Run the command until the first pipe. What
+do you see? How do you explain in English what this does?
+Use the <code>ls</code> manual.</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The first code example in this subsection is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ls<span class="w"> </span>-ldh<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>total<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="err">&#39;</span><span class="o">{</span><span class="w"> </span>print<span class="w"> </span><span class="s2">&quot;Size is &quot;</span><span class="w"> </span><span class="nv">$5</span><span class="w"> </span><span class="s2">&quot; bytes for &quot;</span><span class="w"> </span><span class="nv">$9</span><span class="w"> </span><span class="o">}</span>
+</span></code></pre></div>
+<p>The command until the first pipe is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ls<span class="w"> </span>-ldh<span class="w"> </span>*
+</span></code></pre></div>
+<p>Running it shows something similar to this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-ldh<span class="w"> </span>*
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>drwxrwxr-x<span class="w">   </span><span class="m">2</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>Jun<span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">2024</span><span class="w"> </span>bin
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>drwxr-xr-x<span class="w">   </span><span class="m">2</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>Jan<span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">20</span>:05<span class="w"> </span>Desktop
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>drwxr-xr-x<span class="w">  </span><span class="m">10</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>Feb<span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">09</span>:44<span class="w"> </span>Documents
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>drwxr-xr-x<span class="w">   </span><span class="m">3</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">08</span>:51<span class="w"> </span>Downloads
+</span></code></pre></div>
+<p>Using the manual of <code>ls</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>man<span class="w"> </span>ls
+</span></code></pre></div>
+<p>In English: the command shows the list of files and directories (<code>ls</code>) &hellip;</p>
+<ul>
+<li>in a long format (<code>-l</code>)</li>
+<li>with directories as themselves
+  (<code>-d</code>, also <code>--directory</code>, i.e. not their contents)</li>
+<li>in a human-readable format (<code>-h</code>, also <code>--human-readable</code>).</li>
+</ul>
+</details>
+<hr />
+<h3 id="exercise__22__understanding__the__second__part">Exercise 2.2: understanding the second part<a class="headerlink" href="#exercise__22__understanding__the__second__part" title="Permanent link">&para;</a></h3>
+<p>The first code example in this subsection uses multiple pipes.
+Run the command until the second pipe. What
+do you see? How do you explain in English what this does?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The first code example in this subsection is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ls<span class="w"> </span>-ldh<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>total<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="err">&#39;</span><span class="o">{</span><span class="w"> </span>print<span class="w"> </span><span class="s2">&quot;Size is &quot;</span><span class="w"> </span><span class="nv">$5</span><span class="w"> </span><span class="s2">&quot; bytes for &quot;</span><span class="w"> </span><span class="nv">$9</span><span class="w"> </span><span class="o">}</span>
+</span></code></pre></div>
+<p>The command until the second pipe is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ls<span class="w"> </span>-ldh<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>total
+</span></code></pre></div>
+<p>Running it shows something similar to this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-ldh<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>total
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>drwxrwxr-x<span class="w">   </span><span class="m">2</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>Jun<span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">2024</span><span class="w"> </span>bin
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>drwxr-xr-x<span class="w">   </span><span class="m">2</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>Jan<span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">20</span>:05<span class="w"> </span>Desktop
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>drwxr-xr-x<span class="w">  </span><span class="m">10</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>Feb<span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">09</span>:44<span class="w"> </span>Documents
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>drwxr-xr-x<span class="w">   </span><span class="m">3</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>May<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">08</span>:51<span class="w"> </span>Downloads
+</span></code></pre></div>
+<p>Note that, for the computer used, there is no difference.</p>
+<p>In English: the command shows the list of files
+for lines that have no match (<code>-v</code>, also <code>--invert-match</code>)
+to the regular expression <code>total</code>.</p>
+<p>Or shorter: it shows the content, excluding a possible
+final line that shows the total file size.</p>
+</details>
+<hr />
+<h3 id="exercise__23__understanding__the__awk__part">Exercise 2.3: understanding the <code>awk</code> part<a class="headerlink" href="#exercise__23__understanding__the__awk__part" title="Permanent link">&para;</a></h3>
+<p>The first code example in this subsection uses multiple pipes.
+Run the command in full. What do you see?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The first code example in this subsection is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ls<span class="w"> </span>-ldh<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>total<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print &quot;Size is &quot; $5 &quot; bytes for &quot; $9 }&#39;</span>
+</span></code></pre></div>
+<p>Running it shows something similar to this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-ldh<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>total<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print &quot;Size is &quot; $5 &quot; bytes for &quot; $9 }&#39;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>Size<span class="w"> </span>is<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>bytes<span class="w"> </span><span class="k">for</span><span class="w"> </span>bin
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Size<span class="w"> </span>is<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>bytes<span class="w"> </span><span class="k">for</span><span class="w"> </span>Desktop
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>Size<span class="w"> </span>is<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>bytes<span class="w"> </span><span class="k">for</span><span class="w"> </span>Documents
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>Size<span class="w"> </span>is<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>bytes<span class="w"> </span><span class="k">for</span><span class="w"> </span>Downloads
+</span></code></pre></div>
+</details>
+<hr />
+<h3 id="exercise__24__understanding__the__single__quote">Exercise 2.4: understanding the single quote<a class="headerlink" href="#exercise__24__understanding__the__single__quote" title="Permanent link">&para;</a></h3>
+<p>A first thing to notice is that the <code>awk</code> command is put
+into a single quote <code>'</code> (instead of a double-quote, <code>"</code>).
+Why is that?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Text between single quote is used as-is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;He said: &quot;Hi!&quot;.&#39;</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>He<span class="w"> </span>said:<span class="w"> </span><span class="s2">&quot;Hi!&quot;</span>.
+</span></code></pre></div>
+<p>Where the other way around, the <code>!</code> triggers
+something:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;He said: &#39;Hi!&#39;.&quot;</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>bash:<span class="w"> </span>!<span class="err">&#39;</span>.:<span class="w"> </span>event<span class="w"> </span>not<span class="w"> </span>found
+</span></code></pre></div>
+</details>
+<hr />
+<h3 id="optional__exercise__25__using__commas__between__elements__to__print">(Optional) Exercise 2.5: using commas between elements to print<a class="headerlink" href="#optional__exercise__25__using__commas__between__elements__to__print" title="Permanent link">&para;</a></h3>
+<p>Zooming in on the printing of <code>awk</code>,
+i.e. the part <code>print "Size is " $5 " bytes for " $9</code>,
+we can see that the elements to be printed are
+separated by a space.
+This is unlike most (?all) modern languages, where
+elements are separated by a comma. Rewrite the expression
+to use a comma between the elements.</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The first attempt would be:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ls<span class="w"> </span>-ldh<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>total<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print &quot;Size is &quot;, $5, &quot; bytes for &quot;, $9 }&#39;</span>
+</span></code></pre></div>
+<p>This, however, gives double spaces now:</p>
+<p><!-- markdownlint-disable MD013 --><!-- A bash one-liner cannot be split up over lines, hence will break 80 characters per line --></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-ldh<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>total<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print &quot;Size is &quot;, $5, &quot; bytes for &quot;, $9 }&#39;</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>Size<span class="w"> </span>is<span class="w">  </span><span class="m">4</span>.0K<span class="w">  </span>bytes<span class="w"> </span><span class="k">for</span><span class="w">  </span>bin
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>Size<span class="w"> </span>is<span class="w">  </span><span class="m">4</span>.0K<span class="w">  </span>bytes<span class="w"> </span><span class="k">for</span><span class="w">  </span>Desktop
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>Size<span class="w"> </span>is<span class="w">  </span><span class="m">4</span>.0K<span class="w">  </span>bytes<span class="w"> </span><span class="k">for</span><span class="w">  </span>Documents
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>Size<span class="w"> </span>is<span class="w">  </span><span class="m">4</span>.0K<span class="w">  </span>bytes<span class="w"> </span><span class="k">for</span><span class="w">  </span>Downloads
+</span></code></pre></div>
+<!-- markdownlint-enable MD013 -->
+<p>Removing the spaces between the double-quotes (<code>"</code>) solves this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ls<span class="w"> </span>-ldh<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>total<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print &quot;Size is&quot;, $5, &quot;bytes for&quot;, $9 }&#39;</span>
+</span></code></pre></div>
+<p>The output will look similar to this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-ldh<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>total<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print &quot;Size is&quot;, $5, &quot;bytes for&quot;, $9 }&#39;</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>Size<span class="w"> </span>is<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>bytes<span class="w"> </span><span class="k">for</span><span class="w"> </span>bin
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>Size<span class="w"> </span>is<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>bytes<span class="w"> </span><span class="k">for</span><span class="w"> </span>Desktop
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>Size<span class="w"> </span>is<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>bytes<span class="w"> </span><span class="k">for</span><span class="w"> </span>Documents
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>Size<span class="w"> </span>is<span class="w"> </span><span class="m">4</span>.0K<span class="w"> </span>bytes<span class="w"> </span><span class="k">for</span><span class="w"> </span>Downloads
+</span></code></pre></div>
+</details>
+<hr />
+<h2 id="exercise__3__regular__expressions">Exercise 3: regular expressions<a class="headerlink" href="#exercise__3__regular__expressions" title="Permanent link">&para;</a></h2>
+<p>Read the text at
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_02.html#sect_06_02_03">chapter 6.2.3: &lsquo;The print command and regular expressions&rsquo;</a></p>
+<h3 id="exercise__31__understanding__the__first__part">Exercise 3.1: understanding the first part<a class="headerlink" href="#exercise__31__understanding__the__first__part" title="Permanent link">&para;</a></h3>
+<p>The first code example in this subsection uses a pipe.
+Run the command until the pipe. What
+do you see? How do you explain in English what this does?
+Use the <code>df</code> manual.</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The first code example in this subsection is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>df<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/dev\/hd/ { print $6 &quot;\t: &quot; $5 }&#39;</span>
+</span></code></pre></div>
+<p>The command until the pipe is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>df<span class="w"> </span>-h
+</span></code></pre></div>
+<p>Running it shows something similar to this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>$<span class="w"> </span>df<span class="w"> </span>-h
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span class="w"> </span>Avail<span class="w"> </span>Use%<span class="w"> </span>Mounted<span class="w"> </span>on
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>tmpfs<span class="w">           </span><span class="m">1</span>.6G<span class="w">  </span><span class="m">2</span>.9M<span class="w">  </span><span class="m">1</span>.6G<span class="w">   </span><span class="m">1</span>%<span class="w"> </span>/run
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>/dev/nvme0n1p2<span class="w">  </span>468G<span class="w">  </span>226G<span class="w">  </span>219G<span class="w">  </span><span class="m">51</span>%<span class="w"> </span>/
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>tmpfs<span class="w">           </span><span class="m">7</span>.6G<span class="w">   </span>29M<span class="w">  </span><span class="m">7</span>.6G<span class="w">   </span><span class="m">1</span>%<span class="w"> </span>/dev/shm
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>tmpfs<span class="w">           </span><span class="m">5</span>.0M<span class="w">  </span><span class="m">8</span>.0K<span class="w">  </span><span class="m">5</span>.0M<span class="w">   </span><span class="m">1</span>%<span class="w"> </span>/run/lock
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>efivarfs<span class="w">        </span>438K<span class="w">  </span>293K<span class="w">  </span>141K<span class="w">  </span><span class="m">68</span>%<span class="w"> </span>/sys/firmware/efi/efivars
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>/dev/nvme0n1p1<span class="w">  </span>511M<span class="w">   </span>73M<span class="w">  </span>439M<span class="w">  </span><span class="m">15</span>%<span class="w"> </span>/boot/efi
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>tmpfs<span class="w">           </span><span class="m">1</span>.6G<span class="w">  </span>148K<span class="w">  </span><span class="m">1</span>.6G<span class="w">   </span><span class="m">1</span>%<span class="w"> </span>/run/user/1000
+</span></code></pre></div>
+<p>Using the manual of <code>df</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>man<span class="w"> </span>df
+</span></code></pre></div>
+<p>In English: show the file system space usage (<code>df</code>)
+in a human-readable format (<code>-h</code>, also <code>--human-readable</code>).</p>
+</details>
+<hr />
+<h3 id="exercise__32__understanding__the__awk__part">Exercise 3.2: understanding the <code>awk</code> part<a class="headerlink" href="#exercise__32__understanding__the__awk__part" title="Permanent link">&para;</a></h3>
+<p>Run the command in full. What do you see?</p>
+<p>Tip: if you see nothing, use <code>df -h | awk '/dev\// { print $6 "\t: " $5 }'</code></p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The first code example in this subsection is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>df<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/dev\/hd/ { print $6 &quot;\t: &quot; $5 }&#39;</span>
+</span></code></pre></div>
+<p>Running it shows something similar to this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>df<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/dev\/hd/ { print $6 &quot;\t: &quot; $5 }&#39;</span>
+</span></code></pre></div>
+<p>On the computer used, this shows no output.</p>
+<p>Running the alternative:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>$<span class="w"> </span>df<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/dev\// { print $6 &quot;\t: &quot; $5 }&#39;</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>/<span class="w"> </span>:<span class="w"> </span><span class="m">51</span>%
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>/dev/shm<span class="w"> </span>:<span class="w"> </span><span class="m">1</span>%
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>/boot/efi<span class="w"> </span>:<span class="w"> </span><span class="m">15</span>%
+</span></code></pre></div>
+<p>It shows the percentage of disk space in use for all the
+devices that have <code>dev</code> in the name.</p>
+</details>
+<hr />
+<h3 id="exercise__33__understanding__the__regular__expression">Exercise 3.3: understanding the regular expression<a class="headerlink" href="#exercise__33__understanding__the__regular__expression" title="Permanent link">&para;</a></h3>
+<p>This <code>awk</code> command uses a regular expression. What is it <strong>exactly</strong>?
+If it is formatted &lsquo;weirdly&rsquo;, why is that?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The first code example in this subsection is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>df<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/dev\/hd/ { print $6 &quot;\t: &quot; $5 }&#39;</span>
+</span></code></pre></div>
+<p>The exact regular expression is the exact text between the
+(unescaped) slashes:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>dev<span class="se">\/</span>hd
+</span></code></pre></div>
+<p>This is formatted &lsquo;weirdly&rsquo;, as it uses <code>\/</code> instead of
+just <code>/</code>. This is because <code>awk</code> uses <code>/</code> to indicate the
+start and end of a regular expression. Hence, for the same
+character to be part of that regular expression, it is escaped
+using a backslash.</p>
+</details>
+<hr />
+<h3 id="exercise__34__understanding__the__t">Exercise 3.4: understanding the <code>\t</code><a class="headerlink" href="#exercise__34__understanding__the__t" title="Permanent link">&para;</a></h3>
+<p>In the <code>awk</code> command, there is a <code>\t</code> in the printing
+part. What does it do, and why is it written like that?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The first code example in this subsection is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>df<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/dev\/hd/ { print $6 &quot;\t: &quot; $5 }&#39;</span>
+</span></code></pre></div>
+<p>The <code>\t</code> prints a tab.</p>
+<p>It is written like that,
+as <code>\t</code> is simply decided as the way how we write a tab,
+similar to the convention that <code>\n</code> is a newline.</p>
+</details>
+<hr />
+<h2 id="optional__exercise__4__can__awk__do">(optional) Exercise 4: can <code>awk</code> do &hellip;?<a class="headerlink" href="#optional__exercise__4__can__awk__do" title="Permanent link">&para;</a></h2>
+<p>AWK is a Turning complete language,
+hence the answer to &lsquo;Can AWK do &hellip;?&rsquo;
+(applied to text)
+is always true.</p>
+<p>Below are some question you may have
+and how to solve this in <code>awk</code>.</p>
+<p>Pick those topics you are interested in.</p>
+<details class="seealso">
+<summary>(optional) Exercise 4.1: Can <code>awk</code> display all columns?</summary>
+<p>Can <code>awk</code> display all columns? Or: upon a match,
+can <code>awk</code> display the whole line?</p>
+<p>The answer is: yes!</p>
+<p>Read the text at
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_02.html#sect_06_02_01">subsection 6.2.1: &lsquo;Printing selected fields</a>.</p>
+<p>Use a pipe to direct the output of <code>ls -l</code> to <code>awk</code>,
+where the whole line is printed.</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The symbol <code>$0</code> is used for &lsquo;all columns&rsquo;/&rsquo;the whole line&rsquo;:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $0 }&#39;</span>
+</span></code></pre></div>
+<p>On its own, this program is not useful: it just echoes its input.</p>
+<p><code>$0</code> becomes useful when used with other <code>awk</code> features, such
+as matching lines for a regular expression:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/Feb/ { print $0 }&#39;</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>drwxr-xr-x<span class="w">  </span><span class="m">10</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">09</span>:44<span class="w"> </span>Documents
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>drwxrwxr-x<span class="w">   </span><span class="m">6</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">7</span><span class="w"> </span><span class="m">07</span>:18<span class="w"> </span>inkcut_venv
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>drwxrwxr-x<span class="w">   </span><span class="m">2</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:38<span class="w"> </span>misc
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>drwx------<span class="w">   </span><span class="m">2</span><span class="w"> </span>sven<span class="w"> </span>sven<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">13</span>:45<span class="w"> </span>my_folder
+</span></code></pre></div>
+</details>
+</details>
+<details class="seealso">
+<summary>(optional) Exercise 4.2: Can <code>awk</code> display the line number?</summary>
+<p>Can <code>awk</code> display the line number?</p>
+<p>Read the text at
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_03.html#sect_06_03_03">chapter 6.3.3: &lsquo;The number of records&rsquo;</a>.</p>
+<p>The answer is: yes!</p>
+<p>Use a pipe to direct the output of <code>ls -l</code> to <code>awk</code>,
+where the line number and the values in the first are printed</p>
+<details class="tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print NR,$1 }&#39;</span>
+</span></code></pre></div>
+<p>When printing the content of a file, with number lines,
+use can use both <code>awk</code> and <code>cat</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print NR,$0 }&#39;</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>cat<span class="w"> </span>--number
+</span></code></pre></div>
+</details>
+</details>
+<details class="seealso">
+<summary>(optional) Exercise 4.3: Can <code>awk</code> display the number of columns?</summary>
+<p>Can <code>awk</code> display the number of column?</p>
+<p>The answer is: yes!</p>
+<p>To do so, print the variable <code>NF</code>, as shown in the
+program below:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ print NF }&#39;</span>
+</span></code></pre></div>
+<p>Use a pipe to direct the output of <code>ls -l</code> to <code>awk</code>,
+where the number of columns are printed</p>
+<details class="tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print NF }&#39;</span>
+</span></code></pre></div>
+</details>
+</details>
+<details class="seealso">
+<summary>(optional) Exercise 4.4: Can <code>awk</code> display the last column?</summary>
+<p>Can <code>awk</code> display the last column?</p>
+<p>The answer is: yes!</p>
+<p>To do so, print the variable <code>$NF</code>, as shown in the
+program below:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>awk<span class="w"> </span><span class="s1">&#39;{ print $NF }&#39;</span>
+</span></code></pre></div>
+<p>Use a pipe to direct the output of <code>ls -l</code> to <code>awk</code>,
+where the value in the first and last column are printed</p>
+<details class="tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $1,$NF }&#39;</span>
+</span></code></pre></div>
+</details>
+</details>
+<details class="seealso">
+<summary>(optional) Exercise 4.5: Can <code>awk</code> count the number of lines?</summary>
+<p>Can <code>awk</code> count the number of lines?</p>
+<p>The answer is: yes!</p>
+<p>Read the text at
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_03.html#sect_06_03_03">chapter 6.3.3: &lsquo;The number of records&rsquo;</a>.</p>
+<p>Use a pipe to direct the output of <code>ls -l</code> to <code>awk</code>,
+where the number of lines is printed.</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>A good first guess, but incorrect, is to use the command
+below, which is good for numbering lines:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print NR }&#39;</span>
+</span></code></pre></div>
+<p>The last number is indeed the number of lines.</p>
+<p>The AWK way to solve it, is to use the <code>END</code> clause,
+which is only run at the end:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;END { print NR }&#39;</span>
+</span></code></pre></div>
+<p><code>NR</code> only becomes useful when used with other <code>awk</code> features,
+such printing a descriptive text around it:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;END { print &quot;Number of lines:&quot;, NR }&#39;</span>
+</span></code></pre></div>
+<p>There are many ways to print the number of lines,
+such as to combine the incorrect <code>awk</code> way with <code>tail</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print NR }&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>
+</span></code></pre></div>
+<p>Clumsy, but it works.</p>
+<p>Alternatively, <code>wc</code> is made exactly for the purpose of counting lines:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>--lines
+</span></code></pre></div>
+</details>
+</details>
+<details class="seealso">
+<summary>(optional) Exercise 4.7: Can <code>awk</code> work on comma-separated files?</summary>
+<p>Can <code>awk</code> work on comma-separated files?</p>
+<p>The answer is: yes!</p>
+<p>Read the text at
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_03.html#sect_06_03_01">chapter 6.2.4: &lsquo;The input field separator&rsquo;</a>.</p>
+<p>Here we convert the output of <code>ls -l</code> to its comma-separated
+equivalent:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="s1">&#39;,&#39;</span>
+</span></code></pre></div>
+<p>Using this input, use a pipe to show the fifth and ninth column.</p>
+<details class="tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;BEGIN { FS=&quot;,&quot; } { print $5, $9 }&#39;</span>
+</span></code></pre></div>
+<p>Alternatively;</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>--field-separator<span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="s1">&#39;{ print $5, $9 }&#39;</span>
+</span></code></pre></div>
+</details>
+</details>
+<details class="seealso">
+<summary>(optional) Exercise 4.8: Can <code>awk</code> show something once at the start?</summary>
+<p>Can <code>awk</code> show something once at the start?</p>
+<p>The answer is: yes!</p>
+<p>Read the text at
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_02.html#sect_06_02_04">chapter 6.2.4: &lsquo;Special patterns&rsquo;</a>.</p>
+<p>Use a pipe to direct the output of <code>ls -l</code> to <code>awk</code>,
+where the text <code>Permissions:</code> is shown, after which
+the values in the first column are shown.</p>
+<p>If the word <code>total</code> shows up in your results, you can ignore it
+for this exercise.</p>
+<details class="tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;BEGIN { print &quot;Permissions:&quot; } { print $1 }&#39;</span>
+</span></code></pre></div>
+<p>If you do not want <code>total</code> in your results,
+use a regular expression for &lsquo;lines starting with a d or a dash&rsquo;:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;BEGIN { print &quot;Permissions:&quot; } /^[d\-]/ { print $1 }&#39;</span>
+</span></code></pre></div>
+</details>
+</details>
+<details class="seealso">
+<summary>(optional) Exercise 4.9: Can <code>awk</code> show something once at the end?</summary>
+<p>Can <code>awk</code> show something once at the end?</p>
+<p>The answer is: yes!</p>
+<p>Read the text at
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_02.html#sect_06_02_04">chapter 6.2.4: &lsquo;6.2.4. Special patterns&rsquo;</a>.</p>
+<p>Use a pipe to direct the output of <code>ls -l</code> to <code>awk</code>,
+after which
+the values in the first column are shown.
+At the end of the output, it should show the text <code>Done!</code></p>
+<p>If the word <code>total</code> shows up in your results, you can ignore it
+for this exercise.</p>
+<details class="tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $1 } END { print &quot;Done!&quot; }&#39;</span>
+</span></code></pre></div>
+<p>If you do not want <code>total</code> in your results,
+use a regular expression for &lsquo;lines starting with a d or a dash&rsquo;:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/^[d\-]/ { print $1 } END { print &quot;Done!&quot; }&#39;</span>
+</span></code></pre></div>
+</details>
+</details>
+<details class="seealso">
+<summary>(optional) Exercise 4.10: Can <code>awk</code> use variables?</summary>
+<p>Can <code>awk</code> use variables?</p>
+<p>The answer is: yes!</p>
+<p>Read the text at
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_03.html#sect_06_03_04">chapter 6.3.4: &lsquo;User defined variables&rsquo;</a>.</p>
+<p>Use a pipe to direct the output of <code>ls -l</code> to <code>awk</code>.
+Sum the values of the fifth column and show it</p>
+<details class="tip">
+<summary>Answer</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;BEGIN { sum = 0 } { sum = sum + $5 } END { print sum }&#39;</span>
+</span></code></pre></div>
+</details>
+</details>
+<details class="note">
+<summary>For teachers</summary>
+<p>What is the difference between AWK and <code>awk</code>?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>AWK is the name of the programming language.</p>
+<p><code>awk</code> is the name of the program that can run AWK.</p>
+</details>
+<p>What can AWK not do?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>AWK, like any Turning complete language,
+can solve any computational problem,
+but cannot do this:</p>
+<ul>
+<li>run computations at any speed (i.e. a problem
+  may take billions of year to complete)</li>
+<li>use any amount of memory (i.e. a problem
+  may require billions of gigabytes to solve)</li>
+</ul>
+</details>
+<p>When not to use AWK?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>AWK shines at problems of intermediate complexity.</p>
+<p>For simple problems, tools such as <code>grep</code>, <code>cut</code> and <code>wc</code>
+are just as good.</p>
+<p>For harder problems, use a modern programming language
+instead, as these have libraries/packages that can,
+for example, read or analyse an entire table at once.</p>
+</details>
+</details>
+<hr />
+<h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Conclusions</p>
+<ul>
+<li><code>awk</code> can be used pipes: <code>ls -l | awk '{ print $5 $9 }'</code></li>
+<li><code>awk</code> can be used to read a specific column:
+  <code>ls -l | awk '{ print $5 $9 }'</code></li>
+<li><code>awk</code> can be used to transform text:
+  <code>ls -ldh * | grep -v total | awk '{ print "Size is " $5 " bytes for " $9 }'</code></li>
+<li><code>awk</code> can use regular expressions:
+  <code>df -h | awk '/dev\/hd/ { print $6 "\t: " $5 }'</code></li>
+<li><code>awk</code> can do a lot more</li>
+</ul>
+</div>
+<hr />
+<h2 id="learning__awk">Learning AWK<a class="headerlink" href="#learning__awk" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Learning AWK</p>
+<p><!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line --></p>
+<table>
+<thead>
+<tr>
+<th>Learning resource</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://opensource.com/downloads/awk-ebook">A practical guide to learning awk</a></td>
+<td>Book about AWK</td>
+</tr>
+<tr>
+<td><a href="https://www.gnu.org/software/gawk/manual/">Gawk: Effective AWK Programming</a></td>
+<td>Book about AWK</td>
+</tr>
+<tr>
+<td><a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/">Bash Beginners Guide</a></td>
+<td>Book with a chapter about AWK</td>
+</tr>
+<tr>
+<td><a href="https://tldp.org/LDP/abs/html/">Advanced Bash Scripting Guide</a></td>
+<td>Book with a chapter about AWK</td>
+</tr>
+<tr>
+<td><a href="https://pmitev.github.io/to-awk-or-not/">To AWK or not</a></td>
+<td>Course about AWK, by Pavlin Mitev</td>
+</tr>
+<tr>
+<td><a href="https://uppmax.github.io/awk_course/">AWK course</a></td>
+<td>Course about AWK, by Richèl Bilderbeek</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable MD013 -->
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../sed/" class="btn btn-neutral float-left" title="Using the sed stream editor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../scripting/" class="btn btn-neutral float-right" title="Scripting">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../sed/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../scripting/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

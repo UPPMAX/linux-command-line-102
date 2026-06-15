@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Linux tools (wc, cut) - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Linux tools (wc, cut)";
+        var mkdocs_page_input_path = "sessions/wc_cut.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Linux tools (wc, cut)</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#wc">wc</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#syntax">Syntax</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercise">Exercise</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cut">cut</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#syntax_1">Syntax</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#examples_1">Examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Lessons Morning (smarter command line)</li>
+      <li class="breadcrumb-item active">Linux tools (wc, cut)</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/sessions/wc_cut.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!-- markdownlint-disable MD013 -->
+<!-- markdownlint-disable MD009 -->
+<h1 id="linux__tools__-__wc__and__cut">Linux tools - wc and cut<a class="headerlink" href="#linux__tools__-__wc__and__cut" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Learning objectives</p>
+<ul>
+<li>learn about <code>wc</code></li>
+<li>try some examples with <code>wc</code></li>
+<li>learn about <code>cut</code></li>
+<li>try some examples with <code>cut</code></li>
+</ul>
+</div>
+<h2 id="wc">wc<a class="headerlink" href="#wc" title="Permanent link">&para;</a></h2>
+<p>The Linux <code>wc</code> command calculates a file&rsquo;s word, line, character, or byte count (returning the values in that order from left to right).</p>
+<h3 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wc<span class="w"> </span>&lt;options&gt;<span class="w"> </span>file
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Some common options</p>
+<ul>
+<li><strong>-l</strong>: list number of lines per file</li>
+<li><strong>-m</strong>: list number of characters per file</li>
+<li><strong>-w</strong>: list number of words per file</li>
+</ul>
+</div>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p>To run the examples, go to the “exercises” -&gt; “piping-wc-cut” directory where there are files that are suitable to run these examples on.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Type along!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">wc on a file</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>wc<span class="w"> </span>FILE
+</span></code></pre></div>
+<p>Output:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>wc<span class="w"> </span>myfile1.txt
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">80</span><span class="w"> </span>myfile1.txt
+</span></code></pre></div>
+<p><code>wc</code> counted the number of lines, words, and characters in the file &ldquo;myfile1.txt&rdquo;. It says there are <strong>4 lines</strong>, <strong>15 words</strong>, and <strong>80 characters</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">wc on several files</p>
+<p>Let us run <code>wc</code> on all files with suffix .txt</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>wc<span class="w"> </span>*.txt
+</span></code></pre></div>
+<p>Output:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">  </span><span class="m">1</span><span class="w">   </span><span class="m">9</span><span class="w">  </span><span class="m">45</span><span class="w"> </span>fil2.txt
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="m">1</span><span class="w">   </span><span class="m">9</span><span class="w">  </span><span class="m">43</span><span class="w"> </span>fil3.txt
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">  </span><span class="m">48</span><span class="w"> </span>fil4.txt
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">22</span><span class="w"> </span><span class="m">128</span><span class="w"> </span>file.txt
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="m">1</span><span class="w">   </span><span class="m">6</span><span class="w">  </span><span class="m">34</span><span class="w"> </span>fil.txt
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>myfile0.txt
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">15</span><span class="w">  </span><span class="m">80</span><span class="w"> </span>myfile1.txt
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">  </span><span class="m">48</span><span class="w"> </span>myfile2.txt
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">38</span><span class="w"> </span><span class="m">203</span><span class="w"> </span>myfile3.txt
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>myfiles.txt
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">22</span><span class="w"> </span><span class="m">128</span><span class="w"> </span>newfile.txt
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w"> </span><span class="m">12</span><span class="w">  </span><span class="m">12</span><span class="w">  </span><span class="m">33</span><span class="w"> </span>numbers.txt
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile0.txt
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile1.txt
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile2.txt
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile3.txt
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile4.txt
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile5.txt
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile6.txt
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile7.txt
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile8.txt
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile9.txt
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile.txt
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w"> </span><span class="m">38</span><span class="w"> </span><span class="m">153</span><span class="w"> </span><span class="m">790</span><span class="w"> </span>total
+</span></code></pre></div>
+<p>All lines, words, characters in the files with the extension .txt. Also sums up the total.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">wc -l to get only the number of lines in a file</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>FILE
+</span></code></pre></div>
+<p>Output:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>myfile2.txt
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="m">2</span><span class="w"> </span>myfile2.txt
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">wc combined with a pipe and sort to get the files with suffix .txt in a given order</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>wc<span class="w"> </span>*.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n
+</span></code></pre></div>
+<p>Output:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>wc<span class="w"> </span>*.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>myfile0.txt
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>myfiles.txt
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile0.txt
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile1.txt
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile2.txt
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile3.txt
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile4.txt
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile5.txt
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile6.txt
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile7.txt
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile8.txt
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile9.txt
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">  </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w"> </span>thisfile.txt
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">  </span><span class="m">1</span><span class="w">   </span><span class="m">6</span><span class="w">  </span><span class="m">34</span><span class="w"> </span>fil.txt
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">  </span><span class="m">1</span><span class="w">   </span><span class="m">9</span><span class="w">  </span><span class="m">43</span><span class="w"> </span>fil3.txt
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">  </span><span class="m">1</span><span class="w">   </span><span class="m">9</span><span class="w">  </span><span class="m">45</span><span class="w"> </span>fil2.txt
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">  </span><span class="m">48</span><span class="w"> </span>fil4.txt
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">10</span><span class="w">  </span><span class="m">48</span><span class="w"> </span>myfile2.txt
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">15</span><span class="w">  </span><span class="m">80</span><span class="w"> </span>myfile1.txt
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">22</span><span class="w"> </span><span class="m">128</span><span class="w"> </span>file.txt
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">22</span><span class="w"> </span><span class="m">128</span><span class="w"> </span>newfile.txt
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">38</span><span class="w"> </span><span class="m">203</span><span class="w"> </span>myfile3.txt
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w"> </span><span class="m">12</span><span class="w">  </span><span class="m">12</span><span class="w">  </span><span class="m">33</span><span class="w"> </span>numbers.txt
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w"> </span><span class="m">38</span><span class="w"> </span><span class="m">153</span><span class="w"> </span><span class="m">790</span><span class="w"> </span>total
+</span></code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">wc with no input</p>
+<p>If you just do <code>wc</code> without giving any files as input, it will assume it should wait for input. If you just want to escape this, you can do it with CTRL-C (Press the CTRL key and hold it down, then press the C key).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">wc - capturing output</p>
+<p>Assume you have a large number of files that you want to run <code>wc</code> on. Then it will not work well to just get the output thrown to screen. It would be much better to get the output to a file, and you can do that this way:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>*.txt<span class="w"> </span>&gt;<span class="w"> </span>filelength.txt
+</span></code></pre></div>
+<p>This will take the number of lines for each file and put to the file &ldquo;filelength.txt&rdquo;. You can then look inside that file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>*.txt<span class="w"> </span>&gt;<span class="w"> </span>filelength.txt
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cat<span class="w"> </span>filelength.txt
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="m">1</span><span class="w"> </span>fil2.txt
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="m">1</span><span class="w"> </span>fil3.txt
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="m">2</span><span class="w"> </span>fil4.txt
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="m">4</span><span class="w"> </span>file.txt
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="m">1</span><span class="w"> </span>fil.txt
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>myfile0.txt
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">  </span><span class="m">4</span><span class="w"> </span>myfile1.txt
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">  </span><span class="m">2</span><span class="w"> </span>myfile2.txt
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">  </span><span class="m">7</span><span class="w"> </span>myfile3.txt
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>myfiles.txt
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">  </span><span class="m">4</span><span class="w"> </span>newfile.txt
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w"> </span><span class="m">12</span><span class="w"> </span>numbers.txt
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile0.txt
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile1.txt
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile2.txt
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile3.txt
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile4.txt
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile5.txt
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile6.txt
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile7.txt
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile8.txt
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile9.txt
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">  </span><span class="m">0</span><span class="w"> </span>thisfile.txt
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="w"> </span><span class="m">38</span><span class="w"> </span>total
+</span></code></pre></div>
+<p>If you have a lot if files, and so a lot of entries in the &ldquo;filelength.txt&rdquo;, it might be better to use something like &ldquo;less&rdquo; to look in it so you can look through the file instead of getting it all output to screen.</p>
+</div>
+<h3 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title"><img src="../../images/shell-logo_small.png"> Exercise</p>
+<p>The “exercises” -&gt; “piping-wc-cut” directory is where there are files that are suitable to run these examples on.</p>
+<ol>
+<li>Use the correct option to <code>wc</code> to count the number of words in &ldquo;file.txt&rdquo;</li>
+<li>Use the correct option to <code>wc</code> to count the number of characters in &ldquo;numbers.txt&rdquo;</li>
+<li>How many lines are there in total in all the files in the directory &ldquo;piping-wc-cut&rdquo;?</li>
+</ol>
+</div>
+<h2 id="cut">cut<a class="headerlink" href="#cut" title="Permanent link">&para;</a></h2>
+<p><code>cut</code> is a command which is used to extract sections from each line of input.</p>
+<h3 id="syntax_1">Syntax<a class="headerlink" href="#syntax_1" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>cut<span class="w"> </span><span class="o">[</span>-b<span class="w"> </span>list<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c<span class="w"> </span>list<span class="o">]</span><span class="w"> </span><span class="o">[</span>-f<span class="w"> </span>list<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>delim<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s<span class="o">]</span><span class="w"> </span><span class="o">[</span>file<span class="o">]</span>
+</span></code></pre></div>
+<p>Extraction of line segments can typically be done by options/flags</p>
+<ul>
+<li><strong>bytes</strong> (<code>-b</code>)</li>
+<li><strong>characters</strong> (<code>-c</code>)</li>
+<li><strong>fields</strong> (<code>-f</code>)</li>
+</ul>
+<p>separated by a <strong>delimiter</strong> (<code>-d</code> — the <strong>tab character</strong> by default).</p>
+<p>A range must be provided in each case which consists of one of <strong>N</strong>, <strong>N-M</strong>, <strong>N-</strong> (N to the end of the line), or <strong>-M</strong> (beginning of the line to M), where N and M are counted from 1 (there is no zeroth value).</p>
+<p>The options</p>
+<ul>
+<li><strong>-n</strong> in combination with <strong>-b</strong> suppresses splits of multi-byte characters.</li>
+<li><strong>-s</strong> bypasses lines which contain no field delimiters when <strong>-f</strong> is specified, unless otherwise indicated.</li>
+</ul>
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<p>We are again going to use the directory “exercises” -&gt; “piping-wc-cut” as a source of files that are suitable to run these examples on.</p>
+<div class="admonition note">
+<p class="admonition-title">cut with the -b flag</p>
+<p>The <code>-b n</code> option returns the first n bytes of a line.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>cut<span class="w"> </span>-b<span class="w"> </span>n<span class="w"> </span>FILE
+</span></code></pre></div>
+<p>Output:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cut<span class="w"> </span>-b<span class="w"> </span><span class="m">1</span><span class="w"> </span>newfile.txt
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>T
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>S
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>S
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>M
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cut<span class="w"> </span>-b<span class="w"> </span><span class="m">2</span><span class="w"> </span>newfile.txt
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>h
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>o
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>t
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>u
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cut<span class="w"> </span>-b<span class="w"> </span><span class="m">2</span>-5<span class="w"> </span>newfile.txt
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>his
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>o<span class="w"> </span>ma
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>trin
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>uaha
+</span></code></pre></div>
+<p>For reference, this is how the file looks:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cat<span class="w"> </span>newfile.txt
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>This<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>with<span class="w"> </span>some<span class="w"> </span>strings.<span class="w"> </span>How<span class="w"> </span>many<span class="w"> </span>instances<span class="w"> </span>of<span class="w"> </span>string<span class="w"> </span>are<span class="w"> </span>there?
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>So<span class="w"> </span>many<span class="w"> </span><span class="nb">times</span><span class="w"> </span>string!
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>String<span class="w"> </span>string<span class="w"> </span>string!
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>Muahahaha
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">cut with the -c flag</p>
+<p>A list following -c specifies a range of characters which will be returned</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cut<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span>-5<span class="w"> </span>newfile.txt
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>his
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>o<span class="w"> </span>ma
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>trin
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>uaha
+</span></code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Note!</p>
+<p>No difference between the <strong>-b</strong> and <strong>-c</strong> option right now.</p>
+<p>However, adding multibyte support is in progress and may enable a different behaviour of these two options in the future!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">cut with the -f and delimiter flags</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>$<span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;A-DELIMITER&quot;</span><span class="w"> </span>-f<span class="w"> </span>FIELD-LIST
+</span></code></pre></div>
+<details class="note">
+<summary>Click to see content of file thisfile8.txt</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cat<span class="w"> </span>thisfile8.txt
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Hello:helloe:hello:hi<span class="w"> </span>there!
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>What<span class="w"> </span>is<span class="w"> </span>this!<span class="w"> </span>Is<span class="w"> </span>this<span class="w"> </span>a<span class="w"> </span>list:<span class="w"> </span>yes,<span class="w"> </span>this,<span class="w"> </span>is,<span class="w"> </span>a,<span class="w"> </span>list
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>Weird<span class="w"> </span>list?<span class="w"> </span>Normal<span class="w"> </span>list:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">6</span>,<span class="w"> </span><span class="m">7</span>,<span class="w"> </span><span class="m">8</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Why<span class="w"> </span>not?<span class="w"> </span>I<span class="w"> </span>need<span class="w"> </span>a<span class="w"> </span>tab
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>I<span class="w"> </span>will<span class="w"> </span>write<span class="w"> </span>a<span class="w"> </span>longer<span class="w"> </span>sentence:<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>delimiter<span class="w"> </span>colon<span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>line
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>One<span class="w"> </span>more<span class="w"> </span>line<span class="w"> </span>that<span class="w"> </span>has<span class="w">  </span>a<span class="w"> </span>tab<span class="w"> </span>and<span class="w"> </span>one<span class="w"> </span>more<span class="w">  </span>and<span class="w"> </span>another<span class="w"> </span>hahahaha
+</span></code></pre></div>
+</details>
+<p>Delimiter &rdquo; &rdquo; (space) and fields 2-4:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cut<span class="w"> </span>-f<span class="w"> </span><span class="m">2</span>-4<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>thisfile8.txt
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>there!
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>is<span class="w"> </span>this!<span class="w"> </span>Is
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>list?<span class="w"> </span>Normal<span class="w"> </span>list:
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>not?<span class="w"> </span>I<span class="w"> </span>need<span class="w"> </span>a
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>will<span class="w"> </span>write<span class="w"> </span>a
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>more<span class="w"> </span>line<span class="w"> </span>that
+</span></code></pre></div>
+<p>Delimiter &ldquo;:&rdquo; (colon) and fields 2-4:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cut<span class="w"> </span>-f<span class="w"> </span><span class="m">2</span>-4<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span>thisfile8.txt
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>helloe:hello:hi<span class="w"> </span>there!
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w"> </span>yes,<span class="w"> </span>this,<span class="w"> </span>is,<span class="w"> </span>a,<span class="w"> </span>list
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">6</span>,<span class="w"> </span><span class="m">7</span>,<span class="w"> </span><span class="m">8</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>Why<span class="w"> </span>not?<span class="w"> </span>I<span class="w"> </span>need<span class="w"> </span>a<span class="w"> </span>tab
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>there<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>delimiter<span class="w"> </span>colon<span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>line
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>One<span class="w"> </span>more<span class="w"> </span>line<span class="w"> </span>that<span class="w"> </span>has<span class="w">  </span>a<span class="w"> </span>tab<span class="w"> </span>and<span class="w"> </span>one<span class="w"> </span>more<span class="w">  </span>and<span class="w"> </span>another<span class="w"> </span>hahahaha
+</span></code></pre></div>
+<p>Delimiter &ldquo;:&rdquo; (colon) and fields 3- (from 3 to the end):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cut<span class="w"> </span>-f<span class="w"> </span><span class="m">3</span>-<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span>thisfile8.txt
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>hello:hi<span class="w"> </span>there!
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>Why<span class="w"> </span>not?<span class="w">    </span>I<span class="w"> </span>need<span class="w"> </span>a<span class="w"> </span>tab
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>One<span class="w"> </span>more<span class="w"> </span>line<span class="w"> </span>that<span class="w"> </span>has<span class="w">  </span>a<span class="w"> </span>tab<span class="w"> </span>and<span class="w"> </span>one<span class="w"> </span>more<span class="w">  </span>and<span class="w"> </span>another<span class="w"> </span>hahahaha
+</span></code></pre></div>
+<p>Default delimiter (tab) and fields 3-4:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cut<span class="w"> </span>-f<span class="w"> </span><span class="m">3</span>-4<span class="w"> </span>thisfile8.txt
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>Hello:helloe:hello:hi<span class="w"> </span>there!
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>What<span class="w"> </span>is<span class="w"> </span>this!<span class="w"> </span>Is<span class="w"> </span>this<span class="w"> </span>a<span class="w"> </span>list:<span class="w"> </span>yes,<span class="w"> </span>this,<span class="w"> </span>is,<span class="w"> </span>a,<span class="w"> </span>list
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>Weird<span class="w"> </span>list?<span class="w"> </span>Normal<span class="w"> </span>list:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">6</span>,<span class="w"> </span><span class="m">7</span>,<span class="w"> </span><span class="m">8</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>I<span class="w"> </span>will<span class="w"> </span>write<span class="w"> </span>a<span class="w"> </span>longer<span class="w"> </span>sentence:<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>delimiter<span class="w"> </span>colon<span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>line
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>and<span class="w"> </span>one<span class="w"> </span>more<span class="w">  </span>and<span class="w"> </span>another
+</span></code></pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Info</p>
+<ul>
+<li><strong>-c</strong> option is useful for fixed-length lines.</li>
+<li>Most unix files doesn&rsquo;t have fixed-length lines. To extract the useful information you need to cut by fields rather than columns.</li>
+<li>List of the fields number specified must be separated by comma. Ranges are not described with -f option.</li>
+<li>cut uses tab as a default field delimiter but can also work with other delimiter by using -d option.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Example: columns of data</p>
+<p>Here we work with the file &ldquo;data.dat&rdquo; which is in the same directory as the other files.</p>
+<details class="note">
+<summary>Content of data.dat - click to reveal</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cat<span class="w"> </span>data.dat
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="m">123</span><span class="w"> </span><span class="m">456</span><span class="w"> </span><span class="m">5685</span><span class="w"> </span><span class="m">6969</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="m">124</span><span class="w"> </span><span class="m">346</span><span class="w"> </span><span class="m">7322</span><span class="w"> </span><span class="m">5732</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="m">321</span><span class="w"> </span><span class="m">124</span><span class="w"> </span><span class="m">1546</span><span class="w"> </span><span class="m">1632</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="m">111</span><span class="w"> </span><span class="m">763</span><span class="w"> </span><span class="m">1242</span><span class="w"> </span><span class="m">1421</span>
+</span></code></pre></div>
+</details>
+<p>Cutting column 2 and 3:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>bbrydsoe@enterprise:~/exercises/piping-wc-cut$<span class="w"> </span>cut<span class="w"> </span>-f<span class="w"> </span><span class="m">2</span>,3<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>data.dat
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="m">456</span><span class="w"> </span><span class="m">5685</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="m">346</span><span class="w"> </span><span class="m">7322</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="m">124</span><span class="w"> </span><span class="m">1546</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="m">763</span><span class="w"> </span><span class="m">1242</span>
+</span></code></pre></div>
+</div>
+<h3 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title"><img src="../../images/shell-logo_small.png"> Exercise</p>
+<p>The “exercises” -&gt; “piping-wc-cut” directory is where there are files that are suitable to run these examples on.</p>
+<ol>
+<li>Use <code>cut</code> and suitable option(s) to print column 1 and 4 of the file &ldquo;data.dat&rdquo;</li>
+<li>Create a file where you use &ldquo;:&rdquo; delimiters in. Use <code>cut</code> for different combination of fields and this delimiter</li>
+<li>See that you get the same output with options <strong>-c</strong> and <strong>-b</strong> for the files you try</li>
+<li>Output the first 4 characters of each line for a file you pick</li>
+</ol>
+</div>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>we have learned about <code>wc</code><ul>
+<li>and tried the options <strong>-l</strong> (lines), <strong>-m</strong> (characters), and <strong>-w</strong> (words)</li>
+</ul>
+</li>
+<li>we have learned about <code>cut</code><ul>
+<li>and tried the options for selecting with <strong>bytes</strong>, <strong>characters</strong>, <strong>fields</strong>, and used delimiters</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- Let's break the 80 characters per line --><!-- Let's stop checking for trailing spaces -->
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chown-chmod/" class="btn btn-neutral float-left" title="Linux permissions/owner"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../regular_expressions_and_grep/" class="btn btn-neutral float-right" title="Searching using regular expressions and grep">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../chown-chmod/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../regular_expressions_and_grep/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
