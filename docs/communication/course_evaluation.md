@@ -27,11 +27,11 @@ HPC2N's YouTube channel, on a separate playlist here:
 <https://www.youtube.com/playlist?list=PL6jMHLEmPVLzPdi1CsGWFQETAHykdbf7B>
 
 The presentations for the course will remain available for the
-foreseeable future at: <https://uppmax.github.io/linux-command-line-201/>
+foreseeable future at: <https://uppmax.github.io/linux-command-line-102/>
 
 The GitHub page for the course, with the rest of the material, including
 the tarball with the exercises, will also remain for the foreseeable
-future at: <https://github.com/UPPMAX/linux-command-line-201>
+future at: <https://github.com/UPPMAX/linux-command-line-102>
 
 Best wishes,
 

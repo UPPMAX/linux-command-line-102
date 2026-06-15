@@ -238,7 +238,7 @@ Download the file from a terminal as such:
 <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
 
 ```bash
-wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
+wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-102/refs/heads/main/docs/sessions/sed/macbeth.txt
 ```
 
 <!-- markdownlint-enable MD013 -->
@@ -433,7 +433,7 @@ Do this exercise from a script.
     <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
 
     ```bash
-    wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
+    wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-102/refs/heads/main/docs/sessions/sed/macbeth.txt
     sed --in-place 's/Weird Sisters/witches/g' macbeth.txt
     sed --in-place 's/[A-Z][a-z][a-z]*land/Sweden/' macbeth.txt
     ```
@@ -460,7 +460,7 @@ Do this exercise from a script.
     <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
 
     ```bash
-    wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/lesson_plans/20251204/script_1.sh
+    wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-102/refs/heads/main/docs/lesson_plans/20251204/script_1.sh
     ```
 
     <!-- markdownlint-enable MD013 -->

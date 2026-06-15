@@ -1,6 +1,6 @@
 # Prerequisites
 
-We [decided](https://github.com/UPPMAX/linux-command-line-201/issues/1)
+We [decided](https://github.com/UPPMAX/linux-command-line-102/issues/1)
 to use
 [The Command Line 101 course content](https://hpc2n.github.io/linux-command-line-101/)
 as course prerequisite.

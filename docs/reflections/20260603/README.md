@@ -103,7 +103,7 @@ Back the suggestions by the learners!
 
 - More bash scripting
 
-This is [already considered](https://github.com/UPPMAX/linux-command-line-201/issues/19).
+This is [already considered](https://github.com/UPPMAX/linux-command-line-102/issues/19).
 
 - AI, Data Analytics, ML, Docker etc.
 

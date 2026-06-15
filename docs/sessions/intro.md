@@ -7,7 +7,7 @@ tags:
 
 # Introduction
 
-- [Welcome page and syllabus](https://uppmax.github.io/linux-command-line-201/)
+- [Welcome page and syllabus](https://uppmax.github.io/linux-command-line-102/)
 
   - Also link at the House symbol at the top of the page.
 
@@ -29,7 +29,7 @@ The exercises are mostly on the pages, but you need some files to work with for 
 You get it with:
 
 ```bash
-wget https://github.com/UPPMAX/linux-command-line-201/raw/refs/heads/main/exercises.tar.gz
+wget https://github.com/UPPMAX/linux-command-line-102/raw/refs/heads/main/exercises.tar.gz
 ```
 
 Then you unpack it with:

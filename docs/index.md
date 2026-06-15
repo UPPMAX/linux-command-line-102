@@ -8,7 +8,7 @@ tags:
 # Intermediate Bash/Linux
 
 Course on intermediate Bash/Linux, with an estimated duration of
-[6 hours](https://github.com/UPPMAX/linux-command-line-201/issues/2),
+[6 hours](https://github.com/UPPMAX/linux-command-line-102/issues/2),
 given in two half-days.
 
 This course is given under <a href="https://www.naiss.se/" target="_blank">NAISS</a>, by staff working at the branches located at <a href="https://www.uu.se/centrum/uppmax/" target="_blank">UPPMAX</a> and <a href="https://www.hpc2n.umu.se" target="_blank">HPC2N</a>.

@@ -2,10 +2,10 @@
 
 <!-- markdownlint-disable MD013 --><!-- Badges cannot be split up over lines, hence will break 80 characters per line -->
 
-[![Check links](https://github.com/UPPMAX/linux-command-line-201/actions/workflows/check_links.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-201/actions/workflows/check_links.yaml)
-[![Check Markdown](https://github.com/UPPMAX/linux-command-line-201/actions/workflows/check_markdown.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-201/actions/workflows/check_markdown.yaml)
-[![Check spelling](https://github.com/UPPMAX/linux-command-line-201/actions/workflows/check_spelling.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-201/actions/workflows/check_spelling.yaml)
-[![Create site](https://github.com/UPPMAX/linux-command-line-201/actions/workflows/create_website.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-201/actions/workflows/create_website.yaml)
+[![Check links](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_links.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_links.yaml)
+[![Check Markdown](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_markdown.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_markdown.yaml)
+[![Check spelling](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_spelling.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_spelling.yaml)
+[![Create site](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/create_website.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/create_website.yaml)
 [![DOI](https://zenodo.org/badge/887694497.svg)](https://doi.org/10.5281/zenodo.15551066)
 
 <!-- markdownlint-enable MD013 -->
@@ -16,7 +16,7 @@ until [some organisation] has its own GitHub account.
 UPPMAX is chosen for practical reasons unrelated to its importance.
 ```
 
-- [Go to the nicely rendered site of this course](https://uppmax.github.io/linux-command-line-201)
+- [Go to the nicely rendered site of this course](https://uppmax.github.io/linux-command-line-102)
 
 ## Files used by continuous integration scripts
 

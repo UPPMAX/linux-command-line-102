@@ -12,11 +12,11 @@ NOTE that the course starts at 9:00 not 9:15! See the schedule linked below.
 
 We will use Zoom for this online course. See below for the link (#6).
 
-1. Schedule: <https://uppmax.github.io/linux-command-line-201/schedule/>
+1. Schedule: <https://uppmax.github.io/linux-command-line-102/schedule/>
 
-2. Rendered presentations for the course: <https://uppmax.github.io/linux-command-line-201/>
+2. Rendered presentations for the course: <https://uppmax.github.io/linux-command-line-102/>
 
-3. Course GH repo: <https://github.com/UPPMAX/linux-command-line-201>
+3. Course GH repo: <https://github.com/UPPMAX/linux-command-line-102>
 
 4. Important information about the course is gathered here: `[shared_document_url]`
 

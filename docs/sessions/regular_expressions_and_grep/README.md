@@ -227,12 +227,12 @@ Download the file from a terminal as such:
 <!-- markdownlint-disable MD013 --><!-- Verbatim code cannot be split up over lines, hence will break 80 characters per line -->
 
 ```bash
-wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt
+wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-102/refs/heads/main/docs/sessions/sed/macbeth.txt
 ```
 
 <!-- markdownlint-enable MD013 -->
 
-If that does not work, go to [the URL](https://raw.githubusercontent.com/UPPMAX/linux-command-line-201/refs/heads/main/docs/sessions/sed/macbeth.txt)
+If that does not work, go to [the URL](https://raw.githubusercontent.com/UPPMAX/linux-command-line-102/refs/heads/main/docs/sessions/sed/macbeth.txt)
 and download it manually and put it in your favorite folder.
 
 ---

@@ -26,7 +26,7 @@ My learning outcomes are:
 
 - Learners can use `.`, `*`, `+`, `?`, `[]`, `[^]`, `{}`, `()` in regular expressions
 - Learners can use `grep` for pattern matching
-- [Learners have practiced using a book on bash/Linux](https://github.com/UPPMAX/linux-command-line-201/issues/7)
+- [Learners have practiced using a book on bash/Linux](https://github.com/UPPMAX/linux-command-line-102/issues/7)
 
 Add LOs are:
 
@@ -73,7 +73,7 @@ so let's accept this change.
 My LOs are:
 
 - I can use `awk`
-- [Learners have practiced using a book on bash/Linux](https://github.com/UPPMAX/linux-command-line-201/issues/7)
+- [Learners have practiced using a book on bash/Linux](https://github.com/UPPMAX/linux-command-line-102/issues/7)
 
 I've inherited the first one from BC and BB and is simple enough,
 unlike the ones for `grep`, where I added some details.

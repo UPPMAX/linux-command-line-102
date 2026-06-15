@@ -22,7 +22,7 @@ My learning outcomes are:
 - Learners can use bash `if` statements
 - Learners can use bash `if` statements with the 'or' and 'and' symbols
 - Learners can use bash `for` statements
-- [Learners have practiced using a book on bash/Linux](https://github.com/UPPMAX/linux-command-line-201/issues/7)
+- [Learners have practiced using a book on bash/Linux](https://github.com/UPPMAX/linux-command-line-102/issues/7)
 
 As sources of text, I consider to use:
 

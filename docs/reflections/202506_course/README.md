@@ -30,8 +30,8 @@ R  |(49+50+65)/3=55%
 
 
 - [x] Use 1 session per page in my paper logbook
-- [Ask PDC to install `nano` on Dardel](https://github.com/UPPMAX/linux-command-line-201/issues/17)
-- [Suggest to replace `awk` by `sed`](https://github.com/UPPMAX/linux-command-line-201/issues/18):
+- [Ask PDC to install `nano` on Dardel](https://github.com/UPPMAX/linux-command-line-102/issues/17)
+- [Suggest to replace `awk` by `sed`](https://github.com/UPPMAX/linux-command-line-102/issues/18):
 
     - B will have more time for the quality of life session
     - R thinks `sed` is a better follow-up after `grep`
@@ -107,7 +107,7 @@ as I had 5x more time for exercises.
 - python? why we have so many languages? what do they add ?
 
 Python is not among
-[the courses we link to](https://uppmax.github.io/linux-command-line-201/courses/),
+[the courses we link to](https://uppmax.github.io/linux-command-line-102/courses/),
 but it is mentioned in the same newsletter this course was part of (i.e.
 the NAISS newsletter).
 
@@ -115,13 +115,13 @@ the NAISS newsletter).
   e.g. multiline find and replace, substitution etc.
 
 File transfer is not among
-[the courses we link to](https://uppmax.github.io/linux-command-line-201/courses/),
+[the courses we link to](https://uppmax.github.io/linux-command-line-102/courses/),
 but it is mentioned in the same newsletter this course was part of (i.e.
 the NAISS newsletter).
 
 Efficient vim is not among the courses at all.
 
-- [Suggest to add course on efficient vim](https://github.com/UPPMAX/linux-command-line-201/issues/19)
+- [Suggest to add course on efficient vim](https://github.com/UPPMAX/linux-command-line-102/issues/19)
 
 - I don´t think anything else can be provided
 - same but advance and longer
@@ -139,20 +139,20 @@ to look at research scripts.
 
 - Advanced Bash and Linux of course! :)
 
-- [Suggest to add 'Command Line 301' course](https://github.com/UPPMAX/linux-command-line-201/issues/19)
+- [Suggest to add 'Command Line 301' course](https://github.com/UPPMAX/linux-command-line-102/issues/19)
 
 - R and machine learning
 
 R (and machine learning in R) is not among
-[the courses we link to](https://uppmax.github.io/linux-command-line-201/courses/).
+[the courses we link to](https://uppmax.github.io/linux-command-line-102/courses/).
 I am unsure if the R-MATLAB-Julia course is part of the NAISS newsletter.
 
-- [Check if R-MATLAB-Julia course is part of the NAISS newsletter](https://github.com/UPPMAX/linux-command-line-201/issues/20)
+- [Check if R-MATLAB-Julia course is part of the NAISS newsletter](https://github.com/UPPMAX/linux-command-line-102/issues/20)
 
 - Fortran course, Object-oriented-programming in Python course
 
-- [Suggest to add course on FORTRAN](https://github.com/UPPMAX/linux-command-line-201/issues/19)
-- [Suggest to add course on OOP programming with Python](https://github.com/UPPMAX/linux-command-line-201/issues/19)
+- [Suggest to add course on FORTRAN](https://github.com/UPPMAX/linux-command-line-102/issues/19)
+- [Suggest to add course on OOP programming with Python](https://github.com/UPPMAX/linux-command-line-102/issues/19)
 
 ### Other comments
 
@@ -265,7 +265,7 @@ needed to my course material.
 
 Interesting idea. Let's ask
 
-- [Suggest to add a empty day between the course days](https://github.com/UPPMAX/linux-command-line-201/issues/21)
+- [Suggest to add a empty day between the course days](https://github.com/UPPMAX/linux-command-line-102/issues/21)
 
 ## Feedback in chat
 
