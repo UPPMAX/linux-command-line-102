@@ -93,9 +93,19 @@ Not my session.
   Overall, I found the course very helpful and well organised.
   Thank you for the training.
 
-I agree I should improve the Feedback part.
+I see I already do a mediocre job at this:
 
-- [ ] Schedule Feedback
+![Bash scripting conclusions](bash_script_conclusions.png)
+![grep conclusions](grep_conclusions.png)
+![sed conclusions](sed_conclusions.png)
+
+The `sed` session is the worst in this case: it does not show actual
+usage of `sed`.
+
+I think I can expand a bit on this. Adding common mistakes is something
+I consider: I have exercises exactly for encountering common mistakes.
+
+- [ ] Consider expanding summary at the end of a session
 
 - All was just fine thank you
 
