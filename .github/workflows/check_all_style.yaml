@@ -4,13 +4,13 @@ name: Check all style
 # This job only concerns changes to a limited set of files.
 # Thanks to https://stackoverflow.com/a/63822945
 #
-# Check spelling on the 21st day of the month.
-# 21st as the first letter of this repository is the 21st letter in the alphabet.
+# Check spelling on the 12th day of the month.
+# 12th as the first letter of this repository is the 12th letter in the alphabet.
 on:
   push:
   pull_request:
   schedule:
-    - cron: "0 0 21 * *"
+    - cron: "0 0 12 * *"
 
 permissions: {}
 

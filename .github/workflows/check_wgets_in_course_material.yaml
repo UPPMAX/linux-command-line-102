@@ -1,0 +1,35 @@
+# Check that all wget commands in the course material actually download a file
+name: Check wgets
+
+# This job only concerns changes to a limited set of files.
+# Thanks to https://stackoverflow.com/a/63822945
+#
+# Check links on the 12th day of the month.
+# 12th as the first letter of this repository is the 12th letter in the alphabet.
+on:
+  push:
+    paths:
+      - .github/workflows/check_wgets_in_course_material.yaml
+      - "docs/**.md"
+      - scripts/check_wgets_in_course_material.sh
+  pull_request:
+    paths:
+      - "docs/**.md"
+      - .github/workflows/check_wgets_in_course_material.yaml
+      - scripts/check_wgets_in_course_material.sh
+  schedule:
+    - cron: "0 0 12 * *"
+
+# Suggested by Super Linter
+permissions: read-all
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check
+        run: ./scripts/check_wgets_in_course_material.sh

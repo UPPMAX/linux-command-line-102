@@ -1,8 +1,8 @@
 # Check that there is correct spelling in all files
 name: Check spelling
 
-# Check spelling on the 21st day of the month.
-# 21st as the first letter of this repository is the 21st letter in the alphabet.
+# Check spelling on the 12th day of the month.
+# 12th as the first letter of this repository is the 12th letter in the alphabet.
 on:
   push:
     paths:
@@ -17,7 +17,7 @@ on:
       - .wordlist.txt
       - README.md
   schedule:
-    - cron: "0 0 21 * *"
+    - cron: "0 0 12 * *"
 
 # Suggested by Super Linter
 permissions: read-all
