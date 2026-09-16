@@ -1,0 +1,259 @@
+[project]
+#site_name = "Linux Command Line 201"
+docs_dir = "docs"
+auto_nav = false
+
+# This was used for MkDocs
+# site_dir = "site"
+
+# The site_name is shown in the page header and the browser window title
+#
+# Read more: https://zensical.org/docs/setup/basics/#site_name
+#site_name = "Linux Command Line 201" 
+site_name = "Linux Command Line 201" 
+
+# The site_description is included in the HTML head and should contain a
+# meaningful description of the site content for use by search engines.
+#
+# Read more: https://zensical.org/docs/setup/basics/#site_description
+site_description = "Material for the NAISS course: Linux Command Line 201" 
+
+# The site_author attribute. This is used in the HTML head element.
+#
+# Read more: https://zensical.org/docs/setup/basics/#site_author
+#site_author = " "
+
+# The site_url is the canonical URL for your site. When building online
+# documentation you should set this.
+# Read more: https://zensical.org/docs/setup/basics/#site_url
+site_url = "https://hpc.pages.naiss.se/training/linux-command-line-201"
+repo_url = "https://gitlab.naiss.se/hpc/training/linux-command-line-201"
+edit_uri = "blob/main/docs/"
+
+nav = [
+  { "Common" = [
+    { "Home" = "index.md" },
+    { "Learning outcomes" = "learning_outcomes.md" },
+    { "Course dates" = "course_dates.md" },
+    { "Schedule" = "schedule.md" },
+    { "Prerequisites" = "prerequisites.md" },
+    { "Evaluation" = "evaluation.md" }
+  ]},
+  { "Lessons Morning (smarter command line)" = [
+    { "Introduction" = "sessions/intro.md" },
+    { "Linux pipe" = "sessions/pipe.md" },
+    { "Linux permissions/owner" = "sessions/chown-chmod.md" },
+    { "Linux tools (wc, cut)" = "sessions/wc_cut.md" },
+    { "Regular expressions and grep" = "sessions/regular_expressions_and_grep/README.md" },
+    { "Sed" = "sessions/sed/README.md" },
+    { "(optional) Using the AWK programming language" = "sessions/awk/README.md" }
+  ]},
+  { "Lessons Afternoon (smarter bash)" = [
+    { "Scripting" = "sessions/scripting/README.md" },
+    { "Redirects" = "sessions/redirects.md" },
+    { "Environment variables" = "sessions/env_vars.md" },
+    { "Symbolic links" = "sessions/symlinks.md"},
+    { "Archiving/compressing data" = "sessions/arch.md" },
+    { "Quality of life" = "sessions/qual.md" }
+  ]},
+  { "Other teaching materials" = [
+    { "Books" = "books/README.md" },
+    { "Courses" = "courses.md" },
+    { "Videos" = "videos.md" }
+  ]},
+  { "Miscellaneous" = [
+    { "Communication" = "communication/README.md" },
+    { "Evaluations" = "evaluations/README.md" },
+    { "Lesson plans" = "lesson_plans/README.md" },
+    { "Meeting notes" = "meeting_notes/README.md" },
+    { "Reflections" = "reflections/README.md" }
+  ]},
+  { "Extra" = [
+    { "Arrhenius info" = "arrhenius.md" }
+  ]}
+]
+
+extra_css = ["css/extra.css"]
+
+# Read more: https://zensical.org/docs/customization/#additional-javascript
+extra_javascript = ["javascript/readthedocs.js"]
+
+# Allows to use emojis and icons, from 
+# https://zensical.org/docs/authoring/icons-emojis/#configuration 
+project.markdown_extensions = [
+     "attr_list",
+     "pymdownx.emoji"
+   ]
+
+#https://zensical.org/docs/setup/basics/?h=theme#theme-variant
+# classic is like material
+#variant = "classic"
+
+# Zensical allows you to override specific blocks, partials, or whole
+# templates as well as to define your own templates. To do this, uncomment
+# the custom_dir setting below and set it to a directory in which you
+# keep your template overrides.
+#
+# https://zensical.org/docs/customization/#extending-the-theme
+#custom_dir = "docs/overrides"
+
+[project.theme]
+# With the "favicon" option you can set your own image to use as the icon
+# browsers will use in the browser title bar or tab bar. The path provided
+# must be relative to the "docs_dir".
+# favicon = "favicon.ico"
+# Use a custom logo from docs/images.
+#logo = "images/naiss_logo_white_edge.png"
+favicon = "https://www.naiss.se/wp-content/themes/naiss/assets/img/favicon/favicon.ico"
+custom_dir = "overrides"
+
+# https://zensical.org/docs/setup/language/
+language = "en"
+
+# Change font to Sora
+font.text = "Sora"
+
+# Zensical provides a number of feature toggles that change the behavior
+# of the documentation site.
+features = [
+    # https://zensical.org/docs/setup/header/#announcement-bar
+    "announce.dismiss",
+
+    # https://zensical.org/docs/setup/repository/#code-actions
+    #"content.action.edit",
+
+    # https://zensical.org/docs/setup/repository/#code-actions
+    #"content.action.view",
+
+    # Code annotations allow you to add an icon with a tooltip to your
+    # code blocks to provide explanations at crucial points.
+    # https://zensical.org/docs/authoring/code-blocks/#code-annotations
+    "content.code.annotate",
+
+    # This feature turns on a button in code blocks that allow users to
+    # copy the content to their clipboard without first selecting it.
+    # https://zensical.org/docs/authoring/code-blocks/#code-copy-button
+    "content.code.copy",
+
+    # Code blocks can include a button to allow for the selection of line
+    # ranges by the user.
+    # https://zensical.org/docs/authoring/code-blocks/#code-selection-button
+    "content.code.select",
+
+    # Zensical can render footnotes as inline tooltips, so the user can read
+    # the footnote without leaving the context of the document.
+    # https://zensical.org/docs/authoring/footnotes/#footnote-tooltips
+    "content.footnote.tooltips",
+
+    # If you have many content tabs that have the same titles (e.g., "Python",
+    # "JavaScript", "Cobol"), this feature causes all of them to switch to
+    # at the same time when the user chooses their language in one.
+    # https://zensical.org/docs/authoring/content-tabs/#linked-content-tabs
+    "content.tabs.link",
+
+    # https://zensical.org/docs/authoring/tooltips/#improved-tooltips
+    "content.tooltips",
+
+    # https://zensical.org/docs/setup/header/#automatic-hiding
+    # "header.autohide",
+
+    # This expands all sections in the navigation bar by default
+    # https://zensical.org/docs/setup/navigation/#navigation-expansion
+    # "navigation.expand",
+
+    #This turns on navigation in the footer for navigate next and previous page 
+    # https://zensical.org/docs/setup/footer/#navigation
+    "navigation.footer",
+
+    # make documents can be directly attached to sections
+    # https://zensical.org/docs/setup/navigation/#section-index-pages
+    "navigation.indexes",
+
+    # https://zensical.org/docs/setup/navigation/#instant-navigation
+    "navigation.instant",
+
+    # Will start to fetch the page when user hovers the link 
+    # https://zensical.org/docs/setup/navigation/#instant-prefetching
+    "navigation.instant.prefetch",
+
+    # Gives a progress indicator for loading 
+    # https://zensical.org/docs/setup/navigation/#progress-indicator
+    #"navigation.instant.progress",
+
+    # When navigation paths are activated, a breadcrumb navigation is rendered
+    # above the title of each page
+    # https://zensical.org/docs/setup/navigation/#navigation-path
+    "navigation.path",
+
+    # When pruning is enabled, only the visible navigation items are included
+    # in the rendered HTML, reducing the size of the built site by 33% or more.
+    # https://zensical.org/docs/setup/navigation/#navigation-pruning
+    #"navigation.prune",
+
+    # When sections are enabled, top-level sections are rendered as groups in
+    # the sidebar for viewports above 1220px, but remain as-is on mobile.
+    # https://zensical.org/docs/setup/navigation/#navigation-sections
+    #"navigation.sections",
+
+    # When tabs are enabled, top-level sections are rendered in a menu layer
+    # below the header for viewports above 1220px, but remain as-is on mobile.
+    # https://zensical.org/docs/setup/navigation/#navigation-tabs
+    #"navigation.tabs",
+
+    # When sticky tabs are enabled, navigation tabs will lock below the header
+    # and always remain visible when scrolling down.
+    # https://zensical.org/docs/setup/navigation/#sticky-navigation-tabs
+    #"navigation.tabs.sticky",
+
+    # A back-to-top button can be shown when the user, after scrolling down,
+    # starts to scroll up again.
+    # https://zensical.org/docs/setup/navigation/#back-to-top-button
+    "navigation.top",
+
+    # When anchor tracking is enabled, the URL in the address bar is
+    # automatically updated with the active anchor as highlighted in the table
+    # of contents.
+    # https://zensical.org/docs/setup/navigation/#anchor-tracking
+    "navigation.tracking",
+
+    # When search highlighting is enabled and a user clicks on a search result,
+    # Zensical will highlight all occurrences after following the link.
+    # https://zensical.org/docs/setup/search/#search-highlighting
+    "search.highlight",
+
+    # When anchor following for the table of contents is enabled, the sidebar
+    # is automatically scrolled so that the active anchor is always visible.
+    # https://zensical.org/docs/setup/navigation/#anchor-following
+    # "toc.follow",
+
+    # When navigation integration for the table of contents is enabled, it is
+    # always rendered as part of the navigation sidebar on the left.
+    # https://zensical.org/docs/setup/navigation/#navigation-integration
+    "toc.integrate",
+
+    # When sections are enabled, top-level sections are rendered as groups in
+    # the sidebar for viewports above 1220px, but remain as-is on mobile.   
+    # https://zensical.org/docs/setup/navigation/#navigation-sections     
+    "navigation.sections",
+]
+
+# ----------------------------------------------------------------------------
+# In the "palette" subsection you can configure options for the color scheme.
+# You can configure different color # schemes, e.g., to turn on dark mode,
+# that the user can switch between. Each color scheme can be further
+# customized.
+#
+# Read more:
+# - https://zensical.org/docs/setup/colors/
+# ----------------------------------------------------------------------------
+#[[project.theme.palette]]
+#scheme = "default"
+#toggle.icon = "lucide/sun"
+#toggle.name = "Switch to dark mode"
+#primary = "custom-dark"
+
+#[[project.theme.palette]]
+#scheme = "slate"
+#toggle.icon = "lucide/moon"
+#toggle.name = "Switch to light mode"
+#primary = "custom-light"

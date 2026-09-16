@@ -1,0 +1,34 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+build_website:
+  stage: build
+  image: python:3.14
+  script:
+    # Checkout is automatic in GitLab
+    - echo "Python version:"
+    - python --version
+    - pip install --upgrade pip
+    - pip install pyyaml zensical requests
+    - make build
+    - echo "Contents of site directory"
+    - ls -la site
+      #- zensical build --clean
+  artifacts:
+    paths:
+      - site/
+    expire_in: 1 week
+
+pages:
+  stage: deploy
+  script:
+    - mv site public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
