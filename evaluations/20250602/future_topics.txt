@@ -1,0 +1,9 @@
+python? why we have so many languagues? what do they add ?
+Different file systems, efficient editing of text files using Vim e.g. multiline find and replace, substitution etc.
+I don´t think anything else can be provided
+same but advance and longer
+automating proccesses and more into bashrc
+Perhaps showing real examples of these tools are used in research/scripts we may use
+Advanced Bash and Linux of course! :)
+R and machine learning
+Fortran course, Object-oriented-programming in Python course

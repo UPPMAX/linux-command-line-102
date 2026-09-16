@@ -1,0 +1,322 @@
+2026-06-03 09:00:09 From [Learner HiNoter login name]'s HiNoter To Everyone:
+	HiNoter is here to help by transcribing the meeting and sharing a summary once it's over.
+	
+2026-06-03 09:03:47 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Birgitte is discussing:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/intro/
+	
+2026-06-03 09:04:18 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Shared Q&A docs at 
+	
+	https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQDuz8YWkZKbQYbSMu4G4tieATvCSmWoqCO7M3l1-hoJbS4
+	
+2026-06-03 09:05:10 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Birgitte is now at:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/intro/#exercises
+	
+2026-06-03 09:05:44 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Schedule is at
+	
+	https://uppmax.github.io/linux-command-line-201/schedule/
+	
+2026-06-03 09:08:04 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Birgitte is now at:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/pipe/
+	
+2026-06-03 09:11:06 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Birgitte is at:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/pipe/#examples__of__piping
+	
+2026-06-03 09:20:34 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	The exercise is at
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/pipe/#exercise
+	
+2026-06-03 09:25:19 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Q&A document: https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQDuz8YWkZKbQYbSMu4G4tieATvCSmWoqCO7M3l1-hoJbS4
+	
+2026-06-03 09:29:33 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Birgitte is here:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/chown-chmod/
+	
+2026-06-03 09:30:39 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Birgitte is here:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/wc_cut/
+	
+2026-06-03 09:32:04 From [Learner 2] To Everyone:
+	Does anyone know why number of characters is -m and not -c? What does 'm' stand for in this case?
+	
+2026-06-03 09:32:40 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	I don't know what the m stands for. It is picked most likely because 'c' was taken already by something more important
+	
+2026-06-03 09:32:52 From [Learner 2] To Everyone:
+	Thank you!
+	
+2026-06-03 09:34:42 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Birgitte is now here:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/wc_cut/#examples
+	
+2026-06-03 09:34:59 From Richèl 'Rea-shell' Bilderbeek To [Learner 1] (direct message):
+	Welcome!
+	
+	Birgitte is now here:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/wc_cut/#examples
+	
+2026-06-03 09:35:12 From Richèl 'Rea-shell' Bilderbeek To wen.huang (direct message):
+	Hi Wen,
+	
+	Welcome back!
+	
+	Birgitte is at 
+	https://uppmax.github.io/linux-command-line-201/sessions/wc_cut/#examples
+	
+2026-06-03 09:37:40 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	The Q&A document is at 
+	
+	https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQDuz8YWkZKbQYbSMu4G4tieATvCSmWoqCO7M3l1-hoJbS4
+	
+2026-06-03 09:38:13 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Exercise is at:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/wc_cut/#exercise
+	
+2026-06-03 09:43:05 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Birgitte is at
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/wc_cut/#cut
+	
+2026-06-03 09:53:43 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Exercises are at
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/wc_cut/#exercises
+	
+2026-06-03 09:59:45 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Exercises are at;
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/wc_cut/#exercises
+	
+2026-06-03 10:02:18 From Richèl 'Rea-shell' Bilderbeek To Birgitte Brydsö (direct message):
+	No rush:
+	
+	Could you make me host again?
+	
+	I miss some options that I enjoy to have :-)
+	
+2026-06-03 10:04:53 From Richèl 'Rea-shell' Bilderbeek To [Learner 3] (direct message):
+	Welcome!
+	
+2026-06-03 10:05:04 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	BREAKTIME! Please take a break until 10:20 :-)
+	
+2026-06-03 10:05:47 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	We will continue at https://uppmax.github.io/linux-command-line-201/sessions/regular_expressions_and_grep/  :-)
+	
+2026-06-03 10:05:54 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	... after the break
+	
+2026-06-03 10:20:26 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://uppmax.github.io/linux-command-line-201/schedule/
+	
+2026-06-03 10:31:18 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://uppmax.github.io/linux-command-line-201/sessions/regular_expressions_and_grep/
+	
+2026-06-03 10:35:22 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://uppmax.github.io/linux-command-line-201/sessions/regular_expressions_and_grep/#exercises
+	
+2026-06-03 10:59:36 From [Learner 2] To Everyone:
+	"[A-Z][a-z]*land"
+	
+2026-06-03 11:00:44 From [Learner 2] To Everyone:
+	"[A-Z][a-z]land"
+	
+2026-06-03 11:31:10 From [Learner 2] To Everyone:
+	Yes
+	
+2026-06-03 11:31:24 From [Learner 4] To Everyone:
+	yes
+	
+2026-06-03 11:31:25 From [Learner 1] To Everyone:
+	yes
+	
+2026-06-03 11:31:28 From [Learner 5] To Everyone:
+	yes
+	
+2026-06-03 11:31:32 From [Learner 6] To Everyone:
+	yup
+	
+2026-06-03 11:31:42 From [Learner 1] To Everyone:
+	I need to step away for a meeting, but I’ll be back soon. Thank you!
+	
+2026-06-03 11:33:16 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Kleene
+	
+2026-06-03 11:33:18 From [Learner 2] To Everyone:
+	Denotes that whatever comes before it can be repeated 0+ times
+	
+2026-06-03 11:33:30 From [Learner 6] To Everyone:
+	It’s a wildcard. Meaning it expands to all matching filenames
+	
+2026-06-03 11:34:08 From [Tetralith] Irwin Selvam To Everyone:
+	Filtering for repetitions
+	
+2026-06-03 11:34:21 From [Learner 4] To Everyone:
+	looks for one or more repetitions
+	
+2026-06-03 11:35:57 From [Learner 2] To Everyone:
+	Kleene +
+	
+2026-06-03 11:36:08 From [Learner 4] To Everyone:
+	this is +
+	
+2026-06-03 11:36:11 From [Learner 6] To Everyone:
+	+
+	
+2026-06-03 11:36:36 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	man grep | grep .*
+	
+2026-06-03 11:39:46 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://uppmax.github.io/linux-command-line-201/sessions/sed/
+	
+2026-06-03 11:43:18 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://uppmax.github.io/linux-command-line-201/sessions/sed/#exercises
+	
+2026-06-03 11:55:47 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://richelbilderbeek.github.io/teaching/data/counts/
+	
+2026-06-03 11:59:19 From [Tetralith] Irwin Selvam To Everyone:
+	Thanks!
+	
+2026-06-03 11:59:28 From [Learner 2] To Everyone:
+	Thank you!
+	
+2026-06-03 13:00:09 From [Learner HiNoter login name]'s HiNoter To Everyone:
+	HiNoter is here to help by transcribing the meeting and sharing a summary once it's over.
+	
+2026-06-03 13:01:14 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://uppmax.github.io/linux-command-line-201/schedule/
+	
+2026-06-03 13:07:41 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://uppmax.github.io/linux-command-line-201/sessions/scripting/
+	
+2026-06-03 13:10:19 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://uppmax.github.io/linux-command-line-201/sessions/scripting/#exercises
+	
+2026-06-03 13:53:21 From [Learner 1] To Everyone:
+	A script is a text file that contains a sequence of commands that the computer can execute automaticallyy
+	
+2026-06-03 14:00:23 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Breaktime until 14:15. Enjoy!
+	
+2026-06-03 14:15:49 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Birgitte is discussing
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/redirects/
+	
+2026-06-03 14:17:05 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	The Q&A document is at 
+	
+	https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQDuz8YWkZKbQYbSMu4G4tieATvCSmWoqCO7M3l1-hoJbS4 
+	
+	I will be following it closely. Or use this chat if that document does not work well :-)
+	
+2026-06-03 14:32:29 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	We are here:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/redirects/#merge__redirection
+	
+2026-06-03 14:35:11 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Exercsise at:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/redirects/#exercise
+	
+2026-06-03 14:36:40 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	The Q&A document is at 
+	
+	https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQDuz8YWkZKbQYbSMu4G4tieATvCSmWoqCO7M3l1-hoJbS4 
+	
+	I will be following it closely. Or use this chat if that document does not work well :-)
+	
+2026-06-03 14:40:29 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	We are now at
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/env_vars/
+	
+2026-06-03 14:50:58 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Exercise can be found at:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/env_vars/
+	
+2026-06-03 14:51:34 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	(above 'Summary')
+	
+2026-06-03 14:52:27 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	We are now at:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/symlinks/
+	
+2026-06-03 14:55:24 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Type along here:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/symlinks/#hard__links
+	
+2026-06-03 15:01:41 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Break until 15:15 :-)
+	
+2026-06-03 15:01:44 From Birgitte Brydsö To Everyone:
+	Break until 15:15
+	
+2026-06-03 15:16:38 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	We are at 
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/arch/
+	
+2026-06-03 15:17:07 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Q&A document is at https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQDuz8YWkZKbQYbSMu4G4tieATvCSmWoqCO7M3l1-hoJbS4
+	
+2026-06-03 15:18:04 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Code along at https://uppmax.github.io/linux-command-line-201/sessions/arch/#examples
+	
+2026-06-03 15:33:35 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	We are now at:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/qual/
+	
+2026-06-03 15:47:08 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	We are at
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/qual/#aliases
+	
+2026-06-03 15:48:54 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	Exercises are at:
+	
+	https://uppmax.github.io/linux-command-line-201/sessions/qual/#exercises
+	
+2026-06-03 15:50:06 From Birgitte Brydsö To Everyone:
+	Exercises until 15:53
+	
+2026-06-03 15:51:10 From Richèl 'Rea-shell' Bilderbeek To Birgitte Brydsö (direct message):
+	No rush, but I hope to be Zoom host when you are done :-)
+	
+2026-06-03 15:53:59 From Richèl 'Rea-shell' Bilderbeek To Birgitte Brydsö (direct message):
+	I assume you give me the word? Or should i just start?
+	
+2026-06-03 15:54:28 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://forms.cloud.microsoft/e/L2FCFek8d7
+	
+2026-06-03 15:56:03 From [Learner 1] To Everyone:
+	Thank you very much for the course. It was very useful and well organised. I really appreciated the clear explanations and the hands-on exercises.
+	
+2026-06-03 16:01:14 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://docs.uppmax.uu.se/cluster_guides/start_interactive_session_on_bianca/
+	
+2026-06-03 16:02:40 From Richèl 'Rea-shell' Bilderbeek To Everyone:
+	https://uppmax.github.io/programming_formalisms/
+	

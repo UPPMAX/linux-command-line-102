@@ -1,0 +1,171 @@
+html, body {
+    font-family: "Sora", sans-serif;
+    padding-top: 70px;
+    }
+* {
+    font-family: inherit;
+    }
+.md-button:link,
+.md-button:visited,
+.md-button:active,
+.md-button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px;
+    font-size: 14px;
+    color: white;
+    background-color: #004791;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    }
+.md-button:hover {
+    background-color: #6298d2 !important;
+    color: white;
+    }
+.md-sidebar {
+    height: 100%;
+    overflow-y: hidden;
+    background-color: white;
+    box-shadow: none;
+    border-bottom: none;
+    }
+.md-elipsis,
+.md-elipsis:link,
+.md-elipsis:visited {
+    color: black !important;
+    }
+.md-ellipsis:hover {
+    color: black;
+    font-weight: bold;
+    }
+h1, h2, h3, h4 {
+    color: #182637 !important;
+    font-weight: 600 !important;
+    }
+.md-nav__title,
+.md-header__title {
+    display: none;
+    }
+.md-header {
+    background-color: white;
+    padding: 0;
+    box-shadow: none;
+    border-bottom: none;
+    }
+.md-search__form {
+    background-color: #ebe5e0;
+    border: 1px solid #ccc;
+    }
+.md-search__form:hover,
+.md-search__form:focus-within {
+    background-color: white;
+    border-color: #888;
+    }
+.md-search__input {
+    background-color: transparent;
+    color: black;
+    }
+.md-search__input:focus {
+    background-color: #fff;
+    outline: none;
+    }
+.md-search__input::placeholder {
+    color: #888;
+    }
+.md-icon {
+    color: #000000 !important;
+    }
+.header-class {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 130px;
+    background: #d6d6ec;
+    color: white !important;
+    }
+.header-h2 {
+    margin:  10px 10px 10px 10px;
+    font-size: 30px;
+    color: white !important;
+    }
+.header-h3 {
+    margin:  10px 10px 10px 10px;
+    font-size: 20px;
+    color: white !important;
+    }
+.header-div-column {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 20px;
+    margin-left: 200px; 
+    }
+.header-user-area {
+    font-size: 1.0rem;
+    font-weight: 600;
+    }
+.header-div-row {
+    display: flex;
+    flex-direction: row;
+    color: white !important;
+    }
+.header-a {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px 10px 10px 30px;
+    color: black !important;
+    text-decoration-line: none;
+    }
+.header-a:hover,
+.header-a:focus {
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 10px;
+    }
+.md-search {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px 10px 0px 30px !important;
+    color: black !important;
+    padding: 0;
+    }
+.md-header__button.md-logo {
+    display: none !important;
+    }
+@media (max-width: 1220px) {
+    .header-div-row {
+        display: none !important;
+        }
+    .header-class {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        height: auto !important;
+        }
+    .header-div-column img {
+        max-width: 150px; /* eller mindre om du vill */
+        }
+    }
+
+/* Remove the link to the repo */
+.md-header__source {
+        display: none;
+
+.md-content__button {
+display: none;
+}
+
+.tabbed-content {
+        border-style: groove !important;
+        padding-left: 1em !important;
+}
+
+

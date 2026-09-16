@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Symbolic links - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Symbolic links";
+        var mkdocs_page_input_path = "sessions/symlinks.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Symbolic links</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#verify">Verify</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#hard__links">Hard links</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#softsymbolic__links">Soft/symbolic links</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Lessons Afternoon (smarter bash)</li>
+      <li class="breadcrumb-item active">Symbolic links</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/sessions/symlinks.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="symbolic__links">Symbolic links<a class="headerlink" href="#symbolic__links" title="Permanent link">&para;</a></h1>
+<p>Symbolic links are also called soft links, or just symlinks. It is a pointer to another file or directory (called the &ldquo;target&rdquo;).</p>
+<ul>
+<li>It is useful both for ease<ul>
+<li>you avoid using a long path each time you change to a directory, like your project directory</li>
+</ul>
+</li>
+<li>As well as to avoid changing hard links within other scripts or programs.<ul>
+<li>This is good if you for instance install a program or use a script that assumes the library it uses is called <code>libcoolness.a</code> and not <code>libcoolness.2.0.a</code>. You can then just update the symlink instead of renaming the library or updating potentially many instances where it is mentioned in the program.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Hard links and soft links</p>
+<p>You may have heard symbolic links referred to as &ldquo;soft links&rdquo;. So what is a hard link?</p>
+<p>Hard links are also shortcuts for files (not directories), but a hard link cannot be created for a file in a different file system.</p>
+</div>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<p>Soft link/symbolic link:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ln<span class="w"> </span>-s<span class="w"> </span>real-file-folder-or-lib<span class="w"> </span>link-name
+</span></code></pre></div>
+<p>Hard link:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ln<span class="w"> </span>source-file<span class="w"> </span>linked-file
+</span></code></pre></div>
+<h2 id="verify">Verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h2>
+<p>To verify a soft or hard link, run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="nb">source</span><span class="w"> </span>link
+</span></code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can type along to most of this! Use the files in &ldquo;exercises&rdquo; -&gt; &ldquo;redirects-env-links&rdquo; for examples.</p>
+</div>
+<h3 id="hard__links">Hard links<a class="headerlink" href="#hard__links" title="Permanent link">&para;</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can code along!</p>
+<p>Either use one of the files/directories in &ldquo;exercises&rdquo; -&gt; &ldquo;redirect-env-link&rdquo; or create a file to play with. This should work:</p>
+<p><code>echo 'This is my test file' &gt; testfile</code></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Create a hard link, files</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ln<span class="w"> </span>testfile<span class="w"> </span>linkfile
+</span></code></pre></div>
+<p>To check what happened, do this:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ls<span class="w"> </span>-li<span class="w"> </span>testfile<span class="w"> </span>linkfile
+</span></code></pre></div></p>
+<p>My output:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>ls<span class="w"> </span>-li
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>total<span class="w"> </span><span class="m">8</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="m">808864781</span><span class="w"> </span>-rw-r--r--<span class="w"> </span><span class="m">2</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">21</span><span class="w"> </span>May<span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">16</span>:36<span class="w"> </span>linkfile
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="m">808864781</span><span class="w"> </span>-rw-r--r--<span class="w"> </span><span class="m">2</span><span class="w"> </span>bbrydsoe<span class="w"> </span>folk<span class="w"> </span><span class="m">21</span><span class="w"> </span>May<span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">16</span>:36<span class="w"> </span>testfile
+</span></code></pre></div></p>
+<p>808864781 is the inode, which is identical. An inode (index node) is a concept in Linux/Unix. Each object in a filesystem is represented by an inode. It is a data structure which stores basic info about files, directories, or other file system objects. More here if you are interested: <a href="https://www.cyberciti.biz/tips/understanding-unixlinux-filesystem-inodes.html" target="_blank">Understanding UNIX / Linux filesystem Inodes</a>.</p>
+</div>
+<h3 id="softsymbolic__links">Soft/symbolic links<a class="headerlink" href="#softsymbolic__links" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Create a symbolic link to a directory</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ln<span class="w"> </span>-s<span class="w"> </span>/path/to/home/exercises/redirects-env-link<span class="w"> </span><span class="nv">$HOME</span>/exer
+</span></code></pre></div>
+<p>This creates a symbolic link named “exer” in the home directory, pointing to the location /path/to/home/exercises/redirects-env-link. For me, this would look like this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>bbrydsoe@enterprise:~/exercises/redirects-env-link$<span class="w"> </span><span class="nb">pwd</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>/home/bbrydsoe/exercises/redirects-env-link
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>bbrydsoe@enterprise:~/exercises/redirects-env-link$<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/home/bbrydsoe/exercises/redirects-env-link<span class="w"> </span><span class="nv">$HOME</span>/exer
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>bbrydsoe@enterprise:~$<span class="w"> </span><span class="nb">cd</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>bbrydsoe@enterprise:~$<span class="w"> </span>ls<span class="w"> </span>-l
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>...
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>drwxrwxr-x<span class="w">  </span><span class="m">6</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">       </span><span class="m">4096</span><span class="w"> </span>nov<span class="w"> </span><span class="m">13</span><span class="w">  </span><span class="m">2023</span><span class="w">  </span>course-intro-git
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>drwxr-xr-x<span class="w">  </span><span class="m">8</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">       </span><span class="m">4096</span><span class="w"> </span>maj<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">14</span>:53<span class="w">  </span>Desktop
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>drwxr-xr-x<span class="w">  </span><span class="m">6</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">       </span><span class="m">4096</span><span class="w"> </span>jun<span class="w"> </span><span class="m">20</span><span class="w">  </span><span class="m">2024</span><span class="w">  </span>Documents
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>drwxr-xr-x<span class="w"> </span><span class="m">22</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">      </span><span class="m">20480</span><span class="w"> </span>maj<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:13<span class="w">  </span>Downloads
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>drwxrwxr-x<span class="w">  </span><span class="m">2</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">       </span><span class="m">4096</span><span class="w"> </span>maj<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">09</span>:10<span class="w">  </span>examples
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>lrwxrwxrwx<span class="w">  </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">         </span><span class="m">43</span><span class="w"> </span>maj<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">19</span>:36<span class="w">  </span>exer<span class="w"> </span>-&gt;<span class="w"> </span>/home/bbrydsoe/exercises/redirects-env-link
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>drwxr-xr-x<span class="w">  </span><span class="m">8</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">       </span><span class="m">4096</span><span class="w"> </span>maj<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:43<span class="w">  </span>exercises
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>-rw-rw-r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">     </span><span class="m">296399</span><span class="w"> </span>jan<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">23</span>:33<span class="w">  </span>exercises.tar.gz
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>drwxrwxr-x<span class="w"> </span><span class="m">31</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">       </span><span class="m">4096</span><span class="w"> </span>maj<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">10</span>:54<span class="w">  </span>hpc2n
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>drwxrwxr-x<span class="w">  </span><span class="m">5</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">       </span><span class="m">4096</span><span class="w"> </span>apr<span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">12</span>:56<span class="w">  </span>HPC2Ndocs
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>-rw-rw-r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>bbrydsoe<span class="w"> </span>bbrydsoe<span class="w">         </span><span class="m">85</span><span class="w"> </span>okt<span class="w"> </span><span class="m">23</span><span class="w">  </span><span class="m">2023</span><span class="w">  </span>hpc2n-faktura.txt
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>...
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Create a symbolic link to a file in the same directory as the file</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ln<span class="w"> </span>-s<span class="w"> </span>/path/to/file/the-file<span class="w"> </span>/path/to/file/&lt;new-name&gt;
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Create a symbolic link to a library</p>
+<p>This is to give the library the name is is presumably assumed to have in some program that uses it. Here it is in the same directory.</p>
+<p>This is how it looks for me:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ln<span class="w"> </span>-s<span class="w"> </span>/home/bbrydsoe/exercises/redirects-env-link/libcoolness.2.0.a<span class="w"> </span>/home/bbrydsoe/exercises/redirects-env-link/libcoolness.a
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Create a symbolic link to a library in a different directory</p>
+<p>Sometimes a program expects a library to be in another directory than it is. An easy way of solving this is with symlinks - then you do not have to copy the library to perhaps several directories, and redo when it is updated.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ln<span class="w"> </span>-s<span class="w"> </span>/usr/lib64/libfancy.a<span class="w"> </span>/usr/lib/libfancy.a
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Remove a symlink</p>
+<p>You can remove a symbolic link either with</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>unlink<span class="w"> </span>&lt;path-to-symlink&gt;
+</span></code></pre></div>
+<p>or</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>rm<span class="w"> </span>&lt;path-to-symlink&gt;
+</span></code></pre></div>
+<p>The main benefit of rm over unlink is that you can remove multiple symlinks at once, like you can with files.</p>
+<p>For me, it looks like this if I remove the symbolic link <code>libcoolness.a</code> I created above:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>bbrydsoe@enterprise:~/exercises/redirects-env-link$<span class="w"> </span>rm<span class="w"> </span>libcoolness.a
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>bbrydsoe@enterprise:~/exercises/redirects-env-link$
+</span></code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When removing a symlink to a folder, do not include the / at the end since that will make bash think the symbolic link is a folder that you cannot remove directly like this.</p>
+</div>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>Symbolic links are pointers to another file or directory</li>
+<li>there are both soft/symbolic links and hard links</li>
+<li>they are useful both for ease and to avoid renaming/copying files</li>
+<li>you can remove symbolic links with <code>rm</code> or <code>unlink</code></li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../env_vars/" class="btn btn-neutral float-left" title="Environment variables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../arch/" class="btn btn-neutral float-right" title="Archiving/compressing data">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../env_vars/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../arch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
