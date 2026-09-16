@@ -245,7 +245,7 @@ wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-102/refs/heads/
 
 <!-- markdownlint-disable MD051 --><!-- due to 'readthedocs' theme -->
 
-Read [the 'Replacing' section](#32__replacing).
+Read [the 'Replacing' section](#22__replacing).
 
 <!-- markdownlint-enable MD051 -->
 
@@ -311,7 +311,7 @@ Check that your replacement worked.
 
 <!-- markdownlint-disable MD051 --><!-- due to 'readthedocs' theme -->
 
-Read [the 'Filtering' section](#31__filtering).
+Read [the 'Filtering' section](#optional__21__filtering).
 
 <!-- markdownlint-enable MD051 -->
 
@@ -351,7 +351,7 @@ upon.
 
 <!-- markdownlint-disable MD051 --><!-- due to 'readthedocs' theme -->
 
-Read [the section 'Type of regular expressions'](#5__type__of__regular__expressions).
+Read [the section 'Type of regular expressions'](#optional__4__type__of__regular__expressions).
 
 <!-- markdownlint-enable MD051 -->
 
