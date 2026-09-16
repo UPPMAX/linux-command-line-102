@@ -63,13 +63,9 @@ it is 'a non-interactive command-line text editor'
 In this session, we will be manipulating a file from `sed` (instead of
 doing so by hand).
 
-## 2. Overview
+## 2. Types of operations
 
-![Mindmap](mindmap_no_deletion.png)
-
-## 3. Types of operations
-
-## (optional) 3.1. Filtering
+## (optional) 2.1. Filtering
 
 `sed` can do what `grep` can do.
 For example, in the session about`grep`,
@@ -99,7 +95,7 @@ man grep | sed --quiet "/^[A-Z]/p"
     the most self-explanatory: to me, 'quiet' feels that it may
     not be perfectly 'silent'.
 
-## 3.2. Replacing
+## 2.2. Replacing
 
 Probably the most used feature of `sed` is its replacement
 functionality:
@@ -139,7 +135,7 @@ echo "Good morning, good morning" | sed 's/morning/afternoon/g'
     Good afternoon, good morning
     ```
 
-## 4. Input and output
+## 3. Input and output
 
 <!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
 <!-- markdownlint-disable MD056 --><!-- markdownlint-disable MD060 --><!-- The pipe symbol in a command is not part of a table -->
@@ -153,7 +149,7 @@ echo "Good morning, good morning" | sed 's/morning/afternoon/g'
 <!-- markdownlint-disable MD056 --><!-- markdownlint-enable MD060 -->
 <!-- markdownlint-enable MD013 -->
 
-## (optional) 5. Type of regular expressions
+## (optional) 4. Type of regular expressions
 
 There are two types of regular expressions
 present in `sed`
@@ -210,9 +206,9 @@ cat lands.txt | sed --quiet --regexp-extended '/[A-Z][a-z]+land/p'
     This teaching material used the longer writing,
     as this is easier to read.
 
-## Exercises
+## 5. Exercises
 
-## Exercise 1
+## 5.1. About exercise 1
 
 !!! info "Macbeth"
 
@@ -231,7 +227,7 @@ In these exercises, we will:
 
 ---
 
-## Exercise 1.1: download Macbeth
+## 5.2. Exercise 1.1: download Macbeth
 
 Download the file from a terminal as such:
 
@@ -245,7 +241,7 @@ wget https://raw.githubusercontent.com/UPPMAX/linux-command-line-102/refs/heads/
 
 ---
 
-## Exercise 1.2: use `sed` to replace text from standard input
+## 5.3. Exercise 1.2: use `sed` to replace text from standard input
 
 <!-- markdownlint-disable MD051 --><!-- due to 'readthedocs' theme -->
 
@@ -311,7 +307,7 @@ Check that your replacement worked.
 
 ---
 
-## Exercise 1.3: use `sed` to find text from standard input
+## 5.4. Exercise 1.3: use `sed` to find text from standard input
 
 <!-- markdownlint-disable MD051 --><!-- due to 'readthedocs' theme -->
 
@@ -339,7 +335,7 @@ then piping it to `sed`.
 
 ---
 
-## (optional) Exercise 1.4: use extended regular expressions
+## (optional) 5.5. Exercise 1.4: use extended regular expressions
 
 Reading your answer in the previous exercise,
 your non-Swedish non-Finnish colleague comes to you
@@ -381,7 +377,7 @@ To be precise, search for all matches that:
 
 ---
 
-## Exercise 1.5: use `sed` to replace text in a file
+## 5.6. Exercise 1.5: use `sed` to replace text in a file
 
 Until now, we never have touched the original file.
 Here we use `sed --in-place [commands] [filename]`
@@ -422,7 +418,7 @@ to remove the copyright.
 
 ---
 
-## (optional) Exercise 1.6: Do this exercise from a script
+## (optional) 5.7. Exercise 1.6: Do this exercise from a script
 
 Do this exercise from a script.
 
