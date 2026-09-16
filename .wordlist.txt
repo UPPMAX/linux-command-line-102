@@ -2,6 +2,7 @@ config
 NBIS
 Formalisms
 Analytics
+wgets
 ADHD
 json
 jsonc
