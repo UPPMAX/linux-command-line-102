@@ -131,7 +131,7 @@ In this exercise, we use `grep` with a pipe.
 
 ### Exercise 2.1: read a command that has a `grep` with a pipe
 
-How would you explain the command below in English?
+How would you explain the command below **in English**?
 Use 'some regular expression' if you see a regular expression.
 
 ```bash
@@ -143,6 +143,21 @@ man grep | grep "^[A-Z]"
     The manual of `grep`, send it to `grep` and let it filter for
     some regular expression.
 
+??? tip "What does the regular expression mean?"
+
+    Again, the question should be answered using the words 'some
+    regular expression': we will learn what it means soon.
+
+    ??? tip "I really want to know"
+
+        The pattern `^[A-Z]` means:
+        'Starting with an uppercase character'
+
+        The detailed answer then becomes:
+
+        The manual of `grep`, send it to `grep` and let it filter for
+        any line that starts with an uppercase character.
+    
 ---
 
 ### Exercise 2.2: run a command that has a `grep` with a pipe
