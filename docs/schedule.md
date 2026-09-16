@@ -19,9 +19,9 @@ tags:
 | 9:00-9:10   | [Introduction](sessions/intro.md)                                              | Birgitte Brydsö   |
 | 9:10-10:05  | [Linux pipe](sessions/pipe.md), [`wc`, `cut`](sessions/wc_cut.md)              | Birgitte Brydsö   |
 | 10:05-10:20 | Break                                                                          | .                 |
-| 10:20-11:05 | [Regular expressions, `grep`](sessions/regular_expressions_and_grep/README.md) | Richèl Bilderbeek |
-| 11:05-11:20 | Break                                                                          | .                 |
-| 11:20-12:00 | [`sed`](sessions/sed/README.md)                                                | Richèl Bilderbeek |
+| 10:20-11:00 | [Regular expressions, `grep`](sessions/regular_expressions_and_grep/README.md) | Richèl Bilderbeek |
+| 11:00-11:15 | Break                                                                          | .                 |
+| 11:15-12:00 | [`sed`](sessions/sed/README.md)                                                | Richèl Bilderbeek |
 
 <!-- markdownlint-enable MD013 -->
 
