@@ -21,7 +21,6 @@ tags:
 
 !!! info "Learning outcomes"
 
-    - Learners know there are multiple flavours of regular expressions
     - Learners can use `.`, `*`, `+`, `?`, `[]`, `[^]`, `{}`, `()` in regular expressions
     - Learners can use `grep`
     - Learners have practiced using the `grep` manual
@@ -50,7 +49,6 @@ tags:
     - What is `grep`?
     - What is GNU?
     - In the context of software, what is a parser?
-    - In the context of command-line tools, what is a filter?
 
 ## What is `grep`?
 
@@ -74,7 +72,7 @@ SIWARD, Earl of Northumberland, General of the English Forces.
 Regular expressions are used to filter for text that contains a pattern,
 such as a first name, a last name, a phone number, etc.
 
-![What regular expressions are used for](why_regular_expressions.png)
+![What regular expressions are used for](why_regular_expressions_smaller.png)
 
 ## Why use `grep`?
 
