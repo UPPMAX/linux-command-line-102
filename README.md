@@ -5,6 +5,7 @@
 [![Check links](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_links.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_links.yaml)
 [![Check Markdown](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_markdown.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_markdown.yaml)
 [![Check spelling](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_spelling.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_spelling.yaml)
+[![Check wgets](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_wgets_in_course_material.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/check_wgets_in_course_material.yaml)
 [![Create site](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/create_website.yaml/badge.svg?branch=main)](https://github.com/UPPMAX/linux-command-line-102/actions/workflows/create_website.yaml)
 [![DOI](https://zenodo.org/badge/887694497.svg)](https://doi.org/10.5281/zenodo.15551066)
 

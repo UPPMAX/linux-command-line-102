@@ -13,9 +13,13 @@ I've done this course multiple times now with BB, who is also
 a veteran. Course content is unchanged, so preparation is planned
 to be swift.
 
+I have added a CI script to check if the `wget` calls actually
+download a file. It annoyed me not to be sure.
+
 Here I see things from my previous reflection:
 
 - [ ] Schedule Feedback
 - [ ] Consider 'Programming Formalisms for HPC'
 - [ ] Consider 'Docker for HPC'
 - [ ] Consider expanding summary at the end of a session
+
