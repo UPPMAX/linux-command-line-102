@@ -19,6 +19,9 @@ download a file. It annoyed me not to be sure.
 Here I see things from my previous reflection:
 
 - [ ] Schedule Feedback
+
+Sure,
+
 - [ ] Consider 'Programming Formalisms for HPC'
 - [ ] Consider 'Docker for HPC'
 - [ ] Consider expanding summary at the end of a session

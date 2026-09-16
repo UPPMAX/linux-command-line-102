@@ -15,12 +15,12 @@ This is the page for evaluating the current iteration of the course.
 
 Form purpose                    |Link to form
 --------------------------------|------------------------------------------------
-Give any feedback during the day|[TODO: Form to submit any feedback during the day](https://gitlab.naiss.se/hpc/training/connect-transfer/-/work_items/30)
-Evaluate the course             |[Link to evaluation survey](https://forms.cloud.microsoft/e/dRcxWNjMjy)
+Give any feedback during the day|[Form to submit any feedback during the day](https://docs.google.com/forms/d/e/1FAIpQLSf71WfNvFupRh2GUGWZsxjWUtwLDrHkDnJvOQdJDDDHqHy10Q/viewform?usp=publish-editor)
+Evaluate the course             |[Form to evaluate the course](https://forms.cloud.microsoft/e/dRcxWNjMjy)
 
 <!-- markdownlint-enable MD013 -->
 
-???- question "For teachers: what is in the 'Give any feedback' form?"
+???- note "For teachers: what is in the 'Give any feedback' form?"
 
     Thanks for your feedback.
     This feedback will be published as-is at the end of the day,
@@ -28,13 +28,13 @@ Evaluate the course             |[Link to evaluation survey](https://forms.cloud
     in the feedback.
     Do mention the teachers, assistants, etc by name!
 
-???- question "Why do you evaluate under lesson hours?"
+???- note "Why do you evaluate under lesson hours?"
 
     Because we value your time: your free time should be your free time.
 
     We think the time lost teaching is worth it to improve our teaching.
 
-???- question "For teachers: what is in the 'Evaluation questions' form?"
+???- note "For teachers: what is in the 'Evaluation questions' form?"
 
     These are the evaluation questions.
     The goals of these questions is to find out how successful
