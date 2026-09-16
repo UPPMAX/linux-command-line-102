@@ -484,3 +484,12 @@ Do this exercise from a script.
     ![Overview of some POSIX tools](posix_tools.png)
 
     > Overview of some POSIX tools
+
+---
+
+## Next session
+
+!!! info "Next session"
+
+    `sed` cannot do everything: use [AWK](../awk/README.md)
+    as a command-line programming language
