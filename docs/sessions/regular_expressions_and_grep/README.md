@@ -21,10 +21,10 @@ tags:
 
 !!! info "Learning outcomes"
 
-    - Learners can use `.`, `*`, `+`, `?`, `[]`, `[^]`, `{}`, `()` in regular expressions
-    - Learners can use `grep`
-    - Learners have practiced using the `grep` manual
-    - Learners can use `grep` to search for a regular expression
+    - Learners have used the regular expression patterns
+      `.`, `*`, `+`, `?`, `[]`, `[^]` and `{}`
+    - Learners haved used `grep` to search for a regular expression
+    - Learners have used the `grep` manual
     - Learners can send text to `grep` using a pipe
     - (optional) Learners have seen the flexibility of `grep`
 
@@ -202,7 +202,7 @@ What did that regular expression do?
 ## Exercise 3: practice regular expressions
 
 Go to [https://www.regexone.com/](https://www.regexone.com/)
-and do lessons 1 to (and including) 11.
+and do lessons 1 to (and including) 10.
 
 ???- tip "Overview of these lessons"
 
@@ -221,7 +221,6 @@ and do lessons 1 to (and including) 11.
     8     |`?`
     9     |`\s`
     10    |`^`
-    11    |`()`
 
 ---
 
@@ -599,7 +598,6 @@ Pick those topics you are interested in.
     - The pattern `.`, `[]` and `[^]` are used
       to (not) match a (set of) characters
     - The pattern `*`, `+`, `?` and `{}` are used to indicate an amount
-    - The pattern `()` is used to capture a set of a match
     - (optional) `grep` can do a lot of different things
 
 ---
