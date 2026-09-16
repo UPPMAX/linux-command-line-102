@@ -11,4 +11,5 @@ This is the page for evaluating the current iteration of the course.
 
     At [the 'Evaluations' page](evaluations/README.md).
 
-- [Link to evaluation survey](https://forms.cloud.microsoft/e/L2FCFek8d7)
+- [Link to evaluation survey](https://forms.cloud.microsoft/e/dRcxWNjMjy)
+
