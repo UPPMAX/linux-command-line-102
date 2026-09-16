@@ -146,17 +146,21 @@ man grep | grep "^[A-Z]"
 ??? tip "What does the regular expression mean?"
 
     Again, the question should be answered using the words 'some
-    regular expression': we will learn what it means soon.
+    regular expression': we will learn in the next exercise what it means.
 
     ??? tip "I really want to know"
 
-        The pattern `^[A-Z]` means:
-        'Starting with an uppercase character'
+        Do the next exercise to get the answer.
 
-        The detailed answer then becomes:
+        ??? tip "I really really want to know now"
 
-        The manual of `grep`, send it to `grep` and let it filter for
-        any line that starts with an uppercase character.
+            The pattern `^[A-Z]` means:
+            'Starting with an uppercase character'
+
+            The detailed answer then becomes:
+
+            The manual of `grep`, send it to `grep` and let it filter for
+            any line that starts with an uppercase character.
     
 ---
 
