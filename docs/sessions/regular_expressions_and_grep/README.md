@@ -26,7 +26,6 @@ tags:
     - Learners haved used `grep` to search for a regular expression
     - Learners have used the `grep` manual
     - Learners can send text to `grep` using a pipe
-    - (optional) Learners have seen the flexibility of `grep`
 
 ???- note "For teachers"
 
@@ -593,12 +592,10 @@ Pick those topics you are interested in.
 
     - `grep` is used for pattern matching
     - `grep` has a useful manual
-    - `grep` is a filter
     - `grep` works well with pipes
     - The pattern `.`, `[]` and `[^]` are used
       to (not) match a (set of) characters
     - The pattern `*`, `+`, `?` and `{}` are used to indicate an amount
-    - (optional) `grep` can do a lot of different things
 
 ---
 

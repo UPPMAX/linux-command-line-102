@@ -15,10 +15,10 @@ tags:
 
 !!! info "Learning outcomes"
 
-    - Learners can use `sed` to filter for lines using a regular expression
-    - Learners can use `sed` to replace lines using a regular expression
-    - Learners can use `sed` with different types of input and output
-    - Learners can use `sed` with the two different regular expression types
+    - Learners have used `sed` to filter for lines using a regular expression
+    - Learners have used `sed` to replace lines using a regular expression
+    - Learners have used `sed` with different types of input and output
+    - Learners have used `sed` with the two different regular expression types
     - (optional) Learners have seen three `sed` learning resources
 
 ???- note "For teachers"
@@ -69,7 +69,7 @@ doing so by hand).
 
 ## 3. Types of operations
 
-## 3.1. Filtering
+## (optional) 3.1. Filtering
 
 `sed` can do what `grep` can do.
 For example, in the session about`grep`,
@@ -153,7 +153,7 @@ echo "Good morning, good morning" | sed 's/morning/afternoon/g'
 <!-- markdownlint-disable MD056 --><!-- markdownlint-enable MD060 -->
 <!-- markdownlint-enable MD013 -->
 
-## 5. Type of regular expressions
+## (optional) 5. Type of regular expressions
 
 There are two types of regular expressions
 present in `sed`
@@ -339,7 +339,7 @@ then piping it to `sed`.
 
 ---
 
-## Exercise 1.4: use extended regular expressions
+## (optional) Exercise 1.4: use extended regular expressions
 
 Reading your answer in the previous exercise,
 your non-Swedish non-Finnish colleague comes to you
