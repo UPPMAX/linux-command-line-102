@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Lesson plan 2025-06-02 by Richel - Intermediate bash/Linux</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet"/>
+<link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet"/>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Lesson plan 2025-06-02 by Richel";
+        var mkdocs_page_input_path = "lesson_plans/20250602/README.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../..">
+<img alt="Logo" class="logo" src="../../images/logo-cli-naiss.png"/>
+</a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/intro/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/pipe/">Linux pipe</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/chown-chmod/">Linux permissions/owner</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/wc_cut/">Linux tools (wc, cut)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/sed/">Using the sed stream editor</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/awk/">(optional) Using the AWK programming language</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/scripting/">Scripting</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/redirects/">Redirects</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/env_vars/">Environment variables</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/symlinks/">Symbolic links</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/arch/">Archiving/compressing data</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sessions/qual/">Quality of life</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Other teaching materials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../">Lesson plans</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Intermediate bash/Linux</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">Lesson plan 2025-06-02 by Richel</li>
+<li class="wy-breadcrumbs-aside">
+<a class="icon icon-github" href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/lesson_plans/20250602/README.md"> Edit on GitHub</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="lesson__plan__2025-06-02__by__richel">Lesson plan 2025-06-02 by Richel<a class="headerlink" href="#lesson__plan__2025-06-02__by__richel" title="Permanent link">¶</a></h1>
+<ul>
+<li>Date: 2025-06-02</li>
+<li>Author: Richel</li>
+<li><a href="./">Lesson plan</a></li>
+<li><a href="../../evaluations/20250602/">Evaluation</a></li>
+<li><a href="../../reflections/20250602/">Reflection</a></li>
+</ul>
+<h2 id="morning__1__smarter__command-line">Morning 1: smarter command-line<a class="headerlink" href="#morning__1__smarter__command-line" title="Permanent link">¶</a></h2>
+<p>I am scheduled second:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>Teacher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9:00-10:00</td>
+<td>Linux pipe, <code>wc</code>, <code>cut</code></td>
+<td>BB</td>
+</tr>
+<tr>
+<td>10:00-10:15</td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td>10:15-11:00</td>
+<td><code>grep</code></td>
+<td>RB</td>
+</tr>
+<tr>
+<td>11:00-11:15</td>
+<td>Break</td>
+<td>.</td>
+</tr>
+<tr>
+<td>11:15-12:00</td>
+<td><code>awk</code></td>
+<td>RB</td>
+</tr>
+</tbody>
+</table>
+<p>I should assume the learners can use a pipe.</p>
+<h2 id="grep"><code>grep</code><a class="headerlink" href="#grep" title="Permanent link">¶</a></h2>
+<p>My learning outcomes are:</p>
+<ul>
+<li>Learners can use <code>.</code>, <code>*</code>, <code>+</code>, <code>?</code>, <code>[]</code>, <code>[^]</code>, <code>{}</code>, <code>()</code> in regular expressions</li>
+<li>Learners can use <code>grep</code> for pattern matching</li>
+<li><a href="https://github.com/UPPMAX/linux-command-line-102/issues/7">Learners have practiced using a book on bash/Linux</a></li>
+</ul>
+<p>Add LOs are:</p>
+<ul>
+<li>Learners have experienced that <code>grep</code> is a filter</li>
+<li>Learners have sent text to <code>grep</code> using a pipe, e.g. <code>man grep | grep "[^A-Z]</code></li>
+<li>Learners know there are multiple flavours of regular expressions:
+  use <code>grep</code> and <code>grep -E</code></li>
+</ul>
+<p>As sources of text, I consider to use:</p>
+<ul>
+<li>‘Frankenstein; Or, The Modern Prometheus’,
+  from
+  <a href="https://www.gutenberg.org/cache/epub/84/pg84.txt">a plain text file at Project Gutenberg</a></li>
+<li><code>man grep</code> or <code>yelp man:grep</code> or <code>man grep | grep "^[A-Z]"</code></li>
+<li><a href="https://www.regexone.com/">https://www.regexone.com/</a></li>
+<li><code>[Shotts, 2024]</code>
+<a href="https://sourceforge.net/projects/linuxcommand/files/AWTLCL/21.10/AWTLCL-21.10.pdf/download">download</a>
+  and can be found in this repository at <code>books/the_linux_command_line.pdf</code></li>
+<li>man grep | grep “^[[:upper:]]”</li>
+</ul>
+<p>Using the <code>grep</code> manual and
+<a href="https://www.regexone.com/">https://www.regexone.com/</a>
+felt like the best options.</p>
+<p>Fixing the layout is harder, e.g. getting <code>mermaid</code> to work, making the
+admonitions prettier (fails).</p>
+<p>I will give up on <code>mermaid</code>:</p>
+<p><img alt="Mermaid does not work" src="no_mermaid.png"/></p>
+<p>I think this session is ready now, but I can imagine
+writing the next session may influence it,
+so let’s write the next session first,
+before creating a video.</p>
+<h2 id="awk"><code>awk</code><a class="headerlink" href="#awk" title="Permanent link">¶</a></h2>
+<p>It used to be <code>sed</code> and <code>awk</code> in an earlier schedule. Commit
+<code>7282e58552cdbeb7bf70b0f3133ac2bee7702a33</code> moved <code>sed</code> to Day 2.
+I will accept: we (me and BB) are probably both working in the weekend,
+so let’s accept this change.</p>
+<p>My LOs are:</p>
+<ul>
+<li>I can use <code>awk</code></li>
+<li><a href="https://github.com/UPPMAX/linux-command-line-102/issues/7">Learners have practiced using a book on bash/Linux</a></li>
+</ul>
+<p>I’ve inherited the first one from BC and BB and is simple enough,
+unlike the ones for <code>grep</code>, where I added some details.</p>
+<p>I will add some LOs:</p>
+<ul>
+<li>I can use <code>awk</code> in pipes</li>
+<li>I can use regular expressions in <code>awk</code></li>
+<li>I can use <code>awk</code> to read a specific column</li>
+<li>I can use <code>awk</code> to transform text</li>
+</ul>
+<p>Non-LOs:</p>
+<ul>
+<li>I can use <code>awk</code> to analyse a file: the day is called ‘Smart command-line’</li>
+</ul>
+<p>Books to use:</p>
+<ul>
+<li><a href="https://tldp.org/LDP/Bash-Beginners-Guide/Bash-Beginners-Guide.pdf">Bash Beginners Guide</a>
+<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/chap_06.html">chapter 6</a>,
+  from <a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_06_02.html">section 6.2</a>
+  to section 6.2.3 seems to work in my context</li>
+<li><a href="https://tldp.org/LDP/abs/abs-guide.pdf">Advanced Bash Scripting Guide</a>,
+  page <a href="https://tldp.org/LDP/abs/html/awk.html">C2. Awk</a>
+  is a micro primer, with some usefulness</li>
+<li><a href="https://opensource.com/downloads/awk-ebook">A practical guide to learning awk</a>:
+  uses files, not pipes</li>
+<li><a href="https://www.gnu.org/software/gawk/manual/">Gawk: Effective AWK Programming</a>:
+  too complex for the LOs</li>
+<li><a href="https://linuxcommand.org/tlcl.php">The Linux Command Line</a>: no chapter on AWK</li>
+<li><a href="https://tldp.org/LDP/intro-linux/intro-linux.pdf">Introduction to Linux</a>:
+  no chapter on AWK</li>
+<li><a href="https://linux-training.be/linuxfun.pdf">Linux Fundamentals</a>: no chapter on AWK</li>
+<li><a href="https://linuxnewbieguide.org/ulngebook2017/">Ultimate Linux Newbie Guide</a>:
+  no chapter on AWK</li>
+<li><a href="http://www.cse.hcmut.edu.vn/~hungnq/courses/nap/alp.pdf">Advanced Linux programming</a>:
+  no chapter on AWK</li>
+<li><a href="https://www.linuxfromscratch.org/">Linux From Scratch</a>: no chapter on AWK</li>
+<li><a href="https://www.linuxfromscratch.org/blfs/read.html">Beyond Linux From Scratch</a>:
+  no chapter on AWK</li>
+</ul>
+<p>I will use the Bash Beginners Guide.</p>
+<p>Mapping sessions to LOs:</p>
+<ul>
+<li>6.2.1: I can use <code>awk</code> in pipes</li>
+<li>6.2.1: I can use <code>awk</code> to read a specific column</li>
+<li>6.2.2: I can use <code>awk</code> to transform text</li>
+<li>6.2.3: I can use regular expressions in <code>awk</code></li>
+</ul>
+<p>Seems this works!</p>
+<p>I will map these to exercises, and adding a ‘Can awk do …?’ section.</p>
+<h2 id="teaching">Teaching<a class="headerlink" href="#teaching" title="Permanent link">¶</a></h2>
+<p>I want to practice my Mike Bell teaching cycles.
+I feel the Feedback phase is weakest,
+hence I added this explicitly to the materials
+and schedule time for it. I have written a schedule in my
+sessions and in my notebook: I intend to keep track of the actual timing.</p>
+<p>During Challenge, I will put them into breakout rooms of 2 or 3,
+as this is better for learning, as well as a better place to answer questions.</p>
+<p>My biggest worry is Zoom. I’ve switched to a new computer, installed
+Zoom there, but it seems to prefer to work via the browser.
+I’ve just checked it -and it was good I did!- as it required an update.
+After updating, I went through all the settings and I now have better
+settings, e.g. that sharing my screen only takes 1 instead of 3
+dialogs (1 dialog asks to share a window or a screen: I’ve set this
+to always share my screen)! Took me 10 minutes and I am happy I had the time
+to go through this.</p>
+<p>I predict there will not be time to let the learners
+do even the essential exercises.
+I will mention this to them, so they are less disappointed.
+I think this problem is worse for AWK, as it has less
+time and its video is longer:</p>
+<table>
+<thead>
+<tr>
+<th>Session</th>
+<th>Scheduled time</th>
+<th>Video duration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grep</code></td>
+<td>45 minutes</td>
+<td>27 minutes</td>
+</tr>
+<tr>
+<td>AWK</td>
+<td>40 minutes</td>
+<td>31 minutes</td>
+</tr>
+</tbody>
+</table>
+<p>I do think AWK is useless, so I hope we can remove this in the next
+course iteration. Instead, <code>sed</code> feels the more natural session
+after <code>grep</code>.</p>
+<ul>
+<li>[ ] In next meeting, suggest to remove AWK from the schedule</li>
+</ul>
+<p>There are 40 registrations, so I expect 27% (same as the NAISS
+File Transfer course) to show up, which is 11 learners.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h2>
+<ul>
+<li><code>[Shotts, 2024]</code> Shotts, William.
+  The Linux command line: a complete introduction. No Starch Press, 2024.
+  (in <code>books/the_linux_command_line.pdf</code>)</li>
+</ul>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span>
+<a class="fa fa-github" href="https://github.com/UPPMAX/linux-command-line-102" style="color: #fcfcfc"> GitHub</a>
+</span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../assets/_markdown_exec_pyodide.js"></script>
+<script src="../../search/main.js"></script>
+<script src="../../js/open_in_new_tab.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

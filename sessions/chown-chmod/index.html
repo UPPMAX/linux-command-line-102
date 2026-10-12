@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Linux permissions/owner - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Linux permissions/owner";
+        var mkdocs_page_input_path = "sessions/chown-chmod.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Linux permissions/owner</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#chmod">chmod</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chown">chown</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../meeting_notes/">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Lessons Morning (smarter command line)</li>
+      <li class="breadcrumb-item active">Linux permissions/owner</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/sessions/chown-chmod.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="permissions__and__owner">Permissions and owner<a class="headerlink" href="#permissions__and__owner" title="Permanent link">&para;</a></h1>
+<p>These commands could be needed for scripting, particularly the <code>chmod</code> command. </p>
+<p>Permissions are needed to, among other things, make a file executable. This is done with <code>chmod</code>. The command <code>chown</code> is used to set the owner of a file or folder. </p>
+<h2 id="chmod">chmod<a class="headerlink" href="#chmod" title="Permanent link">&para;</a></h2>
+<p>The command <code>chmod</code> is used to change permissions for files and directories. </p>
+<div class="admonition note">
+<p class="admonition-title">There are three types of permission groups</p>
+<ul>
+<li><strong>owners</strong>: these permissions will only apply to owners and will not affect other groups.</li>
+<li><strong>groups</strong>: you can assign a group of users specific permissions, which will only impact users within the group. The members of your storage directory belongs here.</li>
+<li><strong>all users</strong>: these permissions will apply to all users, so be careful with this.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">There are three kinds of file permissions</p>
+<ul>
+<li><strong>Read (r)</strong>: This allows a user or a group to view a file (and so also to copy it).</li>
+<li><strong>Write (w)</strong>: This permits the user to write or modify a file or directory.</li>
+<li><strong>Execute (x)</strong>: A user or a group with execute permissions can execute a file. They can also view a subdirectory.</li>
+</ul>
+</div>
+<p>The permissions for a file, directory, or symbolic link has 10 “bits” and looks similar to this:</p>
+<p><img alt="permissions" src="../../images/permissions.png" /></p>
+<p>As shown, the first bit can be “-” (a file), “d” (a directory), or “l” (a link).</p>
+<p>The following group of 3 bits are for the owner, then the next 3 for the group, and then the last 3 for all users. Each can have the r(ead), w(rite), and (e)x(ecute) permission set. </p>
+<div class="admonition note">
+<p class="admonition-title">To change permissions, here are some examples</p>
+<ul>
+<li>owner<ul>
+<li><strong>chmod +rwx FILE/DIR</strong> to add all permissions of a file with name FILE or a directory with name DIR</li>
+<li><strong>chmod -rwx FILE/DIR</strong> to remove all permissions from a file with name FILE or a directory with name DIR</li>
+<li><strong>chmod +x FILE</strong> to add executable permissions</li>
+<li><strong>chmod -wx FILE</strong> to remove write and executable permissions</li>
+</ul>
+</li>
+<li>group<ul>
+<li><strong>chmod g+rwx FILE</strong> to add all permissions to FILE</li>
+<li><strong>chmod g-rwx FILE</strong> to remove all permissions to FILE</li>
+<li><strong>chmod g+wx FILE</strong> to give write and execute permissions to FILE</li>
+<li><strong>chmod g-x FILE</strong> to remove execute permissions to FILE</li>
+</ul>
+</li>
+<li>others<ul>
+<li><strong>chmod o+rwx FILE</strong> to add all permissions to FILE</li>
+<li><strong>chmod o-rwx FILE</strong> to remove all permissions to FILE</li>
+<li><strong>chmod o+w FILE</strong> to add write permissions to FILE</li>
+<li><strong>chmod o-rwx DIR</strong> to remove all permissions to DIR</li>
+</ul>
+</li>
+<li>all<ul>
+<li><strong>chmod ugo+rwx FILE/DIR</strong> to add all permissions for all users (owner, group, others) to file named FILE or directory named DIR</li>
+<li><strong>chmod a=rwx FILE/DIR</strong> same as above</li>
+<li><strong>chmod a=r DIR</strong> give read permissions to all for DIR</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="chown">chown<a class="headerlink" href="#chown" title="Permanent link">&para;</a></h2>
+<p>To change ownership of a file or directory, use the command <code>chown</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>chown<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>USER<span class="o">[</span>:GROUP<span class="o">]</span><span class="w"> </span>FILE<span class="o">(</span>s<span class="o">)</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Examples</p>
+<ul>
+<li><strong>chown USERNAME FILE</strong> the user with USERNAME becomes the new owner of FILE</li>
+<li><strong>chown USERNAME DIRECTORY</strong> the user with USERNAME becomes the new owner of DIRECTORY (but not any subdirectories)</li>
+<li><strong>chown USERNAME:folk DIRECTORY</strong> the user ownership is changed to USER and the group ownership to group “folk” for the directory DIRECTORY</li>
+<li><strong>chown :folk DIRECTORY</strong> the group ownership is changed to the group “folk” for the directory DIRECTORY</li>
+<li><strong>chown -R USERNAME:folk DIRECTORY</strong> the user ownership is changed to USERNAME and the group ownership is changed to group “folk” for the directory DIRECTORY and all subdirectories</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As default, <code>chown</code> does not generate output on success and returns <code>zero</code>. </p>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../pipe/" class="btn btn-neutral float-left" title="Linux pipe"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../wc_cut/" class="btn btn-neutral float-right" title="Linux tools (wc, cut)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../pipe/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../wc_cut/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

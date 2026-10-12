@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Meeting Wednesday 9 April 13:00-13:30 - Intermediate bash/Linux</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Meeting Wednesday 9 April 13:00-13:30";
+        var mkdocs_page_input_path = "meeting_notes/20250409.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../images/logo-cli-naiss.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Common</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../learning_outcomes/">Learning outcomes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../course_dates/">Course dates</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../schedule/">Schedule</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../prerequisites/">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluation/">Evaluation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Morning (smarter command line)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/pipe/">Linux pipe</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/chown-chmod/">Linux permissions/owner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/wc_cut/">Linux tools (wc, cut)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/regular_expressions_and_grep/">Searching using regular expressions and grep</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/sed/">Using the sed stream editor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/awk/">(optional) Using the AWK programming language</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Lessons Afternoon (smarter bash)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/scripting/">Scripting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/redirects/">Redirects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/env_vars/">Environment variables</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/symlinks/">Symbolic links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/arch/">Archiving/compressing data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sessions/qual/">Quality of life</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Other teaching materials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../books/">Books</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../courses/">Courses</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../videos/">Videos</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Miscellaneous</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../communication/">Communication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../data/">Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../evaluations/">Evaluations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lesson_plans/">Lesson plans</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Meeting notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reflections/">Reflections</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Intermediate bash/Linux</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Meeting Wednesday 9 April 13:00-13:30</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/meeting_notes/20250409.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="meeting__wednesday__9__april__1300-1330">Meeting Wednesday 9 April 13:00-13:30<a class="headerlink" href="#meeting__wednesday__9__april__1300-1330" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Status: did Joachim accept our course being two half-days?<ul>
+<li>YES!</li>
+</ul>
+</li>
+<li>Agree on welcome ad (see bottom of this document)<ul>
+<li>DONE</li>
+</ul>
+</li>
+<li>[DECIDED] One or several course pages (linked from NAISS training page): use links<ul>
+<li>links from lunarc and uppmax to hpc2n?<ul>
+<li>good registration method!</li>
+</ul>
+</li>
+<li>or other center?</li>
+</ul>
+</li>
+<li>Teaching schedule:<ul>
+<li>Is just a suggestion for now</li>
+<li>We&rsquo;ll make teaching material and see if the schedule will work out</li>
+<li>What about of use 50 mins for teaching?<ul>
+<li>Yes</li>
+<li>Also add evaluation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ToDos<ul>
+<li>[ ] BB: makes registration from HPC2N before tomorrow</li>
+<li>[ ] BC: course pages at center(s)</li>
+</ul>
+</li>
+</ul>
+<!-- markdownlint-disable MD013 -->
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Estimated duration (minutes)</th>
+<th>Volunteer(s) to teach this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux pipe</td>
+<td>30</td>
+<td>BB</td>
+</tr>
+<tr>
+<td>Linux tools, <code>wc</code></td>
+<td>15</td>
+<td>BB</td>
+</tr>
+<tr>
+<td>Linux tools, <code>cut</code></td>
+<td>30</td>
+<td>BC&ndash;&gt;BB</td>
+</tr>
+<tr>
+<td><code>grep</code></td>
+<td>60</td>
+<td>RB</td>
+</tr>
+<tr>
+<td><code>sed</code> (2 advanced or QoL?, at least after scripting)</td>
+<td>30 &ndash;&gt; 0</td>
+<td>BC</td>
+</tr>
+<tr>
+<td>Linux tools, <code>awk</code></td>
+<td>30</td>
+<td>BC</td>
+</tr>
+<tr>
+<td>Bash scripting</td>
+<td>60</td>
+<td>RB</td>
+</tr>
+<tr>
+<td>Advanced redirect (2 advanced?)</td>
+<td>30</td>
+<td>BB</td>
+</tr>
+<tr>
+<td>Environment variables</td>
+<td>30</td>
+<td>BB</td>
+</tr>
+<tr>
+<td>Links (hard/soft)</td>
+<td>30</td>
+<td>BB</td>
+</tr>
+<tr>
+<td>Archiving/Compressing</td>
+<td>30</td>
+<td>BC</td>
+</tr>
+<tr>
+<td>Quality of life (shorter)</td>
+<td>60 &ndash;&gt; 45 (or )</td>
+<td>BC</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>435 (= 7.25 hours)</td>
+<td>All</td>
+</tr>
+</tbody>
+</table>
+<h2 id="morning__1__smarter__command-line">Morning 1: smarter command-line<a class="headerlink" href="#morning__1__smarter__command-line" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>Teacher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9:00-10:00</td>
+<td>Linux pipe, <code>wc</code>, <code>cut</code></td>
+<td>BB</td>
+</tr>
+<tr>
+<td>10:00-10:15</td>
+<td>Break</td>
+<td>-</td>
+</tr>
+<tr>
+<td>10:15-11:00</td>
+<td><code>grep</code></td>
+<td>RB</td>
+</tr>
+<tr>
+<td>11:00-11:15</td>
+<td>Break</td>
+<td>-</td>
+</tr>
+<tr>
+<td>11:15-12:00</td>
+<td><code>sed</code> and <code>awk</code></td>
+<td>BC</td>
+</tr>
+</tbody>
+</table>
+<h2 id="morning__2__smarter__bash">Morning 2: smarter bash<a class="headerlink" href="#morning__2__smarter__bash" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>Teacher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9:00-10:00</td>
+<td>Bash scripting</td>
+<td>RB</td>
+</tr>
+<tr>
+<td>10:00-10:15</td>
+<td>Break</td>
+<td>-</td>
+</tr>
+<tr>
+<td>10:15-11:00</td>
+<td>Advanced redirect, environment variables, links</td>
+<td>BB</td>
+</tr>
+<tr>
+<td>11:00-11:15</td>
+<td>Break</td>
+<td>-</td>
+</tr>
+<tr>
+<td>11:15-12:00</td>
+<td>Quality of life, compressing</td>
+<td>BC</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://github.com/UPPMAX/linux-command-line-102/blob/main/docs/meeting_notes/20250403.md">Previous meeting&rsquo;s notes</a></li>
+</ul>
+<h2 id="welcome__ad__living__document">Welcome ad (Living document)<a class="headerlink" href="#welcome__ad__living__document" title="Permanent link">&para;</a></h2>
+<p>In this 6-hour 2-day workshop you&rsquo;ll learn how to work smarter from a command line. You can follow either day or both. To do so, you&rsquo;ll learn more Bash commands, scripting and some quality of life topics. You can run on your own (Linux) computer or on your favorite HPC cluster.</p>
+<p>At the end of each day, you should feel to be able to work smarter and able to avoid more grunt work (i.e. anything that involves repeated copypaste).</p>
+<p>The workshop is intended for users with some Linux experience, see <a href="https://uppmax.github.io/linux-command-line-102/prerequisites/">the prerequisites</a>.</p>
+<p>Time: 2 and 3 June, each day from 9-12</p>
+<p>For more information and registration visit: XXX</p>
+<!-- Let's break 80 characters per line -->
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/UPPMAX/linux-command-line-102" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../../search/main.js"></script>
+      <script src="../../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
