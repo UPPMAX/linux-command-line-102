@@ -1,4 +1,0 @@
-This is a file with some strings. How many instances of string are there?
-So many times string!
-String string string!
-Muahahaha

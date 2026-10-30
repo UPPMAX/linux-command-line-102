@@ -1,9 +1,0 @@
-Just one more file with just a bit of text.
-And maybe a few lines
-or more
-yeah!
-I need the file to have some size, for the compressing examples.
-But it is just a text file.
-With some lines of text. 
-LALALALALALALALALA!
-Hehehe :)
